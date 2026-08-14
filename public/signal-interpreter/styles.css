@@ -16026,3 +16026,71 @@ time {
     justify-self: start;
   }
 }
+
+/* ==========================================================
+   Split workspaces — canonical empty detail state
+   ========================================================== */
+
+.operational-memory-layout
+.empty-state.shared-detail-empty,
+.integrations-layout
+.empty-state.shared-detail-empty,
+.environments-layout
+.empty-state.shared-detail-empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+
+  max-width: none;
+  min-height: 100%;
+  width: 100%;
+
+  margin: 0;
+  padding: 70px 30px;
+
+  text-align: center;
+}
+
+.operational-memory-layout
+.empty-state.shared-detail-empty::before,
+.integrations-layout
+.empty-state.shared-detail-empty::before,
+.environments-layout
+.empty-state.shared-detail-empty::before {
+  display: grid;
+  place-items: center;
+
+  width: 50px;
+  height: 50px;
+
+  margin-bottom: 17px;
+
+  color: var(--accent);
+  background: var(--accent-muted);
+
+  border:
+    1px solid
+    var(--accent-border);
+  border-radius: 14px;
+
+  content: "⌁";
+
+  font-size: 1.5rem;
+}
+
+.operational-memory-layout
+.empty-state.shared-detail-empty h2,
+.integrations-layout
+.empty-state.shared-detail-empty h2,
+.environments-layout
+.empty-state.shared-detail-empty h2 {
+  margin:
+    8px
+    0;
+
+  color: var(--text);
+
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}

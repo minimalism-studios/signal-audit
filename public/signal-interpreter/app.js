@@ -4017,7 +4017,12 @@ function renderSecondaryWorkspace(
             "
             aria-live="polite"
           >
-            <div class="empty-state">
+            <div
+              class="
+                empty-state
+                shared-detail-empty
+              "
+            >
               <p class="eyebrow">
                 Operational Memory
               </p>
@@ -4027,9 +4032,9 @@ function renderSecondaryWorkspace(
               </h2>
 
               <p>
-                Choose an Operational Memory document to review
-                its summary, root cause, organizational learning,
-                actions, and supporting evidence.
+                Choose an Operational Memory document
+                to review its organizational knowledge,
+                root cause, actions, and supporting evidence.
               </p>
             </div>
           </section>
@@ -6371,9 +6376,14 @@ function renderEnvironmentDetail(
 
   if (!environment) {
     container.innerHTML = `
-      <div class="empty-state">
+      <div
+        class="
+          empty-state
+          shared-detail-empty
+        "
+      >
         <p class="eyebrow">
-          Environment details
+          Environment
         </p>
 
         <h2>
