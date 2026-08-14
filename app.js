@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 const session = require("express-session");
 const FileStore =
@@ -90,6 +91,27 @@ if (!process.env.SESSION_SECRET) {
 
 const PORT =
   process.env.PORT || 3000;
+
+if (process.env.RAILWAY_VOLUME_MOUNT_PATH) {
+  for (
+    const directory
+    of [
+      "data",
+      "config",
+      "sessions",
+    ]
+  ) {
+    fs.mkdirSync(
+      path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        directory,
+      ),
+      {
+        recursive: true,
+      },
+    );
+  }
+}
 
 const app =
   express();
