@@ -3,10 +3,16 @@ const path = require("path");
 const crypto = require("crypto");
 
 const DEFAULT_FILE_PATH =
-  path.join(
-    __dirname,
-    "../data/users.json",
-  );
+  process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        "data",
+        "users.json",
+      )
+    : path.join(
+        __dirname,
+        "../data/users.json",
+      );
 
 const SUPPORTED_ROLES =
   new Set([

@@ -3,10 +3,16 @@ const fs = require("fs");
 const path = require("path");
 
 const DEFAULT_FILE_PATH =
-  path.join(
-    __dirname,
-    "../data/operational-memory.json",
-  );
+  process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        "data",
+        "operational-memory.json",
+      )
+    : path.join(
+        __dirname,
+        "../data/operational-memory.json",
+      );
 
 function createOperationalMemoryStore({
   filePath = DEFAULT_FILE_PATH,

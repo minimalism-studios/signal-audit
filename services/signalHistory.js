@@ -7,10 +7,16 @@ const {
 } = require("../constants/signalStates");
 
 function createSignalHistory({
-  filePath = path.join(
-    __dirname,
-    "../data/signal-history.json"
-  ),
+  filePath = process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        "data",
+        "signal-history.json",
+      )
+    : path.join(
+        __dirname,
+        "../data/signal-history.json",
+      ),
 } = {}) {
   function loadRecords() {
     if (!fs.existsSync(filePath)) {

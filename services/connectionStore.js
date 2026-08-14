@@ -8,10 +8,16 @@ const SUPPORTED_SOURCES =
   ]);
 
 function createConnectionStore({
-  filePath = path.join(
-    __dirname,
-    "../config/connections.json",
-  ),
+  filePath = process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        "config",
+        "connections.json",
+      )
+    : path.join(
+        __dirname,
+        "../config/connections.json",
+      ),
 } = {}) {
   function ensureFile() {
     if (

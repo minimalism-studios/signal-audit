@@ -5,10 +5,16 @@ const path = require("path");
 const crypto = require("crypto");
 
 const DEFAULT_FILE_PATH =
-  path.join(
-    __dirname,
-    "../data/investigations.json",
-  );
+  process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(
+        process.env.RAILWAY_VOLUME_MOUNT_PATH,
+        "data",
+        "investigations.json",
+      )
+    : path.join(
+        __dirname,
+        "../data/investigations.json",
+      );
 
 const INVESTIGATION_STATUSES =
   new Set([

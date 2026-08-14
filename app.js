@@ -122,10 +122,15 @@ app.use(
     store:
       new FileStore({
         path:
-          path.join(
-            __dirname,
-            "sessions",
-          ),
+          process.env.RAILWAY_VOLUME_MOUNT_PATH
+            ? path.join(
+                process.env.RAILWAY_VOLUME_MOUNT_PATH,
+                "sessions",
+              )
+            : path.join(
+                __dirname,
+                "sessions",
+              ),
       }),
 
     cookie: {
