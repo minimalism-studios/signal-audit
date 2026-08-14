@@ -10544,7 +10544,32 @@ async function loadSignals({
       state.selectedSignalId =
         previousSelectedSignalId;
 
+      const selectedRecord =
+        state.signals.find(
+          (record) =>
+            record.id
+            === previousSelectedSignalId,
+        );
+
+      const selectedDetailNeedsRefresh =
+        !state.selectedSignalDetail
+        || state.selectedSignalDetail.state
+          !== selectedRecord.state
+        || state.selectedSignalDetail.analyzedAt
+          !== selectedRecord.analyzedAt
+        || state.selectedSignalDetail.failedAt
+          !== selectedRecord.failedAt;
+
       renderSignalList();
+
+      if (selectedDetailNeedsRefresh) {
+        state.selectedSignalDetail =
+          selectedRecord;
+
+        renderSignalDetail(
+          selectedRecord,
+        );
+      }
 
       return;
     }
