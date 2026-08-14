@@ -10495,22 +10495,22 @@ async function loadSignals({
   const query =
     new URLSearchParams();
 
-    Object.entries(
-      state.liveSignalsFilters,
-    ).forEach(
-      ([key, value]) => {
-        if (
-          value !== ""
-          && value !== null
-          && value !== undefined
-        ) {
-          query.set(
-            key,
-            value,
-          );
-        }
-      },
-    );
+  Object.entries(
+    state.liveSignalsFilters,
+  ).forEach(
+    ([key, value]) => {
+      if (
+        value !== ""
+        && value !== null
+        && value !== undefined
+      ) {
+        query.set(
+          key,
+          value,
+        );
+      }
+    },
+  );
 
   try {
     const response = await fetch(
@@ -10526,24 +10526,36 @@ async function loadSignals({
     const payload =
       await response.json();
 
+    const previousSelectedSignalId =
+      state.selectedSignalId;
+
     state.signals =
       payload.signals || [];
 
-    if (
-      state.selectedSignalId
-      && !state.signals.some(
+    const selectedStillExists =
+      previousSelectedSignalId
+      && state.signals.some(
         (record) =>
           record.id
-          === state.selectedSignalId,
-      )
-    ) {
-      state.selectedSignalId = null;
+          === previousSelectedSignalId,
+      );
+
+    if (selectedStillExists) {
+      state.selectedSignalId =
+        previousSelectedSignalId;
+
+      renderSignalList();
+
+      return;
     }
 
-    if (
-      !state.selectedSignalId
-      && state.signals.length > 0
-    ) {
+    state.selectedSignalId =
+      null;
+
+    state.selectedSignalDetail =
+      null;
+
+    if (state.signals.length > 0) {
       await loadSignalDetail(
         state.signals[0].id,
       );
@@ -10552,6 +10564,28 @@ async function loadSignals({
     }
 
     renderSignalList();
+
+    detailPanel.innerHTML = `
+      <div
+        class="
+          empty-state
+          shared-detail-empty
+        "
+      >
+        <p class="eyebrow">
+          Live Signal
+        </p>
+
+        <h2>
+          No signal selected
+        </h2>
+
+        <p>
+          Select a signal to review its
+          operational analysis.
+        </p>
+      </div>
+    `;
   } catch (error) {
     if (!silent) {
       signalList.innerHTML = `
