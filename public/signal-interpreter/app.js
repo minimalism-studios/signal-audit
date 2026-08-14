@@ -4042,6 +4042,8 @@ function renderSecondaryWorkspace(
       </div>
     `;
 
+    renderOperationalMemoryWorkspace();
+
     loadOperationalMemory();
 
     return;
@@ -4100,6 +4102,8 @@ function renderSecondaryWorkspace(
       </div>
     `;
 
+    renderIntegrationsWorkspace();
+
     loadIntegrations();
 
     return;
@@ -4157,6 +4161,8 @@ function renderSecondaryWorkspace(
           </div>
         </div>
       `;
+
+      renderEnvironmentsWorkspace();
 
       loadEnvironments();
 
