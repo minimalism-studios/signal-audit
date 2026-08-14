@@ -1,0 +1,23 @@
+{
+  "name": "signal-audit",
+  "version": "0.1.0",
+  "description": "Signal Audit operational intelligence platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "openai": "^7.4.0",
+    "session-file-store": "^1.5.0"
+  }
+}

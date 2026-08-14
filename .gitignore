@@ -1,0 +1,6 @@
+.env
+node_modules/
+sessions/
+data/*.json
+config/connections.json
+.DS_Store
