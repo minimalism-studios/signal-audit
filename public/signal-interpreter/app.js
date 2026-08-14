@@ -198,6 +198,15 @@ const defaultSettings = {
     false,
 };
 
+const LIVE_SIGNALS_REFRESH_INTERVAL_MS =
+  5000;
+
+let liveSignalsRefreshTimer =
+  null;
+
+let liveSignalsRequestInFlight =
+  false;
+
 function updateSidebarToggle(
   sidebarState,
 ) {
@@ -4705,6 +4714,8 @@ function bindSettingsControls() {
         ),
       );
 
+      syncLiveSignalsAutoRefresh();
+
       showSettingsMessage(
         autoRefreshToggle.checked
           ? "Live Signals auto-refresh enabled."
@@ -8513,6 +8524,8 @@ function renderWorkspace(
   refreshButton.hidden =
     !isLiveSignals;
 
+  syncLiveSignalsAutoRefresh();
+
   addIntegrationButton.hidden =
     resolvedWorkspace
       !== "integrations"
@@ -10455,20 +10468,32 @@ function syncLiveSignalFilters() {
     state.liveSignalsFilters.severity;
 }
 
-async function loadSignals() {
-  signalList.innerHTML = `
-    <div class="list-message">
-      <p class="list-message__title">
-        Loading signals
-      </p>
+async function loadSignals({
+  silent = false,
+} = {}) {
+  if (liveSignalsRequestInFlight) {
+    return;
+  }
 
-      <p>
-        Fetching operational findings…
-      </p>
-    </div>
-  `;
-    const query =
-      new URLSearchParams();
+  liveSignalsRequestInFlight =
+    true;
+
+  if (!silent) {
+    signalList.innerHTML = `
+      <div class="list-message">
+        <p class="list-message__title">
+          Loading signals
+        </p>
+
+        <p>
+          Fetching operational findings…
+        </p>
+      </div>
+    `;
+  }
+
+  const query =
+    new URLSearchParams();
 
     Object.entries(
       state.liveSignalsFilters,
@@ -10528,21 +10553,91 @@ async function loadSignals() {
 
     renderSignalList();
   } catch (error) {
-    signalList.innerHTML = `
-      <div class="list-message">
-        <p class="list-message__title">
-          Unable to load signals
-        </p>
+    if (!silent) {
+      signalList.innerHTML = `
+        <div class="list-message">
+          <p class="list-message__title">
+            Unable to load signals
+          </p>
 
-        <p>
-          Refresh the feed or check the
-          application connection.
-        </p>
-      </div>
-    `;
+          <p>
+            Refresh the feed or check the
+            application connection.
+          </p>
+        </div>
+      `;
+    }
 
     console.error(error);
+  } finally {
+    liveSignalsRequestInFlight =
+      false;
   }
+}
+
+function isLiveSignalsAutoRefreshEnabled() {
+  return getBooleanSetting(
+    settingsStorageKeys.autoRefresh,
+    defaultSettings.autoRefresh,
+  );
+}
+
+function stopLiveSignalsAutoRefresh() {
+  if (!liveSignalsRefreshTimer) {
+    return;
+  }
+
+  window.clearInterval(
+    liveSignalsRefreshTimer,
+  );
+
+  liveSignalsRefreshTimer =
+    null;
+}
+
+function startLiveSignalsAutoRefresh() {
+  stopLiveSignalsAutoRefresh();
+
+  if (
+    state.activeWorkspace
+      !== "live-signals"
+    || !isLiveSignalsAutoRefreshEnabled()
+  ) {
+    return;
+  }
+
+  liveSignalsRefreshTimer =
+    window.setInterval(
+      () => {
+        if (
+          state.activeWorkspace
+            !== "live-signals"
+        ) {
+          stopLiveSignalsAutoRefresh();
+
+          return;
+        }
+
+        loadSignals({
+          silent: true,
+        });
+      },
+      LIVE_SIGNALS_REFRESH_INTERVAL_MS,
+    );
+}
+
+function syncLiveSignalsAutoRefresh() {
+  if (
+    state.activeWorkspace
+      === "live-signals"
+    && isLiveSignalsAutoRefreshEnabled()
+  ) {
+    startLiveSignalsAutoRefresh();
+
+    return;
+  }
+
+  stopLiveSignalsAutoRefresh();
 }
 
 async function loadInvestigations() {
