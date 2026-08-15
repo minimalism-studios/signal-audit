@@ -34,9 +34,11 @@ function createInvestigationStore({
     !signalHistory
     || typeof signalHistory.getSignal
       !== "function"
+    || typeof signalHistory.resolveSignal
+      !== "function"
   ) {
     throw new Error(
-      "Investigation Store requires Signal History.",
+      "Investigation Store requires Signal History with getSignal() and resolveSignal().",
     );
   }
 
@@ -780,6 +782,12 @@ function createInvestigationStore({
       "resolution",
     );
 
+    const resolvedAt =
+      normalizeOptionalTimestamp(
+        resolution.resolvedAt,
+      )
+      || new Date().toISOString();
+
     const investigation =
       mutateInvestigation(
         investigationId,
@@ -787,12 +795,6 @@ function createInvestigationStore({
           assertMutable(
             investigation,
           );
-
-        const resolvedAt =
-          normalizeOptionalTimestamp(
-            resolution.resolvedAt,
-          )
-          || new Date().toISOString();
 
         investigation.resolution = {
           ...investigation.resolution,
@@ -860,6 +862,23 @@ function createInvestigationStore({
         );
         },
       );
+
+    const signalIds =
+      normalizeStringArray(
+        investigation.evidence
+          ?.signals,
+      );
+
+    signalIds.forEach(
+      (signalId) => {
+        signalHistory.resolveSignal(
+          signalId,
+          {
+            resolvedAt,
+          },
+        );
+      },
+    );
 
     if (
       events

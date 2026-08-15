@@ -77,6 +77,8 @@ function createSignalHistory({
       analysis: null,
       delivery: null,
       failureReason: null,
+      operationalState: "active",
+      resolvedAt: null,
     };
 
     records.push(record);
@@ -92,6 +94,37 @@ function createSignalHistory({
       records.find((record) => record.id === id) ||
       null
     );
+  }
+
+  function resolveSignal(
+    id,
+    {
+      resolvedAt =
+        new Date().toISOString(),
+    } = {},
+  ) {
+    const records =
+      loadRecords();
+
+    const record =
+      records.find(
+        (item) =>
+          item.id === id,
+      );
+
+    if (!record) {
+      return null;
+    }
+
+    record.operationalState =
+      "resolved";
+
+    record.resolvedAt =
+      resolvedAt;
+
+    saveRecords(records);
+
+    return record;
   }
 
   function updateSignal(id, patch) {
@@ -233,6 +266,7 @@ function createSignalHistory({
       record.status,
       record.severity,
       record.state,
+      record.operationalState,
       record.fingerprint,
       signal.title,
       signal.environment,
@@ -257,6 +291,7 @@ function createSignalHistory({
     severity = null,
     state = null,
     status = null,
+    operationalState = null,
     startDate = null,
     endDate = null,
     page = 1,
@@ -284,6 +319,11 @@ function createSignalHistory({
 
     const normalizedStatus =
       normalizeSearchValue(status);
+
+    const normalizedOperationalState =
+      normalizeSearchValue(
+        operationalState,
+      );
 
     const resolvedPage =
       parsePositiveInteger(
@@ -348,6 +388,17 @@ function createSignalHistory({
           normalizedStatus
           && record.status?.toLowerCase()
             !== normalizedStatus
+        ) {
+          return false;
+        }
+
+        if (
+          normalizedOperationalState
+          && (
+            record.operationalState
+            || "active"
+          ).toLowerCase()
+            !== normalizedOperationalState
         ) {
           return false;
         }
@@ -499,6 +550,7 @@ function createSignalHistory({
   return {
     saveSignal,
     getSignal,
+    resolveSignal,
     updateSignal,
     listSignals,
     listAllSignals,

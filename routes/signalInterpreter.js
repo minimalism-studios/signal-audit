@@ -162,6 +162,10 @@ function createSignalInterpreterRouter({
           normalizeFilter(
             req.query.status,
           ),
+        operationalState:
+          normalizeFilter(
+            req.query.operationalState,
+          ),
         startDate:
           req.query.startDate
           || null,

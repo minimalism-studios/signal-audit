@@ -10493,7 +10493,10 @@ async function loadSignals({
   }
 
   const query =
-    new URLSearchParams();
+    new URLSearchParams({
+      operationalState:
+        "active",
+    });
 
   Object.entries(
     state.liveSignalsFilters,
