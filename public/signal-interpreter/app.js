@@ -10668,6 +10668,10 @@ function startLiveSignalsAutoRefresh() {
     return;
   }
 
+  loadSignals({
+    silent: true,
+  });
+
   liveSignalsRefreshTimer =
     window.setInterval(
       () => {
