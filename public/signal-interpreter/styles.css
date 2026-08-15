@@ -16094,3 +16094,187 @@ time {
   font-weight: 650;
   letter-spacing: -0.035em;
 }
+
+/* ==========================================================
+   Live Signals — Compact Investigation Action Bar
+   ========================================================== */
+
+.live-signals-layout
+.signal-investigation-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  margin-top: 26px;
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.live-signals-layout
+.signal-investigation-actions__label {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
+.live-signals-layout
+.signal-investigation-actions__label
+.eyebrow {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.live-signals-layout
+.signal-investigation-actions__assignment {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 8px;
+
+  min-width: 0;
+  margin-left: auto;
+}
+
+.live-signals-layout
+.signal-investigation-actions__assignment
+select {
+  flex: 1 1 240px;
+
+  width: auto;
+  min-width: 160px;
+  max-width: 360px;
+  min-height: 40px;
+
+  margin: 0;
+}
+
+.live-signals-layout
+.signal-investigation-actions__assignment
+button {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.live-signals-layout
+.signal-investigation-actions__new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 8px;
+
+  width: auto;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 14px;
+
+  white-space: nowrap;
+}
+
+.live-signals-layout
+.signal-investigation-actions__memberships {
+  flex: 0 1 auto;
+
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+}
+
+.live-signals-layout
+.signal-investigation-actions__memberships
+span {
+  display: block;
+
+  max-width: 220px;
+
+  overflow: hidden;
+
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .live-signals-layout
+  .signal-investigation-actions {
+    flex-wrap: wrap;
+  }
+
+  .live-signals-layout
+  .signal-investigation-actions__assignment {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .live-signals-layout
+  .signal-investigation-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .live-signals-layout
+  .signal-investigation-actions__assignment {
+    flex-direction: column;
+    align-items: stretch;
+    order: initial;
+    margin-left: 0;
+  }
+
+  .live-signals-layout
+  .signal-investigation-actions__assignment
+  select,
+  .live-signals-layout
+  .signal-investigation-actions__assignment
+  button,
+  .live-signals-layout
+  .signal-investigation-actions__new {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* ==========================================================
+   Live Signals — Investigation Membership Refinement
+   ========================================================== */
+
+.live-signals-layout
+.signal-investigation-actions__memberships {
+  margin-left: auto;
+}
+
+.live-signals-layout
+.signal-investigation-actions__memberships
+span {
+  max-width: 300px;
+
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 550;
+}
+
+.live-signals-layout
+.signal-investigation-actions__new {
+  order: 4;
+}
+
+@media (max-width: 1100px) {
+  .live-signals-layout
+  .signal-investigation-actions__memberships {
+    margin-left: 0;
+  }
+}

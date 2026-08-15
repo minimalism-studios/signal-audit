@@ -10030,20 +10030,20 @@ function renderSignalInvestigationActions(
 
   const currentInvestigations =
     openInvestigations.filter(
-        (investigation) =>
-            investigation
-                ?.evidence
-                ?.signals
-                ?.includes(record.id),
+      (investigation) =>
+        investigation
+          ?.evidence
+          ?.signals
+          ?.includes(record.id),
     );
 
   const availableInvestigations =
     openInvestigations.filter(
-        (investigation) =>
-            !investigation
-                ?.evidence
-                ?.signals
-                ?.includes(record.id),
+      (investigation) =>
+        !investigation
+          ?.evidence
+          ?.signals
+          ?.includes(record.id),
     );
 
   return `
@@ -10052,33 +10052,21 @@ function renderSignalInvestigationActions(
         signal-investigation-actions
         shared-detail-section
       "
-      aria-labelledby="signal-investigation-actions-title"
+      aria-label="Investigation actions"
     >
       <div
-        class="signal-investigation-actions__heading"
+        class="signal-investigation-actions__label"
       >
-        <div>
-          <p class="eyebrow">
-            Investigation workflow
-          </p>
-
-          <h3
-            id="signal-investigation-actions-title"
-          >
-            Investigation Actions
-          </h3>
-        </div>
+        <span class="eyebrow">
+          Investigation
+        </span>
 
         ${
-          currentInvestigations.length > 0
+          currentInvestigations.length > 1
             ? createBadge(
-                `Included in ${
+                `${
                   currentInvestigations.length
-                } investigation${
-                  currentInvestigations.length === 1
-                    ? ""
-                    : "s"
-                }`,
+                } investigations`,
                 "investigation-membership",
               )
             : ""
@@ -10091,40 +10079,30 @@ function renderSignalInvestigationActions(
               <div
                 class="signal-investigation-actions__assignment"
               >
-                <div
-                  class="signal-investigation-actions__field"
+                <select
+                  aria-label="Add to an existing investigation"
+                  data-investigation-select
                 >
-                  <label
-                    for="investigation-select"
-                  >
-                    Add to an existing investigation
-                  </label>
+                  <option value="">
+                    Select an investigation
+                  </option>
 
-                  <select
-                    id="investigation-select"
-                    data-investigation-select
-                  >
-                    <option value="">
-                      Select an investigation
-                    </option>
-
-                    ${availableInvestigations
-                      .map(
-                        (investigation) => `
-                          <option
-                            value="${escapeHtml(
-                              investigation.id,
-                            )}"
-                          >
-                            ${escapeHtml(
-                              investigation.title,
-                            )}
-                          </option>
-                        `,
-                      )
-                      .join("")}
-                  </select>
-                </div>
+                  ${availableInvestigations
+                    .map(
+                      (investigation) => `
+                        <option
+                          value="${escapeHtml(
+                            investigation.id,
+                          )}"
+                        >
+                          ${escapeHtml(
+                            investigation.title,
+                          )}
+                        </option>
+                      `,
+                    )
+                    .join("")}
+                </select>
 
                 <button
                   type="button"
@@ -10134,14 +10112,6 @@ function renderSignalInvestigationActions(
                 >
                   Add Signal
                 </button>
-              </div>
-
-              <div
-                class="signal-investigation-actions__divider"
-              >
-                <span>
-                  or
-                </span>
               </div>
             `
           : ""
@@ -10158,7 +10128,7 @@ function renderSignalInvestigationActions(
         <span>
           ${
             currentInvestigations.length > 0
-              ? "Create Another Investigation"
+              ? "New Investigation"
               : "Start Investigation"
           }
         </span>
@@ -10174,23 +10144,16 @@ function renderSignalInvestigationActions(
               <div
                 class="signal-investigation-actions__memberships"
               >
-                <p>
-                  This signal currently belongs to:
-                </p>
-
-                <ul>
+                <span>
                   ${currentInvestigations
                     .map(
-                      (investigation) => `
-                        <li>
-                          ${escapeHtml(
-                            investigation.title,
-                          )}
-                        </li>
-                      `,
+                      (investigation) =>
+                        escapeHtml(
+                          investigation.title,
+                        ),
                     )
-                    .join("")}
-                </ul>
+                    .join(", ")}
+                </span>
               </div>
             `
           : ""
