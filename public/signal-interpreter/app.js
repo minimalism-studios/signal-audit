@@ -27,6 +27,7 @@ const state = {
 
   investigations: [],
   selectedInvestigationId: null,
+  activeInvestigationResolutionId: null,
 
   integrationDetails: {},
   integrationDetailLoadingId: null,
@@ -2812,6 +2813,41 @@ function renderInvestigationStatusOption({
   `;
 }
 
+function closeInvestigationResolutionDrawer() {
+  const drawer =
+    secondaryWorkspace.querySelector(
+      "[data-resolution-drawer]",
+    );
+
+  if (!drawer) {
+    closeInvestigationResolutionDrawer();
+
+    return;
+  }
+
+  if (
+    drawer.classList.contains(
+      "is-closing",
+    )
+  ) {
+    return;
+  }
+
+  drawer.classList.add(
+    "is-closing",
+  );
+
+  window.setTimeout(
+    () => {
+      state.activeInvestigationResolutionId =
+        null;
+
+      renderInvestigationsWorkspace();
+    },
+    220,
+  );
+}
+
 function renderInvestigationResolution(
   investigation,
 ) {
@@ -2842,228 +2878,270 @@ function renderInvestigationResolution(
     );
   }
 
+  const isResolutionOpen =
+    String(
+      state.activeInvestigationResolutionId
+      ?? "",
+    )
+    === String(
+      investigation.id,
+    );
+
+  if (!isResolutionOpen) {
+    return "";
+  }
+
   return `
-    <section
-      class="
-        signal-section
-        shared-detail-section
-        investigation-resolution
-      "
-      aria-labelledby="investigation-resolution-title"
+    <div
+      class="investigation-resolution-drawer"
+      data-resolution-drawer
     >
-      <header
-        class="signal-section__header"
+      <button
+        type="button"
+        class="investigation-resolution-drawer__backdrop"
+        data-close-resolution
+        aria-label="Close resolution"
+      ></button>
+
+      <aside
+        class="investigation-resolution-drawer__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="investigation-resolution-title"
       >
-        <p class="eyebrow">
-          Investigation closure
-        </p>
-
-        <h2
-          id="investigation-resolution-title"
+        <header
+          class="investigation-resolution-drawer__header"
         >
-          Resolution
-        </h2>
+          <div>
+            <p class="eyebrow">
+              Investigation closure
+            </p>
 
-        <p
-          class="signal-section__lead"
-        >
-          Record the confirmed cause,
-          corrective work, and preventive
-          actions before resolving this
-          investigation.
-        </p>
-      </header>
+            <h2
+              id="investigation-resolution-title"
+            >
+              Resolve Investigation
+            </h2>
 
-      <form
-        class="investigation-resolution-form"
-        data-investigation-resolution-form
-        data-investigation-id="${escapeHtml(
-          investigation.id,
-        )}"
-      >
-        <div
-          class="
-            investigation-resolution-form__field
-            investigation-resolution-form__field--full
-          "
-        >
-          <label
-            for="resolution-summary"
-          >
-            Resolution Summary
-          </label>
+            <p>
+              Record the confirmed cause,
+              corrective work, and preventive
+              actions before finalizing this
+              investigation.
+            </p>
+          </div>
 
-          <textarea
-            id="resolution-summary"
-            name="summary"
-            rows="5"
-            required
-            data-resolution-summary
-            placeholder="Summarize how the operational condition was resolved."
-          >${escapeHtml(
-            resolution.summary
-            ?? "",
-          )}</textarea>
-        </div>
-
-        <div
-          class="
-            investigation-resolution-form__field
-            investigation-resolution-form__field--full
-          "
-        >
-          <label
-            for="resolution-root-cause"
-          >
-            Root Cause
-          </label>
-
-          <textarea
-            id="resolution-root-cause"
-            name="rootCause"
-            rows="5"
-            required
-            data-resolution-root-cause
-            placeholder="Describe the confirmed underlying cause."
-          >${escapeHtml(
-            resolution.rootCause
-            ?? "",
-          )}</textarea>
-        </div>
-
-        <div
-          class="
-            investigation-resolution-form__field
-            investigation-resolution-form__field--full
-          "
-        >
-          <label
-            for="resolution-lessons-learned"
-          >
-            Lessons Learned
-          </label>
-
-          <textarea
-            id="resolution-lessons-learned"
-            name="lessonsLearned"
-            rows="7"
-            data-resolution-lessons-learned
-            placeholder="Enter one organizational lesson per line."
-          >${escapeHtml(
-            normalizeResolutionActions(
-              resolution.lessonsLearned,
-            ).join("\n"),
-          )}</textarea>
-
-          <p
-            class="investigation-resolution-form__hint"
-          >
-            One organizational lesson per line.
-          </p>
-        </div>
-
-        <div
-          class="investigation-resolution-form__field"
-        >
-          <label
-            for="resolution-corrective-actions"
-          >
-            Corrective Actions
-          </label>
-
-          <textarea
-            id="resolution-corrective-actions"
-            name="correctiveActions"
-            rows="7"
-            data-resolution-corrective-actions
-            placeholder="Enter one action per line."
-          >${escapeHtml(
-            normalizeResolutionActions(
-              resolution.correctiveActions,
-            ).join("\n"),
-          )}</textarea>
-
-          <p
-            class="investigation-resolution-form__hint"
-          >
-            One completed action per line.
-          </p>
-        </div>
-
-        <div
-          class="investigation-resolution-form__field"
-        >
-          <label
-            for="resolution-preventive-actions"
-          >
-            Preventive Actions
-          </label>
-
-          <textarea
-            id="resolution-preventive-actions"
-            name="preventiveActions"
-            rows="7"
-            data-resolution-preventive-actions
-            placeholder="Enter one action per line."
-          >${escapeHtml(
-            normalizeResolutionActions(
-              resolution.preventiveActions,
-            ).join("\n"),
-          )}</textarea>
-
-          <p
-            class="investigation-resolution-form__hint"
-          >
-            One preventive action per line.
-          </p>
-        </div>
-
-        <div
-          class="investigation-resolution-form__field"
-        >
-          <label
-            for="resolution-resolved-by"
-          >
-            Resolved By
-          </label>
-
-          <input
-            id="resolution-resolved-by"
-            name="resolvedBy"
-            type="text"
-            required
-            autocomplete="off"
-            data-resolution-resolved-by
-            value="${escapeHtml(
-              resolution.resolvedBy
-              || investigation.owner
-              || "",
-            )}"
-            placeholder="Team or responsible owner"
-          >
-        </div>
-
-        <div
-          class="
-            investigation-resolution-form__actions
-            shared-detail-actions
-          "
-        >
           <button
-            class="secondary-button investigation-resolution-form__submit"
-            type="submit"
+            type="button"
+            class="investigation-resolution-drawer__close"
+            data-close-resolution
+            aria-label="Close resolution"
           >
-            Resolve Investigation
+            ×
           </button>
+        </header>
 
-          <p
-            class="investigation-resolution-form__status"
-            data-resolution-submit-status
-            aria-live="polite"
-          ></p>
+        <div
+          class="investigation-resolution-drawer__body"
+        >
+          <form
+            class="
+              investigation-resolution-form
+              investigation-resolution-form--drawer
+            "
+            data-investigation-resolution-form
+            data-investigation-id="${escapeHtml(
+              investigation.id,
+            )}"
+          >
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-summary"
+              >
+                Resolution Summary
+              </label>
+
+              <textarea
+                id="resolution-summary"
+                name="summary"
+                rows="5"
+                required
+                data-resolution-summary
+                placeholder="Summarize how the operational condition was resolved."
+              >${escapeHtml(
+                resolution.summary
+                ?? "",
+              )}</textarea>
+            </section>
+
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-root-cause"
+              >
+                Root Cause
+              </label>
+
+              <textarea
+                id="resolution-root-cause"
+                name="rootCause"
+                rows="5"
+                required
+                data-resolution-root-cause
+                placeholder="Describe the confirmed underlying cause."
+              >${escapeHtml(
+                resolution.rootCause
+                ?? "",
+              )}</textarea>
+            </section>
+
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-lessons-learned"
+              >
+                Lessons Learned
+              </label>
+
+              <textarea
+                id="resolution-lessons-learned"
+                name="lessonsLearned"
+                rows="6"
+                data-resolution-lessons-learned
+                placeholder="Enter one organizational lesson per line."
+              >${escapeHtml(
+                normalizeResolutionActions(
+                  resolution.lessonsLearned,
+                ).join("\n"),
+              )}</textarea>
+
+              <p
+                class="investigation-resolution-form__hint"
+              >
+                One organizational lesson per line.
+              </p>
+            </section>
+
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-corrective-actions"
+              >
+                Corrective Actions
+              </label>
+
+              <textarea
+                id="resolution-corrective-actions"
+                name="correctiveActions"
+                rows="6"
+                data-resolution-corrective-actions
+                placeholder="Enter one action per line."
+              >${escapeHtml(
+                normalizeResolutionActions(
+                  resolution.correctiveActions,
+                ).join("\n"),
+              )}</textarea>
+
+              <p
+                class="investigation-resolution-form__hint"
+              >
+                One completed action per line.
+              </p>
+            </section>
+
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-preventive-actions"
+              >
+                Preventive Actions
+              </label>
+
+              <textarea
+                id="resolution-preventive-actions"
+                name="preventiveActions"
+                rows="6"
+                data-resolution-preventive-actions
+                placeholder="Enter one action per line."
+              >${escapeHtml(
+                normalizeResolutionActions(
+                  resolution.preventiveActions,
+                ).join("\n"),
+              )}</textarea>
+
+              <p
+                class="investigation-resolution-form__hint"
+              >
+                One preventive action per line.
+              </p>
+            </section>
+
+            <section
+              class="investigation-resolution-form__section"
+            >
+              <label
+                for="resolution-resolved-by"
+              >
+                Resolved By
+              </label>
+
+              <input
+                id="resolution-resolved-by"
+                name="resolvedBy"
+                type="text"
+                required
+                autocomplete="off"
+                data-resolution-resolved-by
+                value="${escapeHtml(
+                  resolution.resolvedBy
+                  || investigation.owner
+                  || "",
+                )}"
+                placeholder="Team or responsible owner"
+              >
+            </section>
+
+            <footer
+              class="investigation-resolution-drawer__footer"
+            >
+              <p
+                class="investigation-resolution-form__status"
+                data-resolution-submit-status
+                aria-live="polite"
+              ></p>
+
+              <div
+                class="investigation-resolution-drawer__footer-actions"
+              >
+                <button
+                  type="button"
+                  class="secondary-button"
+                  data-close-resolution
+                >
+                  Cancel
+                </button>
+
+                <button
+                  class="
+                    investigation-resolution-form__submit
+                    investigation-resolution-form__submit--primary
+                  "
+                  type="submit"
+                >
+                  Finalize Resolution
+                </button>
+              </div>
+            </footer>
+          </form>
         </div>
-      </form>
-    </section>
+      </aside>
+    </div>
   `;
 }
 
@@ -3073,6 +3151,17 @@ function renderResolvedInvestigation(
   const resolution =
     investigation.resolution
     ?? {};
+
+  const resolvedAt =
+    resolution.resolvedAt
+      ? formatDate(
+          resolution.resolvedAt,
+        )
+      : "Not recorded";
+
+  const resolvedBy =
+    resolution.resolvedBy
+    || "Not recorded";
 
   return `
     <section
@@ -3087,95 +3176,162 @@ function renderResolvedInvestigation(
       <header
         class="signal-section__header"
       >
-        <p class="eyebrow">
-          Investigation closure
-        </p>
+        <div>
+          <p class="eyebrow">
+            Resolution
+          </p>
 
-        <h2
-          id="investigation-resolution-title"
-        >
-          Resolution
-        </h2>
+          <h2
+            id="investigation-resolution-title"
+          >
+            Investigation Resolution
+          </h2>
+        </div>
 
-        <p
-          class="signal-section__lead"
-        >
-          ${escapeHtml(
-            resolution.summary
-            || "This investigation has been resolved.",
-          )}
-        </p>
+        ${createBadge(
+          "Resolved",
+          "state",
+        )}
       </header>
 
       <div
-        class="investigation-resolution-document"
+        class="
+          findings
+          findings-grid
+        "
       >
-        ${renderResolutionDocumentField({
-          label:
-            "Root Cause",
-
-          value:
-            resolution.rootCause
-            || "No root cause was recorded.",
-        })}
-
-        ${renderResolutionActionList({
-          label:
-            "Lessons Learned",
-
-          actions:
-            resolution.lessonsLearned,
-
-          emptyMessage:
-            "No lessons learned were recorded.",
-        })}
-
-        ${renderResolutionActionList({
-          label:
-            "Corrective Actions",
-
-          actions:
-            resolution.correctiveActions,
-
-          emptyMessage:
-            "No corrective actions were recorded.",
-        })}
-
-        ${renderResolutionActionList({
-          label:
-            "Preventive Actions",
-
-          actions:
-            resolution.preventiveActions,
-
-          emptyMessage:
-            "No preventive actions were recorded.",
-        })}
-
-        <div
-          class="investigation-resolution-document__metadata"
+        <article
+          class="
+            finding
+            shared-detail-section
+          "
         >
-          ${renderResolutionDocumentField({
-            label:
-              "Resolved By",
+          <div
+            class="
+              detail-meta
+              shared-detail-meta
+            "
+          >
+            ${createBadge(
+              "Resolved",
+              "state",
+            )}
 
-            value:
-              resolution.resolvedBy
-              || "Not recorded",
-          })}
+            ${createBadge(
+              investigation.severity,
+              "severity",
+            )}
 
-          ${renderResolutionDocumentField({
-            label:
-              "Resolved At",
+            ${createBadge(
+              investigation.source,
+              "source",
+            )}
+          </div>
 
-            value:
-              resolution.resolvedAt
-                ? formatDate(
-                    resolution.resolvedAt,
-                  )
-                : "Not recorded",
-          })}
-        </div>
+          <h3>
+            Investigation Resolution
+          </h3>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Summary
+            </h4>
+
+            <p>
+              ${escapeHtml(
+                resolution.summary
+                || "This investigation has been resolved.",
+              )}
+            </p>
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Root Cause
+            </h4>
+
+            <p>
+              ${escapeHtml(
+                resolution.rootCause
+                || "No root cause was recorded.",
+              )}
+            </p>
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Lessons Learned
+            </h4>
+
+            ${renderList(
+              normalizeResolutionActions(
+                resolution.lessonsLearned,
+              ),
+            )}
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Corrective Actions
+            </h4>
+
+            ${renderList(
+              normalizeResolutionActions(
+                resolution.correctiveActions,
+              ),
+            )}
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Preventive Actions
+            </h4>
+
+            ${renderList(
+              normalizeResolutionActions(
+                resolution.preventiveActions,
+              ),
+            )}
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Resolved By
+            </h4>
+
+            <p>
+              ${escapeHtml(
+                resolvedBy,
+              )}
+            </p>
+          </section>
+
+          <section
+            class="finding-section"
+          >
+            <h4>
+              Resolved At
+            </h4>
+
+            <p>
+              ${escapeHtml(
+                resolvedAt,
+              )}
+            </p>
+          </section>
+        </article>
       </div>
     </section>
   `;
@@ -9062,15 +9218,7 @@ function normalizeBadgeValue(value) {
 function getInvestigationPrimaryAction(status) {
   switch (String(status ?? "").toLowerCase()) {
     case "new":
-      return {
-        label: "Start Investigation",
-        className: "primary",
-        scroll: false,
-      };
-
     case "investigating":
-      return null;
-
     case "monitoring":
       return {
         label: "Resolve Investigation",
@@ -9079,6 +9227,7 @@ function getInvestigationPrimaryAction(status) {
       };
 
     case "resolved":
+    case "archived":
       return null;
 
     default:
@@ -10144,16 +10293,25 @@ function renderSignalInvestigationActions(
               <div
                 class="signal-investigation-actions__memberships"
               >
-                <span>
-                  ${currentInvestigations
-                    .map(
-                      (investigation) =>
-                        escapeHtml(
+                ${currentInvestigations
+                  .map(
+                    (investigation) => `
+                      <button
+                        type="button"
+                        class="
+                          signal-investigation-actions__membership-link
+                        "
+                        data-open-investigation="${escapeHtml(
+                          investigation.id,
+                        )}"
+                      >
+                        ${escapeHtml(
                           investigation.title,
-                        ),
-                    )
-                    .join(", ")}
-                </span>
+                        )}
+                      </button>
+                    `,
+                  )
+                  .join("")}
               </div>
             `
           : ""
@@ -11109,6 +11267,30 @@ detailPanel.addEventListener(
       return;
     }
 
+    const openInvestigation =
+      event.target.closest(
+        "[data-open-investigation]",
+      );
+
+    if (openInvestigation) {
+      state.selectedInvestigationId =
+        openInvestigation
+          .dataset
+          .openInvestigation;
+
+      renderWorkspace(
+        "investigations",
+      );
+
+      resetDetailPanelScroll(
+        "#investigation-detail-panel",
+      );
+
+      renderInvestigationsWorkspace();
+
+      return;
+    }
+
     const relatedSignal =
       event.target.closest(
         ".related-signal",
@@ -11332,6 +11514,17 @@ detailPanel.addEventListener(
 secondaryWorkspace.addEventListener(
   "click",
   (event) => {
+    const closeResolution =
+      event.target.closest(
+        "[data-close-resolution]",
+      );
+
+    if (closeResolution) {
+      closeInvestigationResolutionDrawer();
+
+      return;
+    }
+
     const button =
       event.target.closest(
         "[data-scroll-resolution]",
@@ -11343,52 +11536,84 @@ secondaryWorkspace.addEventListener(
 
     event.preventDefault();
 
-    const detailPanel =
-      button.closest(
-        "#investigation-detail-panel",
-      )
-      ?? secondaryWorkspace.querySelector(
-        "#investigation-detail-panel",
-      );
-
-    const resolution =
-      detailPanel?.querySelector(
-        ".investigation-resolution",
-      );
-
-    if (
-      !detailPanel
-      || !resolution
-    ) {
-      console.error(
-        "Unable to locate the investigation resolution section.",
-      );
-
+    if (!state.selectedInvestigationId) {
       return;
     }
 
-    const panelBounds =
-      detailPanel.getBoundingClientRect();
+    state.activeInvestigationResolutionId =
+      state.selectedInvestigationId;
 
-    const resolutionBounds =
-      resolution.getBoundingClientRect();
+    renderInvestigationsWorkspace();
 
-    const targetTop =
-      detailPanel.scrollTop
-      + resolutionBounds.top
-      - panelBounds.top
-      - 24;
+    window.requestAnimationFrame(
+      () => {
+        const detailPanel =
+          secondaryWorkspace
+            .querySelector(
+              "#investigation-detail-panel",
+            );
 
-    detailPanel.scrollTo({
-      top:
-        Math.max(
-          0,
-          targetTop,
-        ),
+        const resolution =
+          detailPanel
+            ?.querySelector(
+              ".investigation-resolution",
+            );
 
-      behavior:
-        "smooth",
-    });
+        if (
+          !detailPanel
+          || !resolution
+        ) {
+          console.error(
+            "Unable to locate the investigation resolution section.",
+          );
+
+          return;
+        }
+
+        const panelBounds =
+          detailPanel
+            .getBoundingClientRect();
+
+        const resolutionBounds =
+          resolution
+            .getBoundingClientRect();
+
+        const targetTop =
+          detailPanel.scrollTop
+          + resolutionBounds.top
+          - panelBounds.top
+          - 24;
+
+        detailPanel.scrollTo({
+          top:
+            Math.max(
+              0,
+              targetTop,
+            ),
+
+          behavior:
+            "smooth",
+        });
+      },
+    );
+  },
+);
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key !== "Escape"
+      || !state
+        .activeInvestigationResolutionId
+    ) {
+      return;
+    }
+
+    state.activeInvestigationResolutionId =
+      null;
+
+    renderInvestigationsWorkspace();
   },
 );
 
@@ -11540,7 +11765,32 @@ secondaryWorkspace.addEventListener(
       state.activeInvestigationView =
         "overview";
 
-      renderInvestigationsWorkspace();
+      state.activeInvestigationResolutionId =
+        null;
+
+      const drawer =
+        secondaryWorkspace.querySelector(
+          "[data-resolution-drawer]",
+        );
+
+      if (drawer) {
+        drawer.classList.add(
+          "is-closing",
+        );
+      }
+
+      await loadSignals({
+        silent: true,
+      });
+
+      window.setTimeout(
+        () => {
+          renderInvestigationsWorkspace();
+        },
+        drawer
+          ? 220
+          : 0,
+      );
     } catch (error) {
       console.error(
         "Unable to resolve investigation.",
