@@ -10186,14 +10186,11 @@ function renderSignalInvestigationActions(
           ?.includes(record.id),
     );
 
-  const availableInvestigations =
-    openInvestigations.filter(
-      (investigation) =>
-        !investigation
-          ?.evidence
-          ?.signals
-          ?.includes(record.id),
-    );
+  const hasCurrentInvestigation =
+    currentInvestigations.length > 0;
+
+  const currentInvestigation =
+    currentInvestigations[0] || null;
 
   return `
     <section
@@ -10209,7 +10206,6 @@ function renderSignalInvestigationActions(
         <span class="eyebrow">
           Investigation
         </span>
-
         ${
           currentInvestigations.length > 1
             ? createBadge(
@@ -10223,7 +10219,7 @@ function renderSignalInvestigationActions(
       </div>
 
       ${
-        availableInvestigations.length > 0
+        openInvestigations.length > 0
           ? `
               <div
                 class="signal-investigation-actions__assignment"
@@ -10231,18 +10227,36 @@ function renderSignalInvestigationActions(
                 <select
                   aria-label="Add to an existing investigation"
                   data-investigation-select
+                  ${
+                    hasCurrentInvestigation
+                      ? "disabled"
+                      : ""
+                  }
                 >
-                  <option value="">
-                    Select an investigation
-                  </option>
+                  ${
+                    hasCurrentInvestigation
+                      ? ""
+                      : `
+                          <option value="">
+                            Select an investigation
+                          </option>
+                        `
+                  }
 
-                  ${availableInvestigations
+                  ${openInvestigations
                     .map(
                       (investigation) => `
                         <option
                           value="${escapeHtml(
                             investigation.id,
                           )}"
+                          ${
+                            currentInvestigation
+                            && investigation.id
+                              === currentInvestigation.id
+                              ? "selected"
+                              : ""
+                          }
                         >
                           ${escapeHtml(
                             investigation.title,
@@ -10276,46 +10290,15 @@ function renderSignalInvestigationActions(
       >
         <span>
           ${
-            currentInvestigations.length > 0
+            hasCurrentInvestigation
               ? "New Investigation"
               : "Start Investigation"
           }
         </span>
-
         <span aria-hidden="true">
           →
         </span>
       </button>
-
-      ${
-        currentInvestigations.length > 0
-          ? `
-              <div
-                class="signal-investigation-actions__memberships"
-              >
-                ${currentInvestigations
-                  .map(
-                    (investigation) => `
-                      <button
-                        type="button"
-                        class="
-                          signal-investigation-actions__membership-link
-                        "
-                        data-open-investigation="${escapeHtml(
-                          investigation.id,
-                        )}"
-                      >
-                        ${escapeHtml(
-                          investigation.title,
-                        )}
-                      </button>
-                    `,
-                  )
-                  .join("")}
-              </div>
-            `
-          : ""
-      }
     </section>
   `;
 }
