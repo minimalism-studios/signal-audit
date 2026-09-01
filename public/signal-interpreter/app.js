@@ -10278,15 +10278,21 @@ function renderSignalInvestigationActions(
       <button
         type="button"
         class="signal-investigation-actions__new"
-        data-start-investigation
-        data-signal-id="${escapeHtml(
-          record.id,
-        )}"
+        ${
+          hasCurrentInvestigation
+            ? `data-open-investigation="${escapeHtml(
+                currentInvestigation.id,
+              )}"`
+            : `data-start-investigation
+               data-signal-id="${escapeHtml(
+                 record.id,
+               )}"`
+        }
       >
         <span>
           ${
             hasCurrentInvestigation
-              ? "New Investigation"
+              ? "View Investigation"
               : "Start Investigation"
           }
         </span>
