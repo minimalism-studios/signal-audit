@@ -16997,13 +16997,3 @@ li + li {
   gap: 0;
   padding-top: 0;
 }
-.investigation-existing-link {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.investigation-new-button {
-    flex-shrink: 0;
-}

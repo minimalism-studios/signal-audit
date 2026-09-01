@@ -10227,11 +10227,6 @@ function renderSignalInvestigationActions(
                 <select
                   aria-label="Add to an existing investigation"
                   data-investigation-select
-                  ${
-                    hasCurrentInvestigation
-                      ? "disabled"
-                      : ""
-                  }
                 >
                   ${
                     hasCurrentInvestigation
@@ -10254,7 +10249,7 @@ function renderSignalInvestigationActions(
                             currentInvestigation
                             && investigation.id
                               === currentInvestigation.id
-                              ? "selected"
+                              ? "selected disabled"
                               : ""
                           }
                         >
