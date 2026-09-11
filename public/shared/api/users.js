@@ -115,7 +115,8 @@
 
   async function createUser({
     username,
-    password,
+    email = null,
+    password = null,
     role,
     active = true,
   }) {
@@ -128,6 +129,7 @@
 
           body: {
             username,
+            email,
             password,
             role,
             active,

@@ -128,6 +128,13 @@ app.use(
 );
 
 app.use(
+  express.urlencoded({
+    extended: false,
+    limit: "32kb",
+  }),
+);
+
+app.use(
   session({
     name:
       "signal_audit_session",
@@ -284,6 +291,8 @@ const authenticationService =
   createAuthenticationService({
     userStore,
     authorizationService,
+    googleClientId:
+      process.env.GOOGLE_CLIENT_ID,
   });
 
 const authentication =

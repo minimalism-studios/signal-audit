@@ -234,9 +234,61 @@ function createUserStore({
     );
   }
 
+  function getUserByEmail(
+    email,
+  ) {
+    const normalizedEmail =
+      normalizeUsername(
+        email,
+      );
+
+    if (!normalizedEmail) {
+      return null;
+    }
+
+    return (
+      loadUsers()
+        .find(
+          (user) =>
+            normalizeUsername(
+              user.email,
+            )
+            === normalizedEmail,
+        )
+      ?? null
+    );
+  }
+
+  function getUserByGoogleSubject(
+    googleSubject,
+  ) {
+    if (
+      typeof googleSubject
+        !== "string"
+      || !googleSubject.trim()
+    ) {
+      return null;
+    }
+
+    const normalizedSubject =
+      googleSubject.trim();
+
+    return (
+      loadUsers()
+        .find(
+          (user) =>
+            user.googleSubject
+            === normalizedSubject,
+        )
+      ?? null
+    );
+  }
+
   function createUser({
     username,
-    passwordHash,
+    passwordHash = null,
+    email = null,
+    googleSubject = null,
     role,
     active = true,
   }) {
@@ -256,14 +308,31 @@ function createUserStore({
       throw error;
     }
 
+    const normalizedPasswordHash =
+      typeof passwordHash === "string"
+        && passwordHash.trim()
+        ? passwordHash.trim()
+        : null;
+
+    const normalizedEmail =
+      normalizeUsername(
+        email,
+      )
+      || null;
+
+    const normalizedGoogleSubject =
+      typeof googleSubject === "string"
+        && googleSubject.trim()
+        ? googleSubject.trim()
+        : null;
+
     if (
-      typeof passwordHash
-        !== "string"
-      || !passwordHash.trim()
+      !normalizedPasswordHash
+      && !normalizedEmail
     ) {
       const error =
         new Error(
-          "passwordHash is required.",
+          "A passwordHash or approved email is required.",
         );
 
       error.status = 400;
@@ -279,7 +348,7 @@ function createUserStore({
     const users =
       loadUsers();
 
-    const duplicate =
+    const duplicateUsername =
       users.some(
         (user) =>
           normalizeUsername(
@@ -288,10 +357,48 @@ function createUserStore({
           === normalizedUsername,
       );
 
-    if (duplicate) {
+    if (duplicateUsername) {
       const error =
         new Error(
           "A user with that username already exists.",
+        );
+
+      error.status = 409;
+
+      throw error;
+    }
+
+    if (
+      normalizedEmail
+      && users.some(
+        (user) =>
+          normalizeUsername(
+            user.email,
+          )
+          === normalizedEmail,
+      )
+    ) {
+      const error =
+        new Error(
+          "A user with that email already exists.",
+        );
+
+      error.status = 409;
+
+      throw error;
+    }
+
+    if (
+      normalizedGoogleSubject
+      && users.some(
+        (user) =>
+          user.googleSubject
+          === normalizedGoogleSubject,
+      )
+    ) {
+      const error =
+        new Error(
+          "A user with that Google identity already exists.",
         );
 
       error.status = 409;
@@ -310,8 +417,26 @@ function createUserStore({
       username:
         normalizedUsername,
 
-      passwordHash:
-        passwordHash.trim(),
+      ...(normalizedPasswordHash
+        ? {
+            passwordHash:
+              normalizedPasswordHash,
+          }
+        : {}),
+
+      ...(normalizedEmail
+        ? {
+            email:
+              normalizedEmail,
+          }
+        : {}),
+
+      ...(normalizedGoogleSubject
+        ? {
+            googleSubject:
+              normalizedGoogleSubject,
+          }
+        : {}),
 
       role:
         normalizedRole,
@@ -337,6 +462,139 @@ function createUserStore({
     return sanitizeUser(
       user,
     );
+  }
+
+  function bindGoogleIdentity({
+    userId,
+    email,
+    googleSubject,
+  }) {
+    const normalizedId =
+      normalizeRequiredString(
+        userId,
+        "userId",
+      );
+
+    const normalizedEmail =
+      normalizeUsername(
+        email,
+      );
+
+    const normalizedGoogleSubject =
+      normalizeRequiredString(
+        googleSubject,
+        "googleSubject",
+      );
+
+    if (!normalizedEmail) {
+      const error =
+        new Error(
+          "email is required.",
+        );
+
+      error.status = 400;
+
+      throw error;
+    }
+
+    const users =
+      loadUsers();
+
+    const index =
+      users.findIndex(
+        (user) =>
+          user.id
+          === normalizedId,
+      );
+
+    if (index === -1) {
+      const error =
+        new Error(
+          "User was not found.",
+        );
+
+      error.status = 404;
+
+      throw error;
+    }
+
+    const existing =
+      users[index];
+
+    if (
+      normalizeUsername(
+        existing.email,
+      )
+      !== normalizedEmail
+    ) {
+      const error =
+        new Error(
+          "Google email does not match the approved user email.",
+        );
+
+      error.status = 403;
+
+      throw error;
+    }
+
+    const duplicateSubject =
+      users.some(
+        (user) =>
+          user.id !== normalizedId
+          && user.googleSubject
+            === normalizedGoogleSubject,
+      );
+
+    if (duplicateSubject) {
+      const error =
+        new Error(
+          "That Google identity is already bound to another user.",
+        );
+
+      error.status = 409;
+
+      throw error;
+    }
+
+    if (
+      existing.googleSubject
+      && existing.googleSubject
+        !== normalizedGoogleSubject
+    ) {
+      const error =
+        new Error(
+          "This user is already bound to a different Google identity.",
+        );
+
+      error.status = 409;
+
+      throw error;
+    }
+
+    if (
+      existing.googleSubject
+      === normalizedGoogleSubject
+    ) {
+      return existing;
+    }
+
+    const updatedUser = {
+      ...existing,
+      googleSubject:
+        normalizedGoogleSubject,
+      updatedAt:
+        new Date()
+          .toISOString(),
+    };
+
+    users[index] =
+      updatedUser;
+
+    saveUsers(
+      users,
+    );
+
+    return updatedUser;
   }
 
   function updateUser({
@@ -861,6 +1119,9 @@ function createUserStore({
       passwordHash:
         _passwordHash,
 
+      googleSubject:
+        _googleSubject,
+
       ...safeUser
     } = user;
 
@@ -935,6 +1196,9 @@ function createUserStore({
     listUsers,
     getUserById,
     getUserByUsername,
+    getUserByEmail,
+    getUserByGoogleSubject,
+    bindGoogleIdentity,
     createUser,
     updateUser,
     activateUser,

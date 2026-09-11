@@ -106,26 +106,37 @@ function createUsersRouter({
       try {
         const {
           username,
-          password,
+          email = null,
+          password = null,
           role,
           active = true,
         } = req.body ?? {};
 
-        const normalizedPassword =
-          normalizePassword(
-            password,
-          );
+        let passwordHash =
+          null;
 
-        const passwordHash =
-          await bcrypt.hash(
-            normalizedPassword,
-            PASSWORD_HASH_ROUNDS,
-          );
+        if (
+          typeof password
+            === "string"
+          && password.length > 0
+        ) {
+          const normalizedPassword =
+            normalizePassword(
+              password,
+            );
+
+          passwordHash =
+            await bcrypt.hash(
+              normalizedPassword,
+              PASSWORD_HASH_ROUNDS,
+            );
+        }
 
         const user =
           userStore
             .createUser({
               username,
+              email,
               passwordHash,
               role,
               active,

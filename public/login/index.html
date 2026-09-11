@@ -1,33 +1,22 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
-
   <title>
     Signal Audit Login
   </title>
-
   <link
     rel="stylesheet"
     href="/login-assets/styles.css"
   >
-
 </head>
-
 <body>
-
   <main class="login">
-
     <section class="card">
-
       <h1>
         Signal Audit
       </h1>
@@ -36,54 +25,63 @@
         Sign in to continue.
       </p>
 
-      <form id="login-form">
+      <div
+        id="google-signin"
+        aria-label="Sign in with Google"
+      ></div>
 
-        <label>
+      <p
+        id="google-status"
+        class="subtitle"
+        hidden
+      ></p>
 
-          Username
+      <div
+        id="password-fallback"
+      >
+        <p class="subtitle">
+          Administrator fallback
+        </p>
 
-          <input
-            id="username"
-            type="text"
-            autocomplete="username"
-            required
-          >
+        <form id="login-form">
+          <label>
+            Username
+            <input
+              id="username"
+              type="text"
+              autocomplete="username"
+              required
+            >
+          </label>
 
-        </label>
+          <label>
+            Password
+            <input
+              id="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            >
+          </label>
 
-        <label>
-
-          Password
-
-          <input
-            id="password"
-            type="password"
-            autocomplete="current-password"
-            required
-          >
-
-        </label>
-
-        <button type="submit">
-          Sign In
-        </button>
-
-      </form>
+          <button type="submit">
+            Sign In
+          </button>
+        </form>
+      </div>
 
       <p
         id="error"
         class="error"
+        role="alert"
+        aria-live="polite"
       ></p>
-
     </section>
-
   </main>
 
   <script
     type="module"
     src="/login-assets/app.js"
   ></script>
-
 </body>
-
 </html>
