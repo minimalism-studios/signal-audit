@@ -323,6 +323,28 @@ app.get(
   },
 );
 
+app.get(
+  "/executive-dashboard",
+  authentication
+    .requireAuthentication,
+
+  authorization
+    .requirePermission(
+      "executive:read",
+    ),
+
+  (req, res) => {
+    res.sendFile(
+      path.join(
+        __dirname,
+        "public",
+        "signal-interpreter",
+        "index.html",
+      ),
+    );
+  },
+);
+
 const processGrafanaSignal =
   createGrafanaProcessor({
     signalAuditService,

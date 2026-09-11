@@ -50,6 +50,23 @@ const state = {
   },
 };
 
+const logoutButton =
+  document.getElementById("logout-button");
+
+logoutButton?.addEventListener(
+  "click",
+  async () => {
+    try {
+      await fetch("/auth/logout", {
+        method: "POST",
+        credentials: "same-origin",
+      });
+    } finally {
+      window.location.href = "/login";
+    }
+  },
+);
+
 const signalList =
   document.querySelector(
     "#signal-list",
