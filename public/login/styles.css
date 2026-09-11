@@ -86,3 +86,19 @@ button{
   margin-top:20px;
 
 }
+.auth-divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:24px 0;
+  color:#94a3b8;
+  font-size:12px;
+  font-weight:600;
+}
+
+.auth-divider span:first-child,
+.auth-divider span:last-child{
+  flex:1;
+  height:1px;
+  background:#94a3b8;
+}
