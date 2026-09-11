@@ -50,19 +50,26 @@ const state = {
   },
 };
 
-const logoutButton =
-  document.getElementById("logout-button");
-
-logoutButton?.addEventListener(
+document.addEventListener(
   "click",
-  async () => {
+  async (event) => {
+    const logoutButton =
+      event.target.closest(
+        "#logout-button",
+      );
+
+    if (!logoutButton) {
+      return;
+    }
+
     try {
       await fetch("/auth/logout", {
         method: "POST",
         credentials: "same-origin",
       });
     } finally {
-      window.location.href = "/login";
+      window.location.href =
+        "/login";
     }
   },
 );
@@ -4713,7 +4720,43 @@ function renderSecondaryWorkspace(
               </div>
 
             </section>
+            <section
+              class="settings-section"
+              aria-labelledby="session-settings-title"
+            >
+              <header class="settings-section__header">
+                <div>
+                  <p class="eyebrow">
+                    Account
+                  </p>
+                  <h3 id="session-settings-title">
+                    Session
+                  </h3>
+                  <p>
+                    Manage your current Signal Audit session.
+                  </p>
+                </div>
+              </header>
 
+              <div class="settings-control">
+                <div class="settings-control__copy">
+                  <strong>
+                    Sign out
+                  </strong>
+                  <span>
+                    End your current Signal Audit session.
+                  </span>
+                </div>
+
+                <button
+                  id="logout-button"
+                  class="primary-button"
+                  type="button"
+                >
+                  Log out
+                </button>
+              </div>
+            </section>
           </div>
 
           <div
