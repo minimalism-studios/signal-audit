@@ -6,7 +6,16 @@ const {
   SIGNAL_STATES,
 } = require("../constants/signalStates");
 
+const {
+  resolveRetentionDays,
+  isWithinRetention,
+} = require("./retention");
+
 function createSignalHistory({
+
+  retentionDays =
+    resolveRetentionDays(),
+
   filePath = process.env.RAILWAY_VOLUME_MOUNT_PATH
     ? path.join(
         process.env.RAILWAY_VOLUME_MOUNT_PATH,
@@ -40,7 +49,40 @@ function createSignalHistory({
     );
 
     try {
-      return JSON.parse(contents);
+
+      const records =
+        JSON.parse(contents);
+
+      if (!Array.isArray(records)) {
+
+        throw new TypeError(
+          "Signal history data must be an array."
+        );
+
+      }
+
+      const retainedRecords =
+        records.filter(
+          (record) =>
+            isWithinRetention(
+              record.receivedAt,
+              retentionDays,
+            ),
+        );
+
+      if (
+        retainedRecords.length
+        !== records.length
+      ) {
+
+        saveRecords(
+          retainedRecords,
+        );
+
+      }
+
+      return retainedRecords;
+
     } catch (error) {
       throw new Error(
         `Signal history file is invalid JSON: ${filePath}`
@@ -547,6 +589,69 @@ function createSignalHistory({
     };
   }
 
+  function purgeConnection(
+    connectionId,
+  ) {
+    const normalizedConnectionId =
+      typeof connectionId === "string"
+        ? connectionId.trim()
+        : "";
+
+    if (!normalizedConnectionId) {
+      throw new TypeError(
+        "connectionId must be a non-empty string.",
+      );
+    }
+
+    const records =
+      loadRecords();
+
+    const deletedSignalIds = [];
+
+    const retainedRecords =
+      records.filter(
+        (record) => {
+          const recordConnectionId =
+            typeof record.connectionId === "string"
+              ? record.connectionId.trim()
+              : "";
+
+          if (
+            recordConnectionId
+            === normalizedConnectionId
+          ) {
+            if (record.id) {
+              deletedSignalIds.push(
+                record.id,
+              );
+            }
+
+            return false;
+          }
+
+          return true;
+        },
+      );
+
+    if (
+      retainedRecords.length
+      !== records.length
+    ) {
+      saveRecords(
+        retainedRecords,
+      );
+    }
+
+    return {
+      connectionId:
+        normalizedConnectionId,
+      deletedCount:
+        deletedSignalIds.length,
+      signalIds:
+        deletedSignalIds,
+    };
+  }
+
   return {
     saveSignal,
     getSignal,
@@ -555,6 +660,7 @@ function createSignalHistory({
     listSignals,
     listAllSignals,
     searchSignals,
+    purgeConnection,
     getAvailableFilters,
   };
 }

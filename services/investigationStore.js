@@ -4,6 +4,11 @@ const path = require("path");
 
 const crypto = require("crypto");
 
+const {
+  resolveRetentionDays,
+  isWithinRetention,
+} = require("./retention");
+
 const DEFAULT_FILE_PATH =
   process.env.RAILWAY_VOLUME_MOUNT_PATH
     ? path.join(
@@ -26,7 +31,12 @@ const INVESTIGATION_STATUSES =
   ]);
 
 function createInvestigationStore({
+
   filePath = DEFAULT_FILE_PATH,
+
+  retentionDays =
+    resolveRetentionDays(),
+
   signalHistory,
   events = null,
 } = {}) {
@@ -65,7 +75,67 @@ function createInvestigationStore({
         );
       }
 
-      return investigations;
+      const retainedInvestigations =
+        investigations.filter(
+          (investigation) => {
+
+            const status =
+              normalizeOptionalString(
+                investigation.status,
+              )?.toLowerCase()
+              ?? "investigating";
+
+            if (
+              status !== "resolved"
+              && status !== "archived"
+            ) {
+
+              return true;
+
+            }
+
+            const retentionTimestamp =
+              status === "resolved"
+                ? (
+                    investigation
+                      .resolution
+                      ?.resolvedAt
+                    || investigation
+                      .updatedAt
+                    || investigation
+                      .createdAt
+                  )
+                : (
+                    investigation
+                      .updatedAt
+                    || investigation
+                      .resolution
+                      ?.resolvedAt
+                    || investigation
+                      .createdAt
+                  );
+
+            return isWithinRetention(
+              retentionTimestamp,
+              retentionDays,
+            );
+
+          },
+        );
+
+      if (
+        retainedInvestigations.length
+        !== investigations.length
+      ) {
+
+        saveInvestigations(
+          retainedInvestigations,
+        );
+
+      }
+
+      return retainedInvestigations;
+
     } catch (error) {
       throw new Error(
         `Unable to load investigations: ${error.message}`,
@@ -334,6 +404,14 @@ function createInvestigationStore({
         )
         || "unknown",
 
+      connectionId:
+
+        normalizeOptionalString(
+
+          record.connectionId,
+
+        ),
+
       service:
         normalizeOptionalString(
           record.service,
@@ -524,6 +602,178 @@ function createInvestigationStore({
         assertMutable(
           investigation,
         );
+
+        const signalConnectionId =
+
+          normalizeOptionalString(
+
+            record.connectionId,
+
+          );
+
+        let investigationConnectionId =
+
+          normalizeOptionalString(
+
+            investigation.connectionId,
+
+          );
+
+        if (
+
+          !investigationConnectionId
+
+        ) {
+
+          const existingSignalIds =
+
+            normalizeStringArray(
+
+              investigation.evidence
+
+                ?.signals,
+
+            );
+
+          const existingConnectionIds =
+
+            [
+
+              ...new Set(
+
+                existingSignalIds
+
+                  .map(
+
+                    (existingSignalId) =>
+
+                      signalHistory
+
+                        .getSignal(
+
+                          existingSignalId,
+
+                        )
+
+                        ?.connectionId,
+
+                  )
+
+                  .map(
+
+                    normalizeOptionalString,
+
+                  )
+
+                  .filter(Boolean),
+
+              ),
+
+            ];
+
+          if (
+
+            existingConnectionIds.length
+
+            > 1
+
+          ) {
+
+            const error =
+
+              new Error(
+
+                "Investigation contains signals from multiple integration connections.",
+
+              );
+
+            error.status = 409;
+
+            throw error;
+
+          }
+
+          investigationConnectionId =
+
+            existingConnectionIds[0]
+
+            || null;
+
+          if (
+
+            investigationConnectionId
+
+          ) {
+
+            investigation.connectionId =
+
+              investigationConnectionId;
+
+          }
+
+        }
+
+        if (
+
+          investigationConnectionId
+
+          && !signalConnectionId
+
+        ) {
+
+          const error =
+
+            new Error(
+
+              "Signal is not associated with an integration connection.",
+
+            );
+
+          error.status = 409;
+
+          throw error;
+
+        }
+
+        if (
+
+          investigationConnectionId
+
+          && signalConnectionId
+
+          && investigationConnectionId
+
+            !== signalConnectionId
+
+        ) {
+
+          const error =
+
+            new Error(
+
+              "Signal belongs to a different integration connection.",
+
+            );
+
+          error.status = 409;
+
+          throw error;
+
+        }
+
+        if (
+
+          !investigationConnectionId
+
+          && signalConnectionId
+
+        ) {
+
+          investigation.connectionId =
+
+            signalConnectionId;
+
+        }
 
         investigation.evidence ??= {};
 
@@ -971,6 +1221,101 @@ function createInvestigationStore({
     );
   }
 
+  function purgeConnection(
+    connectionId,
+  ) {
+    const normalizedConnectionId =
+      requireString(
+        connectionId,
+        "connectionId",
+      );
+
+    const customerSignalIds =
+      new Set(
+        signalHistory
+          .listAllSignals()
+          .filter(
+            (record) =>
+              normalizeOptionalString(
+                record.connectionId,
+              )
+              === normalizedConnectionId,
+          )
+          .map(
+            (record) =>
+              normalizeOptionalString(
+                record.id,
+              ),
+          )
+          .filter(Boolean),
+      );
+
+    const investigations =
+      loadInvestigations();
+
+    const deletedInvestigationIds =
+      [];
+
+    const retainedInvestigations =
+      investigations.filter(
+        (investigation) => {
+          const directMatch =
+            normalizeOptionalString(
+              investigation.connectionId,
+            )
+            === normalizedConnectionId;
+
+          const attachedSignalIds =
+            normalizeStringArray(
+              investigation.evidence
+                ?.signals,
+            );
+
+          const legacyMatch =
+            attachedSignalIds.some(
+              (signalId) =>
+                customerSignalIds.has(
+                  signalId,
+                ),
+            );
+
+          if (
+            directMatch
+            || legacyMatch
+          ) {
+            if (investigation.id) {
+              deletedInvestigationIds
+                .push(
+                  investigation.id,
+                );
+            }
+
+            return false;
+          }
+
+          return true;
+        },
+      );
+
+    if (
+      retainedInvestigations.length
+      !== investigations.length
+    ) {
+      saveInvestigations(
+        retainedInvestigations,
+      );
+    }
+
+    return {
+      connectionId:
+        normalizedConnectionId,
+      deletedCount:
+        deletedInvestigationIds.length,
+      investigationIds:
+        deletedInvestigationIds,
+    };
+  }
+
   return {
     listInvestigations,
     getInvestigation,
@@ -979,6 +1324,7 @@ function createInvestigationStore({
     updateInvestigation,
     updateAssessment,
     updateRecommendations,
+    purgeConnection,
     resolveInvestigation,
   };
 }

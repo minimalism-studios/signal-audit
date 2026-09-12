@@ -851,6 +851,9 @@ function createSignalInterpreterRouter({
 
   router.get(
     "/filters",
+    authorization.requirePermission(
+      "signals:read",
+    ),
     (req, res) => {
       return res
         .status(200)

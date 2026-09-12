@@ -22,6 +22,15 @@ function createDatadogWebhookHandler({
     );
   }
 
+  if (
+    typeof webhookSecret !== "string"
+    || !webhookSecret.trim()
+  ) {
+    throw new Error(
+      "Datadog webhook secret is required.",
+    );
+  }
+
   return async function datadogWebhookHandler(
     req,
     res,

@@ -1,6 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
+
+const helmet = require("helmet");
+
+const logger = require("./services/logger");
 const fs = require("fs");
 const path = require("path");
 const session = require("express-session");
@@ -34,6 +38,10 @@ const {
 const {
   createOperationalMemoryStore,
 } = require("./services/operationalMemoryStore");
+
+const {
+  createCustomerDataPurgeService,
+} = require("./services/customerDataPurge");
 
 const {
   createUserStore,
@@ -119,6 +127,13 @@ const app =
 app.set(
   "trust proxy",
   1,
+);
+
+app.use(
+  helmet({
+    contentSecurityPolicy:
+      false,
+  }),
 );
 
 app.use(
@@ -274,6 +289,13 @@ operationalMemoryStore
       .listInvestigations(),
   );
 
+const customerDataPurgeService =
+  createCustomerDataPurgeService({
+    signalHistory,
+    investigationStore,
+    operationalMemoryStore,
+  });
+
 const authorizationService =
   createAuthorizationService();
 
@@ -387,17 +409,6 @@ app.get(
     res.status(200).json({
       status:
         "ok",
-
-      service:
-        "signal-audit",
-
-      version:
-        require("./package.json")
-          .version,
-
-      timestamp:
-        new Date()
-          .toISOString(),
     });
   },
 );
@@ -551,23 +562,67 @@ app.get(
   },
 );
 
+app.post(
+  "/api/admin/data-purge/:connectionId",
+
+  authentication
+    .requireAuthentication,
+
+  authorization
+    .requirePermission(
+      "data:purge",
+    ),
+
+  (req, res) => {
+    const receipt =
+      customerDataPurgeService
+        .purgeConnection(
+          req.params.connectionId,
+        );
+
+    res.status(200).json({
+      purge: receipt,
+    });
+  },
+);
+
 app.use(
   (error, req, res, next) => {
-    console.error(
-      "Signal Audit error:",
-      error,
-    );
-
-    res.status(
-      error.status || 500,
-    ).json({
-      error: {
+    logger.error(
+      "http_request_error",
+      {
         status:
           error.status || 500,
 
-        message:
-          error.message
-          || "Internal server error.",
+        method:
+          req.method,
+
+        path:
+          req.path,
+
+        errorName:
+          error.name || "Error",
+
+        errorCode:
+          error.code || null,
+      },
+    );
+
+    const status =
+      error.status || 500;
+
+    const message =
+      status >= 500
+        ? "Internal server error."
+        : error.message
+          || "Request failed.";
+
+    res.status(
+      status,
+    ).json({
+      error: {
+        status,
+        message,
       },
     });
   },
@@ -576,8 +631,11 @@ app.use(
 app.listen(
   PORT,
   () => {
-    console.log(
-      `Signal Audit listening on http://localhost:${PORT}`,
+    logger.info(
+      "service_started",
+      {
+        port: PORT,
+      },
     );
   },
 );

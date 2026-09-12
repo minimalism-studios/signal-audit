@@ -22,6 +22,15 @@ function createGrafanaWebhookHandler({
     );
   }
 
+  if (
+    typeof webhookSecret !== "string"
+    || !webhookSecret.trim()
+  ) {
+    throw new Error(
+      "Grafana webhook secret is required.",
+    );
+  }
+
   return async function grafanaWebhookHandler(
     req,
     res,

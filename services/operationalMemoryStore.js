@@ -2,6 +2,11 @@ const fs = require("fs");
 
 const path = require("path");
 
+const {
+  resolveRetentionDays,
+  isWithinRetention,
+} = require("./retention");
+
 const DEFAULT_FILE_PATH =
   process.env.RAILWAY_VOLUME_MOUNT_PATH
     ? path.join(
@@ -15,7 +20,12 @@ const DEFAULT_FILE_PATH =
       );
 
 function createOperationalMemoryStore({
+
   filePath = DEFAULT_FILE_PATH,
+
+  retentionDays =
+    resolveRetentionDays(),
+
 } = {}) {
   function listDocuments({
     type = null,
@@ -187,7 +197,63 @@ function createOperationalMemoryStore({
         );
       }
 
-      return documents;
+      const retainedDocuments =
+        documents.filter(
+          (document) => {
+
+            const memoryState =
+              normalizeOptionalString(
+                document.memoryState,
+              )?.toLowerCase()
+              ?? "provisional";
+
+            if (
+              memoryState
+              === "provisional"
+            ) {
+
+              return true;
+
+            }
+
+            const retentionTimestamp =
+              memoryState === "archived"
+                ? (
+                    document.archivedAt
+                    || document.finalizedAt
+                    || document.updatedAt
+                    || document
+                      .investigationCreatedAt
+                  )
+                : (
+                    document.finalizedAt
+                    || document.resolvedAt
+                    || document.updatedAt
+                    || document
+                      .investigationCreatedAt
+                  );
+
+            return isWithinRetention(
+              retentionTimestamp,
+              retentionDays,
+            );
+
+          },
+        );
+
+      if (
+        retainedDocuments.length
+        !== documents.length
+      ) {
+
+        saveDocuments(
+          retainedDocuments,
+        );
+
+      }
+
+      return retainedDocuments;
+
     } catch (error) {
       throw new Error(
         `Unable to load Operational Memory: ${error.message}`,
@@ -251,11 +317,88 @@ function createOperationalMemoryStore({
     );
   }
 
+  function purgeConnection(
+    connectionId,
+    {
+      investigationIds = [],
+    } = {},
+  ) {
+    const normalizedConnectionId =
+      requireString(
+        connectionId,
+        "connectionId",
+      );
+
+    const deletedInvestigationIds =
+      new Set(
+        normalizeStringArray(
+          investigationIds,
+        ),
+      );
+
+    const documents =
+      loadDocuments();
+
+    const deletedDocumentIds = [];
+
+    const retainedDocuments =
+      documents.filter(
+        (document) => {
+          const directMatch =
+            normalizeOptionalString(
+              document.connectionId,
+            )
+            === normalizedConnectionId;
+
+          const investigationMatch =
+            deletedInvestigationIds.has(
+              normalizeOptionalString(
+                document.investigationId,
+              ),
+            );
+
+          if (
+            directMatch
+            || investigationMatch
+          ) {
+            if (document.id) {
+              deletedDocumentIds.push(
+                document.id,
+              );
+            }
+
+            return false;
+          }
+
+          return true;
+        },
+      );
+
+    if (
+      retainedDocuments.length
+      !== documents.length
+    ) {
+      saveDocuments(
+        retainedDocuments,
+      );
+    }
+
+    return {
+      connectionId:
+        normalizedConnectionId,
+      deletedCount:
+        deletedDocumentIds.length,
+      documentIds:
+        deletedDocumentIds,
+    };
+  }
+
   return {
     listDocuments,
     getDocument,
     upsertInvestigation,
     upsertInvestigations,
+    purgeConnection,
   };
 }
 
@@ -330,6 +473,14 @@ function createInvestigationDocument({
 
     investigationId:
       investigation.id,
+
+    connectionId:
+
+      normalizeOptionalString(
+
+        investigation.connectionId,
+
+      ),
 
     title:
       normalizeOptionalString(

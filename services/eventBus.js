@@ -1,3 +1,5 @@
+const logger = require("./logger");
+
 function createEventBus() {
   const listeners =
     new Map();
@@ -99,9 +101,17 @@ function createEventBus() {
               handler(payload),
           };
         } catch (error) {
-          console.error(
-            `Event handler failed for "${eventName}".`,
-            error,
+          logger.error(
+            "event_handler_failed",
+            {
+              eventName,
+
+              errorName:
+                error.name || "Error",
+
+              errorCode:
+                error.code || null,
+            },
           );
 
           return {

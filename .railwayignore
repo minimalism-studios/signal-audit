@@ -1,0 +1,8 @@
+.env
+.git
+.gitignore
+backups/
+patch-*.sh
+node_modules/
+sessions/
+.DS_Store
