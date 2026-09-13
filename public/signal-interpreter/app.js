@@ -8678,6 +8678,8 @@ function renderIntegrationsWorkspace() {
   );
 }
 
+let lastTrackedWorkspace = null;
+
 function renderWorkspace(
   workspace,
   options = {},
@@ -8705,13 +8707,21 @@ function renderWorkspace(
   state.activeWorkspace =
     resolvedWorkspace;
 
-  window.dataLayer =
-    window.dataLayer || [];
+  if (
+    lastTrackedWorkspace !==
+    resolvedWorkspace
+  ) {
+    window.dataLayer =
+      window.dataLayer || [];
 
-  window.dataLayer.push({
-    event: "workspace_view",
-    workspace: resolvedWorkspace,
-  });
+    window.dataLayer.push({
+      event: "workspace_view",
+      workspace: resolvedWorkspace,
+    });
+
+    lastTrackedWorkspace =
+      resolvedWorkspace;
+  }
 
   workspaceTitle.textContent =
     definition.title;
