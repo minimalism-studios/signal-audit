@@ -8705,6 +8705,14 @@ function renderWorkspace(
   state.activeWorkspace =
     resolvedWorkspace;
 
+  window.dataLayer =
+    window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: "workspace_view",
+    workspace: resolvedWorkspace,
+  });
+
   workspaceTitle.textContent =
     definition.title;
 
