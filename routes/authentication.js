@@ -149,8 +149,8 @@ function createAuthenticationRouter({
         const destination =
           currentUser?.role
             === "executive"
-            ? "/executive-dashboard"
-            : "/signal-interpreter";
+            ? "/executive-dashboard?login=success"
+            : "/signal-interpreter?login=success";
 
         res.redirect(
           303,

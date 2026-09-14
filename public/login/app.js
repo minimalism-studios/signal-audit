@@ -288,8 +288,8 @@ form.addEventListener(
       const destination =
         payload?.user?.role
           === "executive"
-          ? "/executive-dashboard"
-          : "/signal-interpreter";
+          ? "/executive-dashboard?login=success"
+          : "/signal-interpreter?login=success";
 
       window.location
         .replace(

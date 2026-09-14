@@ -12162,6 +12162,41 @@ async function bootstrapApplication() {
       return;
     }
 
+    const loginParams =
+      new URLSearchParams(
+        window.location.search,
+      );
+
+    if (
+      loginParams.get("login")
+      === "success"
+    ) {
+      window.dataLayer =
+        window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: "login_success",
+        user_role:
+          state.currentUser?.role
+          ?? "unknown",
+      });
+
+      const cleanUrl =
+        new URL(
+          window.location.href,
+        );
+
+      cleanUrl.searchParams.delete(
+        "login",
+      );
+
+      window.history.replaceState(
+        {},
+        "",
+        cleanUrl,
+      );
+    }
+
     if (
       window
         .SignalAuditPermissions
