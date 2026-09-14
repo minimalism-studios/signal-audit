@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Executive Dashboard | Signal Audit</title>
+
+  <link
+    rel="stylesheet"
+    href="/executive-dashboard/styles.css"
+  >
+  <link
+    rel="stylesheet"
+    href="/shared/components/loading-state/loadingState.css"
+  />
+</head>
+
+<body>
+  <div class="product-shell">
+    <header class="app-header">
+      <div class="branding">
+        <h1>Signal Audit</h1>
+
+        <p class="product-label">
+          Intelligence platform
+        </p>
+
+        <h1
+          id="workspace-title"
+          class="workspace"
+        >
+          Leadership Brief
+        </h1>
+      </div>
+
+      <div class="header-actions">
+        <label class="period-control">
+          <span>Reporting period</span>
+
+          <select id="reporting-period">
+            <option value="7">
+              Last 7 days
+            </option>
+
+            <option value="30">
+              Last 30 days
+            </option>
+
+            <option value="90">
+              Last 90 days
+            </option>
+          </select>
+        </label>
+
+        <button
+          id="refresh-button"
+          class="secondary-button"
+          type="button"
+        >
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <nav
+      class="product-navigation"
+      aria-label="Executive Dashboard workspaces"
+    >
+      <button
+        class="product-navigation__item is-active"
+        type="button"
+        data-workspace="leadership-brief"
+        aria-current="page"
+      >
+        Leadership Brief
+      </button>
+
+      <button
+        class="product-navigation__item"
+        type="button"
+        data-workspace="reporting"
+      >
+        Reporting
+      </button>
+
+      <button
+        class="product-navigation__item"
+        type="button"
+        data-workspace="analytics"
+      >
+        Analytics
+      </button>
+
+      <button
+        class="product-navigation__item"
+        type="button"
+        data-workspace="forecasting"
+      >
+        Forecasting
+      </button>
+    </nav>
+
+    <main class="dashboard">
+      <section
+        id="leadership-brief-workspace"
+        class="leadership-brief"
+        aria-live="polite"
+      ></section>
+
+      <section
+        id="secondary-workspace"
+        class="secondary-workspace"
+        hidden
+        aria-live="polite"
+      ></section>
+    </main>
+  </div>
+
+  <script
+    type="module"
+    src="/executive-dashboard/app.js"
+    defer
+  ></script>
+</body>
+</html>

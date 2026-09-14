@@ -76,6 +76,17 @@ const {
 } = require("./routes/signalInterpreter");
 
 const {
+  createExecutiveIntelligence,
+  createOperationalReportingIntelligence,
+  createOperationalAnalyticsIntelligence,
+  createForecastIntelligence,
+} = require("./services/intelligence");
+
+const {
+  createExecutiveDashboardRouter,
+} = require("./routes/executiveDashboard");
+
+const {
   createGrafanaProcessor,
 } = require("./integrations/grafana/processor");
 
@@ -289,6 +300,32 @@ operationalMemoryStore
       .listInvestigations(),
   );
 
+const executiveIntelligence =
+  createExecutiveIntelligence({
+    openai,
+    signalHistory,
+    investigationStore,
+  });
+
+const operationalReportingIntelligence =
+  createOperationalReportingIntelligence({
+    openai,
+    signalHistory,
+    investigationStore,
+  });
+
+const operationalAnalyticsIntelligence =
+  createOperationalAnalyticsIntelligence({
+    openai,
+    signalHistory,
+  });
+
+const forecastIntelligence =
+  createForecastIntelligence({
+    openai,
+    signalHistory,
+  });
+
 const customerDataPurgeService =
   createCustomerDataPurgeService({
     signalHistory,
@@ -345,7 +382,7 @@ app.get(
   },
 );
 
-app.get(
+app.use(
   "/executive-dashboard",
   authentication
     .requireAuthentication,
@@ -355,16 +392,13 @@ app.get(
       "executive:read",
     ),
 
-  (req, res) => {
-    res.sendFile(
-      path.join(
-        __dirname,
-        "public",
-        "signal-interpreter",
-        "index.html",
-      ),
-    );
-  },
+  express.static(
+    path.join(
+      __dirname,
+      "public",
+      "executive-dashboard",
+    ),
+  ),
 );
 
 const processGrafanaSignal =
@@ -417,6 +451,24 @@ app.use(
   "/auth",
   createAuthenticationRouter({
     authenticationService,
+  }),
+);
+
+app.use(
+  "/api/executive-dashboard",
+  authentication
+    .requireAuthentication,
+
+  authorization
+    .requirePermission(
+      "executive:read",
+    ),
+
+  createExecutiveDashboardRouter({
+    executiveIntelligence,
+    operationalReportingIntelligence,
+    operationalAnalyticsIntelligence,
+    forecastIntelligence,
   }),
 );
 

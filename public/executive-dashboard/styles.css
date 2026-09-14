@@ -1,0 +1,3077 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --background: #0a0a0a;
+  --surface: #111111;
+  --surface-raised: #171717;
+  --border: #292929;
+  --text: #f5f5f5;
+  --muted: #9f9f9f;
+  --subtle: #6f6f6f;
+  --accent: #ffffff;
+  --attention: #ffb357;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+  overflow: hidden;
+}
+
+.product-shell {
+  display: grid;
+  grid-template-rows:
+    auto
+    auto
+    minmax(0, 1fr);
+  height: 100vh;
+  overflow: hidden;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 100px;
+  padding: 15px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    padding: 2px 0 5px;
+}
+
+.eyebrow,
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  max-width: 560px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.product-label,
+.app-header h1.workspace {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.product-label {
+    padding-bottom: 2px;
+}
+
+.app-header h1.workspace {
+  margin-bottom: 2px;
+  color: var(--text);
+}
+
+.header-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.period-control {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+select,
+.secondary-button {
+  min-height: 42px;
+  padding: 0 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.secondary-button {
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: var(--surface-raised);
+}
+
+.product-navigation {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-navigation__item {
+  position: relative;
+  min-height: 64px;
+  padding: 0 22px;
+  color: var(--muted);
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.product-navigation__item:first-child {
+  padding-left: 0;
+}
+
+.product-navigation__item:hover,
+.product-navigation__item.is-active {
+  color: var(--text);
+}
+
+.product-navigation__item.is-active::after {
+  position: absolute;
+  right: 22px;
+  bottom: 0;
+  left: 22px;
+  height: 2px;
+  content: "";
+  background: var(--text);
+}
+
+.product-navigation__item:first-child.is-active::after {
+  left: 0;
+}
+
+.dashboard {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 52px 40px 80px;
+
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.leadership-brief {
+  display: grid;
+  gap: 24px;
+}
+.leadership-brief-document {
+  transform: translateY(-52px);
+}
+
+.brief-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: 28px !important;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.brief-heading h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+
+.brief-heading__description {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.reporting-window {
+  display: grid;
+  min-width: 190px;
+  gap: 8px;
+  text-align: right;
+}
+
+.reporting-window span {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.reporting-window strong {
+  font-size: 0.95rem;
+  font-weight: 550;
+}
+
+.health-panel,
+.confidence-panel {
+  display: grid;
+  grid-template-columns:
+    minmax(200px, 0.6fr)
+    minmax(0, 1.4fr);
+  gap: 40px;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.health-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.status-indicator {
+  width: 11px;
+  height: 11px;
+  background: var(--attention);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 179, 87, 0.45);
+}
+
+.health-panel h3,
+.confidence-panel h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+
+.health-panel__reason,
+.confidence-panel p {
+  align-self: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.confidence-panel h3 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.dashboard-section {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.section-heading h3 {
+  margin: 8px 0 0;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+
+}
+
+.executive-summary {
+  max-width: 1100px;
+  margin: 0;
+  font-size: 1.25em;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: -0.025em;
+}
+
+.intelligence-card,
+.empty-card {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.intelligence-card__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.intelligence-card h4,
+.action-card h4 {
+  margin: 12px 0 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.intelligence-card p,
+.action-card p,
+.empty-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.owner {
+  color: var(--muted);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 9px;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transform: translateY(-8px);
+  margin-bottom: 20px;
+}
+
+.badge--high {
+  color: #ff8b8b;
+  background: rgba(255, 116, 116, 0.08);
+  border-color: rgba(255, 116, 116, 0.32);
+}
+
+.evidence-line {
+  margin-top: 18px;
+  color: var(--subtle);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dashboard-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.empty-card {
+  min-height: 148px;
+}
+
+.action-list {
+  display: grid;
+  gap: 14px;
+}
+
+.action-card {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 28px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.action-card__priority {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-right: 24px;
+  border-right: 1px solid var(--border);
+}
+
+.action-card__priority span {
+  color: var(--subtle);
+  font-size: 0.76rem;
+}
+
+.action-card__priority strong {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.action-card h4 {
+  margin-top: 0;
+}
+
+.action-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  color: var(--subtle);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.confidence-panel {
+  margin-top: 8px;
+}
+
+.secondary-workspace {
+  min-height: 460px;
+}
+
+.workspace-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 460px;
+  padding: 60px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.workspace-placeholder h2 {
+  margin: 14px 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.workspace-placeholder__description {
+  max-width: 600px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.workspace-placeholder__status {
+  display: grid;
+  gap: 8px;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.workspace-placeholder__status strong {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.product-navigation {
+  display: flex;
+  align-items: stretch;
+  height: 64px;
+  min-height: 64px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 40px;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+
+.product-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.product-navigation__item {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  height: 64px;
+  min-height: 64px;
+  padding: 0 22px;
+  color: var(--muted);
+  line-height: 1;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .period-control {
+    flex: 1;
+  }
+
+  .period-control select {
+    width: 100%;
+  }
+
+  .product-navigation {
+    padding: 0 24px;
+  }
+
+  .dashboard {
+    padding: 36px 24px 64px;
+  }
+
+  .brief-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reporting-window {
+    text-align: left;
+  }
+
+  /* ==========================================================
+   Executive Operational Position
+   ========================================================== */
+
+.executive-position {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.executive-position__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 26px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.executive-position__header h3 {
+  margin: 8px 0 0;
+  font-size: 1.25rem;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+}
+
+.executive-position__header > p {
+  max-width: 440px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  text-align: right;
+}
+
+.executive-position__metrics {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+}
+
+.executive-position-metric {
+  position: relative;
+  min-height: 156px;
+  padding: 26px 28px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.executive-position-metric:nth-child(3n) {
+  border-right: 0;
+}
+
+.executive-position-metric:nth-last-child(-n + 3) {
+  border-bottom: 0;
+}
+
+.executive-position-metric__label {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.executive-position-metric__value {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.8rem,2.4vw,2.6rem);
+  font-weight: 550;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.executive-position-metric__detail {
+  margin: 12px 0 0;
+  color: var(--subtle);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.executive-position-metric--healthy::before,
+.executive-position-metric--attention::before,
+.executive-position-metric--critical::before,
+.executive-position-metric--high::before {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border-radius: 50%;
+}
+
+.executive-position-metric--healthy::before {
+  background: #70d69b;
+  box-shadow:
+    0 0 18px
+    rgba(112, 214, 155, 0.4);
+}
+
+.executive-position-metric--attention::before {
+  background: #ffb357;
+  box-shadow:
+    0 0 18px
+    rgba(255, 179, 87, 0.42);
+}
+
+.executive-position-metric--critical::before,
+.executive-position-metric--high::before {
+  background: #ff7474;
+  box-shadow:
+    0 0 18px
+    rgba(255, 116, 116, 0.4);
+}
+
+@media (max-width: 900px) {
+  .executive-position__metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .executive-position-metric:nth-child(3n) {
+    border-right:
+      1px solid
+      var(--border);
+  }
+
+  .executive-position-metric:nth-child(2n) {
+    border-right:
+      0;
+  }
+
+  .executive-position-metric:nth-last-child(-n + 3) {
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .executive-position-metric:nth-last-child(-n + 2) {
+    border-bottom:
+      0;
+  }
+}
+
+@media (max-width: 620px) {
+  .executive-position__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px;
+  }
+
+  .executive-position__header > p {
+    text-align: left;
+  }
+
+  .executive-position__metrics {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .executive-position-metric,
+  .executive-position-metric:nth-child(2n),
+  .executive-position-metric:nth-child(3n) {
+    min-height: 138px;
+    padding: 22px;
+    border-right: 0;
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .executive-position-metric:nth-last-child(-n + 2) {
+    border-bottom:
+      1px solid
+      var(--border);
+  }
+
+  .executive-position-metric:last-child {
+    border-bottom: 0;
+  }
+}
+
+  .health-panel,
+  .confidence-panel {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .dashboard-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .action-card {
+    grid-template-columns: 1fr;
+  }
+
+  .action-card__priority {
+    padding: 0 0 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 520px) {
+  .header-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .secondary-button {
+    width: 100%;
+  }
+
+  .product-navigation__item {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .dashboard {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .dashboard-section,
+  .health-panel,
+  .confidence-panel {
+    padding: 22px;
+  }
+
+  .intelligence-card__heading {
+    flex-direction: column;
+  }
+}
+
+.card-list {
+  display: grid;
+  gap: 14px;
+}
+
+.service-line {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dashboard-state {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  min-height: 460px;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border: none;
+  border-radius: 14px;
+}
+
+.dashboard-state h2 {
+  max-width: 760px;
+  margin: 14px 0;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  font-size: 3.25em;
+}
+
+.dashboard-state p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.dashboard-state .secondary-button {
+  margin-top: 28px;
+}
+
+.status-indicator--healthy {
+  background: #70d69b;
+  box-shadow:
+    0 0 20px
+    rgba(112, 214, 155, 0.4);
+}
+
+.status-indicator--attention {
+  background: #ffb357;
+  box-shadow:
+    0 0 20px
+    rgba(255, 179, 87, 0.45);
+}
+
+.status-indicator--critical {
+  background: #ff7474;
+  box-shadow:
+    0 0 20px
+    rgba(255, 116, 116, 0.45);
+}
+
+.badge--critical {
+  color: #ff7474;
+  background:
+    rgba(255, 116, 116, 0.08);
+  border-color:
+    rgba(255, 116, 116, 0.32);
+}
+
+.badge--medium {
+  color: #ffd27a;
+  background:
+    rgba(255, 210, 122, 0.08);
+  border-color:
+    rgba(255, 210, 122, 0.32);
+}
+
+.badge--low {
+  color: #8ec5ff;
+  background:
+    rgba(142, 197, 255, 0.08);
+  border-color:
+    rgba(142, 197, 255, 0.32);
+}
+
+.badge--unknown {
+  color: var(--muted);
+}
+.dashboard-state--loading {
+  justify-items: center;
+  text-align: center;
+}
+
+.loading-indicator {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 28px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+.loading-indicator span {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--text);
+  border-radius: 50%;
+  animation: leadership-brief-spin 700ms linear infinite;
+}
+
+@keyframes leadership-brief-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-indicator span {
+    animation-duration: 1.8s;
+  }
+}
+/* =========================================================
+   Leadership Brief v2
+   Executive editorial experience
+   ========================================================= */
+
+.leadership-brief-document {
+  --brief-border:
+    rgba(255, 255, 255, 0.06);
+
+  --brief-border-strong:
+    rgba(255, 255, 255, 0.18);
+
+  --brief-surface:
+    rgba(255, 255, 255, 0.025);
+
+  --brief-surface-raised:
+    rgba(255, 255, 255, 0.045);
+
+  --brief-text-secondary:
+    rgba(255, 255, 255, 0.68);
+
+  --brief-text-tertiary:
+    rgba(255, 255, 255, 0.48);
+
+  --brief-status-healthy:
+    #73d99f;
+
+  --brief-status-warning:
+    #e6bd67;
+
+  --brief-status-critical:
+    #ed7f7f;
+
+  width: min(
+    100%,
+    1440px
+  );
+
+  margin-inline: auto;
+
+  padding:
+    clamp(2.5rem, 5vw, 5.5rem)
+    clamp(1.25rem, 4vw, 4.5rem)
+    clamp(5rem, 8vw, 8rem);
+
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   Shared typography
+   --------------------------------------------------------- */
+
+.leadership-brief-document .eyebrow {
+  margin:
+    0
+    0
+    0.85rem;
+
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    0.15em;
+
+  text-transform:
+    uppercase;
+}
+
+.leadership-brief-document h2,
+.leadership-brief-document h3,
+.leadership-brief-document p {
+  text-wrap:
+    pretty;
+}
+
+.leadership-brief-document h2 {
+  margin:
+    0;
+
+  font-size:
+    clamp(
+      2.35rem,
+      5vw,
+      4.75rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.055em;
+}
+
+.leadership-brief-document h3 {
+  margin:
+    0;
+
+  font-size:
+    clamp(
+      1.9rem,
+      3vw,
+      2.75rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1.05;
+
+  letter-spacing:
+    -0.038em;
+}
+
+.leadership-brief-document .section-heading {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+  max-width:
+    780px;
+
+  margin-bottom:
+    clamp(
+      2rem,
+      4vw,
+      3.5rem
+    );
+}
+
+.leadership-brief-document
+.section-heading > p:last-child {
+  max-width:
+    660px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.7;
+}
+
+/* ---------------------------------------------------------
+   Page heading and metadata
+   --------------------------------------------------------- */
+
+.brief-heading {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(280px, 0.65fr);
+
+  gap:
+    clamp(
+      2.5rem,
+      7vw,
+      7rem
+    );
+
+  align-items:
+    end;
+
+  padding-bottom:
+    clamp(
+      3rem,
+      6vw,
+      5.5rem
+    );
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.brief-heading__content {
+  max-width: 850px;
+  transform: translateY(-40px);
+}
+
+.brief-heading__description {
+  max-width:
+    700px;
+
+  margin:
+    1.5rem
+    0
+    0;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.5vw,
+      1.15rem
+    );
+
+  line-height:
+    1.7;
+}
+
+.brief-metadata {
+  display:
+    grid;
+
+  gap:
+    1rem;
+
+  padding:
+    1.25rem
+    0;
+}
+
+.brief-metadata__item {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(110px, 0.75fr)
+    minmax(0, 1.25fr);
+
+  gap:
+    1rem;
+
+  align-items:
+    baseline;
+
+  padding-bottom:
+    0.9rem;
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.brief-metadata__item:last-child {
+  padding-bottom:
+    0;
+
+  border-bottom:
+    0;
+}
+
+.brief-metadata__item span {
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.76rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+.brief-metadata__item strong {
+  color:
+    inherit;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1.45;
+}
+
+/* ---------------------------------------------------------
+   1. Executive Assessment — editorial hero
+   --------------------------------------------------------- */
+
+.executive-assessment {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(210px, 0.35fr)
+    minmax(0, 1fr);
+
+  gap:
+    clamp(
+      2.5rem,
+      7vw,
+      7rem
+    );
+
+  align-items:
+    start;
+
+  min-height:
+    min(
+      680px,
+      72vh
+    );
+
+  padding:
+    clamp(
+      5rem,
+      10vw,
+      10rem
+    )
+    0;
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.executive-assessment__heading {
+  position:
+    sticky;
+
+  top:
+    2rem;
+}
+
+.executive-assessment__body {
+  max-width:
+    920px;
+}
+
+.executive-assessment__summary {
+  margin: 0;
+  font-size: clamp(1.65rem, 2.8vw, 2.85rem);
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -.03em;
+  max-width: 24ch;
+}
+
+.executive-assessment__conclusion {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.75rem
+    1.25rem;
+
+  align-items:
+    center;
+
+  margin-top:
+    clamp(
+      3rem,
+      6vw,
+      5.5rem
+    );
+
+  padding-top:
+    1.5rem;
+
+  border-top:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.executive-assessment__conclusion span {
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.76rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+.executive-assessment__conclusion strong {
+  display:
+    inline-flex;
+
+  gap:
+    0.65rem;
+
+  align-items:
+    center;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+.executive-assessment__conclusion
+strong::before {
+  content:
+    "";
+
+  width:
+    0.65rem;
+
+  height:
+    0.65rem;
+
+  flex:
+    0 0 auto;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --brief-status-warning
+    );
+
+  box-shadow:
+    0 0 0
+    5px
+    rgba(
+      230,
+      189,
+      103,
+      0.1
+    );
+}
+
+.executive-assessment--healthy
+.executive-assessment__conclusion
+strong::before,
+.executive-assessment--stable
+.executive-assessment__conclusion
+strong::before,
+.executive-assessment--low
+.executive-assessment__conclusion
+strong::before {
+  background:
+    var(
+      --brief-status-healthy
+    );
+
+  box-shadow:
+    0 0 0
+    5px
+    rgba(
+      115,
+      217,
+      159,
+      0.1
+    );
+}
+
+.executive-assessment--critical
+.executive-assessment__conclusion
+strong::before,
+.executive-assessment--unhealthy
+.executive-assessment__conclusion
+strong::before,
+.executive-assessment--high
+.executive-assessment__conclusion
+strong::before {
+  background:
+    var(
+      --brief-status-critical
+    );
+
+  box-shadow:
+    0 0 0
+    5px
+    rgba(
+      237,
+      127,
+      127,
+      0.1
+    );
+}
+
+/* ---------------------------------------------------------
+   2. Executive Operational Position — one scorecard
+   --------------------------------------------------------- */
+
+.executive-position {
+  padding: 7rem 0;
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.executive-position__metrics {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --brief-border-strong
+    );
+
+  border-radius:
+    24px;
+
+  background:
+    var(
+      --brief-surface
+    );
+}
+
+.executive-position-metric {
+  min-height:
+    220px;
+
+  padding:
+    clamp(
+      1.75rem,
+      3vw,
+      2.75rem
+    );
+
+  border-right:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  background:
+    transparent;
+}
+
+.executive-position-metric:nth-child(3n) {
+  border-right:
+    0;
+}
+
+.executive-position-metric:nth-last-child(-n + 3) {
+  border-bottom:
+    0;
+}
+
+.executive-position-metric__label {
+  margin:
+    0;
+
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.3;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+.executive-position-metric__value {
+  margin:
+    2rem
+    0
+    0;
+
+  font-size:
+    clamp(
+      2.4rem,
+      4vw,
+      4.25rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.055em;
+}
+
+.executive-position-metric__detail {
+  max-width:
+    270px;
+
+  margin:
+    1.15rem
+    0
+    0;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  font-size:
+    0.9rem;
+
+  line-height:
+    1.55;
+}
+
+.executive-position-metric--healthy
+.executive-position-metric__value,
+.executive-position-metric--stable
+.executive-position-metric__value,
+.executive-position-metric--high
+.executive-position-metric__value {
+  color:
+    var(
+      --brief-status-healthy
+    );
+}
+
+.executive-position-metric--critical
+.executive-position-metric__value,
+.executive-position-metric--unhealthy
+.executive-position-metric__value {
+  color:
+    var(
+      --brief-status-critical
+    );
+}
+
+/* ---------------------------------------------------------
+   Shared page sections
+   --------------------------------------------------------- */
+
+.leadership-brief-document
+.dashboard-section {
+  margin:
+    0;
+
+  padding:7rem 0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+/* ---------------------------------------------------------
+   3. Material Operational Risks — restrained cards
+   --------------------------------------------------------- */
+
+.material-risks .risk-list,
+.material-risks .card-list {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    1rem;
+}
+
+.material-risks .risk-list > *,
+.material-risks .card-list > * {
+  min-width:
+    0;
+
+  padding:
+    clamp(
+      1.5rem,
+      3vw,
+      2.5rem
+    );
+
+  border:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-radius:
+    18px;
+
+  background:
+    var(
+      --brief-surface
+    );
+
+  box-shadow:
+    none;
+
+  transition:
+    border-color
+    180ms ease,
+    background-color
+    180ms ease,
+    transform
+    180ms ease;
+}
+
+.material-risks .risk-list > *:hover,
+.material-risks .card-list > *:hover {
+  border-color:
+    var(
+      --brief-border-strong
+    );
+
+  background:
+    var(
+      --brief-surface-raised
+    );
+
+  transform:
+    translateY(
+      -2px
+    );
+}
+
+.material-risks h4,
+.material-risks article h3 {
+  margin:
+    0
+    0
+    1rem;
+
+  font-size:
+    clamp(
+      1.2rem,
+      2vw,
+      1.55rem
+    );
+
+  font-weight:
+    550;
+
+  line-height:
+    1.3;
+
+  letter-spacing:
+    -0.02em;
+}
+
+.material-risks p,
+.material-risks li {
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  line-height:
+    1.65;
+}
+
+.material-risks article > *:last-child {
+  margin-bottom:
+    0;
+}
+
+/* ---------------------------------------------------------
+   4. Leadership Priorities — editorial action list
+   --------------------------------------------------------- */
+
+.leadership-priorities .action-list {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+  gap:
+    0;
+}
+
+.leadership-priorities
+.action-list > * {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(140px, 0.25fr)
+    minmax(0, 0.75fr);
+
+  gap:
+    clamp(
+      1.5rem,
+      5vw,
+      5rem
+    );
+
+  align-items:
+    start;
+
+  margin:
+    0;
+
+  padding:
+    clamp(
+      2rem,
+      4vw,
+      3.25rem
+    )
+    0;
+
+  border:
+    0;
+
+  border-top:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+.leadership-priorities
+.action-list > *:last-child {
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.leadership-priorities
+.action-list h3,
+.leadership-priorities
+.action-list h4,
+.leadership-priorities
+.action-list strong:first-child {
+  margin:
+    0;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.4vw,
+      2rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    -0.035em;
+}
+
+.leadership-priorities
+.action-list p,
+.leadership-priorities
+.action-list li {
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.4vw,
+      1.12rem
+    );
+
+  line-height:
+    1.7;
+}
+
+.leadership-priorities
+.action-list article > *:last-child {
+  margin-bottom:
+    0;
+}
+
+/* ---------------------------------------------------------
+   Supporting context
+   --------------------------------------------------------- */
+
+.supporting-context {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      5rem
+    );
+
+  padding:7rem 0;
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.supporting-context
+.dashboard-section {
+  padding:
+    0;
+
+  border-bottom:
+    0;
+}
+
+.supporting-context
+.card-list {
+  display:
+    grid;
+
+  gap:
+    1rem;
+}
+
+.supporting-context
+.card-list > * {
+  padding:
+    1.5rem;
+
+  border:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-radius:
+    16px;
+
+  background:
+    var(
+      --brief-surface
+    );
+
+  box-shadow:
+    none;
+}
+
+/* ---------------------------------------------------------
+   5. Evidence Summary — quiet footer band
+   --------------------------------------------------------- */
+
+.evidence-summary {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(230px, 0.35fr)
+    minmax(0, 0.65fr);
+
+  gap:
+    clamp(
+      2.5rem,
+      7vw,
+      7rem
+    );
+
+  padding:7rem 0;
+}
+
+.evidence-summary__heading > p:last-child {
+  max-width:
+    380px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  line-height:
+    1.65;
+}
+
+.evidence-summary__metrics {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  border-top:
+    1px solid
+    var(
+      --brief-border
+    );
+
+  border-bottom:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.evidence-metric {
+  min-width:
+    0;
+
+  padding:
+    2rem
+    1.25rem;
+
+  border-right:
+    1px solid
+    var(
+      --brief-border
+    );
+}
+
+.evidence-metric:first-child {
+  padding-left:
+    0;
+}
+
+.evidence-metric:last-child {
+  padding-right:
+    0;
+
+  border-right:
+    0;
+}
+
+.evidence-metric__value {
+  display:
+    block;
+
+  overflow-wrap:
+    anywhere;
+
+  font-size:1.85rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.045em;
+}
+
+.evidence-metric__label {
+  display:
+    block;
+
+  margin-top:.5rem;
+
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+.evidence-summary__reason {
+  grid-column:
+    2;
+
+  max-width:
+    720px;
+
+  margin:
+    1.5rem
+    0
+    0;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  font-size:
+    0.92rem;
+
+  line-height:
+    1.65;
+}
+
+/* ---------------------------------------------------------
+   Empty states inside Leadership Brief
+   --------------------------------------------------------- */
+
+.leadership-brief-document
+.empty-card,
+.leadership-brief-document
+.empty-state,
+.leadership-brief-document
+.list-message {
+  padding:
+    1.75rem;
+
+  border:
+    1px dashed
+    var(
+      --brief-border-strong
+    );
+
+  border-radius:
+    16px;
+
+  color:
+    var(
+      --brief-text-secondary
+    );
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+/* ---------------------------------------------------------
+   Subtle content entrance
+   --------------------------------------------------------- */
+
+@keyframes
+leadershipBriefEnter {
+  from {
+    opacity:
+      0;
+
+    transform:
+      translateY(
+        14px
+      );
+  }
+
+  to {
+    opacity:
+      1;
+
+    transform:
+      translateY(
+        0
+      );
+  }
+}
+
+.leadership-brief-document
+> * {
+  opacity:
+    0;
+
+  animation:
+    leadershipBriefEnter
+    560ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+.leadership-brief-document
+> *:nth-child(1) {
+  animation-delay:
+    40ms;
+}
+
+.leadership-brief-document
+> *:nth-child(2) {
+  animation-delay:
+    100ms;
+}
+
+.leadership-brief-document
+> *:nth-child(3) {
+  animation-delay:
+    160ms;
+}
+
+.leadership-brief-document
+> *:nth-child(4) {
+  animation-delay:
+    220ms;
+}
+
+.leadership-brief-document
+> *:nth-child(5) {
+  animation-delay:
+    280ms;
+}
+
+.leadership-brief-document
+> *:nth-child(6) {
+  animation-delay:
+    340ms;
+}
+
+.leadership-brief-document
+> *:nth-child(7) {
+  animation-delay:
+    400ms;
+}
+
+/* ---------------------------------------------------------
+   Responsive — tablet
+   --------------------------------------------------------- */
+
+@media (
+  max-width:
+  1050px
+) {
+  .brief-heading,
+  .executive-assessment,
+  .evidence-summary {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .executive-assessment {
+    min-height:
+      auto;
+  }
+
+  .executive-assessment__heading {
+    position:
+      static;
+  }
+
+  .executive-position__metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .executive-position-metric:nth-child(3n) {
+    border-right:
+      1px solid
+      var(
+        --brief-border
+      );
+  }
+
+  .executive-position-metric:nth-child(2n) {
+    border-right:
+      0;
+  }
+
+  .executive-position-metric:nth-last-child(-n + 3) {
+    border-bottom:
+      1px solid
+      var(
+        --brief-border
+      );
+  }
+
+  .executive-position-metric:nth-last-child(-n + 2) {
+    border-bottom:
+      0;
+  }
+
+  .evidence-summary__reason {
+    grid-column:
+      1;
+  }
+}
+
+/* ---------------------------------------------------------
+   Responsive — mobile
+   --------------------------------------------------------- */
+
+@media (
+  max-width:
+  720px
+) {
+  .leadership-brief-document {
+    padding:
+      2rem
+      1rem
+      4rem;
+  }
+
+  .brief-heading {
+    gap:
+      2.5rem;
+
+    padding-bottom:
+      3rem;
+  }
+
+  .brief-metadata__item {
+    grid-template-columns:
+      minmax(100px, 0.8fr)
+      minmax(0, 1.2fr);
+  }
+
+  .executive-assessment {
+    gap:
+      2rem;
+
+    padding:
+      4.5rem
+      0;
+  }
+
+  .executive-assessment__summary {
+    font-size:
+      clamp(
+        1.85rem,
+        9vw,
+        3rem
+      );
+  }
+
+  .executive-position,
+  .leadership-brief-document
+  .dashboard-section,
+  .supporting-context {
+    padding:
+      4.5rem
+      0;
+  }
+
+  .executive-position__metrics {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    border-radius:
+      18px;
+  }
+
+  .executive-position-metric,
+  .executive-position-metric:nth-child(2n),
+  .executive-position-metric:nth-child(3n) {
+    min-height:
+      auto;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(
+        --brief-border
+      );
+  }
+
+  .executive-position-metric:last-child {
+    border-bottom:
+      0;
+  }
+
+  .material-risks .risk-list,
+  .material-risks .card-list,
+  .supporting-context {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .leadership-priorities
+  .action-list > * {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap:
+      1rem;
+  }
+
+  .evidence-summary__metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .evidence-metric {
+    border-bottom:
+      1px solid
+      var(
+        --brief-border
+      );
+  }
+
+  .evidence-metric:nth-child(2n) {
+    border-right:
+      0;
+  }
+
+  .evidence-metric:nth-last-child(-n + 2) {
+    border-bottom:
+      0;
+  }
+
+  .evidence-metric:nth-child(3) {
+    padding-left:
+      0;
+  }
+}
+
+/* ---------------------------------------------------------
+   Accessibility
+   --------------------------------------------------------- */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .leadership-brief-document
+  > * {
+    opacity:
+      1;
+
+    animation:
+      none;
+
+    transform:
+      none;
+  }
+
+  .material-risks
+  .risk-list > *,
+  .material-risks
+  .card-list > * {
+    transition:
+      none;
+  }
+}
+.brief-heading{
+    animation-delay:.05s;
+}
+
+.executive-assessment{
+    animation-delay:.18s;
+}
+
+.executive-position{
+    animation-delay:.30s;
+}
+
+.dashboard-section{
+    animation-delay:.42s;
+}
+.executive-assessment__body{
+    max-width:760px;
+}
+
+.executive-assessment,
+.executive-position,
+.dashboard-section.material-risks,
+.dashboard-section.leadership-priorities,
+.evidence-summary {
+  padding: 5rem 0;
+}
+
+/* =========================================================
+   Leadership Brief v3
+   Executive prioritization and confidence
+   ========================================================= */
+
+.leadership-brief-document .section-heading {
+  margin-bottom: clamp(2rem, 3vw, 2.75rem);
+}
+
+.leadership-brief-document .executive-position__metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.leadership-brief-document .executive-position-metric {
+  min-height: 176px;
+}
+
+.leadership-brief-document
+.executive-position-metric--primary {
+  grid-column: span 2;
+  min-height: 236px;
+}
+
+.leadership-brief-document
+.executive-position-metric--primary
+.executive-position-metric__value {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+
+.leadership-brief-document
+.executive-position-metric--priority
+.executive-position-metric__value {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.leadership-brief-document
+.executive-position-metric--supporting {
+  min-height: 158px;
+}
+
+.leadership-brief-document
+.executive-position-metric--supporting
+.executive-position-metric__value {
+  font-size: clamp(1.65rem, 2.2vw, 2.3rem);
+}
+
+.material-risks .risk-list,
+.material-risks .card-list {
+  counter-reset: executive-risk;
+}
+
+.material-risks .risk-list > *,
+.material-risks .card-list > * {
+  counter-increment: executive-risk;
+}
+
+.material-risks .risk-list > *::before,
+.material-risks .card-list > *::before {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--brief-text-tertiary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  content: counter(executive-risk, decimal-leading-zero);
+}
+
+.leadership-priorities .action-list {
+  counter-reset: leadership-priority;
+}
+
+.leadership-priorities .action-list > * {
+  counter-increment: leadership-priority;
+}
+
+.leadership-priorities .action-list > *::before {
+  position: absolute;
+  top: clamp(2rem, 4vw, 3.25rem);
+  left: 0;
+  color: var(--brief-text-tertiary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  content: counter(leadership-priority, decimal-leading-zero);
+}
+
+.leadership-priorities .action-card__priority {
+  padding-top: 2rem;
+  border-right-color: var(--brief-border);
+}
+
+.leadership-priorities .action-card h4 {
+  max-width: 28ch;
+  font-size: clamp(1.4rem, 2.3vw, 2rem);
+  line-height: 1.22;
+}
+
+.evidence-summary__metrics {
+  align-self: start;
+}
+
+.evidence-summary__metrics .evidence-metric:first-child
+.evidence-metric__value {
+  color: var(--brief-status-healthy);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.evidence-summary--low
+.evidence-summary__metrics .evidence-metric:first-child
+.evidence-metric__value,
+.evidence-summary--critical
+.evidence-summary__metrics .evidence-metric:first-child
+.evidence-metric__value {
+  color: var(--brief-status-critical);
+}
+
+.evidence-summary--medium
+.evidence-summary__metrics .evidence-metric:first-child
+.evidence-metric__value,
+.evidence-summary--attention
+.evidence-summary__metrics .evidence-metric:first-child
+.evidence-metric__value {
+  color: var(--brief-status-warning);
+}
+
+@media (max-width: 1050px) {
+  .leadership-brief-document .executive-position__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .leadership-brief-document
+  .executive-position-metric--primary {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .leadership-brief-document .executive-position__metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .leadership-brief-document
+  .executive-position-metric--primary {
+    grid-column: auto;
+  }
+
+  .leadership-priorities .action-list > *::before {
+    position: static;
+    display: block;
+    grid-column: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .leadership-priorities .action-card__priority {
+    padding-top: 0;
+  }
+}
+/* =========================================================
+   Leadership Brief v3
+   Executive prioritization and confidence
+   ========================================================= */
+
+.leadership-brief-document .section-heading {
+  margin-bottom:
+    clamp(
+      2rem,
+      3vw,
+      2.75rem
+    );
+}
+
+/* ---------------------------------------------------------
+   Executive Operational Position hierarchy
+   --------------------------------------------------------- */
+
+.leadership-brief-document
+.executive-position__metrics {
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+}
+
+.leadership-brief-document
+.executive-position-metric {
+  min-height:
+    176px;
+}
+
+.leadership-brief-document
+.executive-position-metric--primary {
+  grid-column:
+    span 2;
+
+  min-height:
+    236px;
+}
+
+.leadership-brief-document
+.executive-position-metric--primary
+.executive-position-metric__value {
+  font-size:
+    clamp(
+      2.5rem,
+      4vw,
+      4rem
+    );
+}
+
+.leadership-brief-document
+.executive-position-metric--priority
+.executive-position-metric__value {
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      3rem
+    );
+}
+
+.leadership-brief-document
+.executive-position-metric--supporting {
+  min-height:
+    158px;
+}
+
+.leadership-brief-document
+.executive-position-metric--supporting
+.executive-position-metric__value {
+  font-size:
+    clamp(
+      1.65rem,
+      2.2vw,
+      2.3rem
+    );
+}
+
+/* ---------------------------------------------------------
+   Ranked Material Operational Risks
+   --------------------------------------------------------- */
+
+.material-risks .risk-list,
+.material-risks .card-list {
+  counter-reset:
+    executive-risk;
+}
+
+.material-risks .risk-list > *,
+.material-risks .card-list > * {
+  counter-increment:
+    executive-risk;
+}
+
+.material-risks .risk-list > *::before,
+.material-risks .card-list > *::before {
+  display:
+    block;
+
+  margin-bottom:
+    1.5rem;
+
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.16em;
+
+  content:
+    counter(
+      executive-risk,
+      decimal-leading-zero
+    );
+}
+
+/* ---------------------------------------------------------
+   Editorial Leadership Priorities
+   --------------------------------------------------------- */
+
+.leadership-priorities
+.action-list {
+  counter-reset:
+    leadership-priority;
+}
+
+.leadership-priorities
+.action-list > * {
+  counter-increment:
+    leadership-priority;
+}
+
+.leadership-priorities
+.action-list > *::before {
+  position:
+    absolute;
+
+  top:
+    clamp(
+      2rem,
+      4vw,
+      3.25rem
+    );
+
+  left:
+    0;
+
+  color:
+    var(
+      --brief-text-tertiary
+    );
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.16em;
+
+  content:
+    counter(
+      leadership-priority,
+      decimal-leading-zero
+    );
+}
+
+.leadership-priorities
+.action-card__priority {
+  padding-top:
+    2rem;
+
+  border-right-color:
+    var(
+      --brief-border
+    );
+}
+
+.leadership-priorities
+.action-card h4 {
+  max-width:
+    28ch;
+
+  font-size:
+    clamp(
+      1.4rem,
+      2.3vw,
+      2rem
+    );
+
+  line-height:
+    1.22;
+}
+
+/* ---------------------------------------------------------
+   Executive Confidence
+   --------------------------------------------------------- */
+
+.evidence-summary__metrics {
+  align-self:
+    start;
+}
+
+.evidence-summary__metrics
+.evidence-metric:first-child
+.evidence-metric__value {
+  color:
+    var(
+      --brief-status-healthy
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      2.8rem
+    );
+}
+
+.evidence-summary--low
+.evidence-summary__metrics
+.evidence-metric:first-child
+.evidence-metric__value,
+.evidence-summary--critical
+.evidence-summary__metrics
+.evidence-metric:first-child
+.evidence-metric__value {
+  color:
+    var(
+      --brief-status-critical
+    );
+}
+
+.evidence-summary--medium
+.evidence-summary__metrics
+.evidence-metric:first-child
+.evidence-metric__value,
+.evidence-summary--attention
+.evidence-summary__metrics
+.evidence-metric:first-child
+.evidence-metric__value {
+  color:
+    var(
+      --brief-status-warning
+    );
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (
+  max-width:
+  1050px
+) {
+  .leadership-brief-document
+  .executive-position__metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .leadership-brief-document
+  .executive-position-metric--primary {
+    grid-column:
+      span 2;
+  }
+}
+
+@media (
+  max-width:
+  720px
+) {
+  .leadership-brief-document
+  .executive-position__metrics {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .leadership-brief-document
+  .executive-position-metric--primary {
+    grid-column:
+      auto;
+  }
+
+  .leadership-priorities
+  .action-list > *::before {
+    position:
+      static;
+
+    display:
+      block;
+
+    grid-column:
+      1;
+
+    margin-bottom:
+      0.25rem;
+  }
+
+  .leadership-priorities
+  .action-card__priority {
+    padding-top:
+      0;
+  }
+}
+
+
+/* Leadership Brief v3 numbering correction:
+   numbering is supplied by the renderer. */
+
+.material-risks .risk-list > *::before,
+.material-risks .card-list > *::before,
+.leadership-priorities .action-list > *::before {
+  content:
+    none;
+}
+
+
+/*
+   Executive Dashboard workspace scrollbar
+   Match the Signal Interpreter panel treatment.
+*/
+
+.dashboard {
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    transparent
+    transparent;
+}
+
+.dashboard::-webkit-scrollbar {
+  width:
+    8px;
+}
+
+.dashboard::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+.dashboard::-webkit-scrollbar-thumb {
+  background:
+    transparent;
+
+  border:
+    2px solid
+    transparent;
+
+  border-radius:
+    999px;
+
+  background-clip:
+    padding-box;
+}
+
+.dashboard:hover {
+  scrollbar-color:
+    rgba(255, 255, 255, 0.16)
+    transparent;
+}
+
+.dashboard:hover::-webkit-scrollbar-thumb {
+  background-color:
+    rgba(255, 255, 255, 0.16);
+}
+
+.dashboard::-webkit-scrollbar-thumb:hover {
+  background-color:
+    rgba(255, 255, 255, 0.28);
+}
