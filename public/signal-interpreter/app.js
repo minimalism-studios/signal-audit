@@ -10996,6 +10996,13 @@ async function createInvestigationFromSignalApi(
   state.activeInvestigationView =
     "overview";
 
+  window.dataLayer =
+    window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: "investigation_started",
+  });
+
   return investigation;
 }
 
