@@ -62,25 +62,33 @@ function parseLeadershipBrief(input) {
   );
 
   const topOperationalRisks = parseArray(
-    parsed.topOperationalRisks,
+    omitItemsWithoutSupportingFindings(
+      parsed.topOperationalRisks,
+    ),
     "topOperationalRisks",
     parseOperationalRisk,
   );
 
   const keyWins = parseArray(
-    parsed.keyWins,
+    omitItemsWithoutSupportingFindings(
+      parsed.keyWins,
+    ),
     "keyWins",
     parseKeyWin,
   );
 
   const watchItems = parseArray(
-    parsed.watchItems,
+    omitItemsWithoutSupportingFindings(
+      parsed.watchItems,
+    ),
     "watchItems",
     parseWatchItem,
   );
 
   const recommendedActions = parseArray(
-    parsed.recommendedActions,
+    omitItemsWithoutSupportingFindings(
+      parsed.recommendedActions,
+    ),
     "recommendedActions",
     parseRecommendedAction,
   );
@@ -294,6 +302,29 @@ function parseConfidence(value) {
       "confidence.reason",
     ),
   };
+}
+
+function omitItemsWithoutSupportingFindings(
+  value,
+) {
+  if (!Array.isArray(value)) {
+    return value;
+  }
+
+  return value.filter((item) => {
+    if (
+      !isPlainObject(item)
+      || !Array.isArray(
+        item.supportingFindingIds,
+      )
+    ) {
+      return true;
+    }
+
+    return item
+      .supportingFindingIds
+      .length > 0;
+  });
 }
 
 function parseArray(value, fieldName, parser) {
