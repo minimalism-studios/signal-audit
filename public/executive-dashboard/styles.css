@@ -193,13 +193,19 @@ select,
 }
 
 .dashboard {
-  width: min(1440px, 100%);
+  width: 100%;
   margin: 0 auto;
-  padding: 52px 40px 80px;
+  padding: 52px 0 80px;
 
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
+}
+
+.dashboard .dashboard-loading-state {
+  box-sizing: border-box;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 .leadership-brief {
@@ -567,6 +573,11 @@ select,
 
   .dashboard {
     padding: 36px 24px 64px;
+  }
+
+  .dashboard .dashboard-loading-state {
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .brief-heading {
