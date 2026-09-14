@@ -11182,6 +11182,13 @@ async function resolveInvestigationApi({
   state.selectedInvestigationId =
     investigation.id;
 
+  window.dataLayer =
+    window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: "investigation_resolved",
+  });
+
   return investigation;
 }
 
