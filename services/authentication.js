@@ -7,7 +7,20 @@ function createAuthenticationService({
   userStore,
   authorizationService,
   googleClientId = null,
+  tenantId,
 }) {
+  if (
+    typeof tenantId !== "string"
+    || !tenantId.trim()
+  ) {
+    throw new Error(
+      "Authentication Service requires a tenant ID.",
+    );
+  }
+
+  const normalizedTenantId =
+    tenantId.trim();
+
   if (
     !userStore
     || typeof userStore
@@ -237,6 +250,8 @@ function createAuthenticationService({
             req.session.user = {
               id:
                 user.id,
+              tenantId:
+                normalizedTenantId,
             };
 
             resolve();
@@ -264,12 +279,23 @@ function createAuthenticationService({
   }
 
   function getCurrentUser(req) {
-    const userId =
+    const sessionUser =
       req.session
-        ?.user
+        ?.user;
+
+    const userId =
+      sessionUser
         ?.id;
 
-    if (!userId) {
+    const sessionTenantId =
+      sessionUser
+        ?.tenantId;
+
+    if (
+      !userId
+      || sessionTenantId
+        !== normalizedTenantId
+    ) {
       return null;
     }
 

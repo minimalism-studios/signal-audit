@@ -102,6 +102,15 @@ const {
   createDatadogWebhookHandler,
 } = require("./integrations/datadog/webhook");
 
+const {
+  createTenantServices,
+} = require("./services/tenantServices");
+
+const {
+  resolveTenantIdFromHostname,
+} = require("./services/tenantContext");
+
+
 if (!process.env.SESSION_SECRET) {
   throw new Error(
     "SESSION_SECRET is required.",
@@ -210,6 +219,22 @@ app.use(
 
 app.use(
   "/signal-interpreter",
+
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
   express.static(
     path.join(
       __dirname,
@@ -352,6 +377,8 @@ const authenticationService =
     authorizationService,
     googleClientId:
       process.env.GOOGLE_CLIENT_ID,
+    tenantId:
+      "minimalism",
   });
 
 const authentication =
@@ -367,8 +394,20 @@ const authorization =
 
 app.get(
   "/login",
-  authentication
-    .requireGuest,
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireGuest(
+        req,
+        res,
+        next,
+      );
+  },
 
   (req, res) => {
     res.sendFile(
@@ -384,13 +423,38 @@ app.get(
 
 app.use(
   "/executive-dashboard",
-  authentication
-    .requireAuthentication,
 
-  authorization
-    .requirePermission(
-      "executive:read",
-    ),
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "executive:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
 
   express.static(
     path.join(
@@ -437,6 +501,139 @@ const datadogWebhookHandler =
     connectionStore,
   });
 
+const oasseServices =
+  createTenantServices({
+    tenantId:
+      "oasse",
+
+    openai,
+
+    signalAuditService,
+
+    grafanaWebhookSecret:
+      process.env
+        .GRAFANA_WEBHOOK_SECRET,
+
+    datadogWebhookSecret:
+      process.env
+        .DATADOG_WEBHOOK_SECRET,
+  });
+
+const oasseAuthenticationService =
+
+  createAuthenticationService({
+
+    userStore:
+
+      oasseServices.userStore,
+
+    authorizationService,
+
+    googleClientId:
+
+      process.env.GOOGLE_CLIENT_ID,
+
+    tenantId:
+      "oasse",
+  });
+
+const oasseAuthentication =
+
+  createAuthenticationMiddleware({
+
+    authenticationService:
+
+      oasseAuthenticationService,
+
+  });
+
+const oasseAuthorization =
+
+  createAuthorizationMiddleware({
+
+    authenticationService:
+
+      oasseAuthenticationService,
+
+    authorizationService,
+
+  });
+
+function requireRequestTenantId(req) {
+
+  const tenantId =
+    resolveTenantIdFromHostname(
+      req.hostname,
+    );
+
+  if (!tenantId) {
+    const error =
+      new Error(
+        "Unknown tenant host.",
+      );
+
+    error.status = 404;
+
+    throw error;
+  }
+
+  return tenantId;
+}
+
+function getRequestServices(req) {
+  const tenantId =
+    requireRequestTenantId(req);
+
+  if (tenantId === "oasse") {
+    return oasseServices;
+  }
+
+  return {
+    signalHistory,
+    connectionStore,
+    investigationStore,
+    operationalMemoryStore,
+    customerDataPurgeService,
+    executiveIntelligence,
+    operationalReportingIntelligence,
+    operationalAnalyticsIntelligence,
+    forecastIntelligence,
+
+    processGrafanaSignal,
+    processDatadogSignal,
+    grafanaWebhookHandler,
+    datadogWebhookHandler,
+  };
+}
+
+function getRequestAuthentication(req) {
+  const tenantId =
+    requireRequestTenantId(req);
+
+  if (tenantId === "oasse") {
+    return {
+      userStore:
+        oasseServices.userStore,
+
+      authenticationService:
+        oasseAuthenticationService,
+
+      authentication:
+        oasseAuthentication,
+
+      authorization:
+        oasseAuthorization,
+    };
+  }
+
+  return {
+    userStore,
+    authenticationService,
+    authentication,
+    authorization,
+  };
+}
+
 app.get(
   "/health",
   (req, res) => {
@@ -447,36 +644,111 @@ app.get(
   },
 );
 
-app.use(
-  "/auth",
+const minimalismAuthenticationRouter =
   createAuthenticationRouter({
     authenticationService,
-  }),
-);
+  });
+
+const oasseAuthenticationRouter =
+  createAuthenticationRouter({
+    authenticationService:
+      oasseAuthenticationService,
+  });
 
 app.use(
-  "/api/executive-dashboard",
-  authentication
-    .requireAuthentication,
+  "/auth",
+  (req, res, next) => {
+    const { authenticationService: requestAuthenticationService } =
+      getRequestAuthentication(req);
 
-  authorization
-    .requirePermission(
-      "executive:read",
-    ),
+    const router =
+      requestAuthenticationService
+        === oasseAuthenticationService
+        ? oasseAuthenticationRouter
+        : minimalismAuthenticationRouter;
 
+    return router(req, res, next);
+  },
+);
+
+const minimalismExecutiveDashboardRouter =
   createExecutiveDashboardRouter({
     executiveIntelligence,
     operationalReportingIntelligence,
     operationalAnalyticsIntelligence,
     forecastIntelligence,
-  }),
-);
+  });
+
+const oasseExecutiveDashboardRouter =
+  createExecutiveDashboardRouter({
+    executiveIntelligence:
+      oasseServices.executiveIntelligence,
+
+    operationalReportingIntelligence:
+      oasseServices
+        .operationalReportingIntelligence,
+
+    operationalAnalyticsIntelligence:
+      oasseServices
+        .operationalAnalyticsIntelligence,
+
+    forecastIntelligence:
+      oasseServices.forecastIntelligence,
+  });
 
 app.use(
-  "/api/signal-interpreter",
-  authentication
-    .requireAuthentication,
+  "/api/executive-dashboard",
 
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "executive:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const tenantId =
+      requireRequestTenantId(req);
+
+    const router =
+      tenantId === "oasse"
+        ? oasseExecutiveDashboardRouter
+        : minimalismExecutiveDashboardRouter;
+
+    return router(
+      req,
+      res,
+      next,
+    );
+  },
+);
+
+const minimalismSignalInterpreterRouter =
   createSignalInterpreterRouter({
     signalHistory,
     connectionStore,
@@ -485,38 +757,177 @@ app.use(
     processGrafanaSignal,
     processDatadogSignal,
     authorization,
-  }),
-);
+  });
+
+const oasseSignalInterpreterRouter =
+  createSignalInterpreterRouter({
+    signalHistory:
+      oasseServices.signalHistory,
+
+    connectionStore:
+      oasseServices.connectionStore,
+
+    investigationStore:
+      oasseServices.investigationStore,
+
+    operationalMemoryStore:
+      oasseServices.operationalMemoryStore,
+
+    processGrafanaSignal:
+      oasseServices.processGrafanaSignal,
+
+    processDatadogSignal:
+      oasseServices.processDatadogSignal,
+
+    authorization:
+      oasseAuthorization,
+  });
 
 app.use(
-  "/api/users",
-  authentication
-    .requireAuthentication,
+  "/api/signal-interpreter",
 
-  authorization
-    .requirePermission(
-      "users:read",
-    ),
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
 
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const tenantId =
+      requireRequestTenantId(req);
+
+    const router =
+      tenantId === "oasse"
+        ? oasseSignalInterpreterRouter
+        : minimalismSignalInterpreterRouter;
+
+    return router(
+      req,
+      res,
+      next,
+    );
+  },
+);
+
+const minimalismUsersRouter =
   createUsersRouter({
     userStore,
     authorizationService,
-  }),
+  });
+
+const oasseUsersRouter =
+  createUsersRouter({
+    userStore:
+      oasseServices.userStore,
+
+    authorizationService,
+  });
+
+app.use(
+  "/api/users",
+
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "users:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const tenantId =
+      requireRequestTenantId(req);
+
+    const router =
+      tenantId === "oasse"
+        ? oasseUsersRouter
+        : minimalismUsersRouter;
+
+    return router(
+      req,
+      res,
+      next,
+    );
+  },
 );
 
 app.get(
   "/api/signals",
-  authentication
-    .requireAuthentication,
 
-  authorization
-    .requirePermission(
-      "signals:read",
-    ),
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "signals:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
 
   (req, res) => {
+    const {
+      signalHistory:
+        requestSignalHistory,
+    } =
+      getRequestServices(req);
+
     const signals =
-      signalHistory.listSignals({
+      requestSignalHistory.listSignals({
         limit:
           Number.parseInt(
             req.query.limit,
@@ -535,17 +946,48 @@ app.get(
 
 app.get(
   "/api/signals/:id",
-  authentication
-    .requireAuthentication,
 
-  authorization
-    .requirePermission(
-      "signals:read",
-    ),
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "signals:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
 
   (req, res) => {
+    const {
+      signalHistory:
+        requestSignalHistory,
+    } =
+      getRequestServices(req);
+
     const signal =
-      signalHistory.getSignal(
+      requestSignalHistory.getSignal(
         req.params.id,
       );
 
@@ -564,17 +1006,48 @@ app.get(
 
 app.get(
   "/api/integrations",
-  authentication
-    .requireAuthentication,
 
-  authorization
-    .requirePermission(
-      "integrations:read",
-    ),
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "integrations:read",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
 
   (req, res) => {
+    const {
+      connectionStore:
+        requestConnectionStore,
+    } =
+      getRequestServices(req);
+
     const integrations =
-      connectionStore
+      requestConnectionStore
         .listConnections();
 
     res.status(200).json({
@@ -588,19 +1061,49 @@ app.get(
 
 app.post(
   "/integrations/grafana/webhook/:connectionId",
-  grafanaWebhookHandler,
+  (req, res, next) => {
+    const {
+      grafanaWebhookHandler:
+        requestGrafanaWebhookHandler,
+    } =
+      getRequestServices(req);
+
+    return requestGrafanaWebhookHandler(
+      req,
+      res,
+      next,
+    );
+  },
 );
 
 app.post(
   "/integrations/datadog/webhook/:connectionId",
-  datadogWebhookHandler,
+  (req, res, next) => {
+    const {
+      datadogWebhookHandler:
+        requestDatadogWebhookHandler,
+    } =
+      getRequestServices(req);
+
+    return requestDatadogWebhookHandler(
+      req,
+      res,
+      next,
+    );
+  },
 );
 
 app.get(
   "/",
   (req, res) => {
+    const {
+      authenticationService:
+        requestAuthenticationService,
+    } =
+      getRequestAuthentication(req);
+
     if (
-      authenticationService
+      requestAuthenticationService
         .isAuthenticated(req)
     ) {
       return res.redirect(
@@ -617,17 +1120,47 @@ app.get(
 app.post(
   "/api/admin/data-purge/:connectionId",
 
-  authentication
-    .requireAuthentication,
+  (req, res, next) => {
+    const {
+      authentication:
+        requestAuthentication,
+    } =
+      getRequestAuthentication(req);
 
-  authorization
-    .requirePermission(
-      "data:purge",
-    ),
+    return requestAuthentication
+      .requireAuthentication(
+        req,
+        res,
+        next,
+      );
+  },
+
+  (req, res, next) => {
+    const {
+      authorization:
+        requestAuthorization,
+    } =
+      getRequestAuthentication(req);
+
+    return requestAuthorization
+      .requirePermission(
+        "data:purge",
+      )(
+        req,
+        res,
+        next,
+      );
+  },
 
   (req, res) => {
+    const {
+      customerDataPurgeService:
+        requestCustomerDataPurgeService,
+    } =
+      getRequestServices(req);
+
     const receipt =
-      customerDataPurgeService
+      requestCustomerDataPurgeService
         .purgeConnection(
           req.params.connectionId,
         );

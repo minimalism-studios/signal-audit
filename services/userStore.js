@@ -26,16 +26,19 @@ function createUserStore({
   filePath = DEFAULT_FILE_PATH,
   seedUsername = null,
   seedPasswordHash = null,
+  seedAdministratorEnabled = true,
 } = {}) {
   ensureFile();
 
-  seedAdministrator({
-    username:
-      seedUsername,
+  if (seedAdministratorEnabled) {
+    seedAdministrator({
+      username:
+        seedUsername,
 
-    passwordHash:
-      seedPasswordHash,
-  });
+      passwordHash:
+        seedPasswordHash,
+    });
+  }
 
   function ensureFile() {
     fs.mkdirSync(
