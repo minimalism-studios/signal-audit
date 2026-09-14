@@ -11347,6 +11347,13 @@ detailPanel.addEventListener(
           .dataset
           .openInvestigation;
 
+      window.dataLayer =
+        window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: "investigation_viewed",
+      });
+
       renderWorkspace(
         "investigations",
       );
