@@ -399,7 +399,15 @@ export function renderLeadershipBrief(
       ? dataSources
           .map(formatLabel)
           .join(" + ")
-      : "Connected telemetry";
+      : "No telemetry available";
+
+  const hasOperationalIntelligence =
+    dataSources.length > 0
+    || risks.length > 0
+    || wins.length > 0
+    || watchItems.length > 0
+    || actions.length > 0
+    || supportingFindingCount > 0;
 
   const executiveAssessment =
     brief.executiveAssessment
@@ -458,6 +466,25 @@ export function renderLeadershipBrief(
           )}
         </div>
       </header>
+
+      ${
+        !hasOperationalIntelligence
+          ? `
+            <section
+              class="dashboard-section"
+              aria-labelledby="leadership-brief-empty-title"
+            >
+              <div class="empty-card">
+                <h3 id="leadership-brief-empty-title">
+                  No operational intelligence is available for this reporting period.
+                </h3>
+                <p>
+                  Connect telemetry or ingest signals to generate a Leadership Brief.
+                </p>
+              </div>
+            </section>
+          `
+          : `
 
       <section
         class="
@@ -798,6 +825,8 @@ export function renderLeadershipBrief(
           )}
         </p>
       </section>
+          `
+      }
     </article>
   `;
 }
