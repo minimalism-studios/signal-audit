@@ -63,11 +63,35 @@ function createSignalHistory({
 
       const retainedRecords =
         records.filter(
-          (record) =>
-            isWithinRetention(
+          (record) => {
+            const operationalState =
+              typeof record.operationalState === "string"
+                ? record.operationalState
+                    .trim()
+                    .toLowerCase()
+                : "active";
+
+            if (
+              !operationalState
+              || operationalState === "active"
+            ) {
+              return true;
+            }
+
+            if (
+              operationalState === "resolved"
+            ) {
+              return isWithinRetention(
+                record.resolvedAt,
+                retentionDays,
+              );
+            }
+
+            return isWithinRetention(
               record.receivedAt,
               retentionDays,
-            ),
+            );
+          },
         );
 
       if (
