@@ -517,6 +517,10 @@ const oasseServices =
     datadogWebhookSecret:
       process.env
         .DATADOG_WEBHOOK_SECRET,
+
+    gatekeeperWebhookSecret:
+      process.env
+        .GATEKEEPER_WEBHOOK_SECRET,
   });
 
 const oasseAuthenticationService =
@@ -1086,6 +1090,23 @@ app.post(
       getRequestServices(req);
 
     return requestDatadogWebhookHandler(
+      req,
+      res,
+      next,
+    );
+  },
+);
+
+app.post(
+  "/integrations/gatekeeper/webhook/:connectionId",
+  (req, res, next) => {
+    const {
+      gatekeeperWebhookHandler:
+        requestGatekeeperWebhookHandler,
+    } =
+      getRequestServices(req);
+
+    return requestGatekeeperWebhookHandler(
       req,
       res,
       next,

@@ -21,10 +21,14 @@ const {
 const {
   buildDatadogFindingPrompt,
 } = require("../prompts/datadogFinding");
+const {
+  buildGatekeeperFindingPrompt,
+} = require("../prompts/gatekeeperFinding");
 
 const structuredPromptBuilders = {
   grafana: buildGrafanaFindingPrompt,
   datadog: buildDatadogFindingPrompt,
+  gatekeeper: buildGatekeeperFindingPrompt,
 };
 
 function createSignalAuditService({ openai }) {

@@ -5,6 +5,7 @@ const SUPPORTED_SOURCES =
   new Set([
     "grafana",
     "datadog",
+    "gatekeeper",
   ]);
 
 function createConnectionStore({

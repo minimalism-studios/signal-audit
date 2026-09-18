@@ -46,6 +46,12 @@ const {
 );
 
 const {
+  createGatekeeperProcessor,
+} = require(
+  "../integrations/gatekeeper/processor"
+);
+
+const {
   createGrafanaWebhookHandler,
 } = require(
   "../integrations/grafana/webhook"
@@ -58,6 +64,12 @@ const {
 );
 
 const {
+  createGatekeeperWebhookHandler,
+} = require(
+  "../integrations/gatekeeper/webhook"
+);
+
+const {
   getTenantRuntimePaths,
 } = require("./tenantContext");
 
@@ -67,6 +79,7 @@ function createTenantServices({
   signalAuditService,
   grafanaWebhookSecret,
   datadogWebhookSecret,
+  gatekeeperWebhookSecret,
 }) {
   if (!openai) {
     throw new Error(
@@ -203,6 +216,12 @@ function createTenantServices({
       signalHistory,
     });
 
+  const processGatekeeperSignal =
+    createGatekeeperProcessor({
+      signalAuditService,
+      signalHistory,
+    });
+
   const grafanaWebhookHandler =
     createGrafanaWebhookHandler({
       processSignal:
@@ -218,6 +237,15 @@ function createTenantServices({
         processDatadogSignal,
       webhookSecret:
         datadogWebhookSecret,
+      connectionStore,
+    });
+
+  const gatekeeperWebhookHandler =
+    createGatekeeperWebhookHandler({
+      processSignal:
+        processGatekeeperSignal,
+      webhookSecret:
+        gatekeeperWebhookSecret,
       connectionStore,
     });
 
@@ -238,8 +266,10 @@ function createTenantServices({
 
     processGrafanaSignal,
     processDatadogSignal,
+    processGatekeeperSignal,
     grafanaWebhookHandler,
     datadogWebhookHandler,
+    gatekeeperWebhookHandler,
   });
 }
 
