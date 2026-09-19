@@ -35,6 +35,9 @@ function createTelemetryProcessor({
 
   return async function processSignal(
     signal,
+    {
+      existingHistoryRecord = null,
+    } = {},
   ) {
     if (
       !signal
@@ -61,7 +64,8 @@ function createTelemetryProcessor({
      * of record immediately.
      */
     const historyRecord =
-      signalHistory.saveSignal({
+      existingHistoryRecord
+      || signalHistory.saveSignal({
         ...signal,
         source:
           normalizedSource,
@@ -87,6 +91,8 @@ function createTelemetryProcessor({
               new Date().toISOString(),
 
             failureReason:
+              null,
+            failedAt:
               null,
           },
         );

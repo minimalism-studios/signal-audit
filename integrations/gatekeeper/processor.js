@@ -91,7 +91,11 @@ function createGatekeeperProcessor({
             signal.receiptId,
         });
 
-    if (existingSignal) {
+    if (
+      existingSignal
+      && existingSignal.state
+        !== SIGNAL_STATES.FAILED
+    ) {
       return {
         historyId:
           existingSignal.id,
@@ -109,6 +113,13 @@ function createGatekeeperProcessor({
     const result =
       await processTelemetry(
         signal,
+        {
+          existingHistoryRecord:
+            existingSignal?.state
+              === SIGNAL_STATES.FAILED
+              ? existingSignal
+              : null,
+        },
       );
 
     const connection =
