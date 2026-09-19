@@ -50,6 +50,16 @@ function createGatekeeperProcessor({
     );
   }
 
+  if (
+    typeof signalHistory
+      .findByExternalReceipt
+    !== "function"
+  ) {
+    throw new Error(
+      "signalHistory.findByExternalReceipt is required.",
+    );
+  }
+
   const processTelemetry =
     createTelemetryProcessor({
       source:
@@ -70,6 +80,32 @@ function createGatekeeperProcessor({
   return async function processGatekeeperSignal(
     signal,
   ) {
+    const existingSignal =
+      signalHistory
+        .findByExternalReceipt({
+          connectionId:
+            signal.connectionId,
+          source:
+            "gatekeeper",
+          receiptId:
+            signal.receiptId,
+        });
+
+    if (existingSignal) {
+      return {
+        historyId:
+          existingSignal.id,
+        state:
+          existingSignal.state,
+        signal:
+          existingSignal,
+        auditResult:
+          existingSignal.analysis,
+        duplicate:
+          true,
+      };
+    }
+
     const result =
       await processTelemetry(
         signal,

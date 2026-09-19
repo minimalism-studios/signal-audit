@@ -162,6 +162,51 @@ function createSignalHistory({
     );
   }
 
+  function findByExternalReceipt({
+    connectionId,
+    source,
+    receiptId,
+  }) {
+    const normalizedConnectionId =
+      typeof connectionId === "string"
+        ? connectionId.trim()
+        : "";
+
+    const normalizedSource =
+      typeof source === "string"
+        ? source.trim().toLowerCase()
+        : "";
+
+    const normalizedReceiptId =
+      typeof receiptId === "string"
+        ? receiptId.trim()
+        : "";
+
+    if (
+      !normalizedConnectionId
+      || !normalizedSource
+      || !normalizedReceiptId
+    ) {
+      return null;
+    }
+
+    const records =
+      loadRecords();
+
+    return (
+      records.find(
+        (record) =>
+          record.connectionId
+            === normalizedConnectionId
+          && record.source?.toLowerCase()
+            === normalizedSource
+          && record.signal?.receiptId
+            === normalizedReceiptId,
+      )
+      || null
+    );
+  }
+
   function resolveSignal(
     id,
     {
@@ -679,6 +724,7 @@ function createSignalHistory({
   return {
     saveSignal,
     getSignal,
+    findByExternalReceipt,
     resolveSignal,
     updateSignal,
     listSignals,
