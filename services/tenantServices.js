@@ -70,6 +70,12 @@ const {
 );
 
 const {
+  createSlackDeliveryService,
+} = require(
+  "../integrations/slack/delivery"
+);
+
+const {
   getTenantRuntimePaths,
 } = require("./tenantContext");
 
@@ -80,6 +86,7 @@ function createTenantServices({
   grafanaWebhookSecret,
   datadogWebhookSecret,
   gatekeeperWebhookSecret,
+  slackBotToken,
 }) {
   if (!openai) {
     throw new Error(
@@ -216,10 +223,21 @@ function createTenantServices({
       signalHistory,
     });
 
+  const slackDeliveryService =
+    typeof slackBotToken === "string"
+    && slackBotToken.trim()
+      ? createSlackDeliveryService({
+          botToken:
+            slackBotToken,
+        })
+      : null;
+
   const processGatekeeperSignal =
     createGatekeeperProcessor({
       signalAuditService,
       signalHistory,
+      connectionStore,
+      slackDeliveryService,
     });
 
   const grafanaWebhookHandler =

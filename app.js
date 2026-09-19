@@ -521,6 +521,10 @@ const oasseServices =
     gatekeeperWebhookSecret:
       process.env
         .GATEKEEPER_WEBHOOK_SECRET,
+
+    slackBotToken:
+      process.env
+        .SLACK_BOT_TOKEN,
   });
 
 const oasseAuthenticationService =
