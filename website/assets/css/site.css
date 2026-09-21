@@ -413,3 +413,8 @@ html {
     scroll-behavior: auto;
   }
 }
+
+h3,
+h4 {
+  font-family: var(--sa-font-sans) !important;
+}
