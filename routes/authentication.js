@@ -6,6 +6,7 @@ const {
 
 function createAuthenticationRouter({
   authenticationService,
+  googleSignInEnabled = true,
 }) {
   if (!authenticationService) {
     throw new Error(
@@ -230,9 +231,13 @@ function createAuthenticationRouter({
     "/google/config",
     (_req, res) => {
       res.status(200).json({
+        enabled:
+          googleSignInEnabled,
         clientId:
-          process.env.GOOGLE_CLIENT_ID
-          ?? null,
+          googleSignInEnabled
+            ? process.env.GOOGLE_CLIENT_ID
+              ?? null
+            : null,
       });
     },
   );

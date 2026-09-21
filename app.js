@@ -655,12 +655,14 @@ app.get(
 const minimalismAuthenticationRouter =
   createAuthenticationRouter({
     authenticationService,
+    googleSignInEnabled: false,
   });
 
 const oasseAuthenticationRouter =
   createAuthenticationRouter({
     authenticationService:
       oasseAuthenticationService,
+    googleSignInEnabled: true,
   });
 
 app.use(

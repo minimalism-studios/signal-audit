@@ -8,6 +8,11 @@ const error =
     "error",
   );
 
+const googleAuthSection =
+  document.getElementById(
+    "google-auth-section",
+  );
+
 const googleSignin =
   document.getElementById(
     "google-signin",
@@ -124,9 +129,19 @@ async function initializeGoogleSignIn() {
     }
 
     const {
+      enabled,
       clientId,
     } =
       await response.json();
+
+    if (!enabled) {
+      googleAuthSection.hidden =
+        true;
+      return;
+    }
+
+    googleAuthSection.hidden =
+      false;
 
     if (
       typeof clientId
