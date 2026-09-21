@@ -69,6 +69,14 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  if (req.hostname.toLowerCase() === "www.signal-audit.com") {
+    return res.redirect(301, "https://signal-audit.com" + req.originalUrl);
+  }
+
+  next();
+});
+
 app.use(
   "/assets",
   express.static(path.join(websiteRoot, "assets"))
