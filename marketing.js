@@ -36,7 +36,13 @@ const redirects = new Map([
 ]);
 
 app.disable("x-powered-by");
-app.use(helmet());
+app.use(
+  helmet({
+    referrerPolicy: {
+      policy: "strict-origin-when-cross-origin",
+    },
+  })
+);
 
 app.use(
   "/assets",
