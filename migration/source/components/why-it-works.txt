@@ -1,0 +1,32 @@
+/**** WHY IT WORKS ****/
+
+  <section class="audit-section audit-statement">
+    <h2>Why Signal Audit Works</h2>
+    <div class="signal-framework">
+      <div class="framework-item">
+        <span>01</span>
+        <h3>We Find What Matters</h3>
+        <p>
+          Most teams don't have a monitoring problem.
+          They have a signal interpretation problem.
+        </p>
+      </div>
+      <div class="framework-item">
+        <span>02</span>
+        <h3>We Explain What It Means</h3>
+        <p>
+          Dashboards, alerts, and telemetry are already telling a story.
+          Signal Audit helps you understand it.
+        </p>
+      </div>
+      <div class="framework-item">
+        <span>03</span>
+        <h3>We Recommend What To Do Next</h3>
+        <p>
+          Not more data.
+          Not more dashboards.
+          A clear path forward.
+        </p>
+      </div>
+    </div>
+  </section>

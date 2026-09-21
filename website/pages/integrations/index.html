@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Connect Signal Audit with Grafana, Datadog, and future observability platforms to transform alerts into AI-powered operational intelligence delivered directly into Slack.">
+  <link rel="canonical" href="https://signal-audit.com/integrations">
+  <meta name="description" content="Connect Signal Audit with Grafana, Datadog, and future observability platforms to transform alerts into AI-powered operational intelligence delivered directly into Slack.">
+  <link rel="canonical" href="https://signal-audit.com/integrations">
+  <title>AI Integrations for Signal Audit | Grafana, Datadog & More</title>
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/integrations.css">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================================================
+     SIGNAL AUDIT INTEGRATIONS PAGE
+======================================================= -->
+
+<main class="integrations-page">
+
+  <!-- HERO -->
+
+  <section
+    class="integrations-hero"
+    aria-labelledby="integrations-hero-title"
+  >
+    <div class="integrations-hero__inner">
+
+      <div class="integrations-hero__copy">
+        <p class="integrations-hero__eyebrow">
+          Signal Audit Integrations
+        </p>
+
+        <h1 id="integrations-hero-title">
+          Connect the systems that already understand production.
+        </h1>
+
+        <p class="integrations-hero__intro">
+          Signal Audit receives production alerts from observability platforms,
+          analyzes what matters with AI, preserves signal history, and delivers
+          operational intelligence directly into your team's workflow.
+        </p>
+
+        <div class="integrations-hero__actions">
+          <a
+            class="integrations-button integrations-button--primary"
+            data-cta="explore_integrations"
+            href="#available-integrations"
+          >
+            Explore integrations
+          </a>
+
+          <a
+            class="integrations-button integrations-button--secondary"
+            data-cta="see_how_it_works"
+            href="/why-signal-audits-work"
+          >
+            See how it works
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="integrations-hero__architecture"
+        role="group"
+        aria-label="Observability platforms connected to Signal Audit and Slack"
+      >
+        <div class="integrations-hero__sources">
+          <div class="integrations-hero__source integrations-hero__source--grafana">
+            <span class="integrations-hero__source-mark" aria-hidden="true">
+              G
+            </span>
+
+            <div>
+              <strong>Grafana</strong>
+              <small>Alert intelligence</small>
+            </div>
+
+            <span class="integrations-hero__source-status">
+              Connected
+            </span>
+          </div>
+
+          <div class="integrations-hero__source integrations-hero__source--datadog">
+            <span class="integrations-hero__source-mark" aria-hidden="true">
+              D
+            </span>
+
+            <div>
+              <strong>Datadog</strong>
+              <small>Telemetry intelligence</small>
+            </div>
+
+            <span class="integrations-hero__source-status">
+              Connected
+            </span>
+          </div>
+        </div>
+
+        <div class="integrations-hero__connector" aria-hidden="true">
+          <span></span>
+          <strong>→</strong>
+          <span></span>
+        </div>
+
+        <div class="integrations-hero__engine">
+          <div class="integrations-hero__engine-header">
+            <span class="integrations-hero__engine-status"></span>
+            <span>Operational intelligence engine</span>
+          </div>
+
+          <div class="integrations-hero__engine-orb" aria-hidden="true">
+            A
+          </div>
+
+          <strong>Signal Audit</strong>
+
+          <div class="integrations-hero__engine-stages">
+            <span>Ingest</span>
+            <span>Analyze</span>
+            <span>Preserve</span>
+            <span>Deliver</span>
+          </div>
+        </div>
+
+        <div class="integrations-hero__connector" aria-hidden="true">
+          <span></span>
+          <strong>→</strong>
+          <span></span>
+        </div>
+
+        <div class="integrations-hero__destination">
+          <span class="integrations-hero__destination-mark" aria-hidden="true">
+            S
+          </span>
+
+          <div>
+            <strong>Slack</strong>
+            <small>Decision-ready guidance</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END HERO -->
+
+
+  <!-- PLATFORM STATEMENT -->
+
+  <section class="integrations-platform">
+    <div class="integrations-platform__inner">
+
+      <div class="integrations-platform__heading">
+        <p class="integrations-platform__eyebrow">
+          One intelligence layer
+        </p>
+
+        <h2>
+          The observability platform can change. The Signal Audit workflow
+          remains consistent.
+        </h2>
+      </div>
+
+      <div class="integrations-platform__copy">
+        <p>
+          Every integration follows the same operational pipeline: receive the
+          production signal, normalize vendor-specific context, analyze its
+          significance, preserve its lifecycle, and deliver guidance where the
+          team already works.
+        </p>
+
+        <p>
+          That makes Signal Audit an extensible intelligence layer across your
+          production stack—not a one-off connection to a single monitoring
+          tool.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END PLATFORM STATEMENT -->
+
+
+  <!-- AVAILABLE INTEGRATIONS -->
+
+  <section
+    id="available-integrations"
+    class="integrations-library"
+    aria-labelledby="integrations-library-title"
+  >
+    <div class="integrations-library__inner">
+
+      <header class="integrations-library__header">
+        <p class="integrations-library__eyebrow">
+          Available integrations
+        </p>
+
+        <h2 id="integrations-library-title">
+          Production telemetry in. Operational intelligence out.
+        </h2>
+
+        <p>
+          Connect Signal Audit to the observability systems your team already
+          uses to detect production change.
+        </p>
+      </header>
+
+      <div class="integrations-library__grid">
+
+        <!-- GRAFANA -->
+
+        <article
+          class="integration-card integration-card--grafana"
+          aria-labelledby="integration-grafana-title"
+        >
+          <div class="integration-card__header">
+            <div class="integration-card__identity">
+              <span class="integration-card__mark" aria-hidden="true">
+                G
+              </span>
+
+              <div>
+                <p>Observability integration</p>
+
+                <h3 id="integration-grafana-title">
+                  Grafana
+                </h3>
+              </div>
+            </div>
+
+            <span class="integration-card__availability">
+              Available
+            </span>
+          </div>
+
+          <div class="integration-card__visual">
+            <div class="integration-card__visual-header">
+              <span class="integration-card__status-dot"></span>
+              <span>Production alert received</span>
+              <small>Firing</small>
+            </div>
+
+            <div class="integration-card__signal">
+              <small>Alert</small>
+              <strong>payments-api latency above threshold</strong>
+              <span>Grafana alert lifecycle detected</span>
+            </div>
+
+            <div class="integration-card__workflow">
+              <div>
+                <span>01</span>
+                <strong>Receive</strong>
+              </div>
+
+              <div>
+                <span>02</span>
+                <strong>Analyze</strong>
+              </div>
+
+              <div>
+                <span>03</span>
+                <strong>Deliver</strong>
+              </div>
+
+              <div>
+                <span>04</span>
+                <strong>Resolve</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="integration-card__content">
+            <p class="integration-card__category">
+              Production alert intelligence
+            </p>
+
+            <h4>
+              Turn Grafana alerts into operational guidance.
+            </h4>
+
+            <p class="integration-card__description">
+              Signal Audit receives Grafana firing and recovery events,
+              interprets their operational significance, preserves the alert
+              lifecycle, and delivers analysis into Slack.
+            </p>
+
+            <ul class="integration-card__features">
+              <li>Alert and recovery handling</li>
+              <li>Vendor-aware AI analysis</li>
+              <li>Persistent signal lifecycle</li>
+              <li>Threaded Slack delivery</li>
+            </ul>
+          </div>
+
+          <div class="integration-card__footer">
+            <a href="/integrations/grafana" data-cta="explore_grafana_integration">
+              Explore Grafana integration
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <small>Grafana → Signal Audit → Slack</small>
+          </div>
+        </article>
+
+        <!-- DATADOG -->
+
+        <article
+          class="integration-card integration-card--datadog"
+          aria-labelledby="integration-datadog-title"
+        >
+          <div class="integration-card__header">
+            <div class="integration-card__identity">
+              <span class="integration-card__mark" aria-hidden="true">
+                D
+              </span>
+
+              <div>
+                <p>Observability integration</p>
+
+                <h3 id="integration-datadog-title">
+                  Datadog
+                </h3>
+              </div>
+            </div>
+
+            <span class="integration-card__availability">
+              Available
+            </span>
+          </div>
+
+          <div class="integration-card__visual">
+            <div class="integration-card__visual-header">
+              <span class="integration-card__status-dot"></span>
+              <span>Monitor signal received</span>
+              <small>Alert</small>
+            </div>
+
+            <div class="integration-card__signal">
+              <small>Monitor</small>
+              <strong>Elevated HTTP error rate detected</strong>
+              <span>Datadog telemetry context normalized</span>
+            </div>
+
+            <div class="integration-card__workflow">
+              <div>
+                <span>01</span>
+                <strong>Receive</strong>
+              </div>
+
+              <div>
+                <span>02</span>
+                <strong>Normalize</strong>
+              </div>
+
+              <div>
+                <span>03</span>
+                <strong>Interpret</strong>
+              </div>
+
+              <div>
+                <span>04</span>
+                <strong>Preserve</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="integration-card__content">
+            <p class="integration-card__category">
+              Production telemetry intelligence
+            </p>
+
+            <h4>
+              Convert Datadog monitor signals into operational understanding.
+            </h4>
+
+            <p class="integration-card__description">
+              Signal Audit normalizes Datadog monitor payloads, evaluates risk
+              and likely impact, stores the signal history, and delivers
+              decision-ready guidance into Slack.
+            </p>
+
+            <ul class="integration-card__features">
+              <li>Monitor alert ingestion</li>
+              <li>Datadog-specific interpretation</li>
+              <li>Recovery-state correlation</li>
+              <li>Delivery and failure tracking</li>
+            </ul>
+          </div>
+
+          <div class="integration-card__footer">
+            <a href="/integrations/datadog" data-cta="explore_datadog_integration">
+              Explore Datadog integration
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <small>Datadog → Signal Audit → Slack</small>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END AVAILABLE INTEGRATIONS -->
+
+
+  <!-- SHARED CAPABILITIES -->
+
+  <section
+    class="integrations-capabilities"
+    aria-labelledby="integrations-capabilities-title"
+  >
+    <div class="integrations-capabilities__inner">
+
+      <header class="integrations-capabilities__header">
+        <p class="integrations-capabilities__eyebrow">
+          Shared architecture
+        </p>
+
+        <h2 id="integrations-capabilities-title">
+          Every integration becomes part of the same operational record.
+        </h2>
+      </header>
+
+      <div class="integrations-capabilities__grid">
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            01
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            ↓
+          </div>
+
+          <h3>
+            Automated ingestion
+          </h3>
+
+          <p>
+            Production alerts enter Signal Audit automatically through
+            authenticated integration endpoints.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            02
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            A
+          </div>
+
+          <h3>
+            Vendor-aware analysis
+          </h3>
+
+          <p>
+            Each source is normalized and interpreted using context specific to
+            the originating observability platform.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            03
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            ◌
+          </div>
+
+          <h3>
+            Persistent history
+          </h3>
+
+          <p>
+            Firing, delivery, recovery, and resolution states remain connected
+            as one operational lifecycle.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            04
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            →
+          </div>
+
+          <h3>
+            Workflow delivery
+          </h3>
+
+          <p>
+            Decision-ready guidance reaches Slack as a parent alert and focused
+            threaded analysis.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SHARED CAPABILITIES -->
+
+
+  <!-- EXTENSIBILITY -->
+
+  <section class="integrations-extensibility">
+    <div class="integrations-extensibility__inner">
+
+      <div class="integrations-extensibility__copy">
+        <p class="integrations-extensibility__eyebrow">
+          Built to extend
+        </p>
+
+        <h2>
+          Grafana and Datadog are the beginning, not the boundary.
+        </h2>
+
+        <p>
+          Signal Audit uses a repeatable integration architecture that separates
+          vendor-specific ingestion from the intelligence, history, and
+          delivery layers.
+        </p>
+
+        <p>
+          New production systems can connect to the same operational workflow
+          without rebuilding the product around each vendor.
+        </p>
+      </div>
+
+      <div class="integrations-extensibility__diagram">
+        <div class="integrations-extensibility__sources">
+          <span>Grafana</span>
+          <span>Datadog</span>
+          <span>Future source</span>
+          <span>Custom webhook</span>
+        </div>
+
+        <div class="integrations-extensibility__arrow" aria-hidden="true">
+          ↓
+        </div>
+
+        <div class="integrations-extensibility__layer">
+          <small>Shared intelligence layer</small>
+          <strong>Signal Audit</strong>
+        </div>
+
+        <div class="integrations-extensibility__arrow" aria-hidden="true">
+          ↓
+        </div>
+
+        <div class="integrations-extensibility__outputs">
+          <span>AI Analysis</span>
+          <span>Signal History</span>
+          <span>Slack Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END EXTENSIBILITY -->
+
+
+  <!-- FINAL CTA -->
+
+  <section class="integrations-cta">
+    <div class="integrations-cta__inner">
+
+      <p class="integrations-cta__eyebrow">
+        Connect production to operational intelligence
+      </p>
+
+      <h2>
+        Your monitoring stack already knows something changed. Signal Audit
+        helps your team understand what it means.
+      </h2>
+
+      <p>
+        Explore the available integrations or schedule a review of your current
+        observability and incident-response workflow.
+      </p>
+
+      <div class="integrations-cta__actions">
+        <a
+          class="integrations-button integrations-button--light"
+          data-cta="explore_grafana_integration"
+          href="/integrations/grafana"
+        >
+          Explore Grafana
+        </a>
+
+        <a
+          class="integrations-button integrations-button--outline-light"
+          data-cta="explore_datadog_integration"
+          href="/integrations/datadog"
+        >
+          Explore Datadog
+        </a>
+
+        <a
+          class="integrations-button integrations-button--outline-light"
+          href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="schedule_signal_review"
+        >
+          Schedule a Signal Review
+          <span class="integrations-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END FINAL CTA -->
+
+</main>
+
+<!-- END SIGNAL AUDIT INTEGRATIONS PAGE -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+</body>
+</html>

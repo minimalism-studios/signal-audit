@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Audit + Slack Integration | Operational Decision Intelligence</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/signal-audit-slack.css">
+  <meta name="description" content="Bring operational decision intelligence into Slack. Signal Audit interprets production telemetry, classifies operational risk, and recommends next actions directly within your team&#39;s workflow.">
+  <link rel="canonical" href="https://signal-audit.com/signal-audit-slack">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="sasx-page">
+
+  <section class="sasx-hero">
+    <div class="sasx-hero-inner">
+      <p class="sasx-eyebrow">Signal Audit + Slack Integration</p>
+      <h1>Bring operational intelligence into the workflow.</h1>
+      <p class="sasx-lede">
+        Signal Audit for Slack turns production signals into interpreted context directly inside the place engineering teams already respond.
+      </p>
+
+      <div class="sasx-actions">
+        <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-primary">
+          Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+        <a href="#slack-experience" class="sasx-btn sasx-btn-secondary">
+          See Slack Experience
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEGIN GRAFANA INTEGRATION -->
+
+  <!-- GRAFANA INTEGRATION -->
+
+  <section class="sasx-integration">
+    <div class="sasx-integration__inner">
+
+      <div class="sasx-integration__header">
+        <p class="sasx-integration__eyebrow preFlex">
+          Automated Signal Intake
+        </p>
+
+        <h2 class="animation-segment-parent-hidden">
+          Connect production telemetry to operational reasoning.
+        </h2>
+
+        <p class="sasx-integration__lede preFlex">
+          Signal Audit can receive Grafana alerts through a secure webhook,
+          normalize the underlying telemetry, evaluate what matters, and deliver
+          an operationally useful interpretation directly into Slack.
+        </p>
+      </div>
+
+      <div
+        class="sasx-integration__flow"
+        role="group"
+        aria-label="Grafana alert to Slack delivery workflow"
+      >
+        <article class="sasx-integration__flow-stage">
+          <span>01</span>
+          <strong>Grafana Alert</strong>
+          <small>Production condition detected</small>
+        </article>
+
+        <div class="sasx-integration__flow-arrow" aria-hidden="true">
+          →
+        </div>
+
+        <article class="sasx-integration__flow-stage">
+          <span>02</span>
+          <strong>Signal Audit</strong>
+          <small>Telemetry received and normalized</small>
+        </article>
+
+        <div class="sasx-integration__flow-arrow" aria-hidden="true">
+          →
+        </div>
+
+        <article class="sasx-integration__flow-stage sasx-integration__flow-stage--active">
+          <span>03</span>
+          <strong>Operational Analysis</strong>
+          <small>Risk, impact, context, and next action</small>
+        </article>
+
+        <div class="sasx-integration__flow-arrow" aria-hidden="true">
+          →
+        </div>
+
+        <article class="sasx-integration__flow-stage">
+          <span>04</span>
+          <strong>Slack Delivery</strong>
+          <small>Guidance routed to the right team</small>
+        </article>
+      </div>
+
+      <div class="sasx-integration__capabilities">
+
+        <article class="sasx-integration__capability">
+          <span>01</span>
+
+          <h3 class="animation-segment-parent-hidden">
+            Automatic alert intake
+          </h3>
+
+          <p class="preFlex">
+            Receive Grafana alerts without requiring someone to initiate a
+            manual Signal Audit.
+          </p>
+        </article>
+
+        <article class="sasx-integration__capability">
+          <span>02</span>
+
+          <h3 class="animation-segment-parent-hidden">
+            Operational interpretation
+          </h3>
+
+          <p class="preFlex">
+            Translate alert payloads into impact, urgency, likely causes, and
+            recommended next actions.
+          </p>
+        </article>
+
+        <article class="sasx-integration__capability">
+          <span>03</span>
+
+          <h3 class="animation-segment-parent-hidden">
+            Destination routing
+          </h3>
+
+          <p class="preFlex">
+            Route each integration connection to the appropriate Slack
+            workspace or engineering channel.
+          </p>
+        </article>
+
+        <article class="sasx-integration__capability">
+          <span>04</span>
+
+          <h3 class="animation-segment-parent-hidden">
+            Signal lifecycle history
+          </h3>
+
+          <p class="preFlex">
+            Track whether each signal was received, analyzed, delivered, or
+            failed.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="sasx-integration__positioning">
+        <span>Grafana detects the production condition.</span>
+
+        <strong>
+          Signal Audit explains its operational significance.
+        </strong>
+      </div>
+
+    </div>
+  </section>
+
+<!-- END GRAFANA INTEGRATION -->
+
+
+  <section class="sasx-landscape sasx-dark" id="slack-experience">
+    <div class="sasx-landscape-inner">
+      <div class="sasx-section-header">
+        <p>Slack Product Experience</p>
+        <h2>Signal interpretation where incidents happen.</h2>
+        <span>
+          Instead of forcing teams to move between dashboards, tickets, and alert threads, Signal Audit brings the interpretation into Slack.
+        </span>
+      </div>
+
+      <div class="sasx-slack-stage">
+        <div class="sasx-slack-card">
+          <div class="sasx-slack-topbar">
+            <span class="sasx-dot" aria-hidden="true"></span>
+            <strong>#signal-audit</strong>
+            <em>Production Intelligence</em>
+          </div>
+
+          <div class="sasx-slack-message sasx-parent">
+            <p><strong>🔎 Running Signal Audit…</strong></p>
+            <p>Analyzing telemetry, service behavior, known issues, and operational risk.</p>
+          </div>
+
+          <div class="sasx-thread">
+            <p class="sasx-thread-label">1 reply</p>
+
+            <div class="sasx-slack-message">
+              <p><strong>✅ Audit Complete</strong></p>
+
+              <div class="sasx-output-row">
+                <small>Pattern</small>
+                <span>Persistent degradation detected across latency and retry behavior.</span>
+              </div>
+
+              <div class="sasx-output-row">
+                <small>What Matters</small>
+                <span>This does not look like isolated noise. The strongest signal is correlated movement after a recent deployment.</span>
+              </div>
+
+              <div class="sasx-output-row">
+                <small>Recommended Action</small>
+                <span>Review recent deploys, downstream dependency health, timeout policy, and error-rate changes across the affected window.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sasx-benefit-row">
+          <span>Reduce alert fatigue</span>
+          <span>Classify risk earlier</span>
+          <span>Surface what matters</span>
+          <span>Recommend next action</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sasx-section-cta">
+      <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-primary">
+        Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sasx-landscape sasx-light">
+    <div class="sasx-landscape-inner">
+      <div class="sasx-section-header">
+        <p>What You Get</p>
+        <h2>A 30-day operational intelligence pilot.</h2>
+      </div>
+
+      <div class="sasx-feature-strip">
+        <article>
+          <span>01</span>
+          <h3>Slack Deployment</h3>
+          <p>A Signal Audit workflow configured for Slack-based production interpretation.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Signal Classification</h3>
+          <p>Structured interpretation of noisy alerts, logs, incidents, and operational context.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Team Workflow</h3>
+          <p>A lightweight workflow for surfacing what matters inside existing engineering response channels.</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3>Final Readout</h3>
+          <p>A summary of usage, findings, gaps, recommendations, and expansion opportunities.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="sasx-section-cta">
+      <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-primary">
+        Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sasx-landscape sasx-blueprint">
+    <div class="sasx-landscape-inner">
+      <div class="sasx-section-header">
+        <p>30-Day Pilot</p>
+        <h2>Designed to prove value quickly.</h2>
+      </div>
+
+      <div class="sasx-timeline">
+        <article>
+          <span>01</span>
+          <strong>Deploy</strong>
+          <p>Configure the Slack workflow, define the operational context, and align on use cases.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>Analyze</strong>
+          <p>Use Signal Audit to interpret production signals, recurring issues, alert patterns, and telemetry gaps.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>Refine</strong>
+          <p>Review team usage, improve signal framing, and identify workflow or integration opportunities.</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <strong>Readout</strong>
+          <p>Receive final findings, operational recommendations, and next-step expansion guidance.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="sasx-section-cta">
+      <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-primary">
+        Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sasx-landscape sasx-dark sasx-teams">
+    <div class="sasx-landscape-inner">
+      <div class="sasx-section-header">
+        <p>Built For Production Teams</p>
+        <h2>For teams that need faster operational clarity.</h2>
+      </div>
+
+      <div class="sasx-team-grid">
+        <article>
+          <h3>SRE</h3>
+          <p>Classify noisy signals and understand which alerts require immediate attention.</p>
+        </article>
+
+        <article>
+          <h3>Platform Engineering</h3>
+          <p>Expose gaps between telemetry, ownership, workflow, and production behavior.</p>
+        </article>
+
+        <article>
+          <h3>Engineering Leadership</h3>
+          <p>Turn scattered operational data into clearer risk, priority, and decision context.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="sasx-section-cta">
+      <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-primary">
+        Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- OPERATIONAL STACK -->
+
+  <section class="sasx-stack">
+    <div class="sasx-stack__inner">
+
+      <div class="sasx-stack__header">
+        <p class="sasx-stack__eyebrow">
+          Supported Workflow
+        </p>
+
+        <h2>
+          Works with your operational stack.
+        </h2>
+
+        <p class="sasx-stack__lede">
+          Signal Audit connects production monitoring with the collaboration
+          workflow where engineering teams already investigate and respond.
+        </p>
+      </div>
+
+      <div class="sasx-stack__items">
+
+        <article class="sasx-stack__item sasx-stack__item--available">
+          <div class="sasx-stack__item-top">
+            <span class="sasx-stack__status" aria-hidden="true"></span>
+            <small>Available</small>
+          </div>
+
+          <strong>Grafana</strong>
+
+          <p>
+            Sends production alerts into Signal Audit for automated operational
+            interpretation.
+          </p>
+        </article>
+
+        <article class="sasx-stack__item sasx-stack__item--available">
+          <div class="sasx-stack__item-top">
+            <span class="sasx-stack__status" aria-hidden="true"></span>
+            <small>Available</small>
+          </div>
+
+          <strong>Slack</strong>
+
+          <p>
+            Delivers interpreted production context to the channels where teams
+            already coordinate response.
+          </p>
+        </article>
+
+        <article class="sasx-stack__item sasx-stack__item--coming">
+          <div class="sasx-stack__item-top">
+            <span class="sasx-stack__status" aria-hidden="true"></span>
+            <small>Coming Next</small>
+          </div>
+
+          <strong>Datadog</strong>
+
+          <p>
+            Extending automated signal intake to another widely used
+            observability workflow.
+          </p>
+        </article>
+
+      </div>
+
+      <p class="sasx-stack__note">
+        Signal Audit complements your monitoring tools. It does not replace them.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- END OPERATIONAL STACK -->
+
+  <section class="sasx-final">
+    <p>Signal Audit + Slack Integration</p>
+    <h2>Move from alert response to operational decision intelligence.</h2>
+    <span>30-day pilot engagement</span>
+
+    <a href="https://buy.stripe.com/aFaeVdgNw26mgyigCr7Zu04" target="_blank" rel="noopener noreferrer" class="sasx-btn sasx-btn-light">
+      Purchase Slack Pilot →
+        <span class="sasx-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+  </section>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../assets/js/site-header.js"></script>
+
+</body>
+</html>

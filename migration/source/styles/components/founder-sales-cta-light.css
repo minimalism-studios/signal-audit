@@ -1,0 +1,68 @@
+.founder-sales-cta {
+  max-width: 1180px;
+  margin: 32px auto;
+  padding: 0;
+}
+
+.founder-sales-cta__inner {
+  border: 1px solid #d9d9d9;
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.founder-sales-cta__eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #999999;
+}
+
+.founder-sales-cta h2 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+  color: #111111;
+}
+
+.founder-sales-cta p {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+.founder-sales-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity .2s ease;
+}
+
+.founder-sales-cta__button:hover {
+  opacity: .85;
+}
+
+@media (max-width: 768px) {
+
+  .founder-sales-cta__inner {
+    padding: 32px 24px;
+  }
+
+  .founder-sales-cta__button {
+    width: 100%;
+  }
+
+}

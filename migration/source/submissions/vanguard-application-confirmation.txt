@@ -1,0 +1,618 @@
+<div id="vanguard-confirmation-page">
+
+  <section class="vanguard-confirmation-hero">
+    <p class="vanguard-eyebrow">Vanguard Cohort 001</p>
+
+    <h1>Application Received.</h1>
+
+    <div class="vanguard-confirmation-copy">
+      <p>
+        Thank you for applying to the Signal Audit Vanguard Program.
+      </p>
+
+      <p>
+        Your application has been received and is now under review. Every
+        submission is reviewed individually to determine whether the program
+        is a strong fit for your organization and the Signal Audit product
+        roadmap.
+      </p>
+    </div>
+
+    <div class="vanguard-status-badge">
+      <span class="vanguard-status-indicator" aria-hidden="true"></span>
+      Submission received
+    </div>
+  </section>
+
+  <section class="vanguard-next-steps">
+    <div class="vanguard-section-heading">
+      <p class="vanguard-section-label">Review process</p>
+      <h2>What Happens Next</h2>
+    </div>
+
+    <div class="vanguard-steps-grid">
+
+      <article class="vanguard-step-card">
+        <div class="vanguard-step-number">01</div>
+
+        <h3>Application Review</h3>
+
+        <p>
+          We will review your organization, observability environment,
+          operational workflows, and evaluation goals.
+        </p>
+      </article>
+
+      <article class="vanguard-step-card">
+        <div class="vanguard-step-number">02</div>
+
+        <h3>Selection</h3>
+
+        <p>
+          If your organization is selected, we will contact you to schedule a
+          short discovery conversation and confirm program alignment.
+        </p>
+      </article>
+
+      <article class="vanguard-step-card">
+        <div class="vanguard-step-number">03</div>
+
+        <h3>Evaluation Deployment</h3>
+
+        <p>
+          Selected organizations receive guided onboarding, Signal Audit
+          deployment, and access to the 30-day Vanguard evaluation.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="vanguard-confirmation-status">
+    <div class="vanguard-status-header">
+      <p class="vanguard-section-label">Application status</p>
+      <span class="vanguard-status-code">Received</span>
+    </div>
+
+    <div class="vanguard-status-content">
+      <div class="vanguard-status-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="presentation">
+          <path d="M5 12.5 9.25 17 19 7"></path>
+        </svg>
+      </div>
+
+      <div>
+        <h2>Your submission is complete.</h2>
+
+        <p>
+          We will contact selected organizations after the application review
+          is complete. No additional action is required at this time.
+        </p>
+      </div>
+    </div>
+
+    <div class="vanguard-status-footer">
+      <p>
+        Questions about your application?
+      </p>
+
+      <a href="mailto:iam@minimalism.agency">
+        iam@minimalism.agency
+      </a>
+    </div>
+  </section>
+
+</div>
+<style>
+/* =========================================================
+   VANGUARD APPLICATION CONFIRMATION
+   Desktop-first
+   ========================================================= */
+
+body.collection-6a6bd0d676ea474d1dc5768c {
+  background: #000000;
+}
+
+body.collection-6a6bd0d676ea474d1dc5768c #page,
+body.collection-6a6bd0d676ea474d1dc5768c main {
+  background: #000000;
+}
+
+#vanguard-confirmation-page {
+  width: min(1120px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 210px 0 140px;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.vanguard-confirmation-hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 64px;
+  border: 1px solid #262626;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 255, 255, 0.055),
+      transparent 34%
+    ),
+    #0d0d0d;
+}
+
+.vanguard-confirmation-hero::after {
+  content: "";
+
+  position: absolute;
+  right: -120px;
+  bottom: -160px;
+
+  width: 340px;
+  height: 340px;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.vanguard-eyebrow,
+.vanguard-section-label {
+  margin: 0;
+
+  color: #777777;
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.2;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.vanguard-confirmation-hero h1 {
+  max-width: 900px;
+  margin: 24px 0 30px;
+  color: #ffffff;
+  font-size: 2.75em;
+  font-weight: 450;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+}
+
+.vanguard-confirmation-copy {
+  max-width: 720px;
+}
+
+.vanguard-confirmation-copy p {
+  margin: 0 0 16px;
+
+  color: #b6b6b6;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.vanguard-confirmation-copy p:first-child {
+  color: #ffffff;
+  font-size: 1.08rem;
+}
+
+.vanguard-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 30px;
+  padding: 9px 12px;
+
+  border: 1px solid #303030;
+  background: #151515;
+
+  color: #d7d7d7;
+  font-size: 0.74rem;
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vanguard-status-indicator {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   NEXT STEPS
+   ========================================================= */
+
+.vanguard-next-steps {
+  margin-top: 28px;
+  padding: 56px;
+
+  border: 1px solid #262626;
+  border-radius: 20px;
+
+  background: #0d0d0d;
+}
+
+.vanguard-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+
+  margin-bottom: 36px;
+}
+
+.vanguard-section-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 2.75em;
+  font-weight: 450;
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+}
+
+.vanguard-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.vanguard-step-card {
+  min-height: 280px;
+  padding: 30px;
+
+  border: 1px solid #292929;
+  border-radius: 14px;
+
+  background: #121212;
+}
+
+.vanguard-step-number {
+  margin-bottom: 42px;
+
+  color: #696969;
+  font-size: 0.72rem;
+  font-weight: 650;
+
+  letter-spacing: 0.15em;
+}
+
+.vanguard-step-card h3 {
+  margin: 0 0 16px;
+
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+}
+
+.vanguard-step-card p {
+  margin: 0;
+
+  color: #a9a9a9;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   APPLICATION STATUS
+   ========================================================= */
+
+.vanguard-confirmation-status {
+  margin-top: 28px;
+  padding: 48px 56px;
+
+  border: 1px solid #262626;
+  border-radius: 20px;
+
+  background: #0d0d0d;
+}
+
+.vanguard-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding-bottom: 24px;
+  border-bottom: 1px solid #252525;
+}
+
+.vanguard-status-code {
+  padding: 8px 11px;
+
+  border: 1px solid #303030;
+  background: #151515;
+
+  color: #c8c8c8;
+  font-size: 0.7rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vanguard-status-content {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 24px;
+
+  align-items: flex-start;
+  padding: 38px 0;
+}
+
+.vanguard-status-icon {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+.vanguard-status-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.vanguard-status-icon path {
+  fill: none;
+  stroke: #080808;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.vanguard-status-content h2 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+}
+
+.vanguard-status-content p {
+  max-width: 670px;
+  margin: 0;
+
+  color: #a9a9a9;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.vanguard-status-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding-top: 24px;
+  border-top: 1px solid #252525;
+}
+
+.vanguard-status-footer p {
+  margin: 0;
+
+  color: #777777;
+  font-size: 0.82rem;
+}
+
+.vanguard-status-footer a {
+  color: #ffffff;
+  font-size: 0.82rem;
+  text-decoration: none;
+
+  border-bottom: 1px solid #555555;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.vanguard-status-footer a:hover {
+  color: #cfcfcf;
+  border-color: #ffffff;
+}
+
+
+/* =========================================================
+   BRAND FOOTER PANEL
+   ========================================================= */
+
+.vanguard-confirmation-brand {
+  margin-top: 28px;
+  padding: 72px 40px;
+
+  border-top: 1px solid #242424;
+
+  text-align: center;
+}
+
+.vanguard-confirmation-brand p {
+  margin: 0 0 18px;
+
+  color: #777777;
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.vanguard-confirmation-brand h2 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+  font-size: 2.75em;
+  font-weight: 450;
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+}
+
+.vanguard-confirmation-brand span {
+  color: #888888;
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TEMPORARY TABLET SAFETY
+   Full mobile pass can follow separately
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+  #vanguard-confirmation-page {
+    width: min(100% - 48px, 1120px);
+  }
+
+  .vanguard-confirmation-hero,
+  .vanguard-next-steps,
+  .vanguard-confirmation-status {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .vanguard-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vanguard-step-card {
+    min-height: 0;
+  }
+
+  .vanguard-step-number {
+    margin-bottom: 28px;
+  }
+}
+/* =========================================================
+   VANGUARD CONFIRMATION PAGE
+   FIX SQUARESPACE FLUID ENGINE HEIGHT + FOOTER
+   ========================================================= */
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"],
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+.content-wrapper,
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+.content,
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+[data-fluid-engine="true"],
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.fe-6a6bd12c5ac1f46ff7a95d12 {
+  position: relative !important;
+  display: block !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  overflow: visible !important;
+}
+
+/* Remove Squarespace's generated fixed grid placement */
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.fe-6a6bd12c5ac1f46ff7a95d12
+.fe-block-yui_3_17_2_1_1785450790419_457 {
+  position: relative !important;
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  grid-area: auto !important;
+}
+
+/* Main confirmation section spacing */
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"] {
+  padding: 0 0 140px !important;
+  background: #000000 !important;
+}
+
+/* Ensure the page itself remains dark behind the content */
+
+body.collection-6a6bd0d676ea474d1dc5768c,
+body.collection-6a6bd0d676ea474d1dc5768c #page,
+body.collection-6a6bd0d676ea474d1dc5768c main,
+body.collection-6a6bd0d676ea474d1dc5768c #sections {
+  background: #000000 !important;
+}
+
+/* Reset the custom site footer on this page */
+
+body.collection-6a6bd0d676ea474d1dc5768c
+.minimalism-footer {
+  position: relative !important;
+  z-index: 1;
+
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 0 40px !important;
+
+  border-top: 1px solid #e5e5e5;
+  background: #ffffff;
+}
+/* =========================================================
+   VANGUARD CONFIRMATION PAGE BACKGROUND
+   ========================================================= */
+
+body.collection-6a6bd0d676ea474d1dc5768c,
+body.collection-6a6bd0d676ea474d1dc5768c #siteWrapper,
+body.collection-6a6bd0d676ea474d1dc5768c #page,
+body.collection-6a6bd0d676ea474d1dc5768c main,
+body.collection-6a6bd0d676ea474d1dc5768c #sections,
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"],
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+.section-background,
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+.content-wrapper,
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"]
+.content {
+  background: #ffffff !important;
+}
+body.collection-6a6bd0d676ea474d1dc5768c
+.page-section[data-section-id="6a6bd12ba0499b6fd8667e09"] {
+  padding: 0 0 80px !important;
+  background: #ffffff !important;
+}
+</style>

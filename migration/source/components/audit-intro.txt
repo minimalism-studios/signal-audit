@@ -1,0 +1,17 @@
+/**** INTRO POSSIBLY NOT NECESSARY ANYMORE ****/
+
+  <section class="audit-section intro">
+    <p>
+      Production systems generate more data than ever.
+    </p>
+
+    <p>
+      Most teams see the data.
+
+      Few teams understand the story.
+    </p>
+
+    <p class="intro-statement">
+      Know which signals matter before your next incident.
+    </p>
+  </section>

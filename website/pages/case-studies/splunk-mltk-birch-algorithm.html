@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Splunk MLTK BIRCH Signal Audit | Signal Classification for Production Systems</title>
+  <meta name="description" content="Learn how a Splunk MLTK cluster-based model using the BIRCH algorithm classified production telemetry into meaningful operational signals, helping engineering teams distinguish noise, degradation, and critical system behavior.">
+  <link rel="canonical" href="https://signal-audit.com/case-studies/splunk-mltk-birch-signal-audit">
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/splunk-mltk-birch-algorithm.css">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="case-study-page">
+
+  <div class="case-study-kicker">Case Study 001 / Signal Audit Foundation</div>
+
+  <h1>Splunk MLTK BIRCH Signal Audit</h1>
+
+  <p class="case-study-subhead">
+    How a cluster-based machine learning model turned production telemetry into operational signal across microservices.
+  </p>
+
+  <div class="case-study-inline-cta" id="signal-interpreter-btn">
+    <a href="/signal-interpreter" class="case-study-cta-button" data-cta="try_signal_interpreter">
+      Try Signal Interpreter
+    </a>
+  </div>
+
+  <div class="case-study-meta">
+    <div>
+      <strong>System Type</strong>
+      Production microservices
+    </div>
+    <div>
+      <strong>Model</strong>
+      Splunk MLTK Cluster-Based Model
+    </div>
+    <div>
+      <strong>Algorithm</strong>
+      BIRCH clustering
+    </div>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Overview</h2>
+    <p>
+      This case study represents the technical foundation behind Signal Audit. The original model used Splunk MLTK and the BIRCH clustering algorithm to classify production system behavior into meaningful operational categories.
+    </p>
+    <p>
+      The goal was not to create another dashboard. The goal was to separate signal from noise so engineering teams could understand what system behavior actually required attention.
+    </p>
+  </section>
+
+  <!--
+  <div class="case-study-top-cta">
+    <p>Looking to uncover similar patterns in your environment?</p>
+
+    <a href="/pricing">
+      View Signal Audit Pricing →
+    </a>
+  </div>
+  -->
+
+  <section class="case-study-flow-landscape" aria-label="Signal Audit case study summary">
+
+    <div class="case-flow-lane">
+
+      <div class="case-flow-node">
+        <span>Telemetry</span>
+        <ul>
+          <li>Alerts</li>
+          <li>Logs</li>
+          <li>Metrics</li>
+          <li>Traces</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node case-flow-node-dark">
+        <span>Signal Audit</span>
+        <ul>
+          <li>Pattern</li>
+          <li>Correlation</li>
+          <li>Risk</li>
+          <li>Recommendation</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Finding</span>
+        <strong>Persistent retry amplification</strong>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Outcome</span>
+        <strong>Reduced investigation scope</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="case-study-section">
+    <h2>The Problem</h2>
+    <p>
+      Production systems were generating logs, alerts, dashboards, and telemetry, but the burden of interpretation still sat with engineers.
+    </p>
+    <p>
+      The issue was not a lack of data. The issue was that system behavior was not being classified in a way that helped teams make faster operational decisions.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      The real problem was not observability. The real problem was interpretation.
+    </p>
+  </div>
+
+  <section class="case-study-section">
+    <h2>The Model</h2>
+    <p>
+      A cluster-based model was created in Splunk MLTK using the BIRCH algorithm. The model analyzed telemetry patterns across production services and grouped behavior into operationally meaningful clusters.
+    </p>
+    <p>
+      Instead of treating every anomaly as equal, the model helped distinguish between normal variance, noisy behavior, degradation patterns, and critical signals.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Signal Categories</h2>
+    <p>
+      The model classified system behavior into five practical signal categories.
+    </p>
+
+    <div class="signal-grid">
+      <div class="signal-card">
+        <h3>Noise</h3>
+        <p>Low-value activity that created distraction but did not indicate meaningful system risk.</p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Baseline</h3>
+        <p>Expected system behavior within normal operating patterns.</p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Spiky Signals</h3>
+        <p>Short-lived bursts of activity that required context before escalation.</p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Persistent Degradation</h3>
+        <p>Sustained negative behavior that suggested a developing operational issue.</p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Critical Signals</h3>
+        <p>High-priority behavior that required immediate engineering attention.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-study-inline-cta">
+    <h3>What Would A Signal Audit Find In Your Environment?</h3>
+
+    <p>
+      Signal Audit reviews telemetry, identifies operational patterns,
+      and highlights areas of emerging risk before they become incidents.
+    </p>
+
+    <a href="/pricing" data-cta="view_pricing">
+      View Pricing →
+    </a>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Why BIRCH Worked</h2>
+    <p>
+      BIRCH was useful because the objective was signal separation. The model needed to identify behavioral clusters inside high-volume telemetry without requiring every pattern to be manually defined in advance.
+    </p>
+    <p>
+      This made the approach especially useful for environments where system behavior changes over time and static thresholds alone are not enough.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Operational Workflow</h2>
+
+    <div class="case-study-steps">
+      <div class="case-study-step">
+        <span>01</span>
+        <div>
+          <h3>Collect telemetry</h3>
+          <p>System data was collected across services, alerts, and operational signals.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+        <div>
+          <h3>Cluster behavior</h3>
+          <p>The BIRCH algorithm grouped similar behavioral patterns into clusters.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+        <div>
+          <h3>Classify signal</h3>
+          <p>Clusters were mapped into practical operational categories engineers could act on.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+        <div>
+          <h3>Improve decisions</h3>
+          <p>The classification helped reduce manual interpretation and clarify escalation paths.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>How This Became Signal Audit</h2>
+    <p>
+      This model became the inspiration for Signal Audit: a practical way to help engineering teams understand what their systems are saying.
+    </p>
+    <p>
+      Signal Audit takes the same core principle — signal over noise — and applies it to modern engineering workflows, incident patterns, observability gaps, and operational decision-making.
+    </p>
+  </section>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+
+      <p class="founder-sales-cta__eyebrow">
+        Seeing similar patterns in your environment?
+      </p>
+
+      <h2>
+        Talk directly with the creator of Signal Audit.
+      </h2>
+
+      <p>
+        Schedule a Signal Review to discuss the operational patterns, observability gaps, and production risks hiding inside your telemetry before they become customer-facing incidents.
+      </p>
+
+      <a
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        class="founder-sales-cta__button"
+        target="_blank"
+        rel="noopener"
+        data-cta="schedule_signal_review"
+      >
+        Schedule a Signal Review
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta">
+
+    <p class="case-study-cta-kicker">
+      Ready to audit your own systems?
+    </p>
+
+    <h2>
+      Turn system behavior into engineering decisions.
+    </h2>
+
+    <p>
+      Signal Audit helps engineering teams separate noise from meaningful operational signals so they can focus on what matters next.
+    </p>
+
+    <a target="_blank" href="https://buy.stripe.com/28E14n0OyaCS4PA4TJ7Zu03" class="case-study-button" data-cta="book_signal_audit">
+      Book a Signal Audit
+    </a>
+
+  </section>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+</body>
+</html>

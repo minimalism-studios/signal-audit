@@ -1,0 +1,460 @@
+<div class="vanguard-apply-intro">
+  <p>Vanguard Cohort 001</p>
+
+  <h1>Apply for the Vanguard Program.</h1>
+
+  <div class="vanguard-apply-intro__meta">
+    <span>3 organizations</span>
+    <span>30-day evaluation</span>
+    <span>$0 evaluation fee</span>
+  </div>
+</div>
+<style>
+.vanguard-apply-intro {
+  margin: 0 0 32px;
+  width: 60%;
+  padding: 5vh 0;
+  transform: translateX(25vw);
+}
+
+.vanguard-apply-intro > p {
+  margin: 0 0 18px;
+  color: #888888;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vanguard-apply-intro h1 {
+  max-width: 850px;
+  margin: 0 0 28px;
+  color: #ffffff;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 450;
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+  font-size: 2.05em;
+}
+
+.vanguard-apply-intro__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  transform: translateX(13vw);
+}
+
+.vanguard-apply-intro__meta span {
+  padding: 8px 11px;
+  border: 1px solid #303030;
+  background: #111111;
+  color: #b3b3b3;
+  font-size: 0.72rem;
+}
+body.collection-6a6badc84759ca5072aa2a9f .fe-6a6bb429d753aa52bddfdbb1,
+body.collection-6a6badc84759ca5072aa2a9f .page-section[data-section-id="6a6bb42830c950110973fa98"] .content-wrapper {
+  background: #000;
+}
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e .title,
+.sqs-site-style-form .field-list .caption-text,
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e input[type="text"],
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e fieldset.checkbox .option label span,
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e fieldset.radio .option label span {
+  color: #FFF;
+  font-family: arial;
+}
+.sqs-site-style-form .field-list .caption-text {
+  color: #FFF;
+  font-weight: bold;
+  font-size: .74rem !important;
+  text-transform: uppercase;
+}
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input::placeholder,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e textarea::placeholder {
+    color: #ddd !important;
+    opacity: 1 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400;
+    font-size: .85rem !important;
+}
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="checkbox"],
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="radio"],
+.form-field-hover-focus-opacity .sqs-site-style-form .form-item input[type=checkbox]::after,
+.form-field-hover-focus-opacity .sqs-site-style-form .form-item .radio-mark::before {
+    accent-color:#ffffff !important;
+    border: solid 1px #FFF;
+}
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e input:focus, body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e select:focus, body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e textarea:focus {
+  background: #FFF;
+}
+/* =========================================================
+   SQUARESPACE CHECKBOXES
+   white outline, white selected fill, black check
+   ========================================================= */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="checkbox"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+
+  position: relative !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+
+  margin: 0 !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 2px !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="checkbox"]:checked {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+
+  width: 4px;
+  height: 8px;
+
+  border: solid #111111;
+  border-width: 0 2px 2px 0;
+
+  transform: rotate(45deg);
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e input[type="checkbox"]:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.35) !important;
+  outline-offset: 3px;
+}
+/* =========================================================
+   SQUARESPACE RADIO BUTTONS
+   Style the actual input, not Squarespace's hidden spans
+   ========================================================= */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio input[type="radio"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+
+  position: relative !important;
+  display: inline-block !important;
+  flex: 0 0 18px !important;
+
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  border: 1px solid #ffffff !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+/* Selected state: white circle */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio input[type="radio"]:checked {
+  border-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Black center dot */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  top: 50%;
+  left: 50%;
+
+  border-radius: 50%;
+  background: #111111 !important;
+
+  transform: translate(-50%, -50%);
+}
+
+/* Keyboard focus */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio input[type="radio"]:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.35) !important;
+  outline-offset: 3px;
+}
+
+/* Prevent Squarespace's internal marks from appearing on top */
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio .radio-mark,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e
+fieldset.radio .radio-outline {
+  display: none !important;
+}
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e fieldset.checkbox,
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e fieldset.radio {
+  background: none;
+  border: none;
+}
+/* =========================================================
+   VANGUARD APPLICATION — PAGE LAYOUT FIX
+   ========================================================= */
+
+body.collection-6a6badc84759ca5072aa2a9f,
+body.collection-6a6badc84759ca5072aa2a9f #siteWrapper,
+body.collection-6a6badc84759ca5072aa2a9f #page,
+body.collection-6a6badc84759ca5072aa2a9f #sections,
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"],
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] .section-background,
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] .content-wrapper {
+  background: #000 !important;
+}
+
+/* Remove Squarespace's oversized 555-row Fluid Engine layout */
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-6a6bb429d753aa52bddfdbb1 {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100%;
+
+  padding: 0 6vw 80px !important;
+  margin: 0 auto;
+
+  row-gap: 0 !important;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Remove Fluid Engine's manual grid placement */
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-yui_3_17_2_1_1785444458067_899,
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e {
+  position: relative !important;
+  inset: auto !important;
+  grid-area: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Center the page introduction */
+body.collection-6a6badc84759ca5072aa2a9f
+.vanguard-apply-intro {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 48px;
+  padding: 48px 0 0;
+
+  text-align: center;
+  transform: none !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+.vanguard-apply-intro h1 {
+  max-width: 850px;
+  margin: 0 auto 28px;
+}
+
+/* Center the metadata pills */
+body.collection-6a6badc84759ca5072aa2a9f
+.vanguard-apply-intro__meta {
+  justify-content: center;
+  transform: none !important;
+}
+
+/* Center the form container while keeping fields left-aligned */
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e .sqs-block-content,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e .form-wrapper,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e form {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* Keep the form contents readable */
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e .field-list {
+  text-align: left;
+}
+
+/* Center submit button */
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e .form-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Prevent the section from retaining artificial height */
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"],
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] .content,
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] .content-wrapper {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  body.collection-6a6badc84759ca5072aa2a9f
+  .fe-6a6bb429d753aa52bddfdbb1 {
+    padding: 0 6vw 56px !important;
+  }
+
+  body.collection-6a6badc84759ca5072aa2a9f
+  .vanguard-apply-intro {
+    margin-bottom: 36px;
+    padding-top: 32px;
+  }
+
+  body.collection-6a6badc84759ca5072aa2a9f
+  .vanguard-apply-intro h1 {
+    font-size: 2em;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+}
+body.collection-6a6badc84759ca5072aa2a9f .page-section[data-section-id="6a6bb42830c950110973fa98"] .content-wrapper {
+  padding-top: 0 !important;
+  transform: translateY(-100px);
+}
+/* =========================================================
+   VANGUARD APPLICATION — FORCE FORM CENTERING
+   ========================================================= */
+
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-6a6bb429d753aa52bddfdbb1
+.fe-block-88ff7f68453b3d89a13e {
+  align-self: center !important;
+  display: flex !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  max-width: 760px !important;
+
+  margin-inline: auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.sqs-block {
+  display: flex !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  max-width: 760px !important;
+
+  margin-inline: auto !important;
+  padding: 0 !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.sqs-block-content,
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.sqs-site-style-form,
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.form-wrapper,
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.react-form-contents {
+  width: 100% !important;
+  max-width: 760px !important;
+
+  margin-inline: auto !important;
+  box-sizing: border-box;
+}
+
+/* Keep form fields left-aligned */
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e
+.field-list {
+  width: 100%;
+  text-align: left;
+}
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-6a6bb429d753aa52bddfdbb1 {
+  padding: 0 6vw 0 !important;
+}
+/* Remove all spacing below the Vanguard form */
+
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-block-88ff7f68453b3d89a13e,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e .form-wrapper,
+body.collection-6a6badc84759ca5072aa2a9f
+#block-88ff7f68453b3d89a13e form {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remove section spacing */
+
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] {
+    padding-bottom: 0 !important;
+}
+body.collection-6a6badc84759ca5072aa2a9f #block-88ff7f68453b3d89a13e .form-button-wrapper {
+  margin-bottom: 40px;
+}
+</style>

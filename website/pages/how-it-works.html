@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Signal Audits Work | Signal Audit</title>
+  <meta name="description" content="Most teams already have the data. Learn how Signal Audits identify operational patterns hidden in telemetry, reveal observability gaps, and turn production system behavior into actionable engineering decisions.">
+  <link rel="canonical" href="https://signal-audit.com/why-signal-audits-work">
+
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/how-it-works.css">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================================================
+     HOW SIGNAL AUDIT WORKS — PLATFORM WORKFLOW
+======================================================= -->
+
+<section
+  class="hiw-platform"
+  aria-labelledby="hiw-platform-title"
+>
+  <div class="hiw-platform__inner">
+
+    <header class="hiw-platform__header">
+      <p class="hiw-platform__eyebrow">
+        How Signal Audit Works
+      </p>
+
+      <h1 id="hiw-platform-title" class="hiw-platform__title">
+        From production signal to operational intelligence.
+      </h1>
+
+      <p class="hiw-platform__intro">
+        Signal Audit connects to the observability platforms that already
+        understand your production environment, analyzes incoming signals,
+        preserves their history, and delivers decision-ready guidance directly
+        into your team's workflow.
+      </p>
+    </header>
+
+    <div
+      class="hiw-platform__workflow"
+      role="list"
+      aria-label="Production environment to Slack operational intelligence workflow"
+    >
+
+      <!-- STEP 01 -->
+
+      <article class="hiw-platform__step hiw-platform__step--production" role="listitem">
+        <div class="hiw-platform__step-header">
+          <span class="hiw-platform__step-number">01</span>
+          <span class="hiw-platform__step-label">Production environment</span>
+        </div>
+
+        <div class="hiw-platform__step-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="hiw-platform__step-copy">
+          <h3>Your systems generate operational signals.</h3>
+
+          <p>
+            Services, infrastructure, dependencies, deployments, and user
+            activity continuously produce evidence about system behavior.
+          </p>
+        </div>
+
+        <ul class="hiw-platform__tags" aria-label="Production signal examples">
+          <li>Latency</li>
+          <li>Errors</li>
+          <li>Retries</li>
+          <li>Dependencies</li>
+        </ul>
+      </article>
+
+      <div class="hiw-platform__connector" aria-hidden="true">
+        <span class="hiw-platform__connector-line"></span>
+        <span class="hiw-platform__connector-label">
+          Telemetry
+        </span>
+        <span class="hiw-platform__connector-arrow">→</span>
+      </div>
+
+      <!-- STEP 02 -->
+
+      <article class="hiw-platform__step hiw-platform__step--observability" role="listitem">
+        <div class="hiw-platform__step-header">
+          <span class="hiw-platform__step-number">02</span>
+          <span class="hiw-platform__step-label">Observability platform</span>
+        </div>
+
+        <div class="hiw-platform__source-stack">
+          <div class="hiw-platform__source hiw-platform__source--grafana">
+            <span class="hiw-platform__source-mark" aria-hidden="true">G</span>
+
+            <div>
+              <strong>Grafana</strong>
+              <small>Alert lifecycle</small>
+            </div>
+
+            <span class="hiw-platform__source-status">
+              Connected
+            </span>
+          </div>
+
+          <div class="hiw-platform__source hiw-platform__source--datadog">
+            <span class="hiw-platform__source-mark" aria-hidden="true">D</span>
+
+            <div>
+              <strong>Datadog</strong>
+              <small>Monitor telemetry</small>
+            </div>
+
+            <span class="hiw-platform__source-status">
+              Connected
+            </span>
+          </div>
+        </div>
+
+        <div class="hiw-platform__step-copy">
+          <h3>Your observability tools detect meaningful change.</h3>
+
+          <p>
+            Grafana and Datadog identify abnormal behavior and send the
+            production signal into Signal Audit automatically.
+          </p>
+        </div>
+      </article>
+
+      <div class="hiw-platform__connector" aria-hidden="true">
+        <span class="hiw-platform__connector-line"></span>
+        <span class="hiw-platform__connector-label">
+          Automated ingestion
+        </span>
+        <span class="hiw-platform__connector-arrow">→</span>
+      </div>
+
+      <!-- STEP 03 -->
+
+      <article class="hiw-platform__step hiw-platform__step--audit" role="listitem">
+        <div class="hiw-platform__step-header">
+          <span class="hiw-platform__step-number">03</span>
+          <span class="hiw-platform__step-label">Signal Audit</span>
+        </div>
+
+        <div class="hiw-platform__engine">
+          <div class="hiw-platform__engine-orb" aria-hidden="true">
+            A
+          </div>
+
+          <div class="hiw-platform__engine-status">
+            <span></span>
+            Analyzing production signal
+          </div>
+
+          <div class="hiw-platform__engine-stages">
+            <div>
+              <span>01</span>
+              <strong>Normalize</strong>
+            </div>
+
+            <div>
+              <span>02</span>
+              <strong>Analyze</strong>
+            </div>
+
+            <div>
+              <span>03</span>
+              <strong>Preserve</strong>
+            </div>
+
+            <div>
+              <span>04</span>
+              <strong>Deliver</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hiw-platform__step-copy">
+          <h3>Signal Audit determines what the signal means.</h3>
+
+          <p>
+            Vendor-specific telemetry is normalized, analyzed with AI, connected
+            to the signal lifecycle, and stored as persistent operational
+            context.
+          </p>
+        </div>
+      </article>
+
+      <div class="hiw-platform__connector" aria-hidden="true">
+        <span class="hiw-platform__connector-line"></span>
+        <span class="hiw-platform__connector-label">
+          Interpretation
+        </span>
+        <span class="hiw-platform__connector-arrow">→</span>
+      </div>
+
+      <!-- STEP 04 -->
+
+      <article class="hiw-platform__step hiw-platform__step--intelligence" role="listitem">
+        <div class="hiw-platform__step-header">
+          <span class="hiw-platform__step-number">04</span>
+          <span class="hiw-platform__step-label">Operational intelligence</span>
+        </div>
+
+        <div class="hiw-platform__output">
+          <div class="hiw-platform__output-row">
+            <small>Classification</small>
+            <strong>Persistent Degradation</strong>
+          </div>
+
+          <div class="hiw-platform__output-row">
+            <small>What Matters</small>
+            <strong>
+              Latency and retry activity moved together after deployment.
+            </strong>
+          </div>
+
+          <div class="hiw-platform__output-row">
+            <small>What To Ignore</small>
+            <strong>
+              Short-lived fluctuations outside the affected service window.
+            </strong>
+          </div>
+
+          <div class="hiw-platform__output-row hiw-platform__output-row--action">
+            <small>Recommended Action</small>
+            <strong>
+              Review retry policy, downstream health, and timeout configuration.
+            </strong>
+          </div>
+        </div>
+
+        <div class="hiw-platform__step-copy">
+          <h3>Your team receives understanding, not another alert.</h3>
+
+          <p>
+            The output explains significance, identifies risk, removes
+            distractions, and provides a practical next action.
+          </p>
+        </div>
+      </article>
+
+      <div class="hiw-platform__connector" aria-hidden="true">
+        <span class="hiw-platform__connector-line"></span>
+        <span class="hiw-platform__connector-label">
+          Workflow delivery
+        </span>
+        <span class="hiw-platform__connector-arrow">→</span>
+      </div>
+
+      <!-- STEP 05 -->
+
+      <article class="hiw-platform__step hiw-platform__step--slack" role="listitem">
+        <div class="hiw-platform__step-header">
+          <span class="hiw-platform__step-number">05</span>
+          <span class="hiw-platform__step-label">Slack delivery</span>
+        </div>
+
+        <div class="hiw-platform__slack">
+          <div class="hiw-platform__slack-header">
+            <span class="hiw-platform__slack-dot"></span>
+            <span>#signal-audit</span>
+          </div>
+
+          <div class="hiw-platform__slack-message">
+            <div class="hiw-platform__slack-meta">
+              <span class="hiw-platform__slack-avatar">SA</span>
+
+              <div>
+                <strong>Signal Audit</strong>
+                <small>APP</small>
+              </div>
+            </div>
+
+            <p>
+              Elevated latency detected in
+              <strong>payments-api</strong>.
+            </p>
+          </div>
+
+          <div class="hiw-platform__slack-thread">
+            <span>1 reply</span>
+
+            <div>
+              <strong>Audit complete</strong>
+
+              <p>
+                Persistent degradation detected. Review the recent deployment,
+                retry policy, and downstream dependency health.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hiw-platform__step-copy">
+          <h3>Operational intelligence reaches the team already responding.</h3>
+
+          <p>
+            Slack is the delivery destination—not the source of the signal—so
+            teams receive analysis without leaving their existing workflow.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hiw-platform__lifecycle">
+      <div class="hiw-platform__lifecycle-header">
+        <p>Persistent Signal History</p>
+
+        <span>
+          The signal does not disappear after delivery.
+        </span>
+      </div>
+
+      <div class="hiw-platform__lifecycle-track">
+        <div class="hiw-platform__lifecycle-item">
+          <span>01</span>
+
+          <div>
+            <strong>Received</strong>
+            <small>Production alert recorded</small>
+          </div>
+        </div>
+
+        <div class="hiw-platform__lifecycle-arrow" aria-hidden="true">→</div>
+
+        <div class="hiw-platform__lifecycle-item">
+          <span>02</span>
+
+          <div>
+            <strong>Analyzed</strong>
+            <small>Operational meaning established</small>
+          </div>
+        </div>
+
+        <div class="hiw-platform__lifecycle-arrow" aria-hidden="true">→</div>
+
+        <div class="hiw-platform__lifecycle-item">
+          <span>03</span>
+
+          <div>
+            <strong>Delivered</strong>
+            <small>Guidance posted to Slack</small>
+          </div>
+        </div>
+
+        <div class="hiw-platform__lifecycle-arrow" aria-hidden="true">→</div>
+
+        <div class="hiw-platform__lifecycle-item">
+          <span>04</span>
+
+          <div>
+            <strong>Resolved</strong>
+            <small>Recovery connected to the original signal</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="hiw-platform__footer">
+      <div>
+        <p class="hiw-platform__footer-eyebrow">
+          The complete workflow
+        </p>
+
+        <h3>
+          Your observability stack detects the signal. Signal Audit explains
+          what it means.
+        </h3>
+      </div>
+
+      <a
+        class="hiw-platform__cta"
+        href="/integrations"
+        data-cta="explore_integrations"
+      >
+        Explore integrations
+        <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+
+  </div>
+</section>
+
+<!-- END HOW SIGNAL AUDIT WORKS -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../assets/js/site-header.js"></script>
+
+</body>
+</html>

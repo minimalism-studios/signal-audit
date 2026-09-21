@@ -1,0 +1,249 @@
+.signal-faq-page {
+  background: #ffffff;
+  color: #111111;
+  padding: 96px 24px;
+}
+
+.signal-faq-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.signal-faq-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+  margin-bottom: 18px;
+}
+
+.signal-faq-page h1 {
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 0 0 56px;
+  max-width: 760px;
+}
+
+.signal-faq-list {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.signal-faq-item {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.signal-faq-item h2 {
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin: 0 0 12px;
+}
+
+.signal-faq-item p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444444;
+  margin: 0;
+  max-width: 720px;
+}
+
+.signal-faq-cta {
+  margin-top: 72px;
+  padding: 48px;
+  background: #111111;
+  color: #ffffff;
+  border-radius: 28px;
+}
+
+.signal-faq-cta h2 {
+  color: #FFF !important;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  margin: 0 0 16px;
+}
+
+.signal-faq-cta p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0 0 28px;
+}
+
+.signal-faq-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111111;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.signal-faq-button:hover {
+  opacity: 0.85;
+}
+.signal-faq-page {
+  background: #ffffff;
+  color: #111111;
+  padding: 56px 24px 24px;
+}
+
+.signal-faq-page h1 {
+  margin: 0 0 36px;
+}
+
+.signal-faq-item {
+  padding: 22px 0;
+}
+
+.signal-faq-item p {
+  line-height: 1.55;
+}
+
+.signal-faq-cta {
+  margin-top: 44px;
+  padding: 38px;
+}
+
+@media (max-width: 767px) {
+  .signal-faq-page {
+    padding: 72px 22px;
+  }
+
+  .signal-faq-page h1 {
+    margin-bottom: 40px;
+  }
+
+  .signal-faq-item {
+    padding: 26px 0;
+  }
+
+  .signal-faq-cta {
+    margin-top: 56px;
+    padding: 34px 24px;
+    border-radius: 22px;
+  }
+  .signal-faq-button {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 767px) {
+  .signal-faq-page {
+    padding: 52px 22px 20px;
+  }
+
+  .signal-faq-item {
+    padding: 22px 0;
+  }
+
+  .signal-faq-cta {
+    margin-top: 42px;
+  }
+  body#collection-6a30ff4c81faa837e0b04507 .footer-brand,
+  body#collection-6a30ff4c81faa837e0b04507 .footer-brand h3,
+  body#collection-6a30ff4c81faa837e0b04507 .footer-brand p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  body#collection-6a30ff4c81faa837e0b04507 .footer-brand {
+    margin-bottom: 40px !important;
+  }
+}
+/* FAQ mobile footer stacking fix */
+
+@media (max-width: 767px) {
+  body#collection-6a30ff4c81faa837e0b04507 #footer-sections {
+    position: relative !important;
+    z-index: 50 !important;
+    background: #ffffff !important;
+  }
+
+  body#collection-6a30ff4c81faa837e0b04507 .minimalism-footer {
+    position: relative !important;
+    z-index: 60 !important;
+    background: #ffffff !important;
+  }
+
+  body#collection-6a30ff4c81faa837e0b04507 [data-section-id="6a30ff5b33dfb51290967a4f"] {
+    z-index: 1 !important;
+  }
+}
+.founder-sales-cta {
+  max-width: 1180px;
+  margin: 32px auto;
+  padding: 0;
+}
+
+.founder-sales-cta__inner {
+  border: 1px solid #d9d9d9;
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.founder-sales-cta__eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #999999;
+}
+
+.founder-sales-cta h2 {
+  margin: 0 0 18px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #111111;
+}
+
+.founder-sales-cta p {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+.founder-sales-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: arial, helvetica;
+  font-weight: 500;
+  transition: opacity .2s ease;
+}
+
+.founder-sales-cta__button:hover {
+  opacity: .85;
+}
+
+@media (max-width: 768px) {
+
+  .founder-sales-cta__inner {
+    padding: 32px 24px;
+  }
+
+  .founder-sales-cta__button {
+    width: 100%;
+  }
+}

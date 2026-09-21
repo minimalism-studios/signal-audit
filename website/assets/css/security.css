@@ -1,0 +1,1252 @@
+/* =========================================================
+   SIGNAL AUDIT — SECURITY & ARCHITECTURE
+   WCAG 2.2 AA-ORIENTED
+   ========================================================= */
+
+.sa-security-page,
+.sa-security-page * {
+  box-sizing: border-box;
+}
+
+.sa-security-page {
+  --sa-text: #111111;
+  --sa-text-secondary: #4a4a4a;
+  --sa-text-muted: #555555;
+
+  --sa-surface: #f7f7f4;
+  --sa-surface-card: #ffffff;
+
+  --sa-dark: #111111;
+  --sa-dark-text: #ffffff;
+  --sa-dark-secondary: #d6d6d6;
+
+  --sa-border: #b9b9b5;
+  --sa-focus: #005fcc;
+
+  width: 100%;
+  max-width: 100%;
+
+  padding:
+    50px
+    24px
+    clamp(88px, 9vw, 140px);
+
+  overflow-wrap: break-word;
+
+  background: var(--sa-surface);
+  color: var(--sa-text);
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.sa-security-page__inner {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   GLOBAL TEXT
+   ========================================================= */
+
+.sa-security-page p,
+.sa-security-page li,
+.sa-security-page dd {
+  color: var(--sa-text-secondary);
+}
+
+.sa-security-page h1,
+.sa-security-page h2,
+.sa-security-page h3,
+.sa-security-page p,
+.sa-security-page ol,
+.sa-security-page ul,
+.sa-security-page dl,
+.sa-security-page dt,
+.sa-security-page dd {
+  max-width: 100%;
+}
+
+.sa-security-page h1,
+.sa-security-page h2,
+.sa-security-page h3 {
+  color: var(--sa-text);
+  text-wrap: balance;
+}
+
+.sa-security-page a {
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.16em;
+}
+
+
+/* =========================================================
+   ACCESSIBLE FOCUS
+   ========================================================= */
+
+.sa-security-page a:focus-visible,
+.sa-security-page button:focus-visible,
+.sa-security-page input:focus-visible,
+.sa-security-page select:focus-visible,
+.sa-security-page textarea:focus-visible {
+  outline: 3px solid var(--sa-focus) !important;
+  outline-offset: 4px !important;
+
+  box-shadow:
+    0 0 0 2px #ffffff !important;
+}
+
+.sa-security-page a,
+.sa-security-page button,
+.sa-security-page input,
+.sa-security-page select,
+.sa-security-page textarea {
+  scroll-margin-block:
+    7rem
+    7rem;
+}
+
+
+/* =========================================================
+   EYEBROWS
+   ========================================================= */
+
+.sa-security-eyebrow,
+.sa-security-contact__eyebrow {
+  margin: 0 0 22px;
+
+  color: var(--sa-text-muted) !important;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.sa-security-hero {
+  max-width: 1120px;
+  margin: 0 0 10px;
+}
+
+.sa-security-hero h1 {
+  max-width: 1100px;
+  margin: 0;
+
+  color: var(--sa-text);
+
+  font-size: 2.75em;
+
+  line-height: 0.96;
+  font-weight: 600;
+
+  letter-spacing: -0.06em;
+}
+
+.sa-security-hero__lede {
+  max-width: 840px;
+  margin: 34px 0 0;
+
+  color: var(--sa-text-secondary) !important;
+
+  font-size:
+    clamp(
+      1.15rem,
+      2vw,
+      1.55rem
+    );
+
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+}
+
+.sa-security-hero__statement {
+  max-width: 840px;
+
+  margin: 32px 0 0;
+  padding-top: 28px;
+  color: var(--sa-text) !important;
+
+  font-size:
+    clamp(
+      1.1rem,
+      1.8vw,
+      1.4rem
+    );
+
+  line-height: 1.5;
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.sa-security-section {
+  padding:
+    clamp(74px, 8vw, 112px)
+    0;
+
+  border-top:
+    1px solid
+    var(--sa-border);
+
+  scroll-margin-top: 7rem;
+}
+
+.sa-security-section__heading {
+  max-width: 900px;
+  margin-bottom: 56px;
+}
+
+.sa-security-section__heading h2,
+.sa-security-contact h2 {
+  margin: 0;
+
+  color: var(--sa-text);
+
+
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+}
+
+.sa-security-section__heading > p:last-child {
+  max-width: 760px;
+
+  margin: 26px 0 0;
+
+  color: var(--sa-text-secondary) !important;
+
+  font-size:
+    clamp(
+      1rem,
+      1.5vw,
+      1.2rem
+    );
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   ARCHITECTURE FLOW
+   ========================================================= */
+
+.sa-security-flow {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 64px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  counter-reset: none;
+}
+
+.sa-security-flow__node {
+  position: relative;
+
+  min-width: 0;
+  min-height: 280px;
+
+  padding: 30px;
+
+  border:
+    1px solid
+    var(--sa-border);
+
+  border-radius: 20px;
+
+  background:
+    var(--sa-surface-card);
+
+  color:
+    var(--sa-text);
+}
+
+.sa-security-flow__node:not(:last-child)::after {
+  content: "→";
+
+  position: absolute;
+
+  top: 50%;
+  left: calc(100% + 21px);
+
+  transform:
+    translateY(-50%);
+
+  color: var(--sa-text);
+
+  font-size: 1.5rem;
+  line-height: 1;
+
+  speak: none;
+}
+
+.sa-security-flow__node--active {
+  border-color:
+    var(--sa-dark);
+
+  background:
+    var(--sa-dark);
+
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-flow__number {
+  display: block;
+
+  margin-bottom: 52px;
+
+  color: var(--sa-text-muted);
+
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.sa-security-flow__node--active
+.sa-security-flow__number {
+  color:
+    var(--sa-dark-secondary);
+}
+
+.sa-security-flow__label {
+  margin: 0 0 12px;
+
+  color:
+    var(--sa-text-muted) !important;
+
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 700;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.sa-security-flow__node--active
+.sa-security-flow__label {
+  color:
+    var(--sa-dark-secondary) !important;
+}
+
+.sa-security-flow__node h3 {
+  margin: 0;
+
+  color:
+    var(--sa-text);
+
+  font-size:
+    clamp(
+      1.35rem,
+      2vw,
+      1.8rem
+    );
+
+  line-height: 1.15;
+  font-weight: 600;
+
+  letter-spacing: -0.035em;
+}
+
+.sa-security-flow__node--active h3 {
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-flow__node > p:last-child {
+  margin: 18px 0 0;
+
+  color:
+    var(--sa-text-secondary) !important;
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.sa-security-flow__node--active
+> p:last-child {
+  color:
+    var(--sa-dark-secondary) !important;
+}
+
+
+/* =========================================================
+   PRINCIPLES
+   ========================================================= */
+
+.sa-security-principles {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  border-top:
+    1px solid
+    var(--sa-border);
+
+  border-left:
+    1px solid
+    var(--sa-border);
+}
+
+.sa-security-principle {
+  min-width: 0;
+
+  padding: 32px;
+
+  border-right:
+    1px solid
+    var(--sa-border);
+
+  border-bottom:
+    1px solid
+    var(--sa-border);
+
+  background:
+    var(--sa-surface-card);
+}
+
+.sa-security-principle__number {
+  display: block;
+
+  margin-bottom: 48px;
+
+  color:
+    var(--sa-text-muted);
+
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.sa-security-principle h3 {
+  margin: 0;
+
+  color: var(--sa-text);
+
+  font-size:
+    clamp(
+      1.35rem,
+      2vw,
+      1.8rem
+    );
+
+  line-height: 1.15;
+  font-weight: 600;
+
+  letter-spacing: -0.035em;
+}
+
+.sa-security-principle p {
+  max-width: 580px;
+
+  margin: 18px 0 0;
+
+  color:
+    var(--sa-text-secondary) !important;
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   SYSTEM BOUNDARIES
+   ========================================================= */
+
+.sa-security-boundaries {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 24px;
+}
+
+.sa-security-boundary {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--sa-border);
+
+  border-radius: 22px;
+
+  background:
+    var(--sa-surface-card);
+}
+
+.sa-security-boundary h3 {
+  margin: 0;
+  padding: 24px 28px;
+
+  border-bottom:
+    1px solid
+    var(--sa-border);
+
+  color:
+    var(--sa-text);
+
+  font-size:
+    clamp(
+      1.3rem,
+      2vw,
+      1.7rem
+    );
+
+  line-height: 1.25;
+  font-weight: 600;
+
+  letter-spacing: -0.03em;
+}
+
+.sa-security-boundary ul {
+  margin: 0;
+  padding: 12px 28px 24px;
+
+  list-style: none;
+}
+
+.sa-security-boundary li {
+  position: relative;
+
+  padding:
+    17px
+    0
+    17px
+    30px;
+
+  border-top:
+    1px solid
+    #d0d0cd;
+
+  color:
+    var(--sa-text-secondary) !important;
+
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.sa-security-boundary li:first-child {
+  border-top: 0;
+}
+
+.sa-security-boundary li::before {
+  content: "✓";
+
+  position: absolute;
+  left: 0;
+
+  color:
+    var(--sa-text);
+
+  font-weight: 700;
+}
+
+.sa-security-boundary--dark {
+  border-color:
+    var(--sa-dark);
+
+  background:
+    var(--sa-dark);
+
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-boundary--dark h3 {
+  border-bottom-color:
+    #595959;
+
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-boundary--dark li {
+  border-top-color:
+    #595959;
+
+  color:
+    var(--sa-dark-secondary) !important;
+}
+
+.sa-security-boundary--dark li::before {
+  content: "—";
+
+  color:
+    var(--sa-dark-text);
+}
+
+
+/* =========================================================
+   DEPLOYMENT FLOW
+   ========================================================= */
+
+.sa-security-deployment-flow {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 48px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.sa-security-deployment-flow li {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 26px;
+
+  border:
+    1px solid
+    var(--sa-border);
+
+  border-radius: 18px;
+
+  background:
+    var(--sa-surface-card);
+}
+
+.sa-security-deployment-flow
+li:not(:last-child)::after {
+  content: "→";
+
+  position: absolute;
+
+  top: 50%;
+  left: calc(100% + 15px);
+
+  transform:
+    translateY(-50%);
+
+  color:
+    var(--sa-text);
+
+  font-size: 1.25rem;
+  line-height: 1;
+
+  speak: none;
+}
+
+.sa-security-deployment-flow__number {
+  display: block;
+
+  margin-bottom: 34px;
+
+  color:
+    var(--sa-text-muted);
+
+  font-family:
+    "IBM Plex Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.sa-security-deployment-flow h3 {
+  margin: 0;
+
+  color:
+    var(--sa-text);
+
+  font-size: 1.1rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.sa-security-deployment-flow p {
+  margin: 8px 0 0;
+
+  color:
+    var(--sa-text-secondary) !important;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SHARED RESPONSIBILITY
+   ========================================================= */
+
+.sa-security-responsibility {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  margin: 0;
+
+  border-top:
+    1px solid
+    var(--sa-border);
+
+  border-left:
+    1px solid
+    var(--sa-border);
+}
+
+.sa-security-responsibility > div {
+  min-width: 0;
+
+  padding: 32px;
+
+  border-right:
+    1px solid
+    var(--sa-border);
+
+  border-bottom:
+    1px solid
+    var(--sa-border);
+
+  background:
+    var(--sa-surface-card);
+}
+
+.sa-security-responsibility dt {
+  margin: 0 0 36px;
+
+  color:
+    var(--sa-text-muted);
+
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sa-security-responsibility dd {
+  max-width: 560px;
+
+  margin: 0;
+
+  color:
+    var(--sa-text) !important;
+
+  font-size:
+    clamp(
+      1.15rem,
+      2vw,
+      1.55rem
+    );
+
+  line-height: 1.45;
+  font-weight: 500;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   SECURITY REVIEW CTA
+   ========================================================= */
+
+.sa-security-contact {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(260px, auto);
+
+  gap: 64px;
+
+  align-items: end;
+
+  margin-top:
+    clamp(
+      74px,
+      8vw,
+      112px
+    );
+
+  padding:
+    clamp(
+      40px,
+      5vw,
+      64px
+    );
+
+  border:
+    1px solid
+    var(--sa-dark);
+
+  border-radius: 24px;
+
+  background:
+    var(--sa-dark);
+
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-contact__eyebrow {
+  color:
+    var(--sa-dark-secondary) !important;
+}
+
+.sa-security-contact h2 {
+  max-width: 780px;
+
+  color:
+    var(--sa-dark-text);
+}
+
+.sa-security-contact p:last-child {
+  max-width: 720px;
+
+  margin: 24px 0 0;
+
+  color:
+    var(--sa-dark-secondary) !important;
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.sa-security-contact__cta {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-width: 0;
+  min-height: 52px;
+
+  padding: 14px 24px;
+
+  border:
+    2px solid
+    #ffffff;
+
+  border-radius: 999px;
+
+  background:
+    #ffffff;
+
+  color:
+    #111111 !important;
+
+  font-size: 0.8rem;
+  line-height: 1.3;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.sa-security-contact__cta:hover {
+  background:
+    #eeeeee;
+
+  color:
+    #111111 !important;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.sa-security-contact__cta:focus-visible {
+  outline:
+    3px solid
+    #ffffff !important;
+
+  outline-offset:
+    5px !important;
+
+  box-shadow:
+    0 0 0 3px #005fcc !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 1050px) {
+
+  .sa-security-flow {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .sa-security-flow__node {
+    min-height: 0;
+  }
+
+  .sa-security-flow__node:not(:last-child)::after {
+    content: "↓";
+
+    top: calc(100% + 17px);
+    left: 50%;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .sa-security-deployment-flow {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 24px;
+  }
+
+  .sa-security-deployment-flow
+  li:not(:last-child)::after {
+    display: none;
+  }
+
+  .sa-security-contact {
+    grid-template-columns:
+      1fr;
+
+    align-items: start;
+  }
+
+  .sa-security-contact__cta {
+    justify-self: start;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE / REFLOW
+   ========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  .sa-security-page {
+    padding:
+      72px
+      20px;
+
+    overflow-x: hidden;
+  }
+
+  .sa-security-page__inner,
+  .sa-security-hero,
+  .sa-security-section,
+  .sa-security-flow,
+  .sa-security-principles,
+  .sa-security-boundaries,
+  .sa-security-deployment-flow,
+  .sa-security-responsibility,
+  .sa-security-contact {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .sa-security-hero {
+    margin-bottom: 80px;
+  }
+
+  .sa-security-hero h1 {
+    font-size: 2.25em;
+
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .sa-security-section {
+    padding:
+      68px
+      0;
+  }
+
+  .sa-security-section__heading {
+    margin-bottom: 40px;
+  }
+
+  .sa-security-section__heading h2,
+  .sa-security-contact h2 {
+    line-height: 1.05;
+  }
+
+  .sa-security-principles,
+  .sa-security-boundaries,
+  .sa-security-deployment-flow,
+  .sa-security-responsibility {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .sa-security-principle,
+  .sa-security-boundary,
+  .sa-security-deployment-flow li,
+  .sa-security-responsibility > div {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .sa-security-principle__number,
+  .sa-security-flow__number {
+    margin-bottom: 34px;
+  }
+
+  .sa-security-deployment-flow {
+    gap: 52px;
+  }
+
+  .sa-security-deployment-flow
+  li:not(:last-child)::after {
+    display: block;
+
+    content: "↓";
+
+    top: calc(100% + 16px);
+    left: 50%;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .sa-security-contact {
+    gap: 38px;
+
+    padding:
+      34px
+      24px;
+
+    border-radius: 20px;
+  }
+
+  .sa-security-contact__cta {
+    width: 100%;
+    min-height: 52px;
+
+    justify-self: stretch;
+
+    white-space: normal;
+  }
+
+}
+
+
+/* =========================================================
+   VERY NARROW VIEWPORTS / 320 CSS PX
+   ========================================================= */
+
+@media screen and (max-width: 400px) {
+
+  .sa-security-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sa-security-flow__node,
+  .sa-security-principle,
+  .sa-security-deployment-flow li,
+  .sa-security-responsibility > div {
+    padding:
+      24px
+      20px;
+  }
+
+  .sa-security-boundary h3 {
+    padding:
+      22px
+      20px;
+  }
+
+  .sa-security-boundary ul {
+    padding:
+      10px
+      20px
+      22px;
+  }
+
+  .sa-security-contact {
+    padding:
+      30px
+      20px;
+  }
+
+}
+
+
+/* =========================================================
+   200% TEXT / USER FONT OVERRIDES
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+
+  .sa-security-page {
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  .sa-security-page h1,
+  .sa-security-page h2,
+  .sa-security-page h3,
+  .sa-security-page p,
+  .sa-security-page li,
+  .sa-security-page dt,
+  .sa-security-page dd,
+  .sa-security-page a {
+    overflow-wrap: break-word;
+  }
+
+}
+
+
+/* =========================================================
+   FORCED COLORS / HIGH-CONTRAST MODES
+   ========================================================= */
+
+@media (forced-colors: active) {
+
+  .sa-security-flow__node,
+  .sa-security-principle,
+  .sa-security-boundary,
+  .sa-security-deployment-flow li,
+  .sa-security-responsibility > div,
+  .sa-security-contact {
+    border:
+      1px solid
+      CanvasText;
+  }
+
+  .sa-security-flow__node--active,
+  .sa-security-boundary--dark,
+  .sa-security-contact {
+    forced-color-adjust: auto;
+  }
+
+  .sa-security-contact__cta {
+    border:
+      2px solid
+      LinkText;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sa-security-page *,
+  .sa-security-page *::before,
+  .sa-security-page *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  .sa-security-page {
+    padding: 0;
+
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .sa-security-flow,
+  .sa-security-principles,
+  .sa-security-boundaries,
+  .sa-security-deployment-flow,
+  .sa-security-responsibility,
+  .sa-security-contact {
+    display: block;
+  }
+
+  .sa-security-flow__node,
+  .sa-security-principle,
+  .sa-security-boundary,
+  .sa-security-deployment-flow li,
+  .sa-security-responsibility > div,
+  .sa-security-contact {
+    margin-bottom: 24px;
+
+    break-inside: avoid;
+
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+}

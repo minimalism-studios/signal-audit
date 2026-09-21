@@ -1,0 +1,23 @@
+/**** WHO IS IT FOR & WHAT YOU'LL LEARN ****/
+
+  <section class="audit-section">
+    <h2>Who This Is For</h2>
+    <ul>
+      <li>Engineering teams dealing with noisy alerts</li>
+      <li>Systems where issues are unclear or recurring</li>
+      <li>Teams lacking confidence in telemetry</li>
+      <li>Environments reacting instead of understanding</li>
+    </ul>
+  </section>
+
+  <section class="audit-section">
+    <h2>What You'll Learn About Your System</h2>
+    <ul>
+      <li>Production signal summary</li>
+      <li>Risk classification: noise, degradation, incident risk</li>
+      <li>Observability gap analysis</li>
+      <li>Pattern detection across logs, metrics, and alerts</li>
+      <li>Clear, prioritized engineering actions</li>
+      <li>Executive-ready summary</li>
+    </ul>
+  </section>

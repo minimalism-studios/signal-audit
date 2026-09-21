@@ -1,0 +1,9 @@
+/**** RUN A FULL SIGNAL AUDIT ****/
+
+<section class="audit-cta" id="signal-audit-form">
+	<h2>Run Full Signal Audit</h2>
+	<p>
+	  Submit your production signal and receive a focused review of risks, gaps, and next actions.
+	</p>
+	<a target="_blank" href="https://buy.stripe.com/28E14n0OyaCS4PA4TJ7Zu03" class="audit-button" rel="noopener noreferrer">Start Audit</a>
+</section>

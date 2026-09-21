@@ -1,0 +1,24 @@
+/**** PRICING ****/
+
+  <section class="audit-section pricing">
+    <h2>Pricing</h2>
+    <p class="price">Starting at $1,500</p>
+    <p>Built for teams that need clarity before adding more tools, dashboards, or alerts.</p>
+  </section>
+
+  <div class="pricing-language">
+    <p>
+      Most teams start with a focused one-time Signal Audit.
+    </p>
+    <p>
+      Plans begin at <strong>$1,500</strong>, with deeper workflow and Slack-based evaluations available.
+    </p>
+    <p>
+      Every audit results in a clear, actionable plan — not just analysis.
+    </p>
+    <div class="pricing-cta">
+      <a href="/pricing" class="audit-button">
+        View Pricing
+      </a>
+    </div>
+  </div>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Signal Interpreter | Turn Production System Signals Into Actionable Insights</title>
+  <meta name="description" content="Paste alerts, logs, metrics, incidents, or telemetry and receive a structured interpretation of what matters, where to investigate, what to ignore, and recommended next actions.">
+  <link rel="canonical" href="https://signal-audit.com/signal-interpreter">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/signal-interpreter.css">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- SIGNAL INTERPRETER -->
+<div id="signal-app" class="signal-shell">
+
+  <div class="signal-topbar">
+    <div class="signal-brand">
+      <span class="signal-pulse">⌁</span>
+      <span class="signal-brand-name">MINIMALISM</span>
+      <span class="signal-tagline">Signal Over Noise.</span>
+    </div>
+
+    <div class="signal-privacy">
+      <span>◇</span>
+      Your data stays private
+    </div>
+  </div>
+
+  <div class="signal-layout">
+
+    <!-- LEFT INPUT PANEL -->
+    <aside class="signal-input-panel">
+
+      <div class="signal-step">
+        <div class="signal-step-number">1</div>
+        <div>
+          <h4 id="input-label">Paste your logs</h4>
+          <p id="input-description">Paste logs, metrics, traces, alerts, or describe what your system is doing.</p>
+        </div>
+      </div>
+
+      <textarea
+        id="input"
+        aria-labelledby="input-label"
+        aria-describedby="input-description input-support"
+        placeholder="Paste logs, metrics, traces, alerts, or describe what your system is doing…"
+      ></textarea>
+
+      <p
+        class="signal-support-text"
+        id="input-support"
+      >Supports logs, metrics, traces, and alerts.</p>
+
+      <div class="signal-examples" id="examples">
+        <button type="button" onclick="fillExample('Latency spikes after deploy')">
+          Latency spikes after deploy
+        </button>
+        <button type="button" onclick="fillExample('Users reporting issues but dashboards look fine')">
+          Dashboards look fine
+        </button>
+        <button type="button" onclick="fillExample('Error rate up, no infra changes')">
+          Error rate up
+        </button>
+      </div>
+
+      <div class="signal-divider"></div>
+
+      <div class="signal-context-step">
+        <div class="signal-step">
+          <div class="signal-step-number">2</div>
+          <div>
+            <h4 id="context-label">Add context</h4>
+            <p id="context-description">Optional, but useful if you know what recently changed.</p>
+          </div>
+        </div>
+
+        <textarea
+          id="context-input"
+          aria-labelledby="context-label"
+          aria-describedby="context-description"
+          placeholder="Example: We deployed a payments-api change 45 minutes ago and started seeing retry spikes."
+        ></textarea>
+
+        <div class="signal-divider"></div>
+      </div>
+
+      <div class="signal-step">
+        <div class="signal-step-number" id="analyze-step-number">3</div>
+        <div>
+          <h4>Analyze</h4>
+          <p>Signal Interpreter will explain what matters, what to ignore, and where to look next.</p>
+        </div>
+      </div>
+
+      <button id="interpret-btn" type="button" onclick="runInterpretation()">
+        ✦ Interpret Signal
+      </button>
+
+      <p class="signal-footnote">No logs are stored. Your data is never shared.</p>
+
+    </aside>
+
+    <!-- RIGHT RESULT PANEL -->
+    <section class="signal-results-panel">
+
+      <div class="signal-results-header">
+        <div>
+          <p class="signal-kicker">Signal Interpreter</p>
+          <h1>AI analysis of your telemetry</h1>
+        </div>
+
+        <button id="new-analysis-btn" type="button" onclick="resetSignalInterpreter()">
+          ↻ New Analysis
+        </button>
+      </div>
+
+      <div id="empty-state" class="signal-empty-state">
+        <div class="signal-empty-icon">⌁</div>
+        <h3>Paste a production signal to begin.</h3>
+        <p>
+          The interpreter will separate signal from noise and return a clear operational read.
+        </p>
+      </div>
+
+      <div
+        id="loading-state"
+        class="signal-loading-state"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        style="display:none;"
+      >
+        <div
+          class="signal-loading-line"
+          aria-hidden="true"
+        ></div>
+        <p>Interpreting signal…</p>
+      </div>
+
+      <div
+        id="signal-status"
+        class="signal-sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+
+      <div
+        id="signal-error"
+        class="signal-sr-only"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></div>
+
+      <div id="analysis-state" style="display:none;">
+
+        <div class="signal-primary-card">
+          <div class="signal-primary-icon">⌁</div>
+
+          <div class="signal-primary-copy">
+            <p class="signal-alert-label">Primary finding</p>
+            <h3 id="primary-finding-title">Upstream dependency is timing out</h3>
+            <p id="primary-finding-summary">
+              Retries are increasing latency and may lead to cascading failures.
+            </p>
+          </div>
+
+          <div class="signal-severity">
+            <span>Severity</span>
+            <strong id="severity-badge">Signal Read</strong>
+          </div>
+        </div>
+
+        <div class="signal-insight-grid">
+          <article class="signal-insight-card signal-card-green">
+            <div class="signal-card-icon">↗</div>
+            <h4>What matters</h4>
+            <p id="what-matters-text">
+              Repeated timeouts and retries are creating increased latency.
+            </p>
+            <span>High Impact</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-blue">
+            <div class="signal-card-icon">◎</div>
+            <h4>Where to look</h4>
+            <p id="where-to-look-text">
+              Upstream service health, network latency, and connection saturation.
+            </p>
+            <span>Investigate</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-amber">
+            <div class="signal-card-icon">⊘</div>
+            <h4>Ignore</h4>
+            <p id="ignore-text">
+              Successful requests and isolated events are likely symptoms.
+            </p>
+            <span>Low Signal</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-purple">
+            <div class="signal-card-icon">ϟ</div>
+            <h4>Next action</h4>
+            <p id="next-action-text">
+              Check upstream service health and recent changes.
+            </p>
+            <span>Take Action</span>
+          </article>
+        </div>
+
+        <div class="signal-overview-card">
+          <h4>Signal Overview</h4>
+
+          <div class="signal-metrics">
+            <div class="signal-metric">
+              <span>Error Rate</span>
+              <strong id="metric-error-rate">18.7%</strong>
+              <small>↑ elevated vs previous window</small>
+            </div>
+
+            <div class="signal-metric">
+              <span>P95 Latency</span>
+              <strong id="metric-latency">532ms</strong>
+              <small>↑ latency pressure detected</small>
+            </div>
+
+            <div class="signal-metric">
+              <span>Retry Rate</span>
+              <strong id="metric-retry-rate">23.4%</strong>
+              <small>↑ retry pattern detected</small>
+            </div>
+          </div>
+        </div>
+
+        <div id="output-wrap" class="signal-raw-output">
+          <div class="signal-raw-header">
+            <h4>Interpreter Output</h4>
+
+            <div id="result-meta">
+              <button type="button" id="copy-btn" onclick="copyResult()">Copy result</button>
+            </div>
+          </div>
+
+          <div id="output"></div>
+        </div>
+
+        <div id="post-analysis" class="signal-post-analysis" style="display:none;">
+          <div id="reframe-text"></div>
+          <div id="value-text"></div>
+          <div id="offer-text"></div>
+        </div>
+
+        <section class="founder-sales-cta">
+          <div class="founder-sales-cta__inner">
+            <p class="founder-sales-cta__eyebrow">Need a deeper analysis?</p>
+
+            <h2>Talk directly with the creator of Signal Audit.</h2>
+
+            <p>The Signal Interpreter analyzes a single signal.</p>
+            <p>
+              A Signal Audit evaluates your telemetry, incidents, observability gaps,
+              and operational risk as a complete system.
+            </p>
+
+            <a
+              href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+              class="founder-sales-cta__button"
+              data-cta="schedule_signal_review"
+              target="_blank"
+              rel="noopener"
+            >
+              Schedule a Call
+            </a>
+          </div>
+        </section>
+
+        <div id="signal-cta">
+          <a
+            class="signal-audit-btn"
+            data-cta="signal_interpreter_explore_signal_audit"
+            href="/pricing"
+          >
+            Explore Signal Audit →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <p class="signal-bottom-line">
+    The Signal Interpreter helps you separate signal from noise so you can focus on what matters.
+  </p>
+
+</div>
+
+<button id="scroll-cue" onclick="scrollCueDown()" aria-label="Continue reading">
+  ↓
+</button>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/site-header.js"></script>
+<script src="/assets/js/signal-interpreter.js"></script>
+<script src="/assets/js/signal-interpreter-embed.js"></script>
+<script src="/assets/js/signal-interpreter-keyboard-bridge.js"></script>
+
+</body>
+</html>

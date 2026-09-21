@@ -1,0 +1,49 @@
+/**** WHY TEAMS USE SIGNAL AUDIT ****/
+<section class="minimalism-signal-context">
+	<div class="minimalism-signal-context-inner">
+		<p class="minimalism-eyebrow">Experience Signal Audit</p>
+
+		<h2>See How Signal Audit Thinks.</h2>
+
+		<p class="minimalism-signal-context-lead">
+		Paste a production alert, log message, or incident summary into the Signal Interpreter and see how Signal Audit identifies what matters, what to ignore, and where to investigate next.
+		</p>
+
+		<p class="signal-interpreter-note">
+		The Signal Interpreter is a free demonstration of the reasoning behind Signal Audit.
+		</p>
+
+		<div class="signal-interpreter-features">
+
+			<div class="signal-interpreter-feature">
+				<span>01</span>
+				<strong>Signal Classification</strong>
+			</div>
+
+			<div class="signal-interpreter-feature">
+				<span>02</span>
+				<strong>What Matters</strong>
+			</div>
+
+			<div class="signal-interpreter-feature">
+				<span>03</span>
+				<strong>Where to Look</strong>
+			</div>
+
+			<div class="signal-interpreter-feature">
+				<span>04</span>
+				<strong>What to Ignore</strong>
+			</div>
+
+			<div class="signal-interpreter-feature">
+				<span>05</span>
+				<strong>Recommended Next Step</strong>
+			</div>
+
+		</div>
+
+		<a href="/signal-interpreter" class="audit-button">
+			Try Signal Interpreter
+		</a>
+	</div>
+</section>

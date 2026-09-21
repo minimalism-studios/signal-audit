@@ -1,0 +1,1071 @@
+<section class="sapx-page">
+
+  <section class="sapx-hero">
+    <div class="sapx-hero-inner">
+      <p class="sapx-eyebrow">One-Time Signal Audit</p>
+      <h1>Turn production noise into operational decisions.</h1>
+      <p class="sapx-lede">
+        Signal Audit analyzes your production telemetry, incident context, and observability gaps to identify what matters, what to ignore, and what to do next.
+      </p>
+
+      <div class="sapx-actions">
+        <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b" target="_blank" rel="noopener noreferrer" class="sapx-btn sapx-btn-primary">
+          Purchase Signal Audit →
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+        <a href="#audit-experience" class="sapx-btn sapx-btn-secondary">
+          See What You Get
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sapx-landscape sapx-dark" id="audit-experience">
+    <div class="sapx-landscape-inner">
+      <div class="sapx-section-header">
+        <p>Signal Audit Experience</p>
+        <h2>From telemetry overload to clear next action.</h2>
+        <span>
+          Signal Audit does not replace your observability stack. It interprets what your stack is already showing.
+        </span>
+      </div>
+
+      <div
+        class="sapx-pipeline"
+        role="group"
+        aria-label="Production signal to Signal Audit to audit output workflow"
+      >
+
+        <article class="sapx-stage">
+          <div class="sapx-stage-meta">
+            <span>01</span>
+            <strong>Production Signal</strong>
+          </div>
+
+          <div class="sapx-panel sapx-input-panel">
+            <div class="sapx-metric-row"><b>112</b><span>Alerts</span></div>
+            <div class="sapx-metric-row"><b>847</b><span>Log Events</span></div>
+            <div class="sapx-metric-row"><b>396</b><span>Metrics</span></div>
+            <div class="sapx-metric-row"><b>128</b><span>Traces</span></div>
+            <div class="sapx-note">High volume. Low clarity.</div>
+          </div>
+        </article>
+
+        <div class="sapx-flow" aria-hidden="true">→</div>
+
+        <article class="sapx-stage sapx-stage-center">
+          <div class="sapx-stage-meta">
+            <span>02</span>
+            <strong>Signal Audit</strong>
+          </div>
+
+          <div class="sapx-panel sapx-core-panel">
+            <div class="sapx-orb">A</div>
+            <h3>Interpreting signal…</h3>
+            <p>
+              Correlating deployment timing, latency movement, retry behavior, dependency health, and historical baselines.
+            </p>
+            <div class="sapx-processing">
+              <i></i>
+              Analyzing operational pattern
+            </div>
+          </div>
+        </article>
+
+        <div class="sapx-flow" aria-hidden="true">→</div>
+
+        <article class="sapx-stage">
+          <div class="sapx-stage-meta">
+            <span>03</span>
+            <strong>Audit Output</strong>
+          </div>
+
+          <div class="sapx-panel sapx-output-panel">
+            <div class="sapx-output-row">
+              <small>Classification</small>
+              <strong>Persistent Degradation</strong>
+            </div>
+
+            <div class="sapx-output-row">
+              <small>What Matters</small>
+              <strong>Retries and latency moved together after deployment.</strong>
+            </div>
+
+            <div class="sapx-output-row">
+              <small>Ignore</small>
+              <strong>Individual alerts without correlated behavior.</strong>
+            </div>
+
+            <div class="sapx-output-row sapx-output-action">
+              <small>Recommended Action</small>
+              <strong>Review retry policy and downstream timeout configuration.</strong>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <div class="sapx-section-cta">
+      <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b"
+         target="_blank" rel="noopener noreferrer"
+         class="sapx-btn sapx-btn-primary">
+          Purchase Signal Audit →
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+    </div>
+  </section>
+
+  <section class="sapx-landscape sapx-light">
+    <div class="sapx-landscape-inner">
+      <div class="sapx-section-header">
+        <p>What You Receive</p>
+        <h2>A complete operational readout.</h2>
+      </div>
+
+      <div class="sapx-feature-strip">
+        <article>
+          <span>01</span>
+          <h3>Operational Summary</h3>
+          <p>A concise explanation of what is happening across your production signals.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Signal Classification</h3>
+          <p>Classification of signal behavior: noise, baseline, degradation, anomaly, or risk.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Observability Gaps</h3>
+          <p>Identification of missing context, unclear ownership, and telemetry blind spots.</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3>Recommended Actions</h3>
+          <p>Specific next steps your team can take to reduce operational ambiguity.</p>
+        </article>
+      </div>
+    </div>
+    <div class="sapx-section-cta">
+      <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b"
+         target="_blank" rel="noopener noreferrer"
+         class="sapx-btn sapx-btn-primary">
+          Purchase Signal Audit →
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+    </div>
+  </section>
+
+  <section class="sapx-landscape sapx-blueprint">
+    <div class="sapx-landscape-inner">
+      <div class="sapx-section-header">
+        <p>How It Works</p>
+        <h2>A focused audit, not another tool rollout.</h2>
+      </div>
+
+      <div class="sapx-timeline">
+        <article>
+          <span>01</span>
+          <strong>Submit Context</strong>
+          <p>Share alerts, logs, metrics, traces, incident notes, dashboards, or known production concerns.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>Analyze Signal</strong>
+          <p>Signal Audit reviews patterns, risk indicators, missing context, and operational behavior.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>Receive Audit</strong>
+          <p>You receive a structured report explaining what matters, what to ignore, and what to do next.</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <strong>Act With Clarity</strong>
+          <p>Your team gets a clearer path forward without digging through every dashboard manually.</p>
+        </article>
+      </div>
+    </div>
+    <div class="sapx-section-cta">
+      <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b"
+         target="_blank" rel="noopener noreferrer"
+         class="sapx-btn sapx-btn-primary">
+          Purchase Signal Audit →
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+    </div>
+  </section>
+
+  <section class="sapx-proof">
+    <div class="sapx-proof-inner">
+      <p>Audit Proof</p>
+      <h2>Real findings from production telemetry.</h2>
+
+      <div class="sapx-proof-grid">
+        <span>Production telemetry analyzed at scale</span>
+        <span>Five signal behavior categories identified</span>
+        <span>Noise separated from operational risk</span>
+        <span>Escalation model established</span>
+      </div>
+
+      <div class="sapx-proof-actions">
+        <a href="/case-studies/splunk-mltk-birch-signal-audit"
+           class="sapx-btn sapx-btn-secondary">
+            Read Case Study
+        </a>
+        <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b"
+           target="_blank" rel="noopener noreferrer"
+           class="sapx-btn sapx-btn-primary">
+            Start Your Signal Audit
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sapx-final">
+    <p>One-Time Signal Audit</p>
+    <h2>Know which signals matter before your next incident.</h2>
+    <span>$1,500 fixed fee</span>
+
+    <a href="https://buy.stripe.com/8x2eVd9l46mCfuegCr7Zu0b" target="_blank" rel="noopener noreferrer" class="sapx-btn sapx-btn-light">
+      Purchase Signal Audit
+          <span class="sapx-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+  </section>
+
+</section>
+<style>
+/* SIGNAL AUDIT PRODUCT EXPERIENCE — LANDSCAPE VERSION */
+
+.sapx-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sapx-page a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+}
+
+.sapx-dark a:focus-visible,
+.sapx-proof a:focus-visible,
+.sapx-final a:focus-visible {
+  outline-color: #c4b5fd;
+}
+
+.sapx-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: #fff;
+  color: #050505;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+}
+
+.sapx-hero {
+  width: 100%;
+  padding: 104px 24px 96px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0,0,0,.055), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #fcfcfc 58%, #f4f4f4 100%);
+  box-sizing: border-box;
+}
+
+.sapx-hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sapx-eyebrow,
+.sapx-section-header p,
+.sapx-proof-inner > p,
+.sapx-final p {
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.60);
+}
+
+.sapx-hero h1 {
+  max-width: 1040px;
+  margin: 0 auto;
+  font-size: 2.75em;
+  line-height: .88;
+  letter-spacing: -.08em;
+  font-weight: 700;
+}
+
+.sapx-lede {
+  max-width: 780px;
+  margin: 28px auto 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.35;
+  letter-spacing: -.04em;
+  color: rgba(0,0,0,.66);
+}
+
+.sapx-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.sapx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.sapx-btn:hover {
+  transform: translateY(-1px);
+}
+
+.sapx-btn-primary {
+  background: #050505;
+  color: #fff !important;
+}
+
+.sapx-btn-secondary {
+  background: #fff;
+  color: #050505 !important;
+  border: 1px solid rgba(0,0,0,.14);
+}
+
+.sapx-btn-light {
+  background: #fff;
+  color: #050505 !important;
+}
+
+/* LANDSCAPE SECTIONS */
+
+.sapx-landscape {
+  width: 100%;
+  padding: 120px 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.sapx-dark {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(124,58,237,.16), transparent 34%),
+    radial-gradient(circle at 15% 50%, rgba(59,130,246,.08), transparent 28%),
+    #030303;
+  color: #fff;
+}
+
+.sapx-light {
+  background: #f7f7f4;
+}
+
+.sapx-blueprint {
+  background:
+    radial-gradient(circle at top center, rgba(59,130,246,.12), transparent 36%),
+    linear-gradient(180deg, #f8fafc 0%, #f3f4f6 100%);
+}
+
+.sapx-landscape-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.sapx-section-header {
+  max-width: 980px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+
+.sapx-dark .sapx-section-header p {
+  color: rgba(255,255,255,.60);
+}
+
+.sapx-section-header h2,
+.sapx-proof-inner h2,
+.sapx-final h2 {
+  margin: 0;
+  font-size: 2.75em;
+  line-height: .9;
+  letter-spacing: -.065em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sapx-dark .sapx-section-header h2 {
+  color: #fff;
+}
+
+.sapx-section-header span {
+  display: block;
+  max-width: 760px;
+  margin: 24px auto 0;
+  font-size: clamp(17px, 1.6vw, 22px);
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+}
+
+/* PIPELINE */
+
+.sapx-pipeline {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 72px minmax(320px, 1fr) 72px minmax(280px, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.sapx-stage-meta {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.sapx-stage-meta span {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  color: rgba(255,255,255,.60);
+}
+
+.sapx-stage-meta strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+}
+
+.sapx-panel {
+  min-height: 360px;
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+  box-sizing: border-box;
+}
+
+.sapx-core-panel {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-color: rgba(168,132,255,.72);
+  box-shadow:
+    0 0 0 1px rgba(168,132,255,.16),
+    0 0 60px rgba(124,58,237,.22);
+}
+
+.sapx-metric-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 18px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.sapx-metric-row b {
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.sapx-metric-row span {
+  color: rgba(255,255,255,.62);
+}
+
+.sapx-note {
+  margin-top: 24px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+  color: rgba(255,255,255,.60);
+}
+
+.sapx-orb {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 700;
+  color: #fff;
+  background: radial-gradient(circle, rgba(168,132,255,.28), rgba(168,132,255,.06));
+  border: 1px solid rgba(168,132,255,.55);
+  box-shadow: 0 0 46px rgba(168,132,255,.28);
+  animation: sapxPulse 3.5s ease-in-out infinite;
+}
+
+.sapx-core-panel h3 {
+  margin: 0 0 18px;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: #fff;
+}
+
+.sapx-core-panel p {
+  max-width: 380px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.68);
+}
+
+.sapx-processing {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(168,132,255,.32);
+  color: rgba(255,255,255,.82);
+  font-size: 14px;
+}
+
+.sapx-processing i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #a78bfa;
+  box-shadow: 0 0 18px rgba(167,139,250,.7);
+}
+
+.sapx-output-row {
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.sapx-output-row small {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.60);
+}
+
+.sapx-output-row strong {
+  display: block;
+  font-size: 17px;
+  line-height: 1.38;
+  font-weight: 500;
+  color: rgba(255,255,255,.86);
+}
+
+.sapx-output-row:first-child strong,
+.sapx-output-action strong {
+  color: #86efac;
+}
+
+.sapx-output-action {
+  margin: 18px -12px 0;
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(34,197,94,.18);
+  background: rgba(34,197,94,.08);
+}
+
+.sapx-flow {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(10,10,10,.92);
+  border: 1px solid rgba(168,132,255,.55);
+  box-shadow: 0 0 28px rgba(168,132,255,.26);
+  font-size: 26px;
+  color: #fff;
+  justify-self: center;
+}
+
+/* FEATURE STRIP */
+
+.sapx-feature-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sapx-feature-strip article {
+  min-height: 280px;
+  padding: 30px;
+  border-radius: 26px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 20px 54px rgba(0,0,0,.06);
+}
+
+.sapx-feature-strip span,
+.sapx-timeline span {
+  display: block;
+  margin-bottom: 72px;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  color: rgba(0,0,0,.60);
+}
+
+.sapx-feature-strip h3 {
+  margin: 0 0 16px;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+
+.sapx-feature-strip p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -.02em;
+  color: rgba(0,0,0,.62);
+}
+
+/* TIMELINE */
+
+.sapx-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sapx-timeline article {
+  position: relative;
+  padding: 30px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+.sapx-timeline article:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 6px);
+  transform: translateY(-50%);
+  font-size: 30px;
+  opacity: .35;
+  z-index: 2;
+}
+
+.sapx-timeline strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 22px;
+  letter-spacing: -.035em;
+}
+
+.sapx-timeline p {
+  margin: 0;
+  color: rgba(0,0,0,.62);
+  line-height: 1.5;
+}
+
+/* PROOF */
+
+.sapx-proof {
+  padding: 112px 24px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.sapx-proof-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 64px 48px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 35%),
+    #050505;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 34px 100px rgba(0,0,0,.24);
+}
+
+.sapx-proof-inner > p {
+  color: rgba(255,255,255,.60);
+}
+
+.sapx-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 820px;
+  margin: 42px auto 0;
+}
+
+.sapx-proof-grid span {
+  padding: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.78);
+}
+
+.sapx-proof-inner a {
+  display: inline-flex;
+  margin-top: 36px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* FINAL CTA */
+
+.sapx-final {
+  padding: 112px 24px;
+  background: #050505;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.sapx-final p {
+  color: rgba(255,255,255,.5);
+}
+
+.sapx-final h2 {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.sapx-final span {
+  display: block;
+  margin: 28px 0 34px;
+  font-size: 24px;
+  color: rgba(255,255,255,.72);
+}
+
+/* ANIMATION */
+
+@keyframes sapxPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 46px rgba(168,132,255,.22);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 70px rgba(168,132,255,.36);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sapx-btn {
+    transition: none !important;
+  }
+
+  .sapx-btn:hover {
+    transform: none !important;
+  }
+
+  .sapx-orb {
+    animation: none !important;
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .sapx-pipeline,
+  .sapx-feature-strip,
+  .sapx-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .sapx-panel,
+  .sapx-core-panel {
+    min-height: auto;
+  }
+
+  .sapx-flow {
+    transform: rotate(90deg);
+  }
+
+  .sapx-timeline article:not(:last-child)::after {
+    content: "↓";
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .sapx-hero {
+    padding: 72px 20px 80px;
+  }
+
+  .sapx-hero h1 {
+    font-size: clamp(42px, 13vw, 60px);
+  }
+
+  .sapx-actions {
+    flex-direction: column;
+  }
+
+  .sapx-btn {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .sapx-landscape,
+  .sapx-proof,
+  .sapx-final {
+    padding: 72px 20px;
+  }
+
+  .sapx-section-header {
+    margin-bottom: 48px;
+  }
+
+  .sapx-feature-strip article,
+  .sapx-timeline article {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .sapx-feature-strip span,
+  .sapx-timeline span {
+    margin-bottom: 36px;
+  }
+
+  .sapx-proof-inner {
+    padding: 44px 24px;
+    border-radius: 28px;
+  }
+
+  .sapx-proof-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.sapx-proof-inner h2,
+.sapx-final h2 {
+    max-width: 940px;
+    margin: 0 auto;
+    color: #ffffff !important;
+}
+.sapx-proof-inner > p,
+.sapx-final > p {
+    color: rgba(255,255,255,.48) !important;
+}
+.sapx-final span {
+    display:block;
+    margin:28px 0 34px;
+    font-size:24px;
+    color:rgba(255,255,255,.72) !important;
+}
+.sapx-section-cta,
+.sapx-proof-actions{
+    margin-top:56px;
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+}
+.sapx-proof-actions{
+    margin-top:42px;
+}
+.sapx-btn-primary{
+    background:#7c3aed;
+    color:#fff !important;
+}
+
+.sapx-btn-primary:hover{
+    background:#6d28d9;
+}
+
+.sapx-landscape-inner{
+    max-width:1280px;
+    margin:0 auto;
+}
+
+.sapx-feature-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin:0 auto;
+    max-width:none;
+}
+
+.sapx-section-header{
+    max-width:1200px;
+    margin:0 auto 72px;
+    text-align:center;
+}
+/* FORCE PRODUCT PAGE SECTIONS TO TRUE FULL WIDTH */
+
+.sapx-page,
+.sapx-hero,
+.sapx-landscape,
+.sapx-proof,
+.sapx-final {
+  position: relative !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+/* RECENTER WHAT YOU RECEIVE CARDS */
+
+.sapx-light .sapx-landscape-inner {
+  width: min(100%, 1280px) !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.sapx-light .sapx-feature-strip {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  justify-content: center !important;
+}
+/* ---------- MOBILE OVERRIDES ---------- */
+
+@media (max-width: 767px) {
+
+  /* Hero + section headings */
+  .sapx-hero h1,
+  .sapx-section-header h2,
+  .sapx-proof-inner h2,
+  .sapx-final h2 {
+    font-size: 2em !important;
+    line-height: 1 !important;
+    letter-spacing: -.05em !important;
+  }
+
+  /* What You Receive cards */
+  .sapx-feature-strip {
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  .sapx-feature-strip article {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 20px !important;
+    min-height: auto !important;
+    box-sizing: border-box;
+  }
+
+  .sapx-feature-strip article:last-child {
+    margin-bottom: 0 !important;
+  }
+
+}
+@media (max-width: 767px) {
+
+  .sapx-light .sapx-feature-strip {
+    display: block !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .sapx-light .sapx-feature-strip article {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .sapx-light .sapx-feature-strip article:last-child {
+    margin-bottom: 0 !important;
+  }
+
+}
+/* FIX FOOTER GAP ON PRODUCT EXPERIENCE PAGE */
+
+@media (max-width: 768px) {
+  .minimalism-footer {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* footer fix */
+
+body#collection-6a4f5e854e966f26259fe6b5 main .page-section,
+body#collection-6a4f5e854e966f26259fe6b5 main .content-wrapper,
+body#collection-6a4f5e854e966f26259fe6b5 main .content,
+body#collection-6a4f5e854e966f26259fe6b5 main .sqs-block,
+body#collection-6a4f5e854e966f26259fe6b5 main .sqs-block-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a4f5e854e966f26259fe6b5
+.fe-6a3e2a6ca481d87cdec73103 {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a4f5e854e966f26259fe6b5
+.fe-block-yui_3_17_2_1_1782458980627_462 {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+</style>

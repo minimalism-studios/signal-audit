@@ -1,0 +1,2689 @@
+<div class="vanguard-page">
+
+  <!-- HERO -->
+  <section class="vanguard-hero">
+    <div class="vanguard-container">
+
+      <div class="vanguard-hero__status" aria-label="Program details">
+        <span class="vanguard-status-dot" aria-hidden="true"></span>
+        Vanguard Cohort 001
+        <span aria-hidden="true">•</span>
+        3 Organizations
+        <span aria-hidden="true">•</span>
+        30-Day Guided Evaluation
+      </div>
+
+      <div class="vanguard-hero__layout">
+
+        <div class="vanguard-hero__content">
+          <p class="vanguard-eyebrow">
+            The Signal Audit Vanguard Program
+          </p>
+
+          <h1 class="vanguard-hero__title">
+            Help define the next generation of operational intelligence.
+          </h1>
+
+          <p class="vanguard-hero__description">
+            The Vanguard Program invites a limited number of engineering
+            organizations to evaluate Signal Audit in a live production
+            environment while helping define the future of operational
+            intelligence.
+          </p>
+
+          <p class="vanguard-hero__supporting">
+            Selected teams receive a guided 30-day deployment, observability
+            integrations, weekly operational reviews, and a final executive
+            findings presentation at no cost.
+          </p>
+
+          <div class="vanguard-actions">
+            <a
+              class="vanguard-button vanguard-button--primary"
+              data-cta="apply_vanguard_program"
+              href="/vanguard/application"
+            >
+              Apply for the Program
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              class="vanguard-button vanguard-button--secondary"
+              data-cta="explore_vanguard_evaluation"
+              href="#program-overview"
+            >
+              Explore the Evaluation
+            </a>
+          </div>
+        </div>
+
+        <aside class="vanguard-hero__panel" aria-label="Program overview">
+          <p class="vanguard-panel__label">Evaluation Overview</p>
+
+          <dl class="vanguard-metrics">
+            <div class="vanguard-metric">
+              <dt>Program</dt>
+              <dd>Vanguard Cohort 001</dd>
+            </div>
+
+            <div class="vanguard-metric">
+              <dt>Duration</dt>
+              <dd>30 days</dd>
+            </div>
+
+            <div class="vanguard-metric">
+              <dt>Evaluation fee</dt>
+              <dd>$0</dd>
+            </div>
+
+            <div class="vanguard-metric">
+              <dt>Standard value</dt>
+              <dd>$5,000</dd>
+            </div>
+
+            <div class="vanguard-metric">
+              <dt>Availability</dt>
+              <dd>3 organizations</dd>
+            </div>
+          </dl>
+
+          <p class="vanguard-panel__note">
+            Participation is invitation-based and requires an active technical
+            point of contact, weekly feedback, and a final evaluation meeting.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROGRAM INTRODUCTION -->
+  <section
+    class="vanguard-section vanguard-section--light"
+    id="program-overview"
+  >
+    <div class="vanguard-container">
+      <div class="vanguard-intro-grid">
+
+        <div>
+          <p class="vanguard-section-label">Why Vanguard</p>
+
+          <h2>
+            Not another free software trial.
+          </h2>
+        </div>
+
+        <div class="vanguard-prose">
+          <p class="vanguard-prose__lead">
+            Engineering teams do not need more telemetry. They need a faster,
+            clearer way to understand what production systems are telling them.
+          </p>
+
+          <p>
+            The Vanguard Program gives a small group of engineering
+            organizations the opportunity to deploy Signal Audit against real
+            operational signals while contributing structured feedback that
+            helps shape the platform.
+          </p>
+
+          <p>
+            This is a guided operational evaluation—not a self-service trial
+            and not a promotional giveaway. Signal Audit works directly with
+            each participating team throughout the 30-day program.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VANGUARD PRODUCT DEMO -->
+
+  <section
+    class="vanguard-demo"
+    id="vanguard-demo"
+    aria-labelledby="vanguard-demo-title"
+  >
+    <div class="vanguard-container">
+
+      <header class="vanguard-demo__header">
+        <p class="vanguard-section-label">
+          See Signal Audit in action
+        </p>
+
+        <h2 id="vanguard-demo-title">
+          See what you'll be evaluating.
+        </h2>
+
+        <p class="vanguard-demo__lede">
+          Follow a production signal from telemetry through operational reasoning,
+          investigation, organizational memory, and team delivery—in 90 seconds.
+        </p>
+      </header>
+
+      <div class="vanguard-demo__video">
+        <iframe
+          id="vanguard-demo-player"
+          src="https://www.youtube-nocookie.com/embed/GMix56shEtk?rel=0&enablejsapi=1"
+          title="Signal Audit Demo | From Production Telemetry to Operational Intelligence"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="vanguard-demo__footer">
+        <p>
+          Selected Vanguard organizations evaluate this workflow against their
+          own production signals during the 30-day program.
+        </p>
+
+        <a
+          class="vanguard-button vanguard-demo__button"
+          href="/vanguard/application?utm_medium=website&utm_content=vanguard_demo&utm_campaign=vanguard_august"
+          data-vanguard-demo-apply
+          data-cta="apply_vanguard_program"
+        >
+          Apply for the Program
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END VANGUARD PRODUCT DEMO -->
+
+  <!-- IDEAL PARTICIPANTS -->
+  <section class="vanguard-section vanguard-section--muted">
+    <div class="vanguard-container">
+
+      <div class="vanguard-section-heading">
+        <p class="vanguard-section-label">Ideal Participants</p>
+
+        <h2>
+          Built for teams operating production systems.
+        </h2>
+
+        <p>
+          Vanguard partners should have an active engineering environment,
+          existing observability infrastructure, and a genuine interest in
+          improving operational decision-making.
+        </p>
+      </div>
+
+      <div class="vanguard-card-grid vanguard-card-grid--four">
+
+        <article class="vanguard-card">
+          <span class="vanguard-card__number">01</span>
+
+          <h3>Existing observability</h3>
+
+          <p>
+            Your team already uses Grafana, Datadog, or both to monitor
+            production systems.
+          </p>
+        </article>
+
+        <article class="vanguard-card">
+          <span class="vanguard-card__number">02</span>
+
+          <h3>Production responsibility</h3>
+
+          <p>
+            Your engineers are responsible for understanding, investigating,
+            and resolving live operational issues.
+          </p>
+        </article>
+
+        <article class="vanguard-card">
+          <span class="vanguard-card__number">03</span>
+
+          <h3>Operational improvement</h3>
+
+          <p>
+            Your organization wants to reduce alert-chasing and improve the
+            speed and quality of engineering decisions.
+          </p>
+        </article>
+
+        <article class="vanguard-card">
+          <span class="vanguard-card__number">04</span>
+
+          <h3>Collaborative evaluation</h3>
+
+          <p>
+            Your team is willing to participate in onboarding, weekly reviews,
+            and structured product feedback.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- INCLUDED -->
+  <section class="vanguard-section vanguard-section--dark">
+    <div class="vanguard-container">
+
+      <div class="vanguard-included-layout">
+
+        <div class="vanguard-section-heading vanguard-section-heading--dark">
+          <p class="vanguard-section-label">Included</p>
+
+          <h2>
+            A complete guided deployment.
+          </h2>
+
+          <p>
+            Each Vanguard organization receives the platform, integration
+            support, operational reviews, and executive evaluation required to
+            determine whether Signal Audit creates meaningful value.
+          </p>
+
+          <div class="vanguard-value-callout">
+            <span>Standard deployment value</span>
+            <strong>$5,000</strong>
+            <small>Vanguard evaluation fee: $0</small>
+          </div>
+        </div>
+
+        <div class="vanguard-checklist" role="list">
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Signal Audit platform deployment
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Slack integration and destination routing
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Grafana webhook integration
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Datadog webhook integration
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Participating-team onboarding
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Operational intelligence configuration
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Weekly operational review sessions
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Usage and findings review
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            Final executive findings presentation
+          </div>
+
+          <div class="vanguard-checklist__item" role="listitem">
+            <span aria-hidden="true">✓</span>
+            End-of-evaluation recommendation
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PARTICIPATION REQUIREMENTS -->
+  <section class="vanguard-section vanguard-section--light">
+    <div class="vanguard-container">
+
+      <div class="vanguard-requirements-layout">
+
+        <div class="vanguard-section-heading">
+          <p class="vanguard-section-label">Your Participation</p>
+
+          <h2>
+            Free financially. Not commitment-free.
+          </h2>
+
+          <p>
+            The Vanguard Program is designed to produce operational evidence,
+            useful product feedback, and a clear purchasing decision. Active
+            participation is required throughout the evaluation.
+          </p>
+        </div>
+
+        <div class="vanguard-requirements">
+
+          <article class="vanguard-requirement">
+            <span>01</span>
+            <div>
+              <h3>Technical ownership</h3>
+              <p>
+                Assign a technical point of contact who can support integration,
+                validation, and coordination.
+              </p>
+            </div>
+          </article>
+
+          <article class="vanguard-requirement">
+            <span>02</span>
+            <div>
+              <h3>Integration access</h3>
+              <p>
+                Provide access to the appropriate Slack destination and a
+                Grafana or Datadog webhook connection.
+              </p>
+            </div>
+          </article>
+
+          <article class="vanguard-requirement">
+            <span>03</span>
+            <div>
+              <h3>Weekly feedback</h3>
+              <p>
+                Participate in one short weekly session to review findings,
+                usage, quality, and product requirements.
+              </p>
+            </div>
+          </article>
+
+          <article class="vanguard-requirement">
+            <span>04</span>
+            <div>
+              <h3>Final evaluation</h3>
+              <p>
+                Attend a final findings presentation and make a clear decision
+                regarding continuation, extension, or closure.
+              </p>
+            </div>
+          </article>
+
+          <article class="vanguard-requirement">
+            <span>05</span>
+            <div>
+              <h3>Product learning</h3>
+              <p>
+                Permit Signal Audit to use anonymized operational and product
+                feedback to improve the platform.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TIMELINE -->
+  <section class="vanguard-section vanguard-section--muted">
+    <div class="vanguard-container">
+
+      <div class="vanguard-section-heading">
+        <p class="vanguard-section-label">Evaluation Process</p>
+
+        <h2>
+          Four weeks. One clear decision.
+        </h2>
+
+        <p>
+          The evaluation follows a structured progression from deployment to
+          operational validation and executive review.
+        </p>
+      </div>
+
+      <ol class="vanguard-timeline">
+
+        <li class="vanguard-timeline__item">
+          <div class="vanguard-timeline__marker">
+            <span>01</span>
+          </div>
+
+          <div class="vanguard-timeline__content">
+            <p class="vanguard-timeline__week">Week 1</p>
+            <h3>Deployment</h3>
+
+            <ul>
+              <li>Configure Slack delivery</li>
+              <li>Connect Grafana or Datadog</li>
+              <li>Validate webhook authentication</li>
+              <li>Send and confirm test events</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="vanguard-timeline__item">
+          <div class="vanguard-timeline__marker">
+            <span>02</span>
+          </div>
+
+          <div class="vanguard-timeline__content">
+            <p class="vanguard-timeline__week">Week 2</p>
+            <h3>Usage validation</h3>
+
+            <ul>
+              <li>Review production signals and findings</li>
+              <li>Assess routing and operational context</li>
+              <li>Gather initial engineer feedback</li>
+              <li>Identify early useful cases</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="vanguard-timeline__item">
+          <div class="vanguard-timeline__marker">
+            <span>03</span>
+          </div>
+
+          <div class="vanguard-timeline__content">
+            <p class="vanguard-timeline__week">Week 3</p>
+            <h3>Operational review</h3>
+
+            <ul>
+              <li>Analyze repeated incident patterns</li>
+              <li>Review signal quality and usefulness</li>
+              <li>Identify operational recommendations</li>
+              <li>Document product requirements</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="vanguard-timeline__item">
+          <div class="vanguard-timeline__marker">
+            <span>04</span>
+          </div>
+
+          <div class="vanguard-timeline__content">
+            <p class="vanguard-timeline__week">Week 4</p>
+            <h3>Executive evaluation</h3>
+
+            <ul>
+              <li>Summarize usage and findings</li>
+              <li>Assess demonstrated operational value</li>
+              <li>Present recommendations</li>
+              <li>Decide whether to continue or close</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- SUCCESS CRITERIA -->
+  <section class="vanguard-section vanguard-section--light">
+    <div class="vanguard-container">
+
+      <div class="vanguard-section-heading">
+        <p class="vanguard-section-label">Success Criteria</p>
+
+        <h2>
+          Measured against evidence, not promises.
+        </h2>
+
+        <p>
+          The program evaluates whether Signal Audit creates enough operational
+          and organizational value to justify continued use. Individual
+          outcomes are assessed collaboratively and are not guaranteed.
+        </p>
+      </div>
+
+      <div class="vanguard-success-grid">
+
+        <article class="vanguard-success-panel">
+          <p class="vanguard-success-panel__label">Operational Evidence</p>
+
+          <ul class="vanguard-data-list">
+            <li>
+              <span>Alerts received</span>
+              <strong>Volume</strong>
+            </li>
+
+            <li>
+              <span>Alerts successfully analyzed</span>
+              <strong>Reliability</strong>
+            </li>
+
+            <li>
+              <span>Findings delivered</span>
+              <strong>Coverage</strong>
+            </li>
+
+            <li>
+              <span>Useful or actionable findings</span>
+              <strong>Quality</strong>
+            </li>
+
+            <li>
+              <span>Repeated incident patterns</span>
+              <strong>Memory</strong>
+            </li>
+
+            <li>
+              <span>Operational recommendations</span>
+              <strong>Action</strong>
+            </li>
+          </ul>
+        </article>
+
+        <article class="vanguard-success-panel">
+          <p class="vanguard-success-panel__label">Organizational Evidence</p>
+
+          <ul class="vanguard-data-list">
+            <li>
+              <span>Engineering participation</span>
+              <strong>Engagement</strong>
+            </li>
+
+            <li>
+              <span>Time required to understand alerts</span>
+              <strong>Speed</strong>
+            </li>
+
+            <li>
+              <span>Usefulness in incident review</span>
+              <strong>Impact</strong>
+            </li>
+
+            <li>
+              <span>Executive findings usefulness</span>
+              <strong>Visibility</strong>
+            </li>
+
+            <li>
+              <span>Operational improvement opportunities</span>
+              <strong>Insight</strong>
+            </li>
+
+            <li>
+              <span>Interest in continued use</span>
+              <strong>Fit</strong>
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECURITY -->
+  <section class="vanguard-section vanguard-section--security">
+    <div class="vanguard-container">
+
+      <div class="vanguard-security-layout">
+
+        <div class="vanguard-section-heading">
+          <p class="vanguard-section-label">Security &amp; Data</p>
+
+          <h2>
+            Operational access requires operational trust.
+          </h2>
+
+          <p>
+            Security, data handling, and integration requirements are reviewed
+            before an evaluation begins. Exact practices are documented in the
+            evaluation agreement.
+          </p>
+        </div>
+
+        <div class="vanguard-security-grid">
+
+          <article class="vanguard-security-card">
+            <span>01</span>
+            <h3>Data received</h3>
+            <p>
+              Signal Audit processes configured alert payloads and associated
+              operational context. Full application logs are not required for
+              the standard evaluation.
+            </p>
+          </article>
+
+          <article class="vanguard-security-card">
+            <span>02</span>
+            <h3>Authenticated intake</h3>
+            <p>
+              Grafana and Datadog events are received through authenticated
+              webhook connections associated with the participating
+              organization.
+            </p>
+          </article>
+
+          <article class="vanguard-security-card">
+            <span>03</span>
+            <h3>AI processing</h3>
+            <p>
+              Configured AI services assist with operational analysis. Data
+              handling and applicable third-party processing are disclosed
+              before deployment.
+            </p>
+          </article>
+
+          <article class="vanguard-security-card">
+            <span>04</span>
+            <h3>Access control</h3>
+            <p>
+              Customer information is limited to authorized personnel involved
+              in deployment, support, and evaluation activities.
+            </p>
+          </article>
+
+          <article class="vanguard-security-card">
+            <span>05</span>
+            <h3>Retention</h3>
+            <p>
+              Evaluation data is retained according to the agreed pilot terms
+              and may be removed after the evaluation concludes.
+            </p>
+          </article>
+
+          <article class="vanguard-security-card">
+            <span>06</span>
+            <h3>Deactivation</h3>
+            <p>
+              Webhook connections and delivery integrations are deactivated if
+              the organization elects not to continue after the evaluation.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AFTER 30 DAYS -->
+  <section class="vanguard-section vanguard-section--light">
+    <div class="vanguard-container">
+
+      <div class="vanguard-section-heading">
+        <p class="vanguard-section-label">After the Evaluation</p>
+
+        <h2>
+          Every program ends with a defined outcome.
+        </h2>
+
+        <p>
+          Continued access is not automatic. Each organization selects one of
+          three paths based on the evidence produced during the evaluation.
+        </p>
+      </div>
+
+      <div class="vanguard-outcomes-grid">
+
+        <article class="vanguard-outcome-card">
+          <p class="vanguard-outcome-card__status">
+            Path 01
+          </p>
+
+          <h3>Continue</h3>
+
+          <p>
+            Transition into a paid Signal Audit deployment or subscription
+            aligned with the organization’s usage and product tier.
+          </p>
+        </article>
+
+        <article class="vanguard-outcome-card">
+          <p class="vanguard-outcome-card__status">
+            Path 02
+          </p>
+
+          <h3>Extend</h3>
+
+          <p>
+            Extend the evaluation only when a defined technical or operational
+            issue prevented the agreed evaluation from being completed.
+          </p>
+        </article>
+
+        <article class="vanguard-outcome-card">
+          <p class="vanguard-outcome-card__status">
+            Path 03
+          </p>
+
+          <h3>Close</h3>
+
+          <p>
+            Deactivate integrations, conclude access, address retained data,
+            and deliver the final findings summary without an obligation to
+            purchase.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="vanguard-section vanguard-section--muted">
+    <div class="vanguard-container">
+
+      <div class="vanguard-faq-layout">
+
+        <div class="vanguard-section-heading">
+          <p class="vanguard-section-label">Program Questions</p>
+
+          <h2>
+            Frequently asked questions.
+          </h2>
+        </div>
+
+        <div class="vanguard-faq">
+
+          <details class="vanguard-faq__item">
+            <summary>
+              Why are only three organizations being accepted?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                Signal Audit works directly with every Vanguard organization
+                throughout deployment, review, and evaluation. Limiting the
+                first cohort protects the quality of the program and ensures
+                each team receives meaningful support.
+              </p>
+            </div>
+          </details>
+
+          <details class="vanguard-faq__item">
+            <summary>
+              Is there a fee for the 30-day evaluation?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                No. Selected Vanguard organizations pay no evaluation fee. The
+                standard deployment value is $5,000, but participation requires
+                active technical involvement, weekly feedback, and a final
+                evaluation meeting.
+              </p>
+            </div>
+          </details>
+
+          <details class="vanguard-faq__item">
+            <summary>
+              Do we have to purchase Signal Audit afterward?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                No. The organization may continue, extend for a specific
+                technical reason, or conclude the evaluation. There is no
+                obligation to purchase.
+              </p>
+            </div>
+          </details>
+
+          <details class="vanguard-faq__item">
+            <summary>
+              Can we evaluate only one observability integration?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                Yes. Organizations may evaluate Signal Audit with Grafana,
+                Datadog, or both, depending on their current environment and
+                evaluation goals.
+              </p>
+            </div>
+          </details>
+
+          <details class="vanguard-faq__item">
+            <summary>
+              How much engineering effort is required?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                The primary technical work involves assigning a point of
+                contact, configuring a webhook connection, validating test
+                events, and attending brief weekly reviews. The final effort
+                depends on the organization’s security and approval process.
+              </p>
+            </div>
+          </details>
+
+          <details class="vanguard-faq__item">
+            <summary>
+              Can we stop the evaluation early?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <div class="vanguard-faq__answer">
+              <p>
+                Yes. Either party may conclude the evaluation according to the
+                agreed pilot terms. Integrations will be deactivated and data
+                will be handled according to the evaluation agreement.
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="vanguard-section vanguard-section--about">
+    <div class="vanguard-container">
+      <div class="vanguard-about">
+
+        <p class="vanguard-section-label">About Signal Audit</p>
+
+        <h2>
+          Production signals become operational intelligence.
+        </h2>
+
+        <p>
+          Signal Audit connects production telemetry to a shared intelligence
+          engine that analyzes operational signals, identifies meaningful
+          findings, and delivers context to the teams responsible for making
+          decisions.
+        </p>
+
+        <a class="vanguard-text-link" data-cta="explore_signal_audit" href="/signal-audit">
+          Explore the Signal Audit platform
+          <span aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FINAL CTA -->
+  <section class="vanguard-final-cta">
+    <div class="vanguard-container">
+      <div class="vanguard-final-cta__inner">
+
+        <div>
+          <p class="vanguard-section-label">
+            Vanguard Cohort 001
+          </p>
+
+          <h2>
+            Become a Vanguard organization.
+          </h2>
+
+          <p>
+            Three engineering organizations will participate in the first
+            guided Signal Audit evaluation.
+          </p>
+        </div>
+
+        <div class="vanguard-final-cta__action">
+          <a
+            class="vanguard-button vanguard-button--light"
+            data-cta="apply_vanguard_program"
+            href="/vanguard/application"
+          >
+            Apply for the Program
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <small>
+            Applications are reviewed before a technical scoping conversation
+            is scheduled.
+          </small>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+<style>
+/* =========================================================
+   SIGNAL AUDIT VANGUARD PROGRAM
+   ========================================================= */
+
+ /* =========================================================
+   SQUARESPACE PAGE OVERRIDES
+   ========================================================= */
+
+/* Remove Squarespace's constrained main-page container */
+body.collection-6a6ba276ddfe677a1925a6c5 #page.container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove the Fluid Engine section's outer spacing */
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"] {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove Squarespace's content-width restrictions */
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.content-wrapper,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.content,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+[data-fluid-engine="true"],
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.fluid-engine,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.fe-block,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.sqs-block,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.sqs-block-content,
+body.collection-6a6ba276ddfe677a1925a6c5
+#page
+.page-section[data-section-id="6a6ba4a803db2e3961496a49"]
+.sqs-code-container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/*
+ * Prevent the 301-row Fluid Engine grid from controlling
+ * the height and position of the embedded page.
+ */
+body.collection-6a6ba276ddfe677a1925a6c5
+.fe-6a6ba4a8007a076bfc63174d {
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+body.collection-6a6ba276ddfe677a1925a6c5
+.fe-block-yui_3_17_2_1_1785439033676_459 {
+  position: relative !important;
+  grid-area: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.vanguard-page {
+  --vanguard-black: #090909;
+  --vanguard-black-soft: #121212;
+  --vanguard-white: #ffffff;
+  --vanguard-off-white: #f7f7f4;
+  --vanguard-gray-light: #eeeeea;
+  --vanguard-gray: #777772;
+  --vanguard-gray-dark: #373733;
+  --vanguard-line: rgba(9, 9, 9, 0.14);
+  --vanguard-line-dark: rgba(255, 255, 255, 0.16);
+  --vanguard-accent: #d49a2a;
+  --vanguard-accent-light: #f0c66b;
+  --vanguard-max-width: 1440px;
+  --vanguard-content-width: 1260px;
+
+  width: 100%;
+  overflow: hidden;
+  background: var(--vanguard-white);
+  color: var(--vanguard-black);
+  font-family: inherit;
+}
+
+.vanguard-page *,
+.vanguard-page *::before,
+.vanguard-page *::after {
+  box-sizing: border-box;
+}
+
+.vanguard-page h1,
+.vanguard-page h2,
+.vanguard-page h3,
+.vanguard-page p,
+.vanguard-page ul,
+.vanguard-page ol,
+.vanguard-page dl,
+.vanguard-page dd {
+  margin-top: 0;
+}
+
+.vanguard-page a {
+  color: inherit;
+}
+
+.vanguard-container {
+  width: min(
+    calc(100% - clamp(40px, 8vw, 128px)),
+    var(--vanguard-content-width)
+  );
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   SHARED TYPOGRAPHY
+   ========================================================= */
+
+.vanguard-eyebrow,
+.vanguard-section-label,
+.vanguard-panel__label,
+.vanguard-success-panel__label,
+.vanguard-timeline__week,
+.vanguard-outcome-card__status {
+  margin-bottom: 20px;
+  color: var(--vanguard-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.vanguard-page h2 {
+  max-width: 900px;
+  margin-bottom: 28px;
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.vanguard-page h3 {
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.vanguard-section-heading {
+  max-width: 780px;
+  margin-bottom: clamp(48px, 7vw, 88px);
+}
+
+.vanguard-section-heading > p:last-child,
+.vanguard-section-heading--dark > p:last-child {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.75;
+}
+
+.vanguard-section-heading--dark h2 {
+  color: var(--vanguard-white);
+}
+
+.vanguard-section-heading--dark > p:last-child {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* =========================================================
+   EXPLICIT TEXT COLOR PROTECTION
+   ========================================================= */
+
+/* Light and muted sections */
+.vanguard-section--light,
+.vanguard-section--muted,
+.vanguard-section--about {
+  color: var(--vanguard-black) !important;
+}
+
+.vanguard-section--light h2,
+.vanguard-section--light h3,
+.vanguard-section--muted h2,
+.vanguard-section--muted h3,
+.vanguard-section--about h2,
+.vanguard-section--about h3 {
+  color: var(--vanguard-black) !important;
+}
+
+.vanguard-section--light p:not(.vanguard-section-label),
+.vanguard-section--muted p:not(.vanguard-section-label),
+.vanguard-section--about p:not(.vanguard-section-label) {
+  color: var(--vanguard-gray-dark) !important;
+}
+
+/* Hero */
+.vanguard-hero,
+.vanguard-hero h1,
+.vanguard-hero h2,
+.vanguard-hero h3 {
+  color: var(--vanguard-white) !important;
+}
+
+.vanguard-hero__description {
+  color: rgba(255, 255, 255, 0.84) !important;
+}
+
+.vanguard-hero__supporting {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.vanguard-hero__status {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.vanguard-panel__note,
+.vanguard-metric dt {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.vanguard-metric dd {
+  color: var(--vanguard-white) !important;
+}
+
+/* Dark sections */
+.vanguard-section--dark,
+.vanguard-section--security,
+.vanguard-final-cta {
+  color: var(--vanguard-white) !important;
+}
+
+.vanguard-section--dark h2,
+.vanguard-section--dark h3,
+.vanguard-section--security h2,
+.vanguard-section--security h3,
+.vanguard-final-cta h2,
+.vanguard-final-cta h3 {
+  color: var(--vanguard-white) !important;
+}
+
+.vanguard-section--dark p:not(.vanguard-section-label),
+.vanguard-section--security p:not(.vanguard-section-label),
+.vanguard-final-cta p:not(.vanguard-section-label) {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+/* Amber labels */
+.vanguard-eyebrow,
+.vanguard-section-label,
+.vanguard-panel__label,
+.vanguard-success-panel__label,
+.vanguard-timeline__week,
+.vanguard-outcome-card__status {
+  color: var(--vanguard-accent) !important;
+}
+
+/* Buttons */
+.vanguard-button--primary,
+.vanguard-button--light {
+  color: var(--vanguard-black) !important;
+}
+
+.vanguard-button--secondary {
+  color: var(--vanguard-white) !important;
+}
+
+/* Light cards and lists */
+.vanguard-card,
+.vanguard-success-panel,
+.vanguard-outcome-card,
+.vanguard-requirement,
+.vanguard-faq__item {
+  color: var(--vanguard-black) !important;
+}
+
+.vanguard-card h3,
+.vanguard-success-panel h3,
+.vanguard-outcome-card h3,
+.vanguard-requirement h3,
+.vanguard-faq__item summary {
+  color: var(--vanguard-black) !important;
+}
+
+/* =========================================================
+   SHARED SECTIONS
+   ========================================================= */
+
+.vanguard-section {
+  padding-block: clamp(90px, 11vw, 170px);
+}
+
+.vanguard-section--light {
+  background: var(--vanguard-white);
+}
+
+.vanguard-section--muted {
+  background: var(--vanguard-off-white);
+}
+
+.vanguard-section--dark {
+  background: var(--vanguard-black);
+  color: var(--vanguard-white);
+}
+
+.vanguard-section--security {
+  background: #10100f;
+  color: var(--vanguard-white);
+}
+
+.vanguard-section--about {
+  padding-block: clamp(90px, 10vw, 145px);
+  background: var(--vanguard-white);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.vanguard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 42px;
+}
+
+.vanguard-button {
+  display: inline-flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 15px 24px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.vanguard-button:hover {
+  transform: translateY(-2px);
+}
+
+.vanguard-button--primary {
+  background: var(--vanguard-white);
+  color: var(--vanguard-black);
+}
+
+.vanguard-button--primary:hover {
+  background: var(--vanguard-accent-light);
+}
+
+.vanguard-button--secondary {
+  border-color: rgba(255, 255, 255, 0.32);
+  color: var(--vanguard-white);
+}
+
+.vanguard-button--secondary:hover {
+  border-color: var(--vanguard-white);
+}
+
+.vanguard-button--light {
+  background: var(--vanguard-white);
+  color: var(--vanguard-black);
+}
+
+.vanguard-button--light:hover {
+  background: var(--vanguard-accent-light);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.vanguard-hero {
+  position: relative;
+  min-height: min(920px, calc(100vh - 80px));
+  padding: 5vh 0;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(212, 154, 42, 0.08),
+      transparent 35%
+    ),
+    var(--vanguard-black);
+  color: var(--vanguard-white);
+}
+
+.vanguard-hero::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  pointer-events: none;
+  content: "";
+}
+
+.vanguard-hero::after {
+  position: absolute;
+  top: 14%;
+  right: -14%;
+  width: min(620px, 56vw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(212, 154, 42, 0.25);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 95px rgba(212, 154, 42, 0.025),
+    0 0 0 190px rgba(212, 154, 42, 0.018);
+  pointer-events: none;
+  content: "";
+}
+
+.vanguard-hero .vanguard-container {
+  position: relative;
+  z-index: 1;
+}
+
+.vanguard-hero__status {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: clamp(52px, 6vw, 90px);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.vanguard-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--vanguard-accent);
+  box-shadow: 0 0 18px rgba(212, 154, 42, 0.75);
+}
+
+.vanguard-hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.62fr);
+  gap: clamp(70px, 10vw, 160px);
+  align-items: end;
+  transform: translateY( -30px );
+}
+
+.vanguard-hero__content {
+  max-width: 865px;
+}
+
+.vanguard-hero__title {
+  max-width: 900px;
+  margin-bottom: 32px;
+  font-size: clamp(3.4rem, 7.4vw, 7rem);
+  font-weight: 450;
+  line-height: 0.92;
+  letter-spacing: -0.067em;
+}
+
+.vanguard-hero__description {
+  max-width: 710px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1.14rem, 1.7vw, 1.5rem);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.vanguard-hero__supporting {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.vanguard-hero__panel {
+  padding: 30px;
+  border: 1px solid var(--vanguard-line-dark);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  transform: translateY( -40px );
+}
+
+.vanguard-metrics {
+  margin-bottom: 25px;
+}
+
+.vanguard-metric {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--vanguard-line-dark);
+}
+
+.vanguard-metric dt {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.vanguard-metric dd {
+  margin-bottom: 0;
+  color: var(--vanguard-white);
+  font-size: 0.74rem;
+  font-weight: 650;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.vanguard-panel__note {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.49);
+  font-size: 0.72rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
+
+.vanguard-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  gap: clamp(60px, 10vw, 155px);
+}
+
+.vanguard-prose {
+  max-width: 650px;
+}
+
+.vanguard-prose p {
+  margin-bottom: 23px;
+  color: var(--vanguard-gray-dark);
+  font-size: 1rem;
+  line-height: 1.82;
+}
+
+.vanguard-prose .vanguard-prose__lead {
+  color: var(--vanguard-black);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.48;
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   GENERAL CARDS
+   ========================================================= */
+
+.vanguard-card-grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--vanguard-line);
+  background: var(--vanguard-line);
+}
+
+.vanguard-card-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.vanguard-card {
+  min-height: 325px;
+  padding: clamp(28px, 3vw, 42px);
+  background: var(--vanguard-off-white);
+}
+
+.vanguard-card__number {
+  display: block;
+  margin-bottom: clamp(90px, 10vw, 150px);
+  color: var(--vanguard-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.vanguard-card p {
+  margin-bottom: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.89rem;
+  line-height: 1.72;
+}
+
+
+/* =========================================================
+   INCLUDED
+   ========================================================= */
+
+.vanguard-included-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1fr);
+  gap: clamp(70px, 11vw, 165px);
+  align-items: start;
+}
+
+.vanguard-value-callout {
+  display: inline-grid;
+  gap: 7px;
+  min-width: 250px;
+  margin-top: 45px;
+  padding: 24px;
+  border: 1px solid var(--vanguard-line-dark);
+}
+
+.vanguard-value-callout span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vanguard-value-callout strong {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.vanguard-value-callout small {
+  color: var(--vanguard-accent-light);
+  font-size: 0.72rem;
+}
+
+.vanguard-checklist {
+  border-top: 1px solid var(--vanguard-line-dark);
+}
+
+.vanguard-checklist__item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding-block: 21px;
+  border-bottom: 1px solid var(--vanguard-line-dark);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.vanguard-checklist__item span {
+  color: var(--vanguard-accent-light);
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   REQUIREMENTS
+   ========================================================= */
+
+.vanguard-requirements-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(500px, 1fr);
+  gap: clamp(70px, 11vw, 170px);
+  align-items: start;
+}
+
+.vanguard-requirements-layout .vanguard-section-heading {
+  position: sticky;
+  top: 140px;
+  margin-bottom: 0;
+}
+
+.vanguard-requirements {
+  border-top: 1px solid var(--vanguard-line);
+}
+
+.vanguard-requirement {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 30px;
+  padding-block: 34px;
+  border-bottom: 1px solid var(--vanguard-line);
+}
+
+.vanguard-requirement > span {
+  padding-top: 4px;
+  color: var(--vanguard-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.vanguard-requirement p {
+  max-width: 580px;
+  margin-bottom: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.9rem;
+  line-height: 1.72;
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.vanguard-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vanguard-timeline__item {
+  position: relative;
+  min-width: 0;
+}
+
+.vanguard-timeline__item::before {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 100%;
+  height: 1px;
+  background: var(--vanguard-line);
+  content: "";
+}
+
+.vanguard-timeline__item:last-child::before {
+  display: none;
+}
+
+.vanguard-timeline__marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 49px;
+  height: 49px;
+  place-items: center;
+  margin-bottom: 42px;
+  border: 1px solid var(--vanguard-line);
+  border-radius: 50%;
+  background: var(--vanguard-off-white);
+}
+
+.vanguard-timeline__marker span {
+  color: var(--vanguard-accent);
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.vanguard-timeline__content {
+  padding-right: clamp(20px, 3vw, 45px);
+}
+
+.vanguard-timeline__content ul {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vanguard-timeline__content li {
+  position: relative;
+  margin-bottom: 11px;
+  padding-left: 16px;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.vanguard-timeline__content li::before {
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--vanguard-accent);
+  content: "";
+}
+
+
+/* =========================================================
+   SUCCESS CRITERIA
+   ========================================================= */
+
+.vanguard-success-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vanguard-success-panel {
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--vanguard-line);
+}
+
+.vanguard-success-panel__label {
+  margin-bottom: 35px;
+}
+
+.vanguard-data-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vanguard-data-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 25px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--vanguard-line);
+}
+
+.vanguard-data-list li:last-child {
+  border-bottom: 0;
+}
+
+.vanguard-data-list span {
+  color: var(--vanguard-gray-dark);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.vanguard-data-list strong {
+  color: var(--vanguard-black);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.vanguard-security-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(560px, 1.25fr);
+  gap: clamp(70px, 10vw, 150px);
+  align-items: start;
+}
+
+.vanguard-security-layout .vanguard-section-heading {
+  margin-bottom: 0;
+}
+
+.vanguard-security-layout .vanguard-section-heading h2 {
+  color: var(--vanguard-white);
+}
+
+.vanguard-security-layout .vanguard-section-heading > p:last-child {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.vanguard-security-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--vanguard-line-dark);
+  border-left: 1px solid var(--vanguard-line-dark);
+}
+
+.vanguard-security-card {
+  min-height: 285px;
+  padding: 30px;
+  border-right: 1px solid var(--vanguard-line-dark);
+  border-bottom: 1px solid var(--vanguard-line-dark);
+}
+
+.vanguard-security-card > span {
+  display: block;
+  margin-bottom: 70px;
+  color: var(--vanguard-accent-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.vanguard-security-card h3 {
+  color: var(--vanguard-white);
+}
+
+.vanguard-security-card p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   OUTCOMES
+   ========================================================= */
+
+.vanguard-outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--vanguard-line);
+  border-bottom: 1px solid var(--vanguard-line);
+}
+
+.vanguard-outcome-card {
+  min-height: 330px;
+  padding: clamp(30px, 4vw, 48px);
+  border-right: 1px solid var(--vanguard-line);
+}
+
+.vanguard-outcome-card:last-child {
+  border-right: 0;
+}
+
+.vanguard-outcome-card__status {
+  margin-bottom: clamp(95px, 11vw, 150px);
+}
+
+.vanguard-outcome-card h3 {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.vanguard-outcome-card p:last-child {
+  margin-bottom: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.88rem;
+  line-height: 1.72;
+}
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.vanguard-faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(500px, 1fr);
+  gap: clamp(70px, 11vw, 170px);
+  align-items: start;
+}
+
+.vanguard-faq-layout .vanguard-section-heading {
+  margin-bottom: 0;
+}
+
+.vanguard-faq {
+  border-top: 1px solid var(--vanguard-line);
+}
+
+.vanguard-faq__item {
+  border-bottom: 1px solid var(--vanguard-line);
+}
+
+.vanguard-faq__item summary {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  gap: 25px;
+  align-items: center;
+  padding-block: 27px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.vanguard-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.vanguard-faq__item summary span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--vanguard-line);
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: transform 180ms ease;
+}
+
+.vanguard-faq__item[open] summary span {
+  transform: rotate(45deg);
+}
+
+.vanguard-faq__answer {
+  max-width: 650px;
+  padding: 0 60px 30px 0;
+}
+
+.vanguard-faq__answer p {
+  margin-bottom: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.87rem;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.vanguard-about {
+  max-width: 940px;
+}
+
+.vanguard-about h2 {
+  max-width: 860px;
+}
+
+.vanguard-about > p:not(.vanguard-section-label) {
+  max-width: 750px;
+  margin-bottom: 32px;
+  color: var(--vanguard-gray-dark);
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  line-height: 1.72;
+}
+
+.vanguard-text-link {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--vanguard-black);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.vanguard-text-link:hover {
+  border-color: var(--vanguard-accent);
+  color: var(--vanguard-accent);
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.vanguard-final-cta {
+  padding-block: clamp(90px, 10vw, 150px);
+  background: var(--vanguard-black);
+  color: var(--vanguard-white);
+}
+
+.vanguard-final-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.6fr);
+  gap: clamp(70px, 10vw, 150px);
+  align-items: end;
+}
+
+.vanguard-final-cta h2 {
+  max-width: 760px;
+  color: var(--vanguard-white);
+}
+
+.vanguard-final-cta p:not(.vanguard-section-label) {
+  max-width: 650px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.vanguard-final-cta__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.vanguard-final-cta__action small {
+  max-width: 320px;
+  color: rgba(255, 255, 255, 0.43);
+  font-size: 0.7rem;
+  line-height: 1.65;
+}
+
+/* Ensure embedded page content remains visible */
+.vanguard-page .animation-segment-parent-hidden,
+.vanguard-page .preFlex,
+.vanguard-page .preFade {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+body.collection-6a6ba276ddfe677a1925a6c5 #page .page-section[data-section-id="6a6ba4a803db2e3961496a49"] .content-wrapper {
+  padding-top: 0 !important;
+}
+
+.vanguard-hero h1 {
+  font-size: 2.75em;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.vanguard-page a:focus-visible,
+.vanguard-page summary:focus-visible {
+  outline: 2px solid var(--vanguard-accent);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanguard-page *,
+  .vanguard-page *::before,
+  .vanguard-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .vanguard-hero__layout,
+  .vanguard-included-layout,
+  .vanguard-requirements-layout,
+  .vanguard-security-layout,
+  .vanguard-faq-layout,
+  .vanguard-final-cta__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .vanguard-hero__content {
+    max-width: 900px;
+  }
+
+  .vanguard-hero__panel {
+    max-width: 620px;
+  }
+
+  .vanguard-card-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vanguard-requirements-layout .vanguard-section-heading {
+    position: static;
+    margin-bottom: 50px;
+  }
+
+  .vanguard-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 65px 0;
+  }
+
+  .vanguard-timeline__item:nth-child(2)::before {
+    display: none;
+  }
+
+  .vanguard-security-layout .vanguard-section-heading,
+  .vanguard-faq-layout .vanguard-section-heading {
+    margin-bottom: 50px;
+  }
+
+  .vanguard-final-cta__action {
+    max-width: 440px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  body.collection-6a6ba276ddfe677a1925a6c5 #page .page-section[data-section-id="6a6ba4a803db2e3961496a49"] .content-wrapper {
+    padding-top: 0 !important;
+  }
+
+  .vanguard-container {
+    width: calc(100% - 40px);
+  }
+
+  .vanguard-section {
+    padding-block: 82px;
+  }
+
+  .vanguard-page h2 {
+    margin-bottom: 22px;
+    font-size: 2em;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+  }
+
+  .vanguard-section-heading {
+    margin-bottom: 45px;
+  }
+
+  .vanguard-hero {
+    min-height: auto;
+    padding: 72px 0 0;
+  }
+
+  .vanguard-hero::after {
+    top: 25%;
+    right: -55%;
+    width: 115vw;
+  }
+
+  .vanguard-hero__status {
+    margin-bottom: 85px;
+    font-size: 0.61rem;
+  }
+
+  .vanguard-hero__layout {
+    gap: 65px;
+  }
+
+  .vanguard-hero__title {
+    margin-bottom: 26px;
+    font-size: clamp(3.15rem, 15vw, 4.7rem);
+    line-height: 0.94;
+  }
+
+  .vanguard-hero__description {
+    font-size: 1.1rem;
+  }
+
+  .vanguard-actions {
+    flex-direction: column;
+  }
+
+  .vanguard-button {
+    width: 100%;
+  }
+
+  .vanguard-hero__panel {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .vanguard-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .vanguard-card-grid--four {
+    grid-template-columns: 1fr;
+  }
+
+  .vanguard-card {
+    min-height: auto;
+  }
+
+  .vanguard-card__number {
+    margin-bottom: 75px;
+  }
+
+  .vanguard-included-layout,
+  .vanguard-requirements-layout {
+    gap: 20px;
+  }
+
+  .vanguard-value-callout {
+    width: 100%;
+  }
+
+  .vanguard-checklist {
+    margin-top: 40px;
+  }
+
+  .vanguard-requirement {
+    grid-template-columns: 35px 1fr;
+    gap: 16px;
+  }
+
+  .vanguard-timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .vanguard-timeline__item {
+    display: grid;
+    grid-template-columns: 49px 1fr;
+    gap: 24px;
+    min-height: 265px;
+  }
+
+  .vanguard-timeline__item::before,
+  .vanguard-timeline__item:nth-child(2)::before {
+    display: block;
+    top: 49px;
+    left: 24px;
+    width: 1px;
+    height: calc(100% - 49px);
+  }
+
+  .vanguard-timeline__item:last-child::before {
+    display: none;
+  }
+
+  .vanguard-timeline__marker {
+    margin-bottom: 0;
+  }
+
+  .vanguard-timeline__content {
+    padding: 2px 0 50px;
+  }
+
+  .vanguard-success-grid,
+  .vanguard-security-grid,
+  .vanguard-outcomes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vanguard-success-panel {
+    padding: 26px 22px;
+  }
+
+  .vanguard-data-list li {
+    align-items: start;
+  }
+
+  .vanguard-security-grid {
+    border-left: 1px solid var(--vanguard-line-dark);
+  }
+
+  .vanguard-security-card {
+    min-height: auto;
+  }
+
+  .vanguard-security-card > span {
+    margin-bottom: 65px;
+  }
+
+  .vanguard-outcomes-grid {
+    border-bottom: 0;
+  }
+
+  .vanguard-outcome-card {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--vanguard-line);
+  }
+
+  .vanguard-outcome-card__status {
+    margin-bottom: 80px;
+  }
+
+  .vanguard-faq__item summary {
+    font-size: 0.88rem;
+  }
+
+  .vanguard-faq__answer {
+    padding-right: 0;
+  }
+
+  .vanguard-final-cta {
+    padding-block: 85px;
+  }
+
+  .vanguard-final-cta__inner {
+    gap: 50px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .vanguard-container {
+    width: calc(100% - 32px);
+  }
+
+  .vanguard-hero__status {
+    gap: 6px;
+  }
+
+  .vanguard-hero__title {
+    font-size: 3rem;
+  }
+
+  .vanguard-metric {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .vanguard-metric dd {
+    text-align: left;
+  }
+
+  .vanguard-data-list li {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+}
+/* =========================================================
+   VANGUARD — PRODUCT DEMO
+   ========================================================= */
+
+.vanguard-demo,
+.vanguard-demo * {
+  box-sizing: border-box;
+}
+
+.vanguard-demo {
+  padding-block: clamp(90px, 11vw, 170px);
+  background: var(--vanguard-off-white);
+  color: var(--vanguard-black);
+}
+
+.vanguard-demo__header {
+  max-width: 900px;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.vanguard-demo__header h2 {
+  max-width: 820px;
+  margin-bottom: 28px;
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.vanguard-demo__lede {
+  max-width: 720px;
+  margin: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.7;
+}
+
+.vanguard-demo__video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--vanguard-line);
+  background: var(--vanguard-black);
+  box-shadow: 0 28px 80px rgba(9, 9, 9, 0.12);
+}
+
+.vanguard-demo__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.vanguard-demo__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+.vanguard-demo__footer p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--vanguard-gray-dark);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.vanguard-demo__button {
+  flex-shrink: 0;
+  background: var(--vanguard-black);
+  color: var(--vanguard-white) !important;
+}
+
+.vanguard-demo__button:hover {
+  background: var(--vanguard-accent);
+  color: var(--vanguard-black) !important;
+}
+
+@media (max-width: 767px) {
+  .vanguard-demo {
+    padding-block: 82px;
+  }
+
+  .vanguard-demo__header h2 {
+    font-size: 2em;
+    line-height: 1.06;
+  }
+
+  .vanguard-demo__video {
+    width: 100%;
+  }
+
+  .vanguard-demo__footer {
+    display: block;
+    margin-top: 26px;
+  }
+
+  .vanguard-demo__footer p {
+    margin-bottom: 24px;
+  }
+
+  .vanguard-demo__button {
+    width: 100%;
+  }
+}
+</style>
+<script>
+(function () {
+  const VIDEO_ID = 'GMix56shEtk';
+
+  function trackVanguardDemoEvent(eventName, params = {}) {
+    const payload = {
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+      video_id: VIDEO_ID,
+      video_title: 'Signal Audit Demo | From Production Telemetry to Operational Intelligence',
+      ...params
+    };
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, payload);
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: eventName,
+      ...payload
+    });
+  }
+
+  function initVanguardDemoTracking() {
+    const section =
+      document.getElementById('vanguard-demo');
+
+    const playerElement =
+      document.getElementById('vanguard-demo-player');
+
+    const applicationLink =
+      document.querySelector('[data-vanguard-demo-apply]');
+
+    /* -------------------------------------
+       DEMO IMPRESSION
+    ------------------------------------- */
+
+    if (
+      section &&
+      'IntersectionObserver' in window
+    ) {
+      let impressionTracked = false;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              !impressionTracked
+            ) {
+              impressionTracked = true;
+
+              trackVanguardDemoEvent(
+                'vanguard_demo_impression',
+                {
+                  percent_visible: 40
+                }
+              );
+
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          threshold: 0.4
+        }
+      );
+
+      observer.observe(section);
+    }
+
+    /* -------------------------------------
+       APPLICATION CTA
+    ------------------------------------- */
+
+    if (applicationLink) {
+      applicationLink.addEventListener(
+        'click',
+        () => {
+          trackVanguardDemoEvent(
+            'vanguard_demo_application_click',
+            {
+              link_url: applicationLink.href,
+              link_text: 'Apply for the Program'
+            }
+          );
+        }
+      );
+    }
+
+    /* -------------------------------------
+       YOUTUBE PLAY
+    ------------------------------------- */
+
+    if (!playerElement) return;
+
+    let playTracked = false;
+
+    function createPlayer() {
+      if (
+        !window.YT ||
+        !window.YT.Player
+      ) {
+        return;
+      }
+
+      new window.YT.Player(
+        'vanguard-demo-player',
+        {
+          events: {
+            onStateChange(event) {
+              if (
+                event.data ===
+                  window.YT.PlayerState.PLAYING &&
+                !playTracked
+              ) {
+                playTracked = true;
+
+                trackVanguardDemoEvent(
+                  'vanguard_demo_play',
+                  {
+                    video_provider: 'youtube'
+                  }
+                );
+              }
+            }
+          }
+        }
+      );
+    }
+
+    if (
+      window.YT &&
+      window.YT.Player
+    ) {
+      createPlayer();
+      return;
+    }
+
+    const previousCallback =
+      window.onYouTubeIframeAPIReady;
+
+    window.onYouTubeIframeAPIReady =
+      function () {
+        if (
+          typeof previousCallback ===
+          'function'
+        ) {
+          previousCallback();
+        }
+
+        createPlayer();
+      };
+
+    if (
+      !document.querySelector(
+        'script[src="https://www.youtube.com/iframe_api"]'
+      )
+    ) {
+      const script =
+        document.createElement('script');
+
+      script.src =
+        'https://www.youtube.com/iframe_api';
+
+      document.head.appendChild(script);
+    }
+  }
+
+  if (
+    document.readyState === 'loading'
+  ) {
+    document.addEventListener(
+      'DOMContentLoaded',
+      initVanguardDemoTracking
+    );
+  } else {
+    initVanguardDemoTracking();
+  }
+})();
+</script>

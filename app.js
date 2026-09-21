@@ -117,6 +117,21 @@ if (!process.env.SESSION_SECRET) {
   );
 }
 
+const MARKETING_HOSTS =
+  new Set([
+    "signal-audit.com",
+    "www.signal-audit.com",
+    "signal-audit.localhost",
+  ]);
+
+function isMarketingHost(req) {
+  return MARKETING_HOSTS.has(
+    req.hostname
+      .trim()
+      .toLowerCase(),
+  );
+}
+
 const PORT =
   process.env.PORT || 3000;
 
@@ -219,8 +234,11 @@ app.use(
 
 app.use(
   "/signal-interpreter",
-
   (req, res, next) => {
+    if (isMarketingHost(req)) {
+      return next();
+    }
+
     const {
       authentication:
         requestAuthentication,
@@ -231,17 +249,25 @@ app.use(
       .requireAuthentication(
         req,
         res,
-        next,
+        (error) => {
+          if (error) {
+            return next(error);
+          }
+
+          return express.static(
+            path.join(
+              __dirname,
+              "public",
+              "signal-interpreter",
+            ),
+          )(
+            req,
+            res,
+            next,
+          );
+        },
       );
   },
-
-  express.static(
-    path.join(
-      __dirname,
-      "public",
-      "signal-interpreter",
-    ),
-  ),
 );
 
 app.use(
@@ -1117,6 +1143,129 @@ app.post(
       res,
       next,
     );
+  },
+);
+
+// Signal Audit marketing website.
+// This host boundary keeps the public website isolated from the
+// authenticated application and tenant-specific Gatekeeper runtime.
+const marketingSiteRoot =
+  path.join(
+    __dirname,
+    "website",
+  );
+
+const marketingPages =
+  new Map([
+    ["/", "index.html"],
+    ["/why-signal-audits-work", "pages/how-it-works.html"],
+    ["/signal-interpreter", "pages/signal-interpreter.html"],
+    ["/audit-submitted", "pages/audit-submitted.html"],
+    ["/inside-a-signal-audit", "pages/inside-a-signal-audit.html"],
+    ["/pricing", "pages/pricing.html"],
+    ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
+    ["/faq", "pages/faq.html"],
+    ["/signal-audit-slack", "pages/signal-audit-slack.html"],
+    ["/enterprise-operational-review", "pages/enterprise-operational-review.html"],
+    ["/product-walkthrough/grafana-alert-to-slack", "pages/product-walkthrough/grafana-alert-to-slack.html"],
+    ["/integrations", "pages/integrations/index.html"],
+    ["/integrations/grafana", "pages/integrations/grafana.html"],
+    ["/integrations/datadog", "pages/integrations/datadog.html"],
+    ["/product-walkthrough/datadog-monitor-to-slack", "pages/product-walkthrough/datadog-monitor-to-slack.html"],
+    ["/security", "pages/security.html"],
+  ]);
+
+app.use(
+  (req, res, next) => {
+    if (!isMarketingHost(req)) {
+      return next();
+    }
+
+    if (req.path.startsWith("/assets/")) {
+      const originalUrl =
+        req.url;
+
+      req.url =
+        req.url.replace(
+          /^\/assets/,
+          "",
+        );
+
+      return express.static(
+        path.join(
+          marketingSiteRoot,
+          "assets",
+        ),
+      )(
+        req,
+        res,
+        (error) => {
+          req.url =
+            originalUrl;
+
+          if (error) {
+            return next(error);
+          }
+
+          return next();
+        },
+      );
+    }
+
+    if (
+      req.method !== "GET"
+      && req.method !== "HEAD"
+    ) {
+      return next();
+    }
+
+    const normalizedPath =
+      req.path.length > 1
+        ? req.path.replace(/\/+$/, "")
+        : req.path;
+
+    const marketingRedirects =
+      new Map([
+        ["/signal-audit", "/"],
+        ["/integrations/index", "/integrations"],
+        ["/how-it-works", "/why-signal-audits-work"],
+    ["/signal-over-noise-understand-whats-happening-in-your-system-1", "/"],
+      ]);
+
+    const redirectTarget =
+      marketingRedirects.get(
+        normalizedPath,
+      );
+
+    if (redirectTarget) {
+      return res.redirect(
+        301,
+        redirectTarget,
+      );
+    }
+
+    const page =
+      marketingPages.get(
+        normalizedPath,
+      );
+
+    if (page) {
+      return res.sendFile(
+        path.join(
+          marketingSiteRoot,
+          page,
+        ),
+      );
+    }
+
+    return res
+      .status(404)
+      .sendFile(
+        path.join(
+          marketingSiteRoot,
+          "404.html",
+        ),
+      );
   },
 );
 

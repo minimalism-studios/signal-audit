@@ -1,0 +1,926 @@
+/* =========================================================
+   DATADOG INTEGRATION — FULL WIDTH / FULL BLEED
+========================================================= */
+
+.datadog-page {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #111111;
+}
+
+.datadog-page *,
+.datadog-page *::before,
+.datadog-page *::after {
+  box-sizing: border-box;
+}
+
+.datadog-hero,
+.datadog-positioning,
+.datadog-workflow,
+.datadog-output,
+.datadog-history,
+.datadog-capabilities,
+.datadog-proof,
+.datadog-cta {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.datadog-hero__inner,
+.datadog-positioning__inner,
+.datadog-workflow__inner,
+.datadog-output__inner,
+.datadog-history__inner,
+.datadog-capabilities__inner,
+.datadog-proof__inner,
+.datadog-cta__inner {
+  width: min(100% - 80px, 1440px);
+  margin: 0 auto;
+}
+
+/* Shared */
+
+.datadog-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.datadog-page a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+}
+
+.datadog-output a:focus-visible,
+.datadog-proof a:focus-visible {
+  outline-color: #c4b5fd;
+}
+
+.datadog-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.datadog-eyebrow::before {
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.datadog-eyebrow--light {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.datadog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.datadog-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.datadog-button:hover {
+  transform: translateY(-2px);
+}
+
+.datadog-button--primary {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+.datadog-button--secondary {
+  background: transparent;
+  color: #111111 !important;
+}
+
+.datadog-button--light {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #111111 !important;
+}
+
+.datadog-button--outline-light {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff !important;
+}
+
+/* Hero */
+
+.datadog-hero {
+  padding: clamp(120px, 12vw, 190px) 0 clamp(90px, 9vw, 145px);
+  padding-top: 50px;
+  background:
+    radial-gradient(
+      circle at 76% 28%,
+      rgba(99, 58, 184, 0.18),
+      transparent 31%
+    ),
+    #f5f5f2;
+}
+
+.datadog-hero__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(450px, 0.72fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+}
+
+.datadog-hero__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.datadog-hero__mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 12px;
+  background: #111111;
+  color: #c4b5fd;
+}
+
+.datadog-hero h1,
+.datadog-section-header h2,
+.datadog-positioning h2,
+.datadog-output h2,
+.datadog-proof h2,
+.datadog-cta h2 {
+  margin: 0;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.datadog-output h2,
+.datadog-proof h2 {
+  color: #FFF;
+}
+
+.datadog-hero__lede {
+  max-width: 700px;
+  margin: 30px 0 0;
+  color: rgba(17, 17, 17, 0.65);
+  font-size: clamp(1rem, 1.5vw, 1.24rem);
+  line-height: 1.65;
+}
+
+/* Hero workflow */
+
+.datadog-hero__workflow {
+  padding: 27px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 27px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 30px 90px rgba(17, 17, 17, 0.09);
+}
+
+.datadog-hero__workflow-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 21px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.09);
+  font-size: 0.7rem;
+}
+
+.datadog-hero__workflow-header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.datadog-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 13px rgba(34, 197, 94, 0.5);
+}
+
+.datadog-hero__nodes {
+  margin-top: 24px;
+}
+
+.datadog-node {
+  padding: 19px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.datadog-node__label {
+  display: block;
+  margin-bottom: 17px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.datadog-node__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.datadog-node__identity > span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 11px;
+  background: #111111;
+  color: #c4b5fd;
+  font-weight: 700;
+}
+
+.datadog-node__identity strong,
+.datadog-node__identity small {
+  display: block;
+}
+
+.datadog-node__identity small {
+  margin-top: 4px;
+  color: rgba(17, 17, 17, 0.60);
+}
+
+.datadog-node p {
+  margin: 16px 0 0;
+  color: rgba(17, 17, 17, 0.58);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.datadog-node--audit {
+  border-color: rgba(167, 139, 250, 0.28);
+  background: #111418;
+}
+
+.datadog-node--audit .datadog-node__label,
+.datadog-node--audit small {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.datadog-node--audit strong {
+  color: #ffffff;
+}
+
+.datadog-node--audit .datadog-node__identity > span {
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  background: rgba(167, 139, 250, 0.09);
+  color: #c4b5fd;
+}
+
+.datadog-node__stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.datadog-node__stages span {
+  padding: 9px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 0.54rem;
+  text-align: center;
+}
+
+.datadog-node--slack .datadog-node__identity > span {
+  background: #f0ebf2;
+  color: #611f69;
+}
+
+.datadog-node-arrow {
+  min-height: 42px;
+  display: grid;
+  place-items: center;
+  color: rgba(17, 17, 17, 0.60);
+}
+
+/* Positioning */
+
+.datadog-positioning {
+  padding: clamp(88px, 9vw, 130px) 0;
+  background: #ffffff;
+}
+
+.datadog-positioning__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.7fr;
+  gap: clamp(50px, 8vw, 120px);
+}
+
+.datadog-positioning__copy {
+  align-self: end;
+}
+
+.datadog-positioning__copy p {
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.63);
+  line-height: 1.7;
+}
+
+/* Workflow */
+
+.datadog-workflow {
+  padding: clamp(88px, 9vw, 136px) 0;
+  background: #f5f5f2;
+}
+
+.datadog-section-header {
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+.datadog-section-header > p:last-child {
+  max-width: 700px;
+  margin: 25px 0 0;
+  color: rgba(17, 17, 17, 0.61);
+  line-height: 1.65;
+}
+
+.datadog-workflow__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.datadog-workflow-card {
+  display: flex;
+  min-height: 570px;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid rgba(17, 17, 17, 0.11);
+  border-radius: 23px;
+  background: #ffffff;
+}
+
+.datadog-workflow-card__top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.09);
+  color: rgba(17, 17, 17, 0.55);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.datadog-workflow-card__signal,
+.datadog-workflow-card__mapping,
+.datadog-workflow-card__slack {
+  margin-top: 27px;
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 16px;
+  background: #f8f8f6;
+}
+
+.datadog-workflow-card__signal small,
+.datadog-workflow-card__signal strong {
+  display: block;
+}
+
+.datadog-workflow-card__signal strong {
+  margin-top: 13px;
+}
+
+.datadog-workflow-card__signal em {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.11);
+  color: #6d28d9;
+  font-size: 0.53rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.datadog-workflow-card__signal .datadog-state-resolved {
+  background: rgba(34, 197, 94, 0.11);
+  color: #15803d;
+}
+
+.datadog-workflow-card__mapping {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.datadog-workflow-card__mapping small,
+.datadog-workflow-card__mapping strong {
+  display: block;
+}
+
+.datadog-workflow-card__mapping small {
+  margin-bottom: 8px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.54rem;
+  text-transform: uppercase;
+}
+
+.datadog-workflow-card h3 {
+  margin: auto 0 0;
+  padding-top: 38px;
+  font-size: clamp(1.5rem, 2vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.datadog-workflow-card > p {
+  margin: 18px 0 0;
+  color: rgba(17, 17, 17, 0.59);
+  font-size: 0.88rem;
+  line-height: 1.62;
+}
+
+.datadog-workflow-card--dark {
+  border-color: rgba(167, 139, 250, 0.24);
+  background: #111418;
+  color: #ffffff;
+}
+
+.datadog-workflow-card--dark .datadog-workflow-card__top {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.datadog-workflow-card--dark > p {
+  color: rgba(255, 255, 255, 0.61);
+}
+
+.datadog-workflow-card__engine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+  padding: 25px;
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.datadog-workflow-card__orb {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 50%;
+  color: #c4b5fd;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.datadog-workflow-card__engine > small {
+  margin-top: 17px;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.datadog-workflow-card__engine > div {
+  width: 100%;
+  margin-top: 21px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+}
+
+.datadog-workflow-card__engine span,
+.datadog-workflow-card__engine strong {
+  display: block;
+}
+
+.datadog-workflow-card__slack > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.datadog-workflow-card__slack > div span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #111418;
+  color: #c4b5fd;
+  font-size: 0.56rem;
+}
+
+.datadog-workflow-card__slack p {
+  margin: 16px 0 0;
+  font-size: 0.69rem;
+  line-height: 1.5;
+}
+
+.datadog-workflow-card__slack small {
+  display: inline-flex;
+  margin-top: 14px;
+  color: #611f69;
+}
+
+/* Output */
+
+.datadog-output {
+  padding: clamp(90px, 9vw, 140px) 0;
+  background: #111418;
+  color: #ffffff;
+}
+
+.datadog-output__inner {
+  display: grid;
+  grid-template-columns: 0.9fr 0.75fr;
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+}
+
+.datadog-output__copy > p:not(.datadog-eyebrow) {
+  margin-top: 25px;
+  color: rgba(255, 255, 255, 0.61);
+  line-height: 1.7;
+}
+
+.datadog-output__copy ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.datadog-output__copy li {
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.datadog-output__panel {
+  overflow: hidden;
+  border-radius: 23px;
+  background: #ffffff;
+}
+
+.datadog-output__panel-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 22px;
+  background: #050505;
+}
+
+.datadog-output__panel-header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.datadog-output__row {
+  padding: 21px 22px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.datadog-output__row small,
+.datadog-output__row strong {
+  display: block;
+}
+
+.datadog-output__row small {
+  margin-bottom: 9px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+}
+
+.datadog-output__row strong {
+  color: rgba(17, 17, 17, 0.82);
+  line-height: 1.5;
+}
+
+.datadog-output__row--action {
+  background: #f5f5f2;
+}
+
+/* History */
+
+.datadog-history {
+  padding: clamp(88px, 9vw, 135px) 0;
+}
+
+.datadog-history__timeline {
+  padding: 35px;
+  border: 1px solid rgba(17, 17, 17, 0.11);
+  border-radius: 24px;
+  background: #f8f8f6;
+}
+
+.datadog-history__event {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  gap: 17px;
+  align-items: center;
+}
+
+.datadog-history__dot {
+  width: 11px;
+  height: 11px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: #8b5cf6;
+  box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.12);
+}
+
+.datadog-history__event--resolved .datadog-history__dot {
+  background: #22c55e;
+}
+
+.datadog-history__event small,
+.datadog-history__event strong,
+.datadog-history__event p {
+  display: block;
+}
+
+.datadog-history__event p {
+  margin: 5px 0 0;
+  color: rgba(17, 17, 17, 0.60);
+}
+
+.datadog-history__event em {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #e9ecf1;
+  font-size: 0.54rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.datadog-history__line {
+  width: 1px;
+  height: 37px;
+  margin-left: 5px;
+  background: rgba(17, 17, 17, 0.14);
+}
+
+/* Capabilities */
+
+.datadog-capabilities {
+  padding: clamp(88px, 9vw, 135px) 0;
+  background: #f5f5f2;
+}
+
+.datadog-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.datadog-capabilities__grid article {
+  min-height: 300px;
+  padding: 27px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.datadog-capabilities__grid article > span {
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.61rem;
+}
+
+.datadog-capabilities__grid h3 {
+  margin: 90px 0 0;
+  font-size: 1.5rem;
+}
+
+.datadog-capabilities__grid p {
+  color: rgba(17, 17, 17, 0.58);
+  line-height: 1.62;
+}
+
+/* Proof */
+
+.datadog-proof {
+  padding: clamp(90px, 9vw, 140px) 0;
+  background: #050505;
+  color: #ffffff;
+}
+
+.datadog-proof__inner {
+  display: grid;
+  grid-template-columns: 0.9fr 0.75fr;
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+}
+
+.datadog-proof p:not(.datadog-eyebrow) {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+}
+
+.datadog-proof__flow {
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr 34px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 24px;
+}
+
+.datadog-proof__flow div {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 13px;
+}
+
+.datadog-proof__flow small,
+.datadog-proof__flow strong {
+  display: block;
+}
+
+.datadog-proof__flow small {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.datadog-proof__flow > span {
+  color: #c4b5fd;
+  text-align: center;
+}
+
+/* CTA */
+
+.datadog-cta {
+  padding: clamp(95px, 10vw, 150px) 0;
+  text-align: center;
+}
+
+.datadog-cta__inner {
+  max-width: 1050px;
+}
+
+.datadog-cta .datadog-eyebrow {
+  justify-content: center;
+}
+
+.datadog-cta p:not(.datadog-eyebrow) {
+  max-width: 700px;
+  margin: 27px auto 38px;
+  color: rgba(17, 17, 17, 0.62);
+  line-height: 1.7;
+}
+
+h2 {
+}
+.datadog-workflow-card h3,
+.datadog-capabilities__grid h3 {
+  font-size: 1.25em;
+}
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .datadog-hero__inner,
+  .datadog-positioning__inner,
+  .datadog-output__inner,
+  .datadog-proof__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .datadog-workflow__grid,
+  .datadog-capabilities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .datadog-hero__inner,
+  .datadog-positioning__inner,
+  .datadog-workflow__inner,
+  .datadog-output__inner,
+  .datadog-history__inner,
+  .datadog-capabilities__inner,
+  .datadog-proof__inner,
+  .datadog-cta__inner {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .datadog-hero {
+    padding-top: 55px;
+  }
+
+  .datadog-hero h1,
+  .datadog-section-header h2,
+  .datadog-positioning h2,
+  .datadog-output h2,
+  .datadog-proof h2,
+  .datadog-cta h2 {
+  }
+
+  .datadog-actions {
+    flex-direction: column;
+  }
+
+  .datadog-button {
+    width: 100%;
+  }
+
+  .datadog-node__stages,
+  .datadog-output__copy ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .datadog-workflow__grid,
+  .datadog-capabilities__grid {
+    display: block;
+  }
+
+  .datadog-workflow-card,
+  .datadog-capabilities__grid article {
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 18px;
+  }
+
+  .datadog-history__timeline {
+    padding: 24px 20px;
+  }
+
+  .datadog-history__event {
+    grid-template-columns: 14px 1fr;
+  }
+
+  .datadog-history__event em {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .datadog-proof__flow {
+    grid-template-columns: 1fr;
+  }
+
+  .datadog-proof__flow > span {
+    transform: rotate(90deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .datadog-button {
+    transition: none !important;
+  }
+
+  .datadog-button:hover {
+    transform: none !important;
+  }
+}

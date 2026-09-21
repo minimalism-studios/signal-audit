@@ -1,0 +1,2355 @@
+<section class="case-study-page case-study-page--007">
+
+  <div class="case-study-kicker">
+    Product Walkthrough 001 / Automated Signal Intake
+  </div>
+
+  <h1>
+    From Grafana Alert to Operational Decision in Slack
+  </h1>
+
+  <p class="case-study-subhead">
+    How Signal Audit receives a production alert, interprets its operational
+    significance, records its lifecycle, and delivers decision-ready guidance
+    directly into Slack.
+  </p>
+
+  <div class="case-study-inline-cta" id="signal-interpreter-btn">
+    <a href="/signal-audit-slack" class="case-study-cta-button">
+      Explore Slack Integration
+    </a>
+  </div>
+
+  <div class="case-study-meta">
+    <div>
+      <strong>Signal Source</strong>
+      Grafana alert webhook
+    </div>
+
+    <div>
+      <strong>Interpretation Layer</strong>
+      Signal Audit
+    </div>
+
+    <div>
+      <strong>Delivery Workflow</strong>
+      Slack
+    </div>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Overview</h2>
+
+    <p>
+      Grafana is designed to detect production conditions and notify teams when
+      thresholds, behaviors, or service states require attention. But detection
+      alone does not explain the operational meaning of an alert.
+    </p>
+
+    <p>
+      This product walkthrough demonstrates how Signal Audit extends that
+      workflow. A Grafana alert enters Signal Audit automatically, is normalized
+      into a consistent signal format, evaluated for operational significance,
+      recorded through its delivery lifecycle, and routed into Slack with
+      clearer guidance for the responding team.
+    </p>
+  </section>
+
+  <section
+    class="case-study-flow-landscape"
+    aria-label="Grafana to Slack product workflow"
+  >
+    <div class="case-flow-lane">
+
+      <div class="case-flow-node">
+        <span>Detection</span>
+        <strong>Grafana Alert</strong>
+
+        <ul>
+          <li>Latency increase</li>
+          <li>Retry amplification</li>
+          <li>Error-rate movement</li>
+          <li>Service context</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node case-flow-node-dark">
+        <span>Interpretation</span>
+        <strong>Signal Audit</strong>
+
+        <ul>
+          <li>Normalize payload</li>
+          <li>Evaluate impact</li>
+          <li>Classify risk</li>
+          <li>Recommend action</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Operational Guidance</span>
+        <strong>Persistent degradation</strong>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Delivery</span>
+        <strong>Decision-ready context in Slack</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>The Observability Gap</h2>
+
+    <p>
+      Monitoring platforms are effective at showing that a production condition
+      exists. They can identify elevated latency, failed requests, unusual
+      resource behavior, or a threshold violation.
+    </p>
+
+    <p>
+      The interpretation burden still falls on engineers. Someone must determine
+      whether the alert represents isolated noise, a developing degradation
+      pattern, a dependency problem, or an incident requiring immediate action.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      Detection tells the team that something changed. Interpretation helps the
+      team decide what that change means.
+    </p>
+  </div>
+
+  <section class="case-study-section">
+    <h2>The Automated Workflow</h2>
+
+    <p>
+      Signal Audit receives Grafana alerts through a secure, connection-specific
+      webhook. Each incoming signal is associated with its configured
+      destination so the interpretation can be delivered to the appropriate
+      Slack workflow.
+    </p>
+
+    <p>
+      The incoming payload is normalized before analysis. This separates the
+      operational reasoning layer from Grafana’s original payload structure and
+      creates a repeatable foundation for future signal sources.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Demonstration Signal</h2>
+
+    <p>
+      The following scenario illustrates the type of production condition the
+      integration can process. It is a product demonstration rather than a
+      customer incident.
+    </p>
+
+    <div class="grafana-signal-demo">
+
+      <div class="grafana-signal-demo__header">
+        <span class="grafana-signal-demo__status"></span>
+
+        <div>
+          <small>Grafana Alert</small>
+          <strong>Production latency degradation</strong>
+        </div>
+      </div>
+
+      <div class="grafana-signal-demo__grid">
+        <div>
+          <small>Service</small>
+          <strong>payments-api</strong>
+        </div>
+
+        <div>
+          <small>Environment</small>
+          <strong>production</strong>
+        </div>
+
+        <div>
+          <small>Condition</small>
+          <strong>Latency above threshold</strong>
+        </div>
+
+        <div>
+          <small>Observed Behavior</small>
+          <strong>Retries and errors increasing</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Operational Interpretation</h2>
+
+    <p>
+      Rather than repeating the raw alert, Signal Audit converts the incoming
+      signal into a structured operational interpretation.
+    </p>
+
+    <div class="signal-grid signal-grid--four">
+
+      <div class="signal-card">
+        <h3>Pattern</h3>
+        <p>
+          Persistent degradation across latency, retry behavior, and error-rate
+          movement.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>What Matters</h3>
+        <p>
+          The correlated movement suggests more than an isolated threshold
+          breach.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>What to Ignore</h3>
+        <p>
+          Short-lived fluctuations outside the affected service window are less
+          operationally significant.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Next Action</h3>
+        <p>
+          Review recent deployments, dependency health, timeout policy, and
+          error-rate changes.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="case-study-inline-cta no-border-radius">
+    <h3>Grafana identifies the condition. Signal Audit explains the response.</h3>
+
+    <p>
+      Signal Audit complements the monitoring workflow by translating detected
+      production behavior into clearer operational context.
+    </p>
+
+    <a href="/signal-audit-slack">
+      Explore Slack Integration →
+    </a>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Signal Lifecycle History</h2>
+
+    <p>
+      Each incoming signal is recorded as it progresses through Signal Audit.
+      This introduces operational memory into a workflow that previously ended
+      after an alert notification was sent.
+    </p>
+
+    <div class="case-study-steps">
+
+      <div class="case-study-step">
+        <span>01</span>
+
+        <div>
+          <h3>Received</h3>
+          <p>
+            Signal Audit records that the Grafana payload entered the
+            connection-specific workflow.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+
+        <div>
+          <h3>Analyzed</h3>
+          <p>
+            The normalized signal is interpreted and the operational guidance
+            is associated with its history record.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+
+        <div>
+          <h3>Delivered</h3>
+          <p>
+            The completed interpretation is routed to the configured Slack
+            destination.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+
+        <div>
+          <h3>Failed</h3>
+          <p>
+            When analysis or delivery cannot be completed, the failed state is
+            retained for operational visibility.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Slack Delivery</h2>
+
+    <p>
+      The final interpretation arrives where engineering teams already
+      coordinate incident response. The Slack message preserves the alert’s
+      production context while adding a clearer explanation of the pattern,
+      significance, and recommended next action.
+    </p>
+
+    <div class="grafana-slack-demo">
+
+      <div class="grafana-slack-demo__topbar">
+        <span></span>
+        <strong>#signal-audit</strong>
+        <small>Production Intelligence</small>
+      </div>
+
+      <div class="grafana-slack-demo__message">
+        <strong>Audit Complete</strong>
+
+        <div>
+          <small>Pattern</small>
+          <p>
+            Persistent degradation detected across service latency and retry
+            behavior.
+          </p>
+        </div>
+
+        <div>
+          <small>What Matters</small>
+          <p>
+            The strongest signal is correlated movement after a recent
+            deployment, suggesting dependency pressure or downstream
+            saturation.
+          </p>
+        </div>
+
+        <div>
+          <small>Recommended Action</small>
+          <p>
+            Review recent deploys, dependency health, timeout policy, and
+            error-rate changes across the affected window.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      The Grafana integration changes Signal Audit from a workflow initiated
+      only through a Slack command into a platform capable of receiving
+      production signals automatically.
+    </p>
+
+    <p>
+      The monitoring platform continues to perform detection. Signal Audit adds
+      normalization, interpretation, routing, lifecycle tracking, and
+      collaboration-ready delivery.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      Signal Audit transforms a production alert from a notification into an
+      operational decision workflow.
+    </p>
+  </div>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+
+      <p class="founder-sales-cta__eyebrow">
+        Exploring an observability integration?
+      </p>
+
+      <h2>
+        Talk directly with the creator of Signal Audit.
+      </h2>
+
+      <p>
+        Schedule a Signal Review to discuss how alerts from your monitoring
+        environment could be interpreted, routed, and delivered inside your
+        existing operational workflow.
+      </p>
+
+      <a
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        class="founder-sales-cta__button"
+        target="_blank"
+        rel="noopener"
+      >
+        Schedule a Signal Review
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta no-border-radius">
+
+    <p class="case-study-cta-kicker">
+      Ready to connect monitoring with operational reasoning?
+    </p>
+
+    <h2>
+      Bring interpreted production context into Slack.
+    </h2>
+
+    <p>
+      The Signal Audit + Slack pilot connects signal interpretation with the
+      collaboration workflow where engineering teams already investigate and
+      respond.
+    </p>
+
+    <div class="case-study-cta-buttons">
+
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://buy.stripe.com/5kQ3cv1SCbGWdm65XN7Zu06"
+        class="primary-btn"
+      >
+        Purchase Slack Pilot
+      </a>
+
+      <a href="/signal-audit-slack" class="secondary-btn">
+        Explore the Integration
+      </a>
+
+    </div>
+
+  </section>
+
+</section>
+<style>
+  /* =========================================================
+   MINIMALISM — SHARED CASE STUDY PAGE TEMPLATE
+   Applies to Case Studies 001–006
+========================================================= */
+
+/* =========================================================
+   PAGE VARIABLES
+========================================================= */
+
+.case-study-page {
+  --case-accent: #43d9ff;
+  --case-accent-soft: rgba(67, 217, 255, 0.12);
+  --case-black: #090909;
+  --case-dark: #141414;
+  --case-ink: #111111;
+  --case-copy: #4e4e4e;
+  --case-muted: #747474;
+  --case-border: #dedede;
+  --case-surface: #f6f7f8;
+  --case-white: #ffffff;
+
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 120px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: var(--case-ink);
+}
+
+/* Optional page-specific accents */
+
+.case-study-page--001 {
+  --case-accent: #43d9ff;
+  --case-accent-soft: rgba(67, 217, 255, 0.12);
+}
+
+.case-study-page--002 {
+  --case-accent: #22d3ee;
+  --case-accent-soft: rgba(34, 211, 238, 0.13);
+}
+
+.case-study-page--003 {
+  --case-accent: #8b5cf6;
+  --case-accent-soft: rgba(139, 92, 246, 0.12);
+}
+
+.case-study-page--004 {
+  --case-accent: #3b82f6;
+  --case-accent-soft: rgba(59, 130, 246, 0.12);
+}
+
+.case-study-page--005 {
+  --case-accent: #10b981;
+  --case-accent-soft: rgba(16, 185, 129, 0.12);
+}
+
+.case-study-page--006 {
+  --case-accent: #fb7185;
+  --case-accent-soft: rgba(251, 113, 133, 0.12);
+}
+.case-study-page--007 {
+  --case-accent: #f59e0b;
+  --case-accent-soft: rgba(245, 158, 11, 0.12);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.case-study-page > .case-study-kicker,
+.case-study-page > h1,
+.case-study-page > .case-study-subhead,
+.case-study-page > #signal-interpreter-btn,
+.case-study-page > .case-study-meta {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 80px, 1400px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.case-study-page::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 650px;
+  background:
+    radial-gradient(
+      circle at 82% 20%,
+      var(--case-accent-soft),
+      transparent 29%
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(139, 92, 246, 0.08),
+      transparent 32%
+    ),
+    linear-gradient(145deg, #151515, #070707);
+}
+
+.case-study-page::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 650px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    transparent
+  );
+}
+
+.case-study-kicker {
+  padding-top: 92px;
+  margin-bottom: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.case-study-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: var(--case-accent);
+}
+
+.case-study-page > h1 {
+  max-width: 1120px;
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-size: 2.75em;
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.case-study-subhead {
+  max-width: 860px;
+  margin-top: 0;
+  margin-bottom: 34px;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* =========================================================
+   HERO CTA
+========================================================= */
+
+.case-study-page > #signal-interpreter-btn {
+  margin-top: 0;
+  margin-bottom: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.case-study-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.74rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.case-study-cta-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--case-accent);
+  background: var(--case-accent);
+  color: #071014 !important;
+}
+
+/* =========================================================
+   HERO META
+========================================================= */
+
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 0;
+  margin-bottom: 110px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.case-study-meta div {
+  min-width: 0;
+  min-height: 120px;
+  padding: 26px;
+  box-sizing: border-box;
+  background: rgba(13, 13, 13, 0.92);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.case-study-meta strong {
+  display: block;
+  margin-bottom: 13px;
+  font-size: 0.59rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--case-accent);
+}
+
+/* =========================================================
+   SHARED CONTENT WIDTH
+========================================================= */
+
+.case-study-section,
+.case-study-flow-landscape,
+.case-study-callout,
+.case-study-inline-cta:not(#signal-interpreter-btn),
+.founder-sales-cta,
+.case-study-cta {
+  width: min(100% - 80px, 1400px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   ARTICLE SECTIONS
+========================================================= */
+
+.case-study-section {
+  position: relative;
+  margin-bottom: 105px;
+}
+
+.case-study-section h2 {
+  max-width: 900px;
+  margin: 0 0 30px;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  line-height: 0.93;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.case-study-section > h2::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: var(--case-accent);
+}
+
+.case-study-section > p,
+.case-study-section > ul,
+.case-study-section > ol {
+  max-width: 820px;
+}
+
+.case-study-section p {
+  margin: 0 0 25px;
+  font-size: 1.12rem;
+  line-height: 1.78;
+  color: var(--case-copy);
+}
+
+.case-study-section p:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-section ul,
+.case-study-section ol {
+  margin-top: 28px;
+  margin-bottom: 28px;
+  padding-left: 24px;
+}
+
+.case-study-section li {
+  margin-bottom: 13px;
+  padding-left: 6px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--case-copy);
+}
+
+.case-study-section a {
+  color: var(--case-ink);
+  text-decoration-color: var(--case-accent);
+  text-underline-offset: 4px;
+}
+
+/* =========================================================
+   LANDSCAPE FLOW
+========================================================= */
+
+.case-study-flow-landscape {
+  margin-top: 30px;
+  margin-bottom: 105px;
+}
+
+.case-flow-lane {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.case-flow-node {
+  position: relative;
+  min-width: 0;
+  min-height: 210px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid var(--case-border);
+  border-radius: 24px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(
+      145deg,
+      var(--case-accent-soft),
+      rgba(255, 255, 255, 0.4)
+    ),
+    #f8f9fa;
+}
+
+.case-flow-node::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--case-accent-soft);
+  filter: blur(45px);
+}
+
+.case-flow-node > * {
+  position: relative;
+  z-index: 2;
+}
+
+.case-flow-node span {
+  display: block;
+  margin-bottom: 21px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.61rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.case-flow-node ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-flow-node li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--case-ink);
+}
+
+.case-flow-node li:first-child {
+  border-top: 0;
+}
+
+.case-flow-node strong {
+  display: block;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.case-flow-node-dark {
+  border-color: #151515;
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      var(--case-accent-soft),
+      transparent 34%
+    ),
+    linear-gradient(145deg, #171717, #080808);
+}
+
+.case-flow-node-dark span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.case-flow-node-dark li {
+  border-top-color: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.case-flow-node-dark strong {
+  color: #ffffff;
+}
+
+.case-flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  color: var(--case-accent);
+}
+
+/* =========================================================
+   SIGNAL GRID
+========================================================= */
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.signal-card {
+  position: relative;
+  min-width: 0;
+  min-height: 220px;
+  padding: 28px 24px;
+  overflow: hidden;
+  border: 1px solid var(--case-border);
+  border-radius: 22px;
+  box-sizing: border-box;
+  background: var(--case-surface);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.signal-card::before {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin-bottom: 44px;
+  border-radius: 50%;
+  background: var(--case-accent);
+  box-shadow: 0 0 17px var(--case-accent);
+}
+
+.signal-card:hover {
+  transform: translateY(-5px);
+  border-color: #c8c8c8;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.08);
+}
+
+.signal-card h3 {
+  margin: 0 0 14px;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.signal-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--case-copy);
+}
+
+/* =========================================================
+   KEY CALLOUT
+========================================================= */
+
+.case-study-callout {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 105px;
+  padding: 56px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      var(--case-accent-soft),
+      transparent 32%
+    ),
+    #101010;
+  border-radius: 0;
+}/
+
+.case-study-callout::before {
+  content: "Key Finding";
+  display: block;
+  margin-bottom: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.61rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--case-accent);
+}
+
+.case-study-callout p {
+  max-width: 1020px;
+  margin: 0;
+  font-size: clamp(2rem, 4.2vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: #ffffff;
+}
+
+/* =========================================================
+   OPERATIONAL STEPS
+========================================================= */
+
+.case-study-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 980px;
+  margin-top: 42px;
+  border-top: 1px solid var(--case-border);
+}
+
+.case-study-step {
+  display: grid;
+  grid-template-columns: 95px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--case-border);
+}
+
+.case-study-step > span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  color: var(--case-accent);
+}
+
+.case-study-step h3 {
+  margin: 0 0 11px;
+  font-size: 1.65rem;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.case-study-step p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--case-copy);
+}
+
+/* =========================================================
+   INLINE CTA
+========================================================= */
+
+.case-study-inline-cta:not(#signal-interpreter-btn) {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 105px;
+  padding: 48px;
+  overflow: hidden;
+  border: 1px solid var(--case-border);
+  border-radius: 26px;
+  background:
+    linear-gradient(
+      145deg,
+      var(--case-accent-soft),
+      rgba(255, 255, 255, 0.35)
+    ),
+    #fafafa;
+}
+
+.case-study-inline-cta:not(#signal-interpreter-btn)::after {
+  content: "→";
+  position: absolute;
+  top: 38px;
+  right: 42px;
+  font-size: 2rem;
+  color: var(--case-accent);
+}
+
+.case-study-inline-cta h3 {
+  max-width: 800px;
+  margin: 0 0 17px;
+  padding-right: 60px;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.case-study-inline-cta p {
+  max-width: 700px;
+  margin: 0 0 24px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--case-copy);
+}
+
+.case-study-inline-cta a:not(.case-study-cta-button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--case-ink);
+  border-radius: 999px;
+  background: var(--case-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   FOUNDER CTA
+========================================================= */
+
+.founder-sales-cta {
+  margin-top: 10px;
+  margin-bottom: 34px;
+  padding: 0;
+}
+
+.founder-sales-cta__inner {
+  padding: 68px 48px;
+  border: 1px solid var(--case-border);
+  border-radius: 28px;
+  box-sizing: border-box;
+  background: #ffffff;
+  text-align: center;
+}
+
+.founder-sales-cta__eyebrow {
+  margin: 0 0 17px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.67rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.founder-sales-cta h2 {
+  max-width: 850px;
+  margin: 0 auto 22px;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.93;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  color: var(--case-ink);
+}
+
+.founder-sales-cta p {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--case-copy);
+}
+
+.founder-sales-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 25px;
+  border-radius: 999px;
+  background: var(--case-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.founder-sales-cta__button:hover {
+  transform: translateY(-2px);
+  background: var(--case-accent);
+  color: #071014 !important;
+}
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.case-study-cta,
+.case-study-bottom-cta {
+  position: relative;
+  margin-top: 34px;
+  margin-bottom: 0;
+  padding: 68px;
+  overflow: hidden;
+  border-radius: 30px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      var(--case-accent-soft),
+      transparent 32%
+    ),
+    linear-gradient(145deg, #161616, #070707);
+  color: #ffffff;
+  text-align: left;
+}
+
+.case-study-cta::after,
+.case-study-bottom-cta::after {
+  content: "";
+  position: absolute;
+  right: 60px;
+  bottom: 55px;
+  width: 90px;
+  height: 90px;
+  border-right: 2px solid var(--case-accent);
+  border-bottom: 2px solid var(--case-accent);
+  opacity: 0.36;
+}
+
+.case-study-cta-kicker,
+.case-study-bottom-cta .case-study-cta-kicker {
+  margin: 0 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--case-accent);
+}
+
+.case-study-cta h2,
+.case-study-bottom-cta h2 {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 0 25px;
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
+  line-height: 0.91;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.case-study-cta p,
+.case-study-bottom-cta p {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 0 34px;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.case-study-button,
+.case-study-cta-buttons .primary-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 25px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #111111 !important;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.case-study-button:hover,
+.case-study-cta-buttons .primary-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--case-accent);
+  background: var(--case-accent);
+}
+
+.case-study-cta-buttons {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.case-study-cta-buttons .secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 25px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   IMAGES, TABLES, CODE AND QUOTES
+========================================================= */
+
+.case-study-page img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--case-border);
+  border-radius: 22px;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.1);
+}
+
+.case-study-page figure {
+  width: min(100% - 80px, 1400px);
+  margin: 20px auto 100px;
+}
+
+.case-study-page figcaption {
+  margin-top: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--case-muted);
+}
+
+.case-study-page blockquote {
+  width: min(100% - 80px, 1100px);
+  margin: 80px auto;
+  padding: 0 0 0 32px;
+  border-left: 3px solid var(--case-accent);
+  font-size: clamp(1.8rem, 3.5vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  color: var(--case-ink);
+}
+
+.case-study-page pre {
+  max-width: 100%;
+  margin: 40px 0;
+  padding: 28px;
+  overflow-x: auto;
+  border: 1px solid #262626;
+  border-radius: 18px;
+  background: #0d0d0d;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.case-study-page code {
+  font-size: 0.9em;
+}
+
+.case-study-page table {
+  width: 100%;
+  margin: 40px 0;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--case-border);
+  border-radius: 18px;
+}
+
+.case-study-page th,
+.case-study-page td {
+  padding: 17px 19px;
+  border-right: 1px solid var(--case-border);
+  border-bottom: 1px solid var(--case-border);
+  text-align: left;
+}
+
+.case-study-page th {
+  background: var(--case-surface);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.case-study-page td {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--case-copy);
+}
+
+.case-study-page tr:last-child td {
+  border-bottom: 0;
+}
+
+.case-study-page th:last-child,
+.case-study-page td:last-child {
+  border-right: 0;
+}
+
+
+body#collection-6a2bbca1ddce1c4a1a4f9315 .sqs-code-container h1 {
+  font-size: 2.75em !important;
+}
+body#collection-6a2bbca1ddce1c4a1a4f9315 .sqs-code-container h1,
+.case-study-page > #signal-interpreter-btn {
+  text-align: center;
+}
+.case-study-cta h2,
+.case-study-section h2,
+.founder-sales-cta h2 {
+  font-size: 2em !important;
+}
+.case-study-callout p {
+  font-size: 2.25em;
+}
+.case-study-inline-cta h3 {
+  font-size: 1.75em;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .signal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .signal-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .case-flow-lane {
+    grid-template-columns: 1fr;
+  }
+
+  .case-flow-arrow {
+    min-height: 26px;
+    transform: rotate(90deg);
+  }
+
+  .case-flow-node {
+    min-height: 0;
+  }
+  .signal-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* =========================================================
+   GRAFANA PRODUCT WALKTHROUGH
+========================================================= */
+
+.grafana-signal-demo,
+.grafana-slack-demo {
+  width: 100%;
+  max-width: 980px;
+  margin-top: 40px;
+  box-sizing: border-box;
+}
+
+.grafana-signal-demo {
+  overflow: hidden;
+  border: 1px solid var(--case-border);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.07);
+}
+
+.grafana-signal-demo__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--case-border);
+  background:
+    linear-gradient(
+      145deg,
+      var(--case-accent-soft),
+      rgba(255, 255, 255, 0.4)
+    ),
+    #fafafa;
+}
+
+.grafana-signal-demo__status {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.1);
+}
+
+.grafana-signal-demo__header small,
+.grafana-signal-demo__grid small {
+  display: block;
+  margin-bottom: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.grafana-signal-demo__header strong {
+  display: block;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--case-ink);
+}
+
+.grafana-signal-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grafana-signal-demo__grid > div {
+  min-width: 0;
+  padding: 26px 28px;
+  border-right: 1px solid var(--case-border);
+  border-bottom: 1px solid var(--case-border);
+  box-sizing: border-box;
+}
+
+.grafana-signal-demo__grid > div:nth-child(2n) {
+  border-right: 0;
+}
+
+.grafana-signal-demo__grid > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.grafana-signal-demo__grid strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--case-ink);
+}
+
+.signal-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Slack demonstration */
+
+.grafana-slack-demo {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      var(--case-accent-soft),
+      transparent 32%
+    ),
+    #111318;
+  color: #ffffff;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.22),
+    0 0 50px var(--case-accent-soft);
+}
+
+.grafana-slack-demo__topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grafana-slack-demo__topbar > span {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.5);
+}
+
+.grafana-slack-demo__topbar strong {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.grafana-slack-demo__topbar small {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+}
+
+.grafana-slack-demo__message {
+  margin-top: 22px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.grafana-slack-demo__message > strong {
+  display: block;
+  margin-bottom: 19px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.grafana-slack-demo__message > div {
+  padding: 17px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.grafana-slack-demo__message small {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.grafana-slack-demo__message p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.grafana-slack-demo__message > div:last-child p {
+  color: #86efac;
+}
+/* footer fix */ 
+
+body#collection-6a5345b3fc240d5144eb9c97 main .page-section,
+body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper,
+body#collection-6a5345b3fc240d5144eb9c97 main .content,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a5345b3fc240d5144eb9c97
+.fe-6a3e2a6ca481d87cdec73103 {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a5345b3fc240d5144eb9c97
+.fe-block-yui_3_17_2_1_1782458980627_462 {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+.minimalism-footer {
+  margin-top: -160px !important;
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .case-study-page {
+    padding-bottom: 72px;
+  }
+
+  .case-study-page::before,
+  .case-study-page::after {
+    height: 680px;
+  }
+
+  .case-study-page > .case-study-kicker,
+  .case-study-page > h1,
+  .case-study-page > .case-study-subhead,
+  .case-study-page > #signal-interpreter-btn,
+  .case-study-page > .case-study-meta,
+  .case-study-section,
+  .case-study-flow-landscape,
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .founder-sales-cta,
+  .case-study-cta,
+  .case-study-bottom-cta {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .case-study-kicker {
+    padding-top: 42px;
+    margin-bottom: 22px !important;
+    line-height: 1.35 !important;
+  }
+
+  .case-study-page > h1 {
+    margin: 0 0 24px !important;
+    padding-top: 0 !important;
+    font-size: 2.75em;
+    line-height: 0.9 !important;
+    letter-spacing: -0.065em;
+    transform: none !important;
+  }
+
+  .case-study-subhead {
+    margin-bottom: 28px;
+    font-size: 1.03rem;
+  }
+
+  .case-study-page > #signal-interpreter-btn {
+    margin-bottom: 38px;
+  }
+
+  .case-study-meta {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 72px;
+    padding: 0;
+  }
+
+  .case-study-meta div {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .case-study-section {
+    margin-bottom: 72px;
+  }
+
+  .case-study-section h2 {
+    font-size: 2.25rem;
+  }
+
+  .case-study-section p {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .case-study-flow-landscape {
+    margin-bottom: 72px;
+  }
+
+  .case-flow-node {
+    padding: 24px;
+  }
+
+  .signal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-card,
+  .signal-card:last-child {
+    grid-column: auto;
+    min-height: 0;
+  }
+
+  .signal-card::before {
+    margin-bottom: 28px;
+  }
+
+  .case-study-callout {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 72px;
+    padding: 38px 28px;
+  }
+
+  .case-study-callout p {
+    font-size: 2rem;
+  }
+
+  .case-study-step {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 28px 0;
+  }
+
+  .case-study-inline-cta:not(#signal-interpreter-btn) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 34px 26px;
+  }
+
+  .case-study-inline-cta:not(#signal-interpreter-btn)::after {
+    display: none;
+  }
+
+  .case-study-inline-cta h3 {
+    padding-right: 0;
+    font-size: 2em;
+  }
+
+  .founder-sales-cta {
+    padding: 0 20px;
+  }
+
+  .founder-sales-cta__inner {
+    padding: 42px 25px;
+  }
+
+  .founder-sales-cta h2 {
+    font-size: 2.25rem;
+  }
+
+  .case-study-button,
+  .founder-sales-cta__button {
+    width: 85%;
+  }
+
+  .case-study-cta,
+  .case-study-bottom-cta {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 42px 26px;
+    border-radius: 24px;
+  }
+
+  .case-study-cta::after,
+  .case-study-bottom-cta::after {
+    display: none;
+  }
+
+  .case-study-cta h2,
+  .case-study-bottom-cta h2 {
+    font-size: 2.5rem;
+  }
+
+  .case-study-button {
+    width: 87%;
+  }
+
+  .case-study-cta-buttons {
+    flex-direction: column;
+  }
+
+  .case-study-cta-buttons a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .case-study-page figure,
+  .case-study-page blockquote {
+    width: calc(100% - 40px);
+  }
+
+  .case-study-page blockquote {
+    margin-top: 55px;
+    margin-bottom: 55px;
+    padding-left: 22px;
+  }
+  body#collection-6a2bbca1ddce1c4a1a4f9315 .sqs-code-container h1 {
+    font-size: 2em !important;
+  }  
+  .case-study-cta h2,
+  .case-study-bottom-cta h2,
+  .founder-sales-cta h2 {
+    font-size: 1.75em !important;
+  }
+  .case-study-inline-cta h3 {
+    font-size: 1.5em !important;
+  }
+  .case-study-callout p {
+    font-size: 1.75em;
+  }
+
+  /* Mobile hero background must include the stacked metadata panel */
+  .case-study-page::before,
+  .case-study-page::after {
+    height: 960px;
+  }
+  .case-study-meta {
+    position: relative;
+    z-index: 2;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 88px;
+    padding: 0;
+  }
+
+  .case-study-meta div {
+    min-height: 96px;
+    padding: 22px;
+  }
+   .case-study-meta {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .case-study-meta div {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .case-study-page > .case-study-meta {
+    padding: 0 !important;
+  }
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-cta,
+  .case-study-bottom-cta,
+  .case-study-meta {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+  }
+  .case-study-meta div,
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-cta,
+  .case-study-bottom-cta {
+      padding-left: 28px;
+      padding-right: 28px;
+  }
+  .grafana-signal-demo,
+  .grafana-slack-demo {
+    max-width: 100%;
+  }
+
+  .grafana-signal-demo__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grafana-signal-demo__grid > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--case-border);
+  }
+
+  .grafana-signal-demo__grid > div:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--case-border);
+  }
+
+  .grafana-signal-demo__grid > div:last-child {
+    border-bottom: 0;
+  }
+
+  .signal-grid--four {
+    grid-template-columns: 1fr;
+  }
+
+  .grafana-slack-demo {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .grafana-slack-demo__message {
+    padding: 20px;
+  }
+
+  .grafana-slack-demo__topbar small {
+    display: none;
+  } 
+  .minimalism-footer {
+    margin-top: -120px !important;
+  }
+
+  body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper {
+    padding-top: 4vh;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .case-study-page > .case-study-kicker,
+  .case-study-page > h1,
+  .case-study-page > .case-study-subhead,
+  .case-study-page > #signal-interpreter-btn,
+  .case-study-section,
+  .case-study-flow-landscape {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .case-study-meta,
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-cta,
+  .case-study-bottom-cta {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+  }
+
+  .founder-sales-cta {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .case-study-cta-button {
+    width: 100%;
+  }
+   .case-study-page::before,
+  .case-study-page::after {
+    height: 990px;
+  }
+
+  .case-study-meta {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 80px;
+  }
+  .case-study-meta {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .case-study-meta div {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .case-study-meta div,
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-cta,
+  .case-study-bottom-cta {
+      padding-left: 22px;
+      padding-right: 22px;
+  }
+  .minimalism-footer {
+    margin-top: -120px !important;
+  }
+  body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper {
+    padding-top: 4vh;
+  }
+}
+/* =========================================================
+   MOBILE — BREAK CASE STUDY OUT OF SQUARESPACE GRID GUTTERS
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .case-study-page {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+  }
+
+  .case-study-section,
+  .case-study-flow-landscape,
+  .case-study-callout,
+  .case-study-inline-cta:not(#signal-interpreter-btn),
+  .founder-sales-cta,
+  .case-study-cta,
+  .case-study-bottom-cta,
+  .case-study-meta {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+}
+/* =========================================================
+   MOBILE — PREVENT HERO FROM COVERING OVERVIEW
+========================================================= */
+
+@media (max-width: 767px) {
+
+  /* Keep all article content above the hero pseudo-elements */
+  .case-study-page > .case-study-section,
+  .case-study-page > .case-study-flow-landscape,
+  .case-study-page > .case-study-callout,
+  .case-study-page > .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-page > .founder-sales-cta,
+  .case-study-page > .case-study-cta {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Create a clean white transition after the metadata */
+  .case-study-meta + .case-study-section {
+    margin-top: 0 !important;
+    padding-top: 64px !important;
+    background: #ffffff;
+  }
+  .case-study-page > .case-study-callout,
+  .case-study-page > .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-page > .case-study-cta {
+    border-radius: 0;
+  }
+}
+/* =========================================================
+   PRODUCT WORKFLOW 001 — TRUE FULL-WIDTH PAGE CORRECTION
+========================================================= */
+
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Remove the Squarespace section and Code Block gutters */
+body#collection-6a5345b3fc240d5144eb9c97 main .page-section,
+body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper,
+body#collection-6a5345b3fc240d5144eb9c97 main .content,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-layout,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-row,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-col-12,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block-content,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-code-container {
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Allow the custom page to escape the Squarespace grid */
+body#collection-6a5345b3fc240d5144eb9c97 main .page-section,
+body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper,
+body#collection-6a5345b3fc240d5144eb9c97 main .content,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-layout,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-row,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block,
+body#collection-6a5345b3fc240d5144eb9c97 main .sqs-block-content {
+  overflow: visible !important;
+}
+
+/* Break the complete case study out to the viewport on every screen size */
+body#collection-6a5345b3fc240d5144eb9c97 .case-study-page {
+  position: relative;
+  left: 50%;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: -50vw !important;
+  margin-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+
+/* Full-width section backgrounds */
+.case-study-page > .case-study-section,
+.case-study-page > .case-study-flow-landscape,
+.case-study-page > .case-study-callout,
+.case-study-page > .case-study-inline-cta:not(#signal-interpreter-btn),
+.case-study-page > .founder-sales-cta,
+.case-study-page > .case-study-cta,
+.case-study-page > .case-study-bottom-cta {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+/* Hero content remains centered and constrained */
+.case-study-page > .case-study-kicker,
+.case-study-page > h1,
+.case-study-page > .case-study-subhead,
+.case-study-page > #signal-interpreter-btn,
+.case-study-page > .case-study-meta {
+  width: min(calc(100% - 80px), 1400px);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Constrain readable text inside standard article sections */
+.case-study-page > .case-study-section {
+  padding-left: max(40px, calc((100% - 1400px) / 2));
+  padding-right: max(40px, calc((100% - 1400px) / 2));
+}
+
+/* Constrain landscape workflow content separately */
+.case-study-page > .case-study-flow-landscape {
+  padding-left: max(40px, calc((100% - 1500px) / 2));
+  padding-right: max(40px, calc((100% - 1500px) / 2));
+}
+
+/* Keep full-width callout backgrounds with centered content */
+.case-study-page > .case-study-callout > *,
+.case-study-page > .case-study-inline-cta:not(#signal-interpreter-btn) > *,
+.case-study-page > .founder-sales-cta > *,
+.case-study-page > .case-study-cta > *,
+.case-study-page > .case-study-bottom-cta > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Protect media and diagrams from creating overflow */
+.case-study-page img,
+.case-study-page svg,
+.case-study-page video,
+.case-study-page iframe {
+  max-width: 100%;
+}
+
+.case-study-page *,
+.case-study-page *::before,
+.case-study-page *::after {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1024px) {
+
+  .case-study-page > .case-study-kicker,
+  .case-study-page > h1,
+  .case-study-page > .case-study-subhead,
+  .case-study-page > #signal-interpreter-btn,
+  .case-study-page > .case-study-meta {
+    width: calc(100% - 56px);
+  }
+
+  .case-study-page > .case-study-section,
+  .case-study-page > .case-study-flow-landscape {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  body#collection-6a5345b3fc240d5144eb9c97 .case-study-page {
+    left: 50%;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: -50vw !important;
+    margin-right: 0 !important;
+  }
+
+  .case-study-page > .case-study-kicker,
+  .case-study-page > h1,
+  .case-study-page > .case-study-subhead,
+  .case-study-page > #signal-interpreter-btn,
+  .case-study-page > .case-study-meta {
+    width: 100%;
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .case-study-page > .case-study-section,
+  .case-study-page > .case-study-flow-landscape,
+  .case-study-page > .founder-sales-cta {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .case-study-page > .case-study-callout,
+  .case-study-page > .case-study-inline-cta:not(#signal-interpreter-btn),
+  .case-study-page > .case-study-cta,
+  .case-study-page > .case-study-bottom-cta {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0;
+  }
+  body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper {
+    padding-top: 4vh;
+  }
+}
+.no-border-radius {
+  border-radius: 0 !important;
+}
+
+body#collection-6a5345b3fc240d5144eb9c97 main .content-wrapper {
+  padding-top: 5vmax !important;
+}
+
+</style>

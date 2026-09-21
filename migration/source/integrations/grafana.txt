@@ -1,0 +1,2427 @@
+<!-- ======================================================
+     SIGNAL AUDIT + GRAFANA INTEGRATION PAGE
+======================================================= -->
+
+<main class="grafana-integration-page">
+
+  <!-- HERO -->
+
+  <section
+    class="grafana-integration-hero"
+    aria-labelledby="grafana-integration-title"
+  >
+    <div class="grafana-integration-hero__inner">
+
+      <div class="grafana-integration-hero__copy">
+        <p class="grafana-integration-hero__eyebrow">
+          Signal Audit Integration
+        </p>
+
+        <div class="grafana-integration-hero__identity">
+          <span class="grafana-integration-hero__mark" aria-hidden="true">
+            G
+          </span>
+
+          <span>Grafana</span>
+        </div>
+
+        <h1 id="grafana-integration-title">
+          Turn Grafana alerts into operational intelligence.
+        </h1>
+
+        <p class="grafana-integration-hero__intro">
+          Signal Audit receives production alerts from Grafana, analyzes their
+          operational significance with AI, preserves the full signal
+          lifecycle, and delivers decision-ready guidance into Slack.
+        </p>
+
+        <div class="grafana-integration-hero__actions">
+          <a
+            class="grafana-button grafana-button--primary"
+            data-cta="view_grafana_product_workflow"
+            href="/product-walkthrough/grafana-alert-to-slack"
+          >
+            View product workflow
+          </a>
+
+          <a
+            class="grafana-button grafana-button--secondary"
+            data-cta="explore_signal_audit_slack"
+            href="/signal-audit-slack"
+          >
+            Explore Signal Audit + Slack
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="grafana-integration-hero__workflow"
+        role="group"
+        aria-label="Grafana alert to Signal Audit to Slack workflow"
+      >
+        <div class="grafana-integration-hero__workflow-header">
+          <div>
+            <span class="grafana-integration-hero__status"></span>
+            <strong>Production workflow</strong>
+          </div>
+
+          <small>Automated</small>
+        </div>
+
+        <div class="grafana-integration-hero__workflow-body">
+
+          <div class="grafana-integration-node grafana-integration-node--grafana">
+            <span class="grafana-integration-node__label">
+              Signal source
+            </span>
+
+            <div class="grafana-integration-node__identity">
+              <span>G</span>
+
+              <div>
+                <strong>Grafana Alert</strong>
+                <small>Firing</small>
+              </div>
+            </div>
+
+            <p>
+              Elevated latency detected in payments-api.
+            </p>
+          </div>
+
+          <div class="grafana-integration-arrow" aria-hidden="true">
+            ↓
+          </div>
+
+          <div class="grafana-integration-node grafana-integration-node--audit">
+            <span class="grafana-integration-node__label">
+              Interpretation
+            </span>
+
+            <div class="grafana-integration-node__identity">
+              <span>A</span>
+
+              <div>
+                <strong>Signal Audit</strong>
+                <small>Analyzing</small>
+              </div>
+            </div>
+
+            <div class="grafana-integration-node__stages">
+              <span>Normalize</span>
+              <span>Analyze</span>
+              <span>Preserve</span>
+              <span>Deliver</span>
+            </div>
+          </div>
+
+          <div class="grafana-integration-arrow" aria-hidden="true">
+            ↓
+          </div>
+
+          <div class="grafana-integration-node grafana-integration-node--slack">
+            <span class="grafana-integration-node__label">
+              Workflow delivery
+            </span>
+
+            <div class="grafana-integration-node__identity">
+              <span>S</span>
+
+              <div>
+                <strong>Slack</strong>
+                <small>Threaded analysis</small>
+              </div>
+            </div>
+
+            <p>
+              Persistent degradation identified with a recommended next action.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END HERO -->
+
+
+  <!-- POSITIONING -->
+
+  <section class="grafana-positioning">
+    <div class="grafana-positioning__inner">
+
+      <div class="grafana-positioning__heading">
+        <p class="grafana-eyebrow">
+          Beyond alert delivery
+        </p>
+
+        <h2>
+          Grafana detects the change. Signal Audit explains what it means.
+        </h2>
+      </div>
+
+      <div class="grafana-positioning__copy">
+        <p>
+          Grafana is excellent at identifying when production behavior moves
+          outside an expected range. But an alert alone does not explain
+          significance, urgency, likely impact, or what the team should do next.
+        </p>
+
+        <p>
+          Signal Audit adds an operational-intelligence layer between detection
+          and response.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END POSITIONING -->
+
+
+  <!-- WORKFLOW -->
+
+  <section
+    class="grafana-workflow"
+    aria-labelledby="grafana-workflow-title"
+  >
+    <div class="grafana-workflow__inner">
+
+      <header class="grafana-workflow__header">
+        <p class="grafana-eyebrow">
+          How the integration works
+        </p>
+
+        <h2 id="grafana-workflow-title">
+          From firing alert to resolved signal.
+        </h2>
+
+        <p>
+          Every Grafana event moves through the same repeatable operational
+          workflow.
+        </p>
+      </header>
+
+      <div class="grafana-workflow__grid">
+
+        <article class="grafana-workflow-card">
+          <div class="grafana-workflow-card__topline">
+            <span>01</span>
+            <strong>Detect</strong>
+          </div>
+
+          <div class="grafana-workflow-card__visual">
+            <small>Grafana alert</small>
+
+            <strong>
+              API latency above threshold
+            </strong>
+
+            <span class="grafana-workflow-card__state grafana-workflow-card__state--firing">
+              Firing
+            </span>
+          </div>
+
+          <h3>
+            Grafana detects production degradation.
+          </h3>
+
+          <p>
+            An alert rule identifies abnormal service behavior and sends the
+            event to the Signal Audit webhook.
+          </p>
+        </article>
+
+        <article class="grafana-workflow-card">
+          <div class="grafana-workflow-card__topline">
+            <span>02</span>
+            <strong>Ingest</strong>
+          </div>
+
+          <div class="grafana-workflow-card__visual">
+            <small>Authenticated webhook</small>
+
+            <strong>
+              Payload received
+            </strong>
+
+            <span class="grafana-workflow-card__state">
+              Accepted
+            </span>
+          </div>
+
+          <h3>
+            Signal Audit receives and normalizes the alert.
+          </h3>
+
+          <p>
+            Grafana-specific fields are translated into a consistent internal
+            signal model for analysis and lifecycle tracking.
+          </p>
+        </article>
+
+        <article class="grafana-workflow-card grafana-workflow-card--dark">
+          <div class="grafana-workflow-card__topline">
+            <span>03</span>
+            <strong>Analyze</strong>
+          </div>
+
+          <div class="grafana-workflow-card__engine">
+            <div class="grafana-workflow-card__orb">
+              A
+            </div>
+
+            <span>
+              AI analysis running
+            </span>
+
+            <div>
+              <small>Classification</small>
+              <strong>Persistent degradation</strong>
+            </div>
+          </div>
+
+          <h3>
+            AI determines the signal's operational meaning.
+          </h3>
+
+          <p>
+            Signal Audit evaluates urgency, likely impact, service context,
+            deployment timing, dependency pressure, and recommended action.
+          </p>
+        </article>
+
+        <article class="grafana-workflow-card">
+          <div class="grafana-workflow-card__topline">
+            <span>04</span>
+            <strong>Preserve</strong>
+          </div>
+
+          <div class="grafana-workflow-card__history">
+            <div>
+              <span></span>
+              <strong>Received</strong>
+            </div>
+
+            <div>
+              <span></span>
+              <strong>Analyzed</strong>
+            </div>
+
+            <div>
+              <span></span>
+              <strong>Delivered</strong>
+            </div>
+          </div>
+
+          <h3>
+            The signal becomes part of persistent history.
+          </h3>
+
+          <p>
+            The original event, analysis, delivery state, and later recovery
+            remain connected as one operational record.
+          </p>
+        </article>
+
+        <article class="grafana-workflow-card">
+          <div class="grafana-workflow-card__topline">
+            <span>05</span>
+            <strong>Deliver</strong>
+          </div>
+
+          <div class="grafana-workflow-card__slack">
+            <div>
+              <span>SA</span>
+
+              <strong>Signal Audit</strong>
+            </div>
+
+            <p>
+              Persistent degradation detected in payments-api.
+            </p>
+
+            <small>
+              1 threaded analysis
+            </small>
+          </div>
+
+          <h3>
+            Guidance reaches the Slack channel already responding.
+          </h3>
+
+          <p>
+            The Grafana alert becomes a parent message, while the Signal Audit
+            interpretation appears as a focused threaded response.
+          </p>
+        </article>
+
+        <article class="grafana-workflow-card grafana-workflow-card--resolved">
+          <div class="grafana-workflow-card__topline">
+            <span>06</span>
+            <strong>Resolve</strong>
+          </div>
+
+          <div class="grafana-workflow-card__visual">
+            <small>Grafana recovery event</small>
+
+            <strong>
+              Service returned to normal
+            </strong>
+
+            <span class="grafana-workflow-card__state grafana-workflow-card__state--resolved">
+              Resolved
+            </span>
+          </div>
+
+          <h3>
+            Recovery is linked back to the original alert.
+          </h3>
+
+          <p>
+            When Grafana sends a resolved event, Signal Audit updates the
+            original lifecycle instead of creating disconnected history.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END WORKFLOW -->
+
+
+  <!-- SIGNAL OUTPUT -->
+
+  <section class="grafana-output">
+    <div class="grafana-output__inner">
+
+      <div class="grafana-output__copy">
+        <p class="grafana-eyebrow grafana-eyebrow--light">
+          Decision-ready output
+        </p>
+
+        <h2>
+          Not another alert. A clear operational interpretation.
+        </h2>
+
+        <p>
+          Signal Audit transforms the Grafana event into a structured
+          explanation of what matters, what can be ignored, and where the team
+          should investigate next.
+        </p>
+
+        <ul>
+          <li>Signal classification</li>
+          <li>Operational significance</li>
+          <li>Likely impact</li>
+          <li>Recommended next action</li>
+          <li>Recovery-state tracking</li>
+        </ul>
+      </div>
+
+      <div class="grafana-output__panel">
+        <div class="grafana-output__panel-header">
+          <div>
+            <span class="grafana-output__status"></span>
+            <strong>Signal Audit Complete</strong>
+          </div>
+
+          <small>Grafana</small>
+        </div>
+
+        <div class="grafana-output__row">
+          <small>Classification</small>
+
+          <strong>
+            Persistent Degradation
+          </strong>
+        </div>
+
+        <div class="grafana-output__row">
+          <small>What Matters</small>
+
+          <strong>
+            Latency, retries, and HTTP errors moved together after the latest
+            deployment.
+          </strong>
+        </div>
+
+        <div class="grafana-output__row">
+          <small>What To Ignore</small>
+
+          <strong>
+            Short-lived CPU fluctuations outside the affected service window.
+          </strong>
+        </div>
+
+        <div class="grafana-output__row grafana-output__row--action">
+          <small>Recommended Action</small>
+
+          <strong>
+            Review the recent deployment, retry behavior, timeout policy, and
+            downstream dependency health.
+          </strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SIGNAL OUTPUT -->
+
+
+  <!-- SIGNAL HISTORY -->
+
+  <section class="grafana-history">
+    <div class="grafana-history__inner">
+
+      <header class="grafana-history__header">
+        <p class="grafana-eyebrow">
+          Persistent Signal History
+        </p>
+
+        <h2>
+          The alert lifecycle remains visible after the incident ends.
+        </h2>
+
+        <p>
+          Signal Audit preserves the complete progression from initial alert to
+          recovery so teams can understand not only what happened, but how the
+          signal evolved.
+        </p>
+      </header>
+
+      <div class="grafana-history__timeline">
+
+        <div class="grafana-history__event">
+          <span class="grafana-history__event-dot"></span>
+
+          <div>
+            <small>09:14</small>
+            <strong>Alert received</strong>
+            <p>Grafana firing event recorded.</p>
+          </div>
+
+          <em>Received</em>
+        </div>
+
+        <div class="grafana-history__line"></div>
+
+        <div class="grafana-history__event">
+          <span class="grafana-history__event-dot"></span>
+
+          <div>
+            <small>09:14</small>
+            <strong>Signal analyzed</strong>
+            <p>Persistent degradation identified.</p>
+          </div>
+
+          <em>Analyzed</em>
+        </div>
+
+        <div class="grafana-history__line"></div>
+
+        <div class="grafana-history__event">
+          <span class="grafana-history__event-dot"></span>
+
+          <div>
+            <small>09:15</small>
+            <strong>Guidance delivered</strong>
+            <p>Slack parent message and threaded analysis created.</p>
+          </div>
+
+          <em>Delivered</em>
+        </div>
+
+        <div class="grafana-history__line"></div>
+
+        <div class="grafana-history__event grafana-history__event--resolved">
+          <span class="grafana-history__event-dot"></span>
+
+          <div>
+            <small>09:42</small>
+            <strong>Recovery detected</strong>
+            <p>Grafana resolved event connected to the original signal.</p>
+          </div>
+
+          <em>Resolved</em>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SIGNAL HISTORY -->
+
+
+  <!-- CAPABILITIES -->
+
+  <section
+    class="grafana-capabilities"
+    aria-labelledby="grafana-capabilities-title"
+  >
+    <div class="grafana-capabilities__inner">
+
+      <header class="grafana-capabilities__header">
+        <p class="grafana-eyebrow">
+          Integration capabilities
+        </p>
+
+        <h2 id="grafana-capabilities-title">
+          Built for the full Grafana alert lifecycle.
+        </h2>
+      </header>
+
+      <div class="grafana-capabilities__grid">
+
+        <article class="grafana-capability">
+          <span>01</span>
+
+          <h3>
+            Authenticated ingestion
+          </h3>
+
+          <p>
+            Grafana sends production events through a dedicated, authenticated
+            webhook endpoint.
+          </p>
+        </article>
+
+        <article class="grafana-capability">
+          <span>02</span>
+
+          <h3>
+            Alert normalization
+          </h3>
+
+          <p>
+            Grafana payloads are converted into a consistent internal signal
+            format for analysis and tracking.
+          </p>
+        </article>
+
+        <article class="grafana-capability">
+          <span>03</span>
+
+          <h3>
+            AI interpretation
+          </h3>
+
+          <p>
+            Signal Audit evaluates operational risk, urgency, likely impact,
+            and recommended response.
+          </p>
+        </article>
+
+        <article class="grafana-capability">
+          <span>04</span>
+
+          <h3>
+            Recovery correlation
+          </h3>
+
+          <p>
+            Resolved alerts update the original signal lifecycle instead of
+            generating disconnected records.
+          </p>
+        </article>
+
+        <article class="grafana-capability">
+          <span>05</span>
+
+          <h3>
+            Slack delivery
+          </h3>
+
+          <p>
+            Alerts and AI analysis are delivered as parent messages and
+            threaded responses.
+          </p>
+        </article>
+
+        <article class="grafana-capability">
+          <span>06</span>
+
+          <h3>
+            Persistent history
+          </h3>
+
+          <p>
+            Every received, analyzed, delivered, failed, and resolved state
+            remains part of the operational record.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END CAPABILITIES -->
+
+
+  <!-- PRODUCT WORKFLOW PROOF -->
+
+  <section class="grafana-proof">
+    <div class="grafana-proof__inner">
+
+      <div class="grafana-proof__copy">
+        <p class="grafana-eyebrow grafana-eyebrow--light">
+          Product Workflow 001
+        </p>
+
+        <h2>
+          See the complete Grafana-to-Slack workflow.
+        </h2>
+
+        <p>
+          Follow a production alert from initial detection through AI
+          interpretation, signal-history persistence, Slack delivery, and
+          recovery.
+        </p>
+
+        <div class="grafana-proof__actions">
+          <a
+            class="grafana-button grafana-button--light"
+            data-cta="view_grafana_product_workflow"
+            href="/product-walkthrough/grafana-alert-to-slack"
+          >
+            View Product Workflow 001
+          </a>
+
+          <a
+            class="grafana-button grafana-button--outline-light"
+            data-cta="view_integrations"
+            href="/integrations"
+          >
+            View all integrations
+          </a>
+        </div>
+      </div>
+
+      <div class="grafana-proof__flow">
+        <div>
+          <small>Source</small>
+          <strong>Grafana</strong>
+        </div>
+
+        <span aria-hidden="true">→</span>
+
+        <div>
+          <small>Interpretation</small>
+          <strong>Signal Audit</strong>
+        </div>
+
+        <span aria-hidden="true">→</span>
+
+        <div>
+          <small>Delivery</small>
+          <strong>Slack</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END PRODUCT WORKFLOW PROOF -->
+
+
+  <!-- FINAL CTA -->
+
+  <section class="grafana-cta">
+    <div class="grafana-cta__inner">
+
+      <p class="grafana-eyebrow">
+        Connect Grafana to Signal Audit
+      </p>
+
+      <h2>
+        Move from alert detection to operational understanding.
+      </h2>
+
+      <p>
+        Review how Signal Audit can connect to your Grafana alerting workflow
+        and deliver clearer production guidance to your team.
+      </p>
+
+      <div class="grafana-cta__actions">
+        <a
+          class="grafana-button grafana-button--primary"
+          href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="schedule_signal_review"
+        >
+          Schedule a Signal Review
+          <span class="grafana-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+
+        <a
+          class="grafana-button grafana-button--secondary"
+          data-cta="explore_signal_audit_slack"
+          href="/signal-audit-slack"
+        >
+          Explore Signal Audit + Slack
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END FINAL CTA -->
+
+</main>
+
+<!-- END GRAFANA INTEGRATION PAGE -->
+<style>
+/* =========================================================
+   GRAFANA INTEGRATION PAGE
+========================================================= */
+
+.page-section.vertical-alignment--top:not(.content-collection):not(.gallery-section):not(.user-items-list-section):not(.section-height--custom):not(.editmode-changing-rowcount).section-height--small>.content-wrapper {
+  pdding-top: 8vmax;
+}
+
+.grafana-integration-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #111111;
+}
+
+.grafana-integration-page *,
+.grafana-integration-page *::before,
+.grafana-integration-page *::after {
+  box-sizing: border-box;
+}
+
+/* Shared eyebrow */
+
+.grafana-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.grafana-eyebrow::before {
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.grafana-eyebrow--light {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Shared buttons */
+
+.grafana-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.grafana-integration-page a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+}
+
+.grafana-output a:focus-visible,
+.grafana-proof a:focus-visible {
+  outline-color: #78e7f5;
+}
+
+.grafana-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.grafana-button:hover {
+  transform: translateY(-2px);
+}
+
+.grafana-button--primary {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+.grafana-button--primary:hover {
+  background: transparent;
+  color: #111111 !important;
+}
+
+.grafana-button--secondary {
+  background: transparent;
+  color: #111111 !important;
+}
+
+.grafana-button--secondary:hover {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+.grafana-button--light {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #111111 !important;
+}
+
+.grafana-button--light:hover {
+  border-color: #ff9f50;
+  background: #ff9f50;
+}
+
+.grafana-button--outline-light {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: transparent;
+  color: #ffffff !important;
+}
+
+.grafana-button--outline-light:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.grafana-integration-hero {
+  width: 100%;
+  padding: clamp(120px, 12vw, 190px) 40px clamp(90px, 9vw, 145px);
+  padding-top: 50px;
+  background:
+    radial-gradient(
+      circle at 76% 30%,
+      rgba(255, 139, 61, 0.16),
+      transparent 30%
+    ),
+    #f5f5f2;
+}
+
+ .grafana-integration-hero__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(470px, 0.75fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+  width: min(100%, 1450px);
+  margin: 0 auto;
+}
+
+.grafana-integration-hero__copy {
+  max-width: 820px;
+}
+
+.grafana-integration-hero__eyebrow {
+  margin: 0 0 20px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.grafana-integration-hero__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  color: rgba(17, 17, 17, 0.7);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.grafana-integration-hero__mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: #111111;
+  color: #ffad66;
+  font-size: 0.85rem;
+}
+
+.grafana-integration-hero h1 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.91;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.grafana-integration-hero__intro {
+  max-width: 700px;
+  margin: 30px 0 0;
+  color: rgba(17, 17, 17, 0.65);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.grafana-integration-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+/* Hero workflow */
+
+.grafana-integration-hero__workflow {
+  min-width: 0;
+  padding: 27px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 27px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 30px 90px rgba(17, 17, 17, 0.09);
+}
+
+.grafana-integration-hero__workflow-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 21px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.09);
+}
+
+.grafana-integration-hero__workflow-header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.grafana-integration-hero__workflow-header strong,
+.grafana-integration-hero__workflow-header small {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-integration-hero__workflow-header strong {
+  font-size: 0.74rem;
+}
+
+.grafana-integration-hero__workflow-header small {
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grafana-integration-hero__status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 13px rgba(34, 197, 94, 0.5);
+}
+
+.grafana-integration-hero__workflow-body {
+  margin-top: 24px;
+}
+
+.grafana-integration-node {
+  padding: 19px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.grafana-integration-node__label {
+  display: block;
+  margin-bottom: 17px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grafana-integration-node__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grafana-integration-node__identity > span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 11px;
+  background: #111111;
+  color: #ffad66;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.grafana-integration-node__identity strong,
+.grafana-integration-node__identity small {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-integration-node__identity strong {
+  color: #111111;
+  font-size: 0.78rem;
+}
+
+.grafana-integration-node__identity small {
+  margin-top: 4px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.59rem;
+}
+
+.grafana-integration-node p {
+  margin: 16px 0 0;
+  color: rgba(17, 17, 17, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.grafana-integration-node--audit {
+  border-color: rgba(120, 231, 245, 0.28);
+  background: #111418;
+}
+
+.grafana-integration-node--audit .grafana-integration-node__label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.grafana-integration-node--audit .grafana-integration-node__identity > span {
+  border: 1px solid rgba(120, 231, 245, 0.3);
+  background: rgba(120, 231, 245, 0.08);
+  color: #78e7f5;
+}
+
+.grafana-integration-node--audit .grafana-integration-node__identity strong {
+  color: #ffffff;
+}
+
+.grafana-integration-node--audit .grafana-integration-node__identity small {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.grafana-integration-node__stages {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.grafana-integration-node__stages span {
+  padding: 9px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.67);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.54rem;
+  text-align: center;
+}
+
+.grafana-integration-node--slack .grafana-integration-node__identity > span {
+  background: #f0ebf2;
+  color: #611f69;
+}
+
+.grafana-integration-arrow {
+  min-height: 42px;
+  display: grid;
+  place-items: center;
+  color: rgba(17, 17, 17, 0.60);
+}
+
+/* =========================================================
+   POSITIONING
+========================================================= */
+
+.grafana-positioning {
+  padding: clamp(88px, 9vw, 130px) 40px;
+  background: #ffffff;
+}
+
+.grafana-positioning__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(320px, 0.7fr);
+  gap: clamp(50px, 8vw, 120px);
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.grafana-positioning__heading h2 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.grafana-positioning__copy {
+  align-self: end;
+}
+
+.grafana-positioning__copy p {
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.63);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   WORKFLOW CARDS
+========================================================= */
+
+.grafana-workflow {
+  padding: clamp(88px, 9vw, 136px) 40px;
+  background: #f5f5f2;
+}
+
+.grafana-workflow__inner {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+}
+
+.grafana-workflow__header {
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+.grafana-workflow__header h2 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.grafana-workflow__header > p:last-child {
+  max-width: 680px;
+  margin: 24px 0 0;
+  color: rgba(17, 17, 17, 0.61);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.grafana-workflow__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.grafana-workflow-card {
+  display: flex;
+  min-height: 580px;
+  flex-direction: column;
+  padding: 28px;
+  border: 1px solid rgba(17, 17, 17, 0.11);
+  border-radius: 23px;
+  background: #ffffff;
+  box-shadow: 0 20px 55px rgba(17, 17, 17, 0.04);
+}
+
+.grafana-workflow-card__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.09);
+}
+
+.grafana-workflow-card__topline span,
+.grafana-workflow-card__topline strong {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.grafana-workflow-card__topline span {
+  color: rgba(17, 17, 17, 0.60);
+}
+
+.grafana-workflow-card__topline strong {
+  color: rgba(17, 17, 17, 0.64);
+}
+
+.grafana-workflow-card__visual {
+  margin-top: 27px;
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 16px;
+  background: #f8f8f6;
+}
+
+.grafana-workflow-card__visual small,
+.grafana-workflow-card__visual strong {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-workflow-card__visual small {
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grafana-workflow-card__visual strong {
+  margin-top: 13px;
+  color: #111111;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.grafana-workflow-card__state {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #eceef1;
+  color: rgba(17, 17, 17, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.53rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.grafana-workflow-card__state--firing {
+  background: rgba(249, 115, 22, 0.11);
+  color: #c2410c;
+}
+
+.grafana-workflow-card__state--resolved {
+  background: rgba(34, 197, 94, 0.11);
+  color: #15803d;
+}
+
+.grafana-workflow-card h3 {
+  margin: auto 0 0;
+  padding-top: 38px;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: clamp(1.5rem, 2vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.grafana-workflow-card > p {
+  margin: 18px 0 0;
+  color: rgba(17, 17, 17, 0.59);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.62;
+}
+
+.grafana-workflow-card--dark {
+  border-color: rgba(120, 231, 245, 0.22);
+  background: #111418;
+}
+
+.grafana-workflow-card--dark .grafana-workflow-card__topline {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.grafana-workflow-card--dark .grafana-workflow-card__topline span {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.grafana-workflow-card--dark .grafana-workflow-card__topline strong {
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.grafana-workflow-card--dark h3 {
+  color: #ffffff;
+}
+
+.grafana-workflow-card--dark > p {
+  color: rgba(255, 255, 255, 0.61);
+}
+
+.grafana-workflow-card__engine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+  padding: 25px;
+  border: 1px solid rgba(120, 231, 245, 0.2);
+  border-radius: 17px;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(120, 231, 245, 0.12),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.025);
+}
+
+.grafana-workflow-card__orb {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  border: 1px solid rgba(120, 231, 245, 0.4);
+  border-radius: 50%;
+  color: #78e7f5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.grafana-workflow-card__engine > span {
+  margin-top: 17px;
+  color: rgba(255, 255, 255, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65rem;
+}
+
+.grafana-workflow-card__engine > div:last-child {
+  width: 100%;
+  margin-top: 21px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+}
+
+.grafana-workflow-card__engine small,
+.grafana-workflow-card__engine strong {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-workflow-card__engine small {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.54rem;
+  text-transform: uppercase;
+}
+
+.grafana-workflow-card__engine strong {
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: 0.77rem;
+}
+
+.grafana-workflow-card__history {
+  margin-top: 27px;
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 16px;
+  background: #f8f8f6;
+}
+
+.grafana-workflow-card__history div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.07);
+}
+
+.grafana-workflow-card__history div:last-child {
+  border-bottom: 0;
+}
+
+.grafana-workflow-card__history span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+
+.grafana-workflow-card__history strong {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+}
+
+.grafana-workflow-card__slack {
+  margin-top: 27px;
+  padding: 20px;
+  border: 1px solid rgba(97, 31, 105, 0.13);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(97, 31, 105, 0.06);
+}
+
+.grafana-workflow-card__slack > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grafana-workflow-card__slack > div span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #111418;
+  color: #78e7f5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+}
+
+.grafana-workflow-card__slack strong {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+}
+
+.grafana-workflow-card__slack p {
+  margin: 16px 0 0;
+  color: rgba(17, 17, 17, 0.66);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.69rem;
+  line-height: 1.5;
+}
+
+.grafana-workflow-card__slack small {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f0edf1;
+  color: #611f69;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.51rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   OUTPUT
+========================================================= */
+
+.grafana-output {
+  padding: clamp(90px, 9vw, 140px) 40px;
+  background: #111418;
+  color: #ffffff;
+}
+
+.grafana-output__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(480px, 0.75fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.grafana-output__copy h2 {
+  margin: 0;
+  color: #ffffff;  
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.grafana-output__copy > p:not(.grafana-eyebrow) {
+  max-width: 680px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.61);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.grafana-output__copy ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grafana-output__copy li {
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+}
+
+.grafana-output__panel {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 23px;
+  background: #ffffff;
+  box-shadow: 0 28px 85px rgba(0, 0, 0, 0.3);
+}
+
+.grafana-output__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  background: #050505;
+}
+
+.grafana-output__panel-header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.grafana-output__panel-header strong,
+.grafana-output__panel-header small {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-output__panel-header strong {
+  color: #ffffff;
+  font-size: 0.72rem;
+}
+
+.grafana-output__panel-header small {
+  color: rgba(255, 255, 255, 0.47);
+  font-size: 0.56rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.grafana-output__status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.55);
+}
+
+.grafana-output__row {
+  padding: 21px 22px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.grafana-output__row small,
+.grafana-output__row strong {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-output__row small {
+  margin-bottom: 9px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grafana-output__row strong {
+  color: rgba(17, 17, 17, 0.82);
+  font-size: 0.79rem;
+  line-height: 1.5;
+}
+
+.grafana-output__row:first-of-type strong {
+  color: #15803d;
+}
+
+.grafana-output__row--action {
+  border-bottom: 0;
+  background: #f5f5f2;
+}
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.grafana-history {
+  padding: clamp(88px, 9vw, 135px) 40px;
+  background: #ffffff;
+}
+
+.grafana-history__inner {
+  width: min(100%, 1250px);
+  margin: 0 auto;
+}
+
+.grafana-history__header {
+  max-width: 850px;
+  margin-bottom: 60px;
+}
+
+.grafana-history__header h2 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.grafana-history__header > p:last-child {
+  max-width: 700px;
+  margin: 24px 0 0;
+  color: rgba(17, 17, 17, 0.62);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.grafana-history__timeline {
+  padding: 35px;
+  border: 1px solid rgba(17, 17, 17, 0.11);
+  border-radius: 24px;
+  background: #f8f8f6;
+}
+
+.grafana-history__event {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  gap: 17px;
+  align-items: center;
+}
+
+.grafana-history__event-dot {
+  width: 11px;
+  height: 11px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12);
+}
+
+.grafana-history__event--resolved .grafana-history__event-dot {
+  background: #22c55e;
+  box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.12);
+}
+
+.grafana-history__event small,
+.grafana-history__event strong,
+.grafana-history__event p {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-history__event small {
+  margin-bottom: 5px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.58rem;
+}
+
+.grafana-history__event strong {
+  color: #111111;
+  font-size: 0.81rem;
+}
+
+.grafana-history__event p {
+  margin: 5px 0 0;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.68rem;
+}
+
+.grafana-history__event em {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #e9ecf1;
+  color: rgba(17, 17, 17, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.54rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.grafana-history__event--resolved em {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+}
+
+.grafana-history__line {
+  width: 1px;
+  height: 37px;
+  margin: 5px 0 5px 5px;
+  background: rgba(17, 17, 17, 0.14);
+}
+
+/* =========================================================
+   CAPABILITIES
+========================================================= */
+
+.grafana-capabilities {
+  padding: clamp(88px, 9vw, 135px) 40px;
+  background: #f5f5f2;
+}
+
+.grafana-capabilities__inner {
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.grafana-capabilities__header {
+  max-width: 850px;
+  margin-bottom: 58px;
+}
+
+.grafana-capabilities__header h2 {
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.grafana-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.grafana-capability {
+  min-height: 300px;
+  padding: 27px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.grafana-capability > span {
+  color: rgba(17, 17, 17, 0.60);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.grafana-capability h3 {
+  margin: 90px 0 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+}
+
+.grafana-capability p {
+  margin: 18px 0 0;
+  color: rgba(17, 17, 17, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.62;
+}
+
+/* =========================================================
+   PROOF
+========================================================= */
+
+.grafana-proof {
+  padding: clamp(90px, 9vw, 140px) 40px;
+  background: #050505;
+  color: #ffffff;
+}
+
+.grafana-proof__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(460px, 0.75fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.grafana-proof__copy h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.grafana-proof__copy > p:not(.grafana-eyebrow) {
+  max-width: 680px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.grafana-proof__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.grafana-proof__flow {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    34px
+    minmax(0, 1fr)
+    34px
+    minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 139, 61, 0.11),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.025);
+}
+
+.grafana-proof__flow div {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.grafana-proof__flow small,
+.grafana-proof__flow strong {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grafana-proof__flow small {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.54rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.grafana-proof__flow strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.75rem;
+}
+
+.grafana-proof__flow > span {
+  color: #ffad66;
+  text-align: center;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.grafana-cta {
+  padding: clamp(95px, 10vw, 150px) 40px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.grafana-cta__inner {
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+
+.grafana-cta .grafana-eyebrow {
+  justify-content: center;
+}
+
+.grafana-cta h2 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.grafana-cta__inner > p:not(.grafana-eyebrow) {
+  max-width: 700px;
+  margin: 27px auto 0;
+  color: rgba(17, 17, 17, 0.62);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+.grafana-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+h2 {
+  font-size: 2em !important;
+}
+.grafana-workflow-card h3,
+.grafana-capability h3 {
+  font-size: 1.25em;
+}
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1100px) {
+  .grafana-integration-hero__inner,
+  .grafana-positioning__inner,
+  .grafana-output__inner,
+  .grafana-proof__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .grafana-integration-hero__workflow {
+    width: min(100%, 720px);
+  }
+
+  .grafana-workflow__grid,
+  .grafana-capabilities__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grafana-output__panel,
+  .grafana-proof__flow {
+    width: min(100%, 760px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 767px) {
+  body#collection-6a546babc4cd2549425eb7d0 section.page-section > .content-wrapper {
+    pdding-top: 5vmax;
+  }
+  .grafana-integration-hero,
+  .grafana-positioning,
+  .grafana-workflow,
+  .grafana-output,
+  .grafana-history,
+  .grafana-capabilities,
+  .grafana-proof,
+  .grafana-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .grafana-integration-hero {
+    padding-top: 50px;
+  }
+
+  .grafana-integration-hero h1,
+  .grafana-workflow__header h2,
+  .grafana-output__copy h2,
+  .grafana-history__header h2,
+  .grafana-capabilities__header h2,
+  .grafana-proof__copy h2,
+  .grafana-positioning__heading h2,
+  .grafana-cta h2 {
+    font-size: 2em;
+  }
+
+  .grafana-integration-hero__actions,
+  .grafana-proof__actions,
+  .grafana-cta__actions {
+    flex-direction: column;
+  }
+
+  .grafana-button {
+    width: 100%;
+  }
+
+  .grafana-integration-hero__workflow {
+    padding: 20px;
+  }
+
+  .grafana-integration-node__stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grafana-workflow__grid,
+  .grafana-capabilities__grid {
+    display: block;
+  }
+
+  .grafana-workflow-card,
+  .grafana-capability {
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 18px;
+  }
+
+  .grafana-workflow-card:last-child,
+  .grafana-capability:last-child {
+    margin-bottom: 0;
+  }
+
+  .grafana-workflow-card h3 {
+    margin-top: 38px;
+  }
+
+  .grafana-output__copy ul {
+    grid-template-columns: 1fr;
+  }
+
+  .grafana-history__timeline {
+    padding: 24px 20px;
+  }
+
+  .grafana-history__event {
+    grid-template-columns: 14px 1fr;
+  }
+
+  .grafana-history__event em {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .grafana-capability h3 {
+    margin-top: 55px;
+  }
+
+  .grafana-proof__flow {
+    grid-template-columns: 1fr;
+  }
+
+  .grafana-proof__flow > span {
+    min-height: 26px;
+    font-size: 0;
+  }
+
+  .grafana-proof__flow > span::before {
+    color: #ffad66;
+    font-size: 1rem;
+    content: "↓";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grafana-button {
+    transition: none !important;
+  }
+
+  .grafana-button:hover {
+    transform: none !important;
+  }
+}
+
+/* footer fix */ 
+
+body#collection-6a546babc4cd2549425eb7d0 main .page-section,
+body#collection-6a546babc4cd2549425eb7d0 main .content-wrapper,
+body#collection-6a546babc4cd2549425eb7d0 main .content,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a546babc4cd2549425eb7d0
+.fe-6a3e2a6ca481d87cdec73103 {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a546babc4cd2549425eb7d0
+.fe-block-yui_3_17_2_1_1782458980627_462 {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+body#collection-6a546babc4cd2549425eb7d0
+section.page-section > .content-wrapper,
+body#collection-6a546babc4cd2549425eb7d0
+.sqs-block,
+body#collection-6a546babc4cd2549425eb7d0
+.sqs-block-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.minimalism-footer {
+  margin-top: -160px !important;
+}
+body#collection-6a546babc4cd2549425eb7d0 section.page-section > .content-wrapper {
+  padding-top: 8vmax !important;
+}
+@media screen and (max-width: 767px) {
+  body#collection-6a546babc4cd2549425eb7d0 section.page-section > .content-wrapper {
+      padding-top: 5vmax !important;;
+  }
+}
+/* =========================================================
+   GRAFANA INTEGRATION — FULL-WIDTH / FULL-BLEED CORRECTION
+========================================================= */
+
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Remove Squarespace width and spacing constraints */
+body#collection-6a546babc4cd2549425eb7d0 main {
+  width: 100%;
+  max-width: none;
+}
+
+body#collection-6a546babc4cd2549425eb7d0 main .page-section,
+body#collection-6a546babc4cd2549425eb7d0 main .content-wrapper,
+body#collection-6a546babc4cd2549425eb7d0 main .content,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-layout,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-row,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-col-12,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block-content,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-code-container {
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Allow the custom page to escape Squarespace's grid */
+body#collection-6a546babc4cd2549425eb7d0 main .page-section,
+body#collection-6a546babc4cd2549425eb7d0 main .content-wrapper,
+body#collection-6a546babc4cd2549425eb7d0 main .content,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-layout,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-row,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block,
+body#collection-6a546babc4cd2549425eb7d0 main .sqs-block-content {
+  overflow: visible !important;
+}
+
+/* Use the actual Grafana Fluid Engine IDs */
+body#collection-6a546babc4cd2549425eb7d0
+.fe-6a546bd423ccc40a590d408b {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a546babc4cd2549425eb7d0
+.fe-block-yui_3_17_2_1_1783917516870_472 {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+/* Break the complete custom page out to the viewport */
+body#collection-6a546babc4cd2549425eb7d0 .grafana-integration-page {
+  position: relative;
+  left: 50%;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: -50vw !important;
+  margin-right: 0 !important;
+  padding: 0;
+  overflow-x: clip;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Every major section owns a full-width background */
+.grafana-integration-page > .grafana-integration-hero,
+.grafana-integration-page > .grafana-positioning,
+.grafana-integration-page > .grafana-workflow,
+.grafana-integration-page > .grafana-output,
+.grafana-integration-page > .grafana-history,
+.grafana-integration-page > .grafana-capabilities,
+.grafana-integration-page > .grafana-proof,
+.grafana-integration-page > .grafana-cta {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+/* Preserve the existing centered inner-content widths */
+.grafana-integration-hero__inner,
+.grafana-positioning__inner,
+.grafana-workflow__inner,
+.grafana-output__inner,
+.grafana-history__inner,
+.grafana-capabilities__inner,
+.grafana-proof__inner,
+.grafana-cta__inner {
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Prevent cards and media from forcing horizontal overflow */
+.grafana-integration-page *,
+.grafana-integration-page *::before,
+.grafana-integration-page *::after {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.grafana-integration-page img,
+.grafana-integration-page svg,
+.grafana-integration-page video,
+.grafana-integration-page iframe {
+  max-width: 100%;
+}
+
+/* Remove Squarespace's generated top spacing */
+body#collection-6a546babc4cd2549425eb7d0
+main > .sections > .page-section:first-child {
+  padding-top: 0 !important;
+}
+
+body#collection-6a546babc4cd2549425eb7d0
+main > .sections > .page-section:first-child > .content-wrapper {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Let the footer follow normal page flow */
+body#collection-6a546babc4cd2549425eb7d0 .minimalism-footer,
+body#collection-6a546babc4cd2549425eb7d0 #footer-sections {
+  margin-top: 0 !important;
+}
+body#collection-6a546babc4cd2549425eb7d0 main > .sections > .page-section:first-child > .content-wrapper {
+  padding-top: 16vmax !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  body#collection-6a546babc4cd2549425eb7d0 .grafana-integration-page {
+    left: 50%;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: -50vw !important;
+    margin-right: 0 !important;
+  }
+
+  .grafana-integration-page > .grafana-integration-hero,
+  .grafana-integration-page > .grafana-positioning,
+  .grafana-integration-page > .grafana-workflow,
+  .grafana-integration-page > .grafana-output,
+  .grafana-integration-page > .grafana-history,
+  .grafana-integration-page > .grafana-capabilities,
+  .grafana-integration-page > .grafana-proof,
+  .grafana-integration-page > .grafana-cta {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .grafana-integration-hero__inner,
+  .grafana-positioning__inner,
+  .grafana-workflow__inner,
+  .grafana-output__inner,
+  .grafana-history__inner,
+  .grafana-capabilities__inner,
+  .grafana-proof__inner,
+  .grafana-cta__inner {
+    width: 100%;
+    max-width: none;
+  }
+  body#collection-6a546babc4cd2549425eb7d0 main > .sections > .page-section:first-child > .content-wrapper {
+    padding-top: 20vmax !important;
+  }
+}
+</style>

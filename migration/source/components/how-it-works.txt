@@ -1,0 +1,22 @@
+/**** HOW IT WORKS ****/
+
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div>
+        <span>01</span>
+        <p>Submit logs, alerts, incident notes, or telemetry snapshots.</p>
+      </div>
+      <div>
+        <span>02</span>
+        <p>We analyze signal patterns, risk, and observability gaps.</p>
+      </div>
+      <div>
+        <span>03</span>
+        <p>You receive a clear, actionable production signal audit.</p>
+      </div>
+    </div>
+    <p class="turnaround">Turnaround: 24–72 hours</p>
+    </section>
+
+    <section class="audit-section slack-workflow">
+    <p class="eyebrow">Operational Workflow</p>

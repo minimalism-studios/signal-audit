@@ -1,0 +1,2808 @@
+<!-- SIGNAL INTERPRETER -->
+<div id="signal-app" class="signal-shell">
+
+  <div class="signal-topbar">
+    <div class="signal-brand">
+      <span class="signal-pulse">⌁</span>
+      <span class="signal-brand-name">MINIMALISM</span>
+      <span class="signal-tagline">Signal Over Noise.</span>
+    </div>
+
+    <div class="signal-privacy">
+      <span>◇</span>
+      Your data stays private
+    </div>
+  </div>
+
+  <div class="signal-layout">
+
+    <!-- LEFT INPUT PANEL -->
+    <aside class="signal-input-panel">
+
+      <div class="signal-step">
+        <div class="signal-step-number">1</div>
+        <div>
+          <h4 id="input-label">Paste your logs</h4>
+          <p id="input-description">Paste logs, metrics, traces, alerts, or describe what your system is doing.</p>
+        </div>
+      </div>
+
+      <textarea
+        id="input"
+        aria-labelledby="input-label"
+        aria-describedby="input-description input-support"
+        placeholder="Paste logs, metrics, traces, alerts, or describe what your system is doing…"
+      ></textarea>
+
+      <p
+        class="signal-support-text"
+        id="input-support"
+      >Supports logs, metrics, traces, and alerts.</p>
+
+      <div class="signal-examples" id="examples">
+        <button type="button" onclick="fillExample('Latency spikes after deploy')">
+          Latency spikes after deploy
+        </button>
+        <button type="button" onclick="fillExample('Users reporting issues but dashboards look fine')">
+          Dashboards look fine
+        </button>
+        <button type="button" onclick="fillExample('Error rate up, no infra changes')">
+          Error rate up
+        </button>
+      </div>
+
+      <div class="signal-divider"></div>
+
+      <div class="signal-context-step">
+        <div class="signal-step">
+          <div class="signal-step-number">2</div>
+          <div>
+            <h4 id="context-label">Add context</h4>
+            <p id="context-description">Optional, but useful if you know what recently changed.</p>
+          </div>
+        </div>
+
+        <textarea
+          id="context-input"
+          aria-labelledby="context-label"
+          aria-describedby="context-description"
+          placeholder="Example: We deployed a payments-api change 45 minutes ago and started seeing retry spikes."
+        ></textarea>
+
+        <div class="signal-divider"></div>
+      </div>
+
+      <div class="signal-step">
+        <div class="signal-step-number" id="analyze-step-number">3</div>
+        <div>
+          <h4>Analyze</h4>
+          <p>Signal Interpreter will explain what matters, what to ignore, and where to look next.</p>
+        </div>
+      </div>
+
+      <button id="interpret-btn" type="button" onclick="runInterpretation()">
+        ✦ Interpret Signal
+      </button>
+
+      <p class="signal-footnote">No logs are stored. Your data is never shared.</p>
+
+    </aside>
+
+    <!-- RIGHT RESULT PANEL -->
+    <section class="signal-results-panel">
+
+      <div class="signal-results-header">
+        <div>
+          <p class="signal-kicker">Signal Interpreter</p>
+          <h2>AI analysis of your telemetry</h2>
+        </div>
+
+        <button id="new-analysis-btn" type="button" onclick="resetSignalInterpreter()">
+          ↻ New Analysis
+        </button>
+      </div>
+
+      <div id="empty-state" class="signal-empty-state">
+        <div class="signal-empty-icon">⌁</div>
+        <h3>Paste a production signal to begin.</h3>
+        <p>
+          The interpreter will separate signal from noise and return a clear operational read.
+        </p>
+      </div>
+
+      <div
+        id="loading-state"
+        class="signal-loading-state"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        style="display:none;"
+      >
+        <div
+          class="signal-loading-line"
+          aria-hidden="true"
+        ></div>
+        <p>Interpreting signal…</p>
+      </div>
+
+      <div
+        id="signal-status"
+        class="signal-sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+
+      <div
+        id="signal-error"
+        class="signal-sr-only"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></div>
+
+      <div id="analysis-state" style="display:none;">
+
+        <div class="signal-primary-card">
+          <div class="signal-primary-icon">⌁</div>
+
+          <div class="signal-primary-copy">
+            <p class="signal-alert-label">Primary finding</p>
+            <h3 id="primary-finding-title">Upstream dependency is timing out</h3>
+            <p id="primary-finding-summary">
+              Retries are increasing latency and may lead to cascading failures.
+            </p>
+          </div>
+
+          <div class="signal-severity">
+            <span>Severity</span>
+            <strong id="severity-badge">Signal Read</strong>
+          </div>
+        </div>
+
+        <div class="signal-insight-grid">
+          <article class="signal-insight-card signal-card-green">
+            <div class="signal-card-icon">↗</div>
+            <h4>What matters</h4>
+            <p id="what-matters-text">
+              Repeated timeouts and retries are creating increased latency.
+            </p>
+            <span>High Impact</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-blue">
+            <div class="signal-card-icon">◎</div>
+            <h4>Where to look</h4>
+            <p id="where-to-look-text">
+              Upstream service health, network latency, and connection saturation.
+            </p>
+            <span>Investigate</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-amber">
+            <div class="signal-card-icon">⊘</div>
+            <h4>Ignore</h4>
+            <p id="ignore-text">
+              Successful requests and isolated events are likely symptoms.
+            </p>
+            <span>Low Signal</span>
+          </article>
+
+          <article class="signal-insight-card signal-card-purple">
+            <div class="signal-card-icon">ϟ</div>
+            <h4>Next action</h4>
+            <p id="next-action-text">
+              Check upstream service health and recent changes.
+            </p>
+            <span>Take Action</span>
+          </article>
+        </div>
+
+        <div class="signal-overview-card">
+          <h4>Signal Overview</h4>
+
+          <div class="signal-metrics">
+            <div class="signal-metric">
+              <span>Error Rate</span>
+              <strong id="metric-error-rate">18.7%</strong>
+              <small>↑ elevated vs previous window</small>
+            </div>
+
+            <div class="signal-metric">
+              <span>P95 Latency</span>
+              <strong id="metric-latency">532ms</strong>
+              <small>↑ latency pressure detected</small>
+            </div>
+
+            <div class="signal-metric">
+              <span>Retry Rate</span>
+              <strong id="metric-retry-rate">23.4%</strong>
+              <small>↑ retry pattern detected</small>
+            </div>
+          </div>
+        </div>
+
+        <div id="output-wrap" class="signal-raw-output">
+          <div class="signal-raw-header">
+            <h4>Interpreter Output</h4>
+
+            <div id="result-meta">
+              <button type="button" id="copy-btn" onclick="copyResult()">Copy result</button>
+            </div>
+          </div>
+
+          <div id="output"></div>
+        </div>
+
+        <div id="post-analysis" class="signal-post-analysis" style="display:none;">
+          <div id="reframe-text"></div>
+          <div id="value-text"></div>
+          <div id="offer-text"></div>
+        </div>
+
+        <section class="founder-sales-cta">
+          <div class="founder-sales-cta__inner">
+            <p class="founder-sales-cta__eyebrow">Need a deeper analysis?</p>
+
+            <h2>Talk directly with the creator of Signal Audit.</h2>
+
+            <p>The Signal Interpreter analyzes a single signal.</p>
+            <p>
+              A Signal Audit evaluates your telemetry, incidents, observability gaps,
+              and operational risk as a complete system.
+            </p>
+
+            <a
+              href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+              class="founder-sales-cta__button"
+              data-cta="schedule_signal_review"
+              target="_blank"
+              rel="noopener"
+            >
+              Schedule a Call
+            </a>
+          </div>
+        </section>
+
+        <div id="signal-cta">
+          <a
+            class="signal-audit-btn"
+            data-cta="signal_interpreter_explore_signal_audit"
+            href="/pricing"
+          >
+            Explore Signal Audit →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <p class="signal-bottom-line">
+    The Signal Interpreter helps you separate signal from noise so you can focus on what matters.
+  </p>
+
+</div>
+
+<button id="scroll-cue" onclick="scrollCueDown()" aria-label="Continue reading">
+  ↓
+</button>
+<style>
+strong {
+  font-weight: 600;
+}
+
+/* Squarespace page spacing */
+#collection-69f27e7adc0da97d888c1baf article#sections .page-section:first-child .content-wrapper {
+  margin-bottom: -4vh;
+  padding-bottom: 0;
+}
+
+#signal-app {
+  max-width: 1420px;
+  margin: 8vh auto 0;
+  padding: 32px;
+  background: #ffffff;
+  color: #111111;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+}
+
+/* TOP BAR */
+.signal-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.signal-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signal-pulse {
+  font-size: 28px;
+  line-height: 1;
+  color: #111111;
+}
+
+.signal-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.signal-tagline,
+.signal-privacy {
+  font-size: 14px;
+  color: #777777;
+}
+
+.signal-privacy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* LAYOUT */
+.signal-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+}
+
+/* PANELS */
+.signal-input-panel,
+.signal-results-panel {
+  border: 1px solid #e6e6e6;
+  background: #ffffff;
+}
+
+.signal-input-panel {
+  padding: 28px;
+}
+
+.signal-results-panel {
+  padding: 28px;
+  min-height: 720px;
+}
+
+/* STEPS */
+.signal-step {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.signal-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.signal-step h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.signal-step p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #555555;
+}
+
+/* INPUTS */
+#input,
+#context-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 22px 0 10px;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  background: #fafafa;
+  color: #111111;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  resize: vertical;
+  outline: none;
+}
+
+#input {
+  min-height: 65px;
+}
+
+#context-input {
+  min-height: 96px;
+}
+
+#input:focus,
+#context-input:focus {
+  background: #ffffff;
+  border-color: #111111;
+}
+
+.signal-support-text,
+.signal-footnote {
+  margin: 0;
+  font-size: 12px;
+  color: #777777;
+}
+
+.signal-footnote {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.signal-divider {
+  height: 1px;
+  background: #e6e6e6;
+  margin: 28px 0;
+}
+
+/* EXAMPLES */
+.signal-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.signal-examples button {
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  color: #555555;
+  padding: 8px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signal-examples button:hover {
+  border-color: #111111;
+  color: #111111;
+}
+
+/* SCREEN READER ONLY */
+.signal-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* BUTTONS */
+#interpret-btn,
+#new-analysis-btn,
+.signal-audit-btn,
+.founder-sales-cta__button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#interpret-btn {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #111111;
+  background: #111111;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#interpret-btn:hover {
+  background: #333333;
+}
+
+#interpret-btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+#new-analysis-btn {
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  color: #111111;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#new-analysis-btn:hover {
+  border-color: #111111;
+}
+
+/* RESULTS HEADER */
+.signal-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.signal-kicker {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.signal-results-header h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+/* EMPTY STATE */
+.signal-empty-state {
+  min-height: 560px;
+  border: 1px dashed #d9d9d9;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #555555;
+  text-align: center;
+  padding: 40px;
+}
+
+.signal-empty-icon {
+  font-size: 48px;
+  color: #111111;
+  margin-bottom: 18px;
+}
+
+.signal-empty-state h3 {
+  margin: 0 0 10px;
+  color: #111111;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.signal-empty-state p {
+  max-width: 480px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* LOADING */
+.signal-loading-state {
+  min-height: 560px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #555555;
+}
+
+.signal-loading-line {
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, #e6e6e6, #111111, #e6e6e6);
+  animation: signalLoading 1.2s ease infinite;
+  margin-bottom: 18px;
+}
+
+@keyframes signalLoading {
+  0% { opacity: 0.25; transform: scaleX(0.6); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0.25; transform: scaleX(0.6); }
+}
+
+/* PRIMARY FINDING */
+.signal-primary-card {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  padding: 28px;
+  margin-bottom: 18px;
+}
+
+.signal-primary-icon {
+  width: 58px;
+  height: 58px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.signal-alert-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.signal-primary-copy h3 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  color: #111111;
+}
+
+.signal-primary-copy p {
+  margin: 0;
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.signal-severity {
+  text-align: right;
+}
+
+.signal-severity span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+#severity-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  color: #555555;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* muted status states */
+#severity-badge.low {
+  color: #777777;
+  border-color: #e6e6e6;
+}
+
+#severity-badge.medium {
+  color: #111111;
+  border-color: #999999;
+}
+
+#severity-badge.high {
+  color: #111111;
+  border-color: #111111;
+  background: #f0f0f0;
+}
+
+/* INSIGHT GRID */
+.signal-insight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.signal-insight-card {
+  border: 1px solid #e6e6e6;
+  background: #ffffff;
+  padding: 22px;
+  min-height: 220px;
+}
+
+.signal-card-icon {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  font-size: 20px;
+}
+
+.signal-insight-card h4 {
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.signal-insight-card p {
+  margin: 0;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.signal-insight-card span {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 6px 9px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  color: #555555;
+  font-size: 12px;
+}
+
+/* OVERVIEW */
+.signal-overview-card {
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.signal-overview-card h4 {
+  margin: 0 0 22px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.signal-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.signal-metric {
+  padding-right: 24px;
+  border-right: 1px solid #e6e6e6;
+}
+
+.signal-metric:last-child {
+  border-right: none;
+  padding-left: 24px;
+}
+
+.signal-metric span {
+  display: block;
+  margin-bottom: 8px;
+  color: #555555;
+  font-size: 14px;
+}
+
+.signal-metric strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #111111;
+}
+
+.signal-metric small {
+  color: #777777;
+  font-size: 12px;
+}
+
+/* RAW OUTPUT */
+.signal-raw-output {
+  border: 1px solid #e6e6e6;
+  background: #ffffff;
+  padding: 22px;
+}
+
+.signal-raw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.signal-raw-header h4 {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#copy-btn {
+  border: none;
+  background: transparent;
+  color: #555555;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  border-bottom: 1px solid #999999;
+}
+
+#copy-btn:hover {
+  color: #111111;
+  border-bottom-color: #111111;
+}
+
+#output {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #111111;
+}
+
+.signal-section {
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: signalFadeIn 0.35s ease forwards;
+}
+
+.signal-title {
+  margin-bottom: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777777;
+  white-space: pre-wrap;
+}
+
+.signal-content {
+  padding-left: 12px;
+  border-left: 2px solid #e6e6e6;
+}
+
+.signal-line {
+  margin-bottom: 6px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111111;
+  white-space: pre-wrap;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: signalFadeIn 0.25s ease forwards;
+}
+
+.signal-line.bullet {
+  position: relative;
+  padding-left: 12px;
+}
+
+.signal-line.bullet::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #999999;
+}
+
+@keyframes signalFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* POST ANALYSIS */
+.signal-post-analysis {
+  margin-top: 24px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  padding: 24px;
+}
+
+.signal-post-analysis div {
+  margin-bottom: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333333;
+  white-space: pre-wrap;
+}
+
+/* CTA */
+.founder-sales-cta {
+  display: none;
+  margin: 24px auto 0;
+}
+
+.founder-sales-cta__inner {
+  border: 1px solid #e6e6e6;
+  background: #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+.founder-sales-cta__eyebrow {
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #999999;
+}
+
+.founder-sales-cta h2 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+.founder-sales-cta p {
+  max-width: 680px;
+  margin: 0 auto 18px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555555;
+}
+
+.founder-sales-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.founder-sales-cta__button:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+#signal-cta {
+  display: none;
+  margin-top: 24px;
+}
+
+.signal-audit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid #111111;
+}
+
+.signal-audit-btn:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+.signal-bottom-line {
+  margin: 24px 0 0;
+  text-align: center;
+  color: #777777;
+  font-size: 14px;
+}
+
+/* SCROLL CUE */
+#scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(10px);
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d9d9d9;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#scroll-cue.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+#scroll-cue.pulse {
+  animation: scrollCuePulse 1.1s ease;
+}
+
+@keyframes scrollCuePulse {
+  0% { transform: translateX(-50%) translateY(0) scale(1); }
+  35% { transform: translateX(-50%) translateY(-2px) scale(1.08); }
+  70% { transform: translateX(-50%) translateY(0) scale(1); }
+  100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .signal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-results-panel {
+    min-height: auto;
+  }
+
+  .signal-insight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  #signal-app {
+    margin-top: 5vh;
+    padding: 0;
+  }
+
+  .signal-topbar {
+    display: none;
+  }
+
+  .signal-input-panel,
+  .signal-results-panel {
+    padding: 24px;
+  }
+
+  .signal-primary-card {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-severity {
+    text-align: left;
+  }
+
+  .signal-insight-grid,
+  .signal-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-metric,
+  .signal-metric:last-child {
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 0 18px;
+    margin-bottom: 18px;
+  }
+
+  .signal-metric:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  #input {
+    min-height: 240px;
+  }
+
+  .signal-examples {
+    display: none;
+  }
+
+  .founder-sales-cta__inner {
+    padding: 32px 24px;
+  }
+
+  .founder-sales-cta__button,
+  .signal-audit-btn {
+    width: 100%;
+  }
+}
+/* ==========================================================
+   SIGNAL INTERPRETER — DARK THEME
+   Replace the existing color-related styles with these.
+   ========================================================== */
+
+/* APP */
+
+#signal-app{
+    background:#090909;
+    border-radius: 10px;
+    color:#F5F5F7;
+    margin-top: 10vh;
+}
+
+/* PAGE */
+
+body{
+    background:
+        radial-gradient(circle at top,
+        rgba(255,255,255,.03),
+        transparent 60%),
+        #090909;
+}
+
+/* TOP BAR */
+
+.signal-topbar{
+    border-bottom:1px solid #242424;
+}
+
+.signal-brand-name{
+    color:#FFFFFF;
+}
+
+.signal-pulse{
+    color:#FFFFFF;
+}
+
+.signal-tagline,
+.signal-privacy{
+    color:#8A8A8A;
+}
+
+/* PANELS */
+
+.signal-input-panel,
+.signal-results-panel{
+
+    background:#111111;
+
+    border:1px solid #262626;
+
+    border-radius:18px;
+
+}
+
+/* DIVIDERS */
+
+.signal-divider{
+
+    background:#262626;
+
+}
+
+/* STEP NUMBERS */
+
+.signal-step-number{
+
+    background:#FFFFFF;
+
+    color:#111111;
+
+}
+
+/* STEP COPY */
+
+.signal-step h4{
+
+    color:#FFFFFF;
+
+}
+
+.signal-step p{
+
+    color:#B3B3B3;
+
+}
+
+/* INPUTS */
+
+#input,
+#context-input{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+    color:#F5F5F7;
+
+}
+
+#input:focus,
+#context-input:focus{
+
+    background:#1D1D1D;
+
+    border-color:#555555;
+
+}
+
+#input::placeholder,
+#context-input::placeholder{
+
+    color:#707070;
+
+}
+
+/* SUPPORT TEXT */
+
+.signal-support-text,
+.signal-footnote{
+
+    color:#8A8A8A;
+
+}
+
+/* EXAMPLES */
+
+.signal-examples button{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+    color:#B3B3B3;
+
+}
+
+.signal-examples button:hover{
+
+    background:#202020;
+
+    border-color:#555555;
+
+    color:#FFFFFF;
+
+}
+
+/* PRIMARY BUTTON */
+
+#interpret-btn{
+
+    background:#FFFFFF;
+
+    color:#111111;
+
+    border:none;
+    margin: 20px auto 0;
+
+}
+
+#interpret-btn:hover{
+
+    background:#EAEAEA;
+
+}
+
+/* SECONDARY BUTTON */
+
+#new-analysis-btn{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+    color:#FFFFFF;
+
+}
+
+#new-analysis-btn:hover{
+
+    background:#202020;
+
+}
+
+/* RESULTS */
+
+.signal-kicker{
+
+    color:#888888;
+
+}
+
+.signal-results-header h2{
+
+    color:#FFFFFF;
+
+}
+
+/* EMPTY STATE */
+
+.signal-empty-state{
+
+    background:#111111;
+
+    border:1px dashed #303030;
+
+}
+
+.signal-empty-icon{
+
+    color:#FFFFFF;
+
+}
+
+.signal-empty-state h3{
+
+    color:#FFFFFF;
+
+}
+
+.signal-empty-state p{
+
+    color:#B3B3B3;
+
+}
+
+/* LOADING */
+
+.signal-loading-state{
+
+    background:#111111;
+
+    border:1px solid #303030;
+
+    color:#BBBBBB;
+
+}
+
+.signal-loading-line{
+
+    background:linear-gradient(
+        90deg,
+        #222222,
+        #FFFFFF,
+        #222222
+    );
+
+}
+
+/* PRIMARY FINDING */
+
+.signal-primary-card{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+}
+
+.signal-primary-icon{
+
+    border:1px solid #444444;
+
+    color:#FFFFFF;
+
+}
+
+.signal-alert-label{
+
+    color:#888888;
+
+}
+
+.signal-primary-copy h3{
+
+    color:#FFFFFF;
+
+}
+
+.signal-primary-copy p{
+
+    color:#BBBBBB;
+
+}
+
+.signal-severity span{
+
+    color:#888888;
+
+}
+
+#severity-badge{
+
+    background:#202020;
+
+    border:1px solid #444444;
+
+    color:#FFFFFF;
+
+}
+
+/* INSIGHT CARDS */
+
+.signal-insight-card{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+}
+
+.signal-insight-card:hover{
+
+    background:#1D1D1D;
+
+}
+
+.signal-card-icon{
+
+    background:#202020;
+
+    border:1px solid #444444;
+
+    color:#FFFFFF;
+
+}
+
+.signal-insight-card h4{
+
+    color:#FFFFFF;
+
+}
+
+.signal-insight-card p{
+
+    color:#BBBBBB;
+
+}
+
+.signal-insight-card span{
+
+    background:#202020;
+
+    border:1px solid #444444;
+
+    color:#999999;
+
+}
+
+/* OVERVIEW */
+
+.signal-overview-card{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+}
+
+.signal-overview-card h4{
+
+    color:#FFFFFF;
+
+}
+
+.signal-metric{
+
+    border-right:1px solid #303030;
+
+}
+
+.signal-metric span{
+
+    color:#AAAAAA;
+
+}
+
+.signal-metric strong{
+
+    color:#FFFFFF;
+
+}
+
+.signal-metric small{
+
+    color:#777777;
+
+}
+
+/* RAW OUTPUT */
+
+.signal-raw-output{
+
+    background:#0E0E0E;
+
+    border:1px solid #303030;
+
+}
+
+.signal-raw-header h4{
+
+    color:#FFFFFF;
+
+}
+
+#copy-btn{
+
+    color:#BBBBBB;
+
+    border-bottom:1px solid #666666;
+
+}
+
+#copy-btn:hover{
+
+    color:#FFFFFF;
+
+    border-bottom-color:#FFFFFF;
+
+}
+
+#output{
+
+    color:#F5F5F7;
+
+}
+
+.signal-title{
+
+    color:#888888;
+
+}
+
+.signal-content{
+
+    border-left:2px solid #3A3A3A;
+
+}
+
+.signal-line{
+
+    color:#F5F5F7;
+
+}
+
+.signal-line.bullet::before{
+
+    color:#777777;
+
+}
+
+/* POST ANALYSIS */
+
+.signal-post-analysis{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+}
+
+.signal-post-analysis div{
+
+    color:#BBBBBB;
+
+}
+
+/* CTA */
+
+.founder-sales-cta__inner{
+
+    background:#171717;
+
+    border:1px solid #303030;
+
+}
+
+.founder-sales-cta__eyebrow{
+
+    color:#888888;
+
+}
+
+.founder-sales-cta h2{
+
+    color:#FFFFFF;
+
+}
+
+.founder-sales-cta p{
+
+    color:#BBBBBB;
+
+}
+
+.founder-sales-cta__button,
+.signal-audit-btn{
+
+    background:#FFFFFF;
+
+    color:#111111;
+
+    border:none;
+
+}
+
+.founder-sales-cta__button:hover,
+.signal-audit-btn:hover{
+
+    background:#EAEAEA;
+
+    color:#111111;
+
+}
+
+/* BOTTOM */
+
+.signal-bottom-line{
+
+    color:#888888;
+
+}
+
+/* SCROLL BUTTON */
+
+#scroll-cue{
+
+    background:#FFFFFF;
+
+    color:#111111;
+
+    border:none;
+
+    box-shadow:0 12px 40px rgba(0,0,0,.45);
+
+}
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:720px){
+
+    body{
+        background:#090909;
+    }
+
+    #signal-app{
+        max-width:100%;
+        width:100%;
+        margin:0;
+        padding:0;
+        border-radius:0;
+        background:#090909;
+        transform: translate(-24px, 30px);
+    }
+
+    .signal-layout{
+        display:block;
+        gap:0;
+    }
+
+    .signal-input-panel,
+    .signal-results-panel{
+
+        width:100%;
+        margin:0;
+        padding:24px;
+
+        border-left:none;
+        border-right:none;
+
+        border-radius:0;
+
+        background:#111111;
+    }
+
+    .signal-topbar{
+        display:none;
+    }
+
+    .signal-primary-card{
+        grid-template-columns:1fr;
+    }
+
+    .signal-severity{
+        text-align:left;
+        margin-top:16px;
+    }
+
+    .signal-insight-grid{
+        grid-template-columns:1fr;
+    }
+
+    .signal-metrics{
+        grid-template-columns:1fr;
+    }
+
+    .signal-metric,
+    .signal-metric:last-child{
+
+        border-right:none;
+        border-bottom:1px solid #303030;
+
+        padding:0 0 20px;
+        margin-bottom:20px;
+    }
+
+    .signal-metric:last-child{
+        border-bottom:none;
+        margin-bottom:0;
+    }
+
+    .founder-sales-cta__inner{
+        padding:32px 24px;
+        border-radius:18px;
+    }
+
+    .founder-sales-cta__button,
+    .signal-audit-btn,
+    #interpret-btn{
+
+        width:100%;
+    }
+
+    #input{
+        min-height:240px;
+    }
+
+    .signal-examples{
+        display:none;
+    }
+
+}
+
+.header--menu-open .header .header-burger .top-bun, .header--menu-open .header .header-burger .patty, .header--menu-open .header .header-burger .bottom-bun, :not(.header--menu-open) .burger-inner .top-bun, :not(.header--menu-open) .burger-inner .patty, :not(.header--menu-open) .burger-inner .bottom-bun {
+    background-color: #FFF;
+}
+
+.header-nav .header-nav-item--folder .header-nav-folder-content,
+.header .header-announcement-bar-wrapper, .header-menu-nav-folder-content {
+    background: #111;
+}
+.header-menu-nav-item a:not([aria-current="page"]) {
+    color: #FFF !important;
+}
+
+.header-nav-item button.header-nav-folder-title,
+:not(.header--menu-open) .header-nav-wrapper a {
+  color: #FFF;
+}
+
+/* FOOTER */ 
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .minimalism-footer {
+    background: #111 !important;
+    color: #FFF !important;
+}
+
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .minimalism-footer, body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-bottom {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+body#collection-69f27e7adc0da97d888c1baf #footer-sections, body#collection-69f27e7adc0da97d888c1baf #footer-sections .page-section, body#collection-69f27e7adc0da97d888c1baf #footer-sections .content-wrapper, body#collection-69f27e7adc0da97d888c1baf #footer-sections .minimalism-footer {
+    background: #111 !important;
+    color: #FFF !important;
+}
+
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-brand h3, 
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-brand p, 
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-column h4, 
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-column a, 
+body#collection-69f27e7adc0da97d888c1baf #footer-sections .footer-bottom p {
+    color: #f5f7fa !important;
+}
+body#collection-69f27e7adc0da97d888c1baf,
+body#collection-69f27e7adc0da97d888c1baf #siteWrapper,
+body#collection-69f27e7adc0da97d888c1baf main,
+body#collection-69f27e7adc0da97d888c1baf #sections,
+body#collection-69f27e7adc0da97d888c1baf .page-section,
+body#collection-69f27e7adc0da97d888c1baf .section-background {
+    background:#090909 !important;
+}
+body#collection-69f27e7adc0da97d888c1baf .content-wrapper{
+  padding-top: 30vmax;
+}
+/* =========================================================
+   SIGNAL INTERPRETER — EMBED MODE
+   /signal-interpreter?embed=1
+   ========================================================= */
+
+html.signal-interpreter-embed,
+body.signal-interpreter-embed {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100% !important;
+  background: #090909 !important;
+}
+
+body.signal-interpreter-embed #header,
+body.signal-interpreter-embed #footer-sections,
+body.signal-interpreter-embed #scroll-cue {
+  display: none !important;
+}
+
+body.signal-interpreter-embed #siteWrapper,
+body.signal-interpreter-embed main,
+body.signal-interpreter-embed #page,
+body.signal-interpreter-embed #page-regions,
+body.signal-interpreter-embed .region,
+body.signal-interpreter-embed .page-section,
+body.signal-interpreter-embed .content-wrapper,
+body.signal-interpreter-embed .content,
+body.signal-interpreter-embed [data-fluid-engine="true"],
+body.signal-interpreter-embed .fluid-engine,
+body.signal-interpreter-embed .fe-block,
+body.signal-interpreter-embed .sqs-block,
+body.signal-interpreter-embed .sqs-block-content,
+body.signal-interpreter-embed .sqs-code-container {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: visible !important;
+}
+
+body.signal-interpreter-embed .page-section {
+  min-height: 0 !important;
+}
+
+body.signal-interpreter-embed #signal-app {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 28px !important;
+
+  border-radius: 0 !important;
+  box-sizing: border-box;
+
+  background: #090909 !important;
+}
+
+body.signal-interpreter-embed .signal-topbar {
+  margin-top: 0 !important;
+}
+
+body.signal-interpreter-embed .signal-bottom-line {
+  margin-bottom: 0 !important;
+}
+
+
+/* MOBILE EMBED */
+
+@media (max-width: 720px) {
+
+  body.signal-interpreter-embed #signal-app {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+    border-radius: 0 !important;
+  }
+
+  body.signal-interpreter-embed .signal-input-panel,
+  body.signal-interpreter-embed .signal-results-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+  }
+
+}
+/* Beat the existing collection-specific 30vmax rule */
+body#collection-69f27e7adc0da97d888c1baf.signal-interpreter-embed
+.content-wrapper {
+  padding-top: 10vmax !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* =========================================================
+   SIGNAL INTERPRETER — COMPACT EMBED
+   ========================================================= */
+
+body.signal-interpreter-embed .signal-context-step {
+  display: none !important;
+}
+
+
+/* STEP 1 — SMALLER INPUT */
+
+body.signal-interpreter-embed #input {
+  min-height: 120px !important;
+  height: 120px !important;
+}
+
+
+/* TIGHTER APP */
+
+body.signal-interpreter-embed #signal-app {
+  padding: 20px !important;
+}
+
+
+/* TIGHTER TOP BAR */
+
+body.signal-interpreter-embed .signal-topbar {
+  margin-bottom: 18px !important;
+}
+
+
+/* TIGHTER PANELS */
+
+body.signal-interpreter-embed .signal-input-panel,
+body.signal-interpreter-embed .signal-results-panel {
+  padding: 22px !important;
+}
+
+
+/* REDUCE DIVIDER SPACING */
+
+body.signal-interpreter-embed .signal-divider {
+  margin: 20px 0 !important;
+}
+
+
+/* REDUCE TEXTAREA SPACING */
+
+body.signal-interpreter-embed #input,
+body.signal-interpreter-embed #context-input {
+  margin-top: 16px !important;
+}
+
+
+/* RIGHT PANEL — LESS TALL */
+
+body.signal-interpreter-embed .signal-results-panel {
+  min-height: 500px !important;
+}
+
+
+/* EMPTY STATE — LESS TALL */
+
+body.signal-interpreter-embed .signal-empty-state {
+  min-height: 390px !important;
+  padding: 28px !important;
+}
+
+
+/* LOADING STATE — LESS TALL */
+
+body.signal-interpreter-embed .signal-loading-state {
+  min-height: 390px !important;
+}
+
+
+/* BOTTOM COPY */
+
+body.signal-interpreter-embed .signal-bottom-line {
+  margin-top: 14px !important;
+}
+/* =========================================================
+   SIGNAL INTERPRETER — EMBED SCROLLBAR
+   ========================================================= */
+
+html.signal-interpreter-embed {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a3a #090909;
+}
+
+/* Chrome / Safari / Edge */
+
+html.signal-interpreter-embed::-webkit-scrollbar,
+body.signal-interpreter-embed::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html.signal-interpreter-embed::-webkit-scrollbar-track,
+body.signal-interpreter-embed::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+html.signal-interpreter-embed::-webkit-scrollbar-thumb,
+body.signal-interpreter-embed::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 999px;
+}
+
+html.signal-interpreter-embed::-webkit-scrollbar-thumb:hover,
+body.signal-interpreter-embed::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+html.signal-interpreter-embed::-webkit-scrollbar-corner,
+body.signal-interpreter-embed::-webkit-scrollbar-corner {
+  background: #090909;
+}
+</style>
+<script>
+const reframeText = `This is a surface-level read.
+
+If this is happening in production, it’s usually not isolated.`;
+
+const valueText = `Most teams have the data.
+
+Very few know what it’s actually saying.
+
+Signal Audit gives you a clear read on where your system is breaking down — and what to do next.`;
+
+const offerText = `Signal Audit
+
+A focused analysis of your system to identify what’s driving performance, risk, and instability.
+
+- Trace critical paths across services
+- Identify hidden degradation patterns
+- Eliminate noise from your observability layer`;
+
+let lastRawResult = "";
+let scrollCueWasVisible = false;
+
+function showEl(id, display = "block") {
+  const el = document.getElementById(id);
+  if (el) el.style.display = display;
+}
+
+function hideEl(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "none";
+}
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
+function showScrollCue() {
+  document.getElementById("scroll-cue")?.classList.add("visible");
+}
+
+function hideScrollCue() {
+  document.getElementById("scroll-cue")?.classList.remove("visible");
+}
+
+function scrollCueDown() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+}
+
+function pulseScrollCue(cue) {
+  cue.classList.remove("pulse");
+  void cue.offsetWidth;
+  cue.classList.add("pulse");
+
+  setTimeout(() => {
+    cue.classList.remove("pulse");
+  }, 1100);
+}
+
+function updateScrollCue() {
+  const cue = document.getElementById("scroll-cue");
+  const analysisState = document.getElementById("analysis-state");
+
+  if (!cue || !analysisState) return;
+
+  if (analysisState.style.display !== "block") {
+    cue.classList.remove("visible");
+    return;
+  }
+
+  const distanceFromBottom =
+    document.body.scrollHeight - (window.scrollY + window.innerHeight);
+
+  if (distanceFromBottom > 80 && document.body.scrollHeight > window.innerHeight) {
+    cue.classList.add("visible");
+
+    if (!scrollCueWasVisible) pulseScrollCue(cue);
+
+    scrollCueWasVisible = true;
+  } else {
+    cue.classList.remove("visible");
+    cue.classList.remove("pulse");
+    scrollCueWasVisible = false;
+  }
+}
+
+function fillExample(text) {
+  document.getElementById("input").value = text;
+}
+
+function resetSignalInterpreter() {
+  document.getElementById("input").value = "";
+
+  const contextInput = document.getElementById("context-input");
+  if (contextInput) contextInput.value = "";
+
+  lastRawResult = "";
+
+  hideEl("loading-state");
+  hideEl("analysis-state");
+  showEl("empty-state", "flex");
+
+  hideScrollCue();
+
+  setText("primary-finding-title", "Upstream dependency is timing out");
+  setText(
+    "primary-finding-summary",
+    "Retries are increasing latency and may lead to cascading failures."
+  );
+  setText(
+    "what-matters-text",
+    "Repeated timeouts and retries are creating increased latency."
+  );
+  setText(
+    "where-to-look-text",
+    "Upstream service health, network latency, and connection saturation."
+  );
+  setText(
+    "ignore-text",
+    "Successful requests and isolated events are likely symptoms."
+  );
+  setText(
+    "next-action-text",
+    "Check upstream service health and recent changes."
+  );
+
+  const output = document.getElementById("output");
+  if (output) output.innerHTML = "";
+
+  hideEl("post-analysis");
+  hideEl("signal-cta");
+
+  const founderCta = document.querySelector(".founder-sales-cta");
+  if (founderCta) founderCta.style.display = "none";
+}
+
+function detectSeverity(text) {
+  const lower = text.toLowerCase();
+
+  if (
+    lower.includes("cascading") ||
+    lower.includes("critical") ||
+    lower.includes("customer impact") ||
+    lower.includes("outage") ||
+    lower.includes("rollback")
+  ) return { label: "High signal", level: "high" };
+
+  if (
+    lower.includes("degradation") ||
+    lower.includes("latency") ||
+    lower.includes("error rate") ||
+    lower.includes("regression")
+  ) return { label: "Medium signal", level: "medium" };
+
+  return { label: "Low signal", level: "low" };
+}
+
+function extractSection(text, possibleTitles, fallback) {
+  const sections = text.split("\n\n");
+
+  for (const section of sections) {
+    const lines = section.split("\n").filter(Boolean);
+    const title = (lines[0] || "").toLowerCase();
+
+    if (possibleTitles.some(t => title.includes(t))) {
+      return lines.slice(1).join(" ").replace(/^[-•]\s*/, "").trim() || fallback;
+    }
+  }
+
+  return fallback;
+}
+
+function populateDashboardCards(text) {
+  const primary =
+    extractSection(text, ["pattern", "primary", "signal"], "Production signal detected.");
+
+  const whatMatters =
+    extractSection(text, ["what matters", "matters"], "The signal suggests a meaningful operational pattern.");
+
+  const whereToLook =
+    extractSection(text, ["where to look", "look"], "Review the affected service, upstream dependencies, and recent changes.");
+
+  const ignore =
+    extractSection(text, ["ignore"], "Avoid over-focusing on isolated symptoms until the pattern is confirmed.");
+
+  const nextAction =
+    extractSection(text, ["next action", "recommended", "action"], "Investigate the highest-signal service path first.");
+
+  setText("primary-finding-title", primary.split(".")[0] || "Signal detected");
+  setText("primary-finding-summary", whatMatters);
+  setText("what-matters-text", whatMatters);
+  setText("where-to-look-text", whereToLook);
+  setText("ignore-text", ignore);
+  setText("next-action-text", nextAction);
+}
+
+async function runInterpretation() {
+  const inputEl = document.getElementById("input");
+  const contextEl = document.getElementById("context-input");
+  const output = document.getElementById("output");
+  const button = document.getElementById("interpret-btn");
+  const severity = document.getElementById("severity-badge");
+  const status = document.getElementById("signal-status");
+  const errorStatus = document.getElementById("signal-error");
+
+  if (status) status.textContent = "";
+  if (errorStatus) errorStatus.textContent = "";
+
+  const input = inputEl.value.trim();
+  const context = contextEl ? contextEl.value.trim() : "";
+  const fullInput = context ? `${input}\n\nContext:\n${context}` : input;
+
+  const post = document.getElementById("post-analysis");
+  const reframeEl = document.getElementById("reframe-text");
+  const valueEl = document.getElementById("value-text");
+  const offerEl = document.getElementById("offer-text");
+  const meta = document.getElementById("result-meta");
+  const cta = document.getElementById("signal-cta");
+
+  if (post) post.style.display = "none";
+  if (reframeEl) reframeEl.textContent = "";
+  if (valueEl) valueEl.textContent = "";
+  if (offerEl) offerEl.textContent = "";
+  if (meta) meta.style.display = "none";
+  if (cta) cta.style.display = "none";
+
+  const founderCta = document.querySelector(".founder-sales-cta");
+  if (founderCta) founderCta.style.display = "none";
+
+  if (!input) {
+    hideEl("loading-state");
+    hideEl("analysis-state");
+    showEl("empty-state", "flex");
+
+    inputEl.setAttribute(
+      "aria-invalid",
+      "true"
+    );
+
+    if (errorStatus) {
+      errorStatus.textContent =
+        "Paste a production signal before interpreting.";
+    }
+
+    inputEl.focus();
+    return;
+  }
+
+  inputEl.removeAttribute(
+    "aria-invalid"
+  );
+
+  hideEl("empty-state");
+  hideEl("analysis-state");
+  showEl("loading-state", "flex");
+
+  button.innerText = "Interpreting...";
+  button.disabled = true;
+
+  try {
+    const res = await fetch("https://minimalism-studios-signal-interpreter-arak36xeq.vercel.app/api/interpret", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ input: fullInput })
+    });
+
+    const data = await res.json();
+
+    hideEl("loading-state");
+    showEl("analysis-state", "block");
+
+    if (!res.ok) {
+      const message =
+        data.error ||
+        "Endpoint returned an error.";
+
+      output.textContent = message;
+
+      if (errorStatus) {
+        errorStatus.textContent =
+          "Signal interpretation failed. " +
+          message;
+      }
+
+      return;
+    }
+
+    lastRawResult = data.result || "No result returned.";
+
+    const sev = detectSeverity(lastRawResult);
+    severity.innerText = sev.label;
+    severity.className = "";
+    severity.classList.add(sev.level);
+
+    populateDashboardCards(lastRawResult);
+
+    output.innerHTML = "";
+
+    typeOutput(lastRawResult, output, () => {
+      post.style.display = "block";
+
+      typeBlock(reframeText, reframeEl, 14, () => {
+        setTimeout(() => {
+          typeBlock(valueText, valueEl, 14, () => {
+            setTimeout(() => {
+              typeBlock(offerText, offerEl, 14, () => {
+                meta.style.display = "flex";
+
+                if (founderCta) founderCta.style.display = "block";
+                cta.style.display = "block";
+
+                if (status) {
+                  status.textContent =
+                    "Signal interpretation complete. Analysis results are available.";
+                }
+
+                hideScrollCue();
+              });
+            }, 200);
+          });
+        }, 200);
+      });
+    });
+
+    setTimeout(updateScrollCue, 200);
+
+  } catch (error) {
+    hideEl("loading-state");
+    showEl("analysis-state", "block");
+
+    const message =
+      "Frontend error: " +
+      error.message;
+
+    output.textContent = message;
+
+    if (errorStatus) {
+      errorStatus.textContent =
+        "Signal interpretation failed. " +
+        message;
+    }
+  } finally {
+    button.innerText = "✦ Interpret Signal";
+    button.disabled = false;
+  }
+}
+
+function typeOutput(text, container, done) {
+  container.innerHTML = "";
+
+  const outputWrap = document.getElementById("output-wrap");
+  const yOffset = -80;
+
+  if (outputWrap) {
+    const y = outputWrap.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+  }
+
+  showScrollCue();
+
+  const sections = text.split("\n\n");
+  let sectionIndex = 0;
+
+  function typeText(element, text, speed = 12, callback) {
+    let i = 0;
+    element.textContent = "";
+
+    function typeChar() {
+      if (i < text.length) {
+        element.textContent += text[i];
+        i++;
+        setTimeout(typeChar, speed);
+      } else if (callback) {
+        callback();
+      }
+
+      updateScrollCue();
+    }
+
+    typeChar();
+  }
+
+  function renderNextSection() {
+    if (sectionIndex >= sections.length) {
+      if (done) done();
+      return;
+    }
+
+    const section = sections[sectionIndex];
+    const lines = section.split("\n").filter(Boolean);
+    const title = lines[0];
+    const content = lines.slice(1);
+
+    const sectionEl = document.createElement("div");
+    sectionEl.className = "signal-section";
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "signal-title";
+
+    const contentEl = document.createElement("div");
+    contentEl.className = "signal-content";
+
+    sectionEl.appendChild(titleEl);
+    sectionEl.appendChild(contentEl);
+    container.appendChild(sectionEl);
+
+    typeText(titleEl, title, 24, () => {
+      let lineIndex = 0;
+
+      function renderNextLine() {
+        if (lineIndex >= content.length) {
+          sectionIndex++;
+          setTimeout(renderNextSection, 180);
+          return;
+        }
+
+        const rawLine = content[lineIndex];
+        const lineEl = document.createElement("div");
+
+        if (rawLine.trim().startsWith("-")) {
+          lineEl.className = "signal-line bullet";
+          contentEl.appendChild(lineEl);
+
+          typeText(lineEl, rawLine.replace("-", "").trim(), 8, () => {
+            lineIndex++;
+            setTimeout(renderNextLine, 80);
+          });
+        } else {
+          lineEl.className = "signal-line";
+          contentEl.appendChild(lineEl);
+
+          typeText(lineEl, rawLine, 20, () => {
+            lineIndex++;
+            setTimeout(renderNextLine, 80);
+          });
+        }
+      }
+
+      renderNextLine();
+    });
+  }
+
+  renderNextSection();
+}
+
+function typeBlock(text, container, speed = 14, callback) {
+  const formatted = text.replace(/Signal Audit/g, "<strong>Signal Audit</strong>");
+
+  container.innerHTML = "";
+  let i = 0;
+
+  function typeChar() {
+    if (i < formatted.length) {
+      container.innerHTML = formatted.slice(0, i + 1);
+      i++;
+      setTimeout(typeChar, speed);
+    } else if (typeof callback === "function") {
+      setTimeout(callback, 100);
+    }
+
+    updateScrollCue();
+  }
+
+  typeChar();
+}
+
+function copyResult() {
+  if (!lastRawResult) return;
+
+  const status =
+    document.getElementById(
+      "signal-status"
+    );
+
+  const errorStatus =
+    document.getElementById(
+      "signal-error"
+    );
+
+  navigator.clipboard
+    .writeText(lastRawResult)
+    .then(() => {
+      const btn =
+        document.getElementById(
+          "copy-btn"
+        );
+
+      btn.innerText = "Copied";
+
+      if (status) {
+        status.textContent =
+          "Result copied to clipboard.";
+      }
+
+      setTimeout(() => {
+        btn.innerText = "Copy result";
+      }, 1400);
+    })
+    .catch(() => {
+      if (errorStatus) {
+        errorStatus.textContent =
+          "Unable to copy the result to the clipboard.";
+      }
+    });
+}
+
+window.addEventListener("scroll", updateScrollCue);
+</script>
+<script>
+(function () {
+
+  const newSrc = "https://images.squarespace-cdn.com/content/698f8549821d5e2aaf4d4edc/6fb268da-2e08-4e25-a40a-e4d03f62c8a9/web-logo-white.png?format=1500w";
+
+  function swapLogo() {
+
+    const logos = document.querySelectorAll(
+      ".header-display-desktop .header-title-logo img, .header-display-mobile .header-title-logo img"
+    );
+
+    if (!logos.length) return;
+
+    logos.forEach((logo) => {
+
+      logo.src = newSrc;
+      logo.srcset = newSrc;
+
+      logo.setAttribute("src", newSrc);
+      logo.setAttribute("srcset", newSrc);
+
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", swapLogo);
+  window.addEventListener("load", swapLogo);
+
+  setTimeout(swapLogo, 500);
+  setTimeout(swapLogo, 1500);
+  setTimeout(swapLogo, 3000);
+
+})();
+</script>
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("embed") !== "1") {
+    return;
+  }
+
+  document.documentElement.classList.add("signal-interpreter-embed");
+  document.body.classList.add("signal-interpreter-embed");
+})();
+</script>
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("embed") !== "1") {
+    return;
+  }
+
+  document.documentElement.classList.add("signal-interpreter-embed");
+  document.body.classList.add("signal-interpreter-embed");
+
+  const analyzeStepNumber =
+    document.getElementById("analyze-step-number");
+
+  if (analyzeStepNumber) {
+    analyzeStepNumber.textContent = "2";
+  }
+})();
+</script>
+
+<script>
+/* =========================================================
+   SIGNAL INTERPRETER — MODAL KEYBOARD BRIDGE
+   ========================================================= */
+
+(function () {
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  if (params.get("embed") !== "1") {
+    return;
+  }
+
+  const parentOrigin =
+    window.location.origin;
+
+  const focusableSelector = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(",");
+
+  function getFocusableElements() {
+    return Array.from(
+      document.querySelectorAll(
+        focusableSelector
+      )
+    ).filter(function (element) {
+      const style =
+        window.getComputedStyle(element);
+
+      const isRendered =
+        element.getClientRects().length > 0;
+
+      const isDisabled =
+        element.matches(":disabled");
+
+      const isInsideHiddenTree =
+        element.closest(
+          '[hidden], [aria-hidden="true"], [inert]'
+        ) !== null;
+
+      return (
+        isRendered &&
+        !isDisabled &&
+        !isInsideHiddenTree &&
+        style.visibility !== "hidden"
+      );
+    });
+  }
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+      /*
+       * Escape from anywhere inside the iframe
+       * closes the parent modal.
+       */
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+
+        window.parent.postMessage(
+          {
+            type:
+              "signal-interpreter-modal-close"
+          },
+          parentOrigin
+        );
+
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusable =
+        getFocusableElements();
+
+      if (!focusable.length) {
+        return;
+      }
+
+      const first = focusable[0];
+
+      const last =
+        focusable[
+          focusable.length - 1
+        ];
+
+      const active =
+        document.activeElement;
+
+      /*
+       * Tabbing forward from the final control
+       * returns focus to the modal close button.
+       */
+
+      if (
+        !event.shiftKey &&
+        active === last
+      ) {
+        event.preventDefault();
+
+        window.parent.postMessage(
+          {
+            type:
+              "signal-interpreter-modal-focus-close"
+          },
+          parentOrigin
+        );
+
+        return;
+      }
+
+      /*
+       * Shift+Tab from the first iframe control
+       * also returns to the modal close button.
+       */
+
+      if (
+        event.shiftKey &&
+        active === first
+      ) {
+        event.preventDefault();
+
+        window.parent.postMessage(
+          {
+            type:
+              "signal-interpreter-modal-focus-close"
+          },
+          parentOrigin
+        );
+      }
+    },
+    true
+  );
+
+  /*
+   * Shift+Tab from the parent's close button
+   * should move to the iframe's final control.
+   */
+
+  window.addEventListener(
+    "message",
+    function (event) {
+      if (
+        event.origin !== parentOrigin
+      ) {
+        return;
+      }
+
+      if (
+        !event.data ||
+        (
+          event.data.type !==
+            "signal-interpreter-modal-focus-first" &&
+          event.data.type !==
+            "signal-interpreter-modal-focus-last"
+        )
+      ) {
+        return;
+      }
+
+      const focusable =
+        getFocusableElements();
+
+      if (!focusable.length) {
+        return;
+      }
+
+      if (
+        event.data.type ===
+          "signal-interpreter-modal-focus-first"
+      ) {
+        const primaryInput =
+          document.getElementById("input");
+
+        if (
+          primaryInput &&
+          primaryInput.getClientRects().length > 0
+        ) {
+          primaryInput.focus();
+          return;
+        }
+
+        focusable[0].focus();
+        return;
+      }
+
+      focusable[
+        focusable.length - 1
+      ].focus();
+    }
+  );
+})();
+</script>

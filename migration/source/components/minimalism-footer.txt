@@ -1,0 +1,281 @@
+<!-- FOOTER -->
+
+<section class="minimalism-footer">
+	<div class="footer-container">
+
+	  <div class="footer-brand">
+	    <h3>MINIMALISM</h3>
+	    <p>Signal Over Noise.</p>
+	  </div>
+
+	  <div class="footer-links">
+
+	    <div class="footer-column">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/signal-audit">Signal Audit</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+          <li><a href="/vanguard/program">Vanguard Program</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Knowledge</h4>
+
+        <ul>
+          <li>
+            <a href="/signal-interpreter">
+              Signal Interpreter
+            </a>
+          </li>
+
+          <li>
+            <a href="/why-signal-audits-work">
+              How It Works
+            </a>
+          </li>
+
+          <li>
+            <a href="/integrations">
+              Integrations
+            </a>
+          </li>
+
+          <li>
+            <a href="/integrations/grafana">
+              Grafana Integration
+            </a>
+          </li>
+
+          <li>
+            <a href="/integrations/datadog">
+              Datadog Integration
+            </a>
+          </li>
+
+          <li>
+            <a href="/signal-notes">
+              Signal Notes
+            </a>
+          </li>
+
+          <li>
+            <a href="/case-studies/index">
+              Case Studies
+            </a>
+          </li>
+
+          <li>
+            <a href="/inside-a-signal-audit">
+              Inside a Signal Audit
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/philosophy">Philosophy</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/systems-portfolio">Systems Portfolio</a></li>
+          <li><a href="/security" data-cta="footer_security_architecture">Security &amp; Architecture</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/kwansahmadani/" target="_blank">LinkedIn Profile</a></li>
+          <li><a href="https://www.linkedin.com/company/minimalism-signal/" target="_blank">LinkedIn Business Page</a></li>
+        </ul>
+      </div>
+
+	  </div>
+
+	  <div class="footer-bottom">
+	    <p>© 2026 MINIMALISM. All rights reserved.</p>
+	  </div>
+  </div>
+</section>
+
+
+<style>
+/* CSS NON-MOBILE */
+
+.minimalism-footer {
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 0;
+  padding: 80px 0 40px;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.footer-brand {
+  margin-bottom: 60px;
+}
+
+.footer-brand h3 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.footer-brand p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+}
+
+.footer-column h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+  color: #999;
+}
+
+.footer-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 12px;
+}
+
+.footer-column a {
+  color: #111;
+  text-decoration: none;
+  font-size: 15px;
+  transition: opacity .2s ease;
+}
+
+.footer-column a:hover {
+  opacity: 0.6;
+}
+
+.footer-bottom {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+}
+
+
+.minimalism-footer {
+  margin: -120px 0 -90px;
+}
+/* CSS MOBILE */
+
+
+@media (max-width: 768px) {
+
+  .minimalism-footer {
+    padding: 60px 0 32px;
+    margin-top: 80px;
+  }
+
+  .footer-container {
+    padding: 0 24px;
+  }
+
+  .footer-brand {
+    margin-bottom: 40px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    margin-top: 48px;
+  }
+  
+  .minimalism-footer {
+    margin: -130px 0 -130px !important;
+  }
+
+}
+body.collection-6a6badc84759ca5072aa2a9f .minimalism-footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 80px 0 40px;
+  border-top: 1px solid #e5e5e5;
+  background: #ffffff;
+}
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"],
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"]
+.content-wrapper,
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"]
+.content,
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"]
+[data-fluid-engine="true"],
+body.collection-6a6badc84759ca5072aa2a9f
+.fe-6a6bb429d753aa52bddfdbb1 {
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body.collection-6a6badc84759ca5072aa2a9f
+.page-section[data-section-id="6a6bb42830c950110973fa98"] {
+  padding: 100px 0 140px !important;
+}
+
+@media (max-width: 768px) {
+  body.collection-6a6badc84759ca5072aa2a9f .minimalism-footer {
+    margin: 0 !important;
+    padding: 60px 0 32px;
+  }
+}
+/* =========================================================
+   FOOTER — ACCESSIBLE LINK FOCUS
+   ========================================================= */
+.footer-column a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.footer-column a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+</style>

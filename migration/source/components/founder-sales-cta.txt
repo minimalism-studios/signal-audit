@@ -1,0 +1,26 @@
+<section class="founder-sales-cta">
+  <div class="founder-sales-cta__inner">
+
+    <p class="founder-sales-cta__eyebrow">
+      {{EYEBROW}}
+    </p>
+
+    <h2>
+      Talk directly with the creator of Signal Audit.
+    </h2>
+
+    <p>
+      {{BODY_COPY}}
+    </p>
+
+    <a
+      href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+      class="founder-sales-cta__button"
+      target="_blank"
+      rel="noopener"
+    >
+      Schedule a Signal Review
+    </a>
+
+  </div>
+</section>

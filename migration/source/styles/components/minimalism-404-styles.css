@@ -1,0 +1,209 @@
+/* ==========================================================
+   404
+========================================================== */
+
+.error-404 {
+  background: #F8FAFC;
+  margin-top: 50px;
+  padding: 48px 24px 96px;
+  display: block;
+}
+
+.error-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.error-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+  gap: 72px;
+  align-items: center;
+  margin-bottom: 52px;
+}
+
+.error-eyebrow {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(30,41,59,.06);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 28px;
+}
+
+.error-404 h1 {
+  max-width: 640px;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.error-bottom {
+  max-width: 760px;
+}
+
+.error-description {
+  margin: 0 0 36px;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #475569;
+}
+
+.error-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Signal Card */
+
+.signal-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15,23,42,.05);
+}
+
+.signal-header {
+  background: #0F172A;
+  color: #fff;
+  padding: 20px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.signal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.signal-item:last-child {
+  border-bottom: none;
+}
+
+.signal-item span {
+  color: #64748B;
+}
+
+.signal-item strong {
+  color: #0F172A;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Footer separation */
+
+#footer-sections,
+footer.sections {
+  position: relative;
+  z-index: 5;
+  margin-top: 120px;
+}
+/* ==========================================================
+   404 CTA BUTTONS
+========================================================== */
+
+.error-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Shared */
+
+.error-actions a {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 0 28px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    transition:
+        background-color .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .15s ease;
+
+    cursor: pointer;
+
+}
+
+/* Primary */
+
+.btn-primary {
+
+    background: #0F172A;
+    border: 1px solid #0F172A;
+    color: #FFFFFF;
+
+}
+
+.btn-primary:hover {
+
+    background: #1E293B;
+    border-color: #1E293B;
+
+}
+
+.btn-primary:active {
+
+    transform: translateY(1px);
+
+}
+
+/* Secondary */
+
+.btn-secondary {
+
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    color: #0F172A;
+
+}
+
+.btn-secondary:hover {
+
+    background: #F8FAFC;
+    border-color: #94A3B8;
+
+}
+
+.btn-secondary:active {
+
+    transform: translateY(1px);
+
+}
+
+/* Keyboard accessibility */
+
+.error-actions a:focus-visible {
+
+    outline: 3px solid rgba(15,23,42,.18);
+    outline-offset: 3px;
+
+}

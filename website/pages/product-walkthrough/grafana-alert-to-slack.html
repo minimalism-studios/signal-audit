@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grafana Alert Intelligence Case Study | Product Workflow 001</title>
+  <meta name="description" content="See how Product Workflow 001 uses the Signal Audit Grafana integration to transform production alerts into AI-powered operational intelligence, preserving signal history and delivering actionable recommendations in Slack.">
+  <link rel="canonical" href="https://signal-audit.com/product-walkthrough/grafana-alert-to-slack">
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/grafana-alert-to-slack.css">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="case-study-page case-study-page--007">
+
+  <div class="case-study-kicker">
+    Product Walkthrough 001 / Automated Signal Intake
+  </div>
+
+  <h1>
+    From Grafana Alert to Operational Decision in Slack
+  </h1>
+
+  <p class="case-study-subhead">
+    How Signal Audit receives a production alert, interprets its operational
+    significance, records its lifecycle, and delivers decision-ready guidance
+    directly into Slack.
+  </p>
+
+  <div class="case-study-inline-cta" id="signal-interpreter-btn">
+    <a href="/signal-audit-slack" class="case-study-cta-button">
+      Explore Slack Integration
+    </a>
+  </div>
+
+  <div class="case-study-meta">
+    <div>
+      <strong>Signal Source</strong>
+      Grafana alert webhook
+    </div>
+
+    <div>
+      <strong>Interpretation Layer</strong>
+      Signal Audit
+    </div>
+
+    <div>
+      <strong>Delivery Workflow</strong>
+      Slack
+    </div>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Overview</h2>
+
+    <p>
+      Grafana is designed to detect production conditions and notify teams when
+      thresholds, behaviors, or service states require attention. But detection
+      alone does not explain the operational meaning of an alert.
+    </p>
+
+    <p>
+      This product walkthrough demonstrates how Signal Audit extends that
+      workflow. A Grafana alert enters Signal Audit automatically, is normalized
+      into a consistent signal format, evaluated for operational significance,
+      recorded through its delivery lifecycle, and routed into Slack with
+      clearer guidance for the responding team.
+    </p>
+  </section>
+
+  <section
+    class="case-study-flow-landscape"
+    aria-label="Grafana to Slack product workflow"
+  >
+    <div class="case-flow-lane">
+
+      <div class="case-flow-node">
+        <span>Detection</span>
+        <strong>Grafana Alert</strong>
+
+        <ul>
+          <li>Latency increase</li>
+          <li>Retry amplification</li>
+          <li>Error-rate movement</li>
+          <li>Service context</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node case-flow-node-dark">
+        <span>Interpretation</span>
+        <strong>Signal Audit</strong>
+
+        <ul>
+          <li>Normalize payload</li>
+          <li>Evaluate impact</li>
+          <li>Classify risk</li>
+          <li>Recommend action</li>
+        </ul>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Operational Guidance</span>
+        <strong>Persistent degradation</strong>
+      </div>
+
+      <div class="case-flow-arrow">→</div>
+
+      <div class="case-flow-node">
+        <span>Delivery</span>
+        <strong>Decision-ready context in Slack</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>The Observability Gap</h2>
+
+    <p>
+      Monitoring platforms are effective at showing that a production condition
+      exists. They can identify elevated latency, failed requests, unusual
+      resource behavior, or a threshold violation.
+    </p>
+
+    <p>
+      The interpretation burden still falls on engineers. Someone must determine
+      whether the alert represents isolated noise, a developing degradation
+      pattern, a dependency problem, or an incident requiring immediate action.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      Detection tells the team that something changed. Interpretation helps the
+      team decide what that change means.
+    </p>
+  </div>
+
+  <section class="case-study-section">
+    <h2>The Automated Workflow</h2>
+
+    <p>
+      Signal Audit receives Grafana alerts through a secure, connection-specific
+      webhook. Each incoming signal is associated with its configured
+      destination so the interpretation can be delivered to the appropriate
+      Slack workflow.
+    </p>
+
+    <p>
+      The incoming payload is normalized before analysis. This separates the
+      operational reasoning layer from Grafana’s original payload structure and
+      creates a repeatable foundation for future signal sources.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Demonstration Signal</h2>
+
+    <p>
+      The following scenario illustrates the type of production condition the
+      integration can process. It is a product demonstration rather than a
+      customer incident.
+    </p>
+
+    <div class="grafana-signal-demo">
+
+      <div class="grafana-signal-demo__header">
+        <span class="grafana-signal-demo__status"></span>
+
+        <div>
+          <small>Grafana Alert</small>
+          <strong>Production latency degradation</strong>
+        </div>
+      </div>
+
+      <div class="grafana-signal-demo__grid">
+        <div>
+          <small>Service</small>
+          <strong>payments-api</strong>
+        </div>
+
+        <div>
+          <small>Environment</small>
+          <strong>production</strong>
+        </div>
+
+        <div>
+          <small>Condition</small>
+          <strong>Latency above threshold</strong>
+        </div>
+
+        <div>
+          <small>Observed Behavior</small>
+          <strong>Retries and errors increasing</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Operational Interpretation</h2>
+
+    <p>
+      Rather than repeating the raw alert, Signal Audit converts the incoming
+      signal into a structured operational interpretation.
+    </p>
+
+    <div class="signal-grid signal-grid--four">
+
+      <div class="signal-card">
+        <h3>Pattern</h3>
+        <p>
+          Persistent degradation across latency, retry behavior, and error-rate
+          movement.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>What Matters</h3>
+        <p>
+          The correlated movement suggests more than an isolated threshold
+          breach.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>What to Ignore</h3>
+        <p>
+          Short-lived fluctuations outside the affected service window are less
+          operationally significant.
+        </p>
+      </div>
+
+      <div class="signal-card">
+        <h3>Next Action</h3>
+        <p>
+          Review recent deployments, dependency health, timeout policy, and
+          error-rate changes.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="case-study-inline-cta no-border-radius">
+    <h3>Grafana identifies the condition. Signal Audit explains the response.</h3>
+
+    <p>
+      Signal Audit complements the monitoring workflow by translating detected
+      production behavior into clearer operational context.
+    </p>
+
+    <a href="/signal-audit-slack">
+      Explore Slack Integration →
+    </a>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Signal Lifecycle History</h2>
+
+    <p>
+      Each incoming signal is recorded as it progresses through Signal Audit.
+      This introduces operational memory into a workflow that previously ended
+      after an alert notification was sent.
+    </p>
+
+    <div class="case-study-steps">
+
+      <div class="case-study-step">
+        <span>01</span>
+
+        <div>
+          <h3>Received</h3>
+          <p>
+            Signal Audit records that the Grafana payload entered the
+            connection-specific workflow.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+
+        <div>
+          <h3>Analyzed</h3>
+          <p>
+            The normalized signal is interpreted and the operational guidance
+            is associated with its history record.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+
+        <div>
+          <h3>Delivered</h3>
+          <p>
+            The completed interpretation is routed to the configured Slack
+            destination.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+
+        <div>
+          <h3>Failed</h3>
+          <p>
+            When analysis or delivery cannot be completed, the failed state is
+            retained for operational visibility.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Slack Delivery</h2>
+
+    <p>
+      The final interpretation arrives where engineering teams already
+      coordinate incident response. The Slack message preserves the alert’s
+      production context while adding a clearer explanation of the pattern,
+      significance, and recommended next action.
+    </p>
+
+    <div class="grafana-slack-demo">
+
+      <div class="grafana-slack-demo__topbar">
+        <span></span>
+        <strong>#signal-audit</strong>
+        <small>Production Intelligence</small>
+      </div>
+
+      <div class="grafana-slack-demo__message">
+        <strong>Audit Complete</strong>
+
+        <div>
+          <small>Pattern</small>
+          <p>
+            Persistent degradation detected across service latency and retry
+            behavior.
+          </p>
+        </div>
+
+        <div>
+          <small>What Matters</small>
+          <p>
+            The strongest signal is correlated movement after a recent
+            deployment, suggesting dependency pressure or downstream
+            saturation.
+          </p>
+        </div>
+
+        <div>
+          <small>Recommended Action</small>
+          <p>
+            Review recent deploys, dependency health, timeout policy, and
+            error-rate changes across the affected window.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      The Grafana integration changes Signal Audit from a workflow initiated
+      only through a Slack command into a platform capable of receiving
+      production signals automatically.
+    </p>
+
+    <p>
+      The monitoring platform continues to perform detection. Signal Audit adds
+      normalization, interpretation, routing, lifecycle tracking, and
+      collaboration-ready delivery.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      Signal Audit transforms a production alert from a notification into an
+      operational decision workflow.
+    </p>
+  </div>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+
+      <p class="founder-sales-cta__eyebrow">
+        Exploring an observability integration?
+      </p>
+
+      <h2>
+        Talk directly with the creator of Signal Audit.
+      </h2>
+
+      <p>
+        Schedule a Signal Review to discuss how alerts from your monitoring
+        environment could be interpreted, routed, and delivered inside your
+        existing operational workflow.
+      </p>
+
+      <a
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        class="founder-sales-cta__button"
+        target="_blank"
+        rel="noopener"
+      >
+        Schedule a Signal Review
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta no-border-radius">
+
+    <p class="case-study-cta-kicker">
+      Ready to connect monitoring with operational reasoning?
+    </p>
+
+    <h2>
+      Bring interpreted production context into Slack.
+    </h2>
+
+    <p>
+      The Signal Audit + Slack pilot connects signal interpretation with the
+      collaboration workflow where engineering teams already investigate and
+      respond.
+    </p>
+
+    <div class="case-study-cta-buttons">
+
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://buy.stripe.com/5kQ3cv1SCbGWdm65XN7Zu06"
+        class="primary-btn"
+      >
+        Purchase Slack Pilot
+      </a>
+
+      <a href="/signal-audit-slack" class="secondary-btn">
+        Explore the Integration
+      </a>
+
+    </div>
+
+  </section>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+</body>
+</html>

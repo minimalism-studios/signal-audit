@@ -1,0 +1,2022 @@
+<!-- ======================================================
+     SIGNAL AUDIT INTEGRATIONS PAGE
+======================================================= -->
+
+<main class="integrations-page">
+
+  <!-- HERO -->
+
+  <section
+    class="integrations-hero"
+    aria-labelledby="integrations-hero-title"
+  >
+    <div class="integrations-hero__inner">
+
+      <div class="integrations-hero__copy">
+        <p class="integrations-hero__eyebrow">
+          Signal Audit Integrations
+        </p>
+
+        <h1 id="integrations-hero-title">
+          Connect the systems that already understand production.
+        </h1>
+
+        <p class="integrations-hero__intro">
+          Signal Audit receives production alerts from observability platforms,
+          analyzes what matters with AI, preserves signal history, and delivers
+          operational intelligence directly into your team's workflow.
+        </p>
+
+        <div class="integrations-hero__actions">
+          <a
+            class="integrations-button integrations-button--primary"
+            data-cta="explore_integrations"
+            href="#available-integrations"
+          >
+            Explore integrations
+          </a>
+
+          <a
+            class="integrations-button integrations-button--secondary"
+            data-cta="see_how_it_works"
+            href="/why-signal-audits-work"
+          >
+            See how it works
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="integrations-hero__architecture"
+        role="group"
+        aria-label="Observability platforms connected to Signal Audit and Slack"
+      >
+        <div class="integrations-hero__sources">
+          <div class="integrations-hero__source integrations-hero__source--grafana">
+            <span class="integrations-hero__source-mark" aria-hidden="true">
+              G
+            </span>
+
+            <div>
+              <strong>Grafana</strong>
+              <small>Alert intelligence</small>
+            </div>
+
+            <span class="integrations-hero__source-status">
+              Connected
+            </span>
+          </div>
+
+          <div class="integrations-hero__source integrations-hero__source--datadog">
+            <span class="integrations-hero__source-mark" aria-hidden="true">
+              D
+            </span>
+
+            <div>
+              <strong>Datadog</strong>
+              <small>Telemetry intelligence</small>
+            </div>
+
+            <span class="integrations-hero__source-status">
+              Connected
+            </span>
+          </div>
+        </div>
+
+        <div class="integrations-hero__connector" aria-hidden="true">
+          <span></span>
+          <strong>→</strong>
+          <span></span>
+        </div>
+
+        <div class="integrations-hero__engine">
+          <div class="integrations-hero__engine-header">
+            <span class="integrations-hero__engine-status"></span>
+            <span>Operational intelligence engine</span>
+          </div>
+
+          <div class="integrations-hero__engine-orb" aria-hidden="true">
+            A
+          </div>
+
+          <strong>Signal Audit</strong>
+
+          <div class="integrations-hero__engine-stages">
+            <span>Ingest</span>
+            <span>Analyze</span>
+            <span>Preserve</span>
+            <span>Deliver</span>
+          </div>
+        </div>
+
+        <div class="integrations-hero__connector" aria-hidden="true">
+          <span></span>
+          <strong>→</strong>
+          <span></span>
+        </div>
+
+        <div class="integrations-hero__destination">
+          <span class="integrations-hero__destination-mark" aria-hidden="true">
+            S
+          </span>
+
+          <div>
+            <strong>Slack</strong>
+            <small>Decision-ready guidance</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END HERO -->
+
+
+  <!-- PLATFORM STATEMENT -->
+
+  <section class="integrations-platform">
+    <div class="integrations-platform__inner">
+
+      <div class="integrations-platform__heading">
+        <p class="integrations-platform__eyebrow">
+          One intelligence layer
+        </p>
+
+        <h2>
+          The observability platform can change. The Signal Audit workflow
+          remains consistent.
+        </h2>
+      </div>
+
+      <div class="integrations-platform__copy">
+        <p>
+          Every integration follows the same operational pipeline: receive the
+          production signal, normalize vendor-specific context, analyze its
+          significance, preserve its lifecycle, and deliver guidance where the
+          team already works.
+        </p>
+
+        <p>
+          That makes Signal Audit an extensible intelligence layer across your
+          production stack—not a one-off connection to a single monitoring
+          tool.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END PLATFORM STATEMENT -->
+
+
+  <!-- AVAILABLE INTEGRATIONS -->
+
+  <section
+    id="available-integrations"
+    class="integrations-library"
+    aria-labelledby="integrations-library-title"
+  >
+    <div class="integrations-library__inner">
+
+      <header class="integrations-library__header">
+        <p class="integrations-library__eyebrow">
+          Available integrations
+        </p>
+
+        <h2 id="integrations-library-title">
+          Production telemetry in. Operational intelligence out.
+        </h2>
+
+        <p>
+          Connect Signal Audit to the observability systems your team already
+          uses to detect production change.
+        </p>
+      </header>
+
+      <div class="integrations-library__grid">
+
+        <!-- GRAFANA -->
+
+        <article
+          class="integration-card integration-card--grafana"
+          aria-labelledby="integration-grafana-title"
+        >
+          <div class="integration-card__header">
+            <div class="integration-card__identity">
+              <span class="integration-card__mark" aria-hidden="true">
+                G
+              </span>
+
+              <div>
+                <p>Observability integration</p>
+
+                <h3 id="integration-grafana-title">
+                  Grafana
+                </h3>
+              </div>
+            </div>
+
+            <span class="integration-card__availability">
+              Available
+            </span>
+          </div>
+
+          <div class="integration-card__visual">
+            <div class="integration-card__visual-header">
+              <span class="integration-card__status-dot"></span>
+              <span>Production alert received</span>
+              <small>Firing</small>
+            </div>
+
+            <div class="integration-card__signal">
+              <small>Alert</small>
+              <strong>payments-api latency above threshold</strong>
+              <span>Grafana alert lifecycle detected</span>
+            </div>
+
+            <div class="integration-card__workflow">
+              <div>
+                <span>01</span>
+                <strong>Receive</strong>
+              </div>
+
+              <div>
+                <span>02</span>
+                <strong>Analyze</strong>
+              </div>
+
+              <div>
+                <span>03</span>
+                <strong>Deliver</strong>
+              </div>
+
+              <div>
+                <span>04</span>
+                <strong>Resolve</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="integration-card__content">
+            <p class="integration-card__category">
+              Production alert intelligence
+            </p>
+
+            <h4>
+              Turn Grafana alerts into operational guidance.
+            </h4>
+
+            <p class="integration-card__description">
+              Signal Audit receives Grafana firing and recovery events,
+              interprets their operational significance, preserves the alert
+              lifecycle, and delivers analysis into Slack.
+            </p>
+
+            <ul class="integration-card__features">
+              <li>Alert and recovery handling</li>
+              <li>Vendor-aware AI analysis</li>
+              <li>Persistent signal lifecycle</li>
+              <li>Threaded Slack delivery</li>
+            </ul>
+          </div>
+
+          <div class="integration-card__footer">
+            <a href="/integrations/grafana" data-cta="explore_grafana_integration">
+              Explore Grafana integration
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <small>Grafana → Signal Audit → Slack</small>
+          </div>
+        </article>
+
+        <!-- DATADOG -->
+
+        <article
+          class="integration-card integration-card--datadog"
+          aria-labelledby="integration-datadog-title"
+        >
+          <div class="integration-card__header">
+            <div class="integration-card__identity">
+              <span class="integration-card__mark" aria-hidden="true">
+                D
+              </span>
+
+              <div>
+                <p>Observability integration</p>
+
+                <h3 id="integration-datadog-title">
+                  Datadog
+                </h3>
+              </div>
+            </div>
+
+            <span class="integration-card__availability">
+              Available
+            </span>
+          </div>
+
+          <div class="integration-card__visual">
+            <div class="integration-card__visual-header">
+              <span class="integration-card__status-dot"></span>
+              <span>Monitor signal received</span>
+              <small>Alert</small>
+            </div>
+
+            <div class="integration-card__signal">
+              <small>Monitor</small>
+              <strong>Elevated HTTP error rate detected</strong>
+              <span>Datadog telemetry context normalized</span>
+            </div>
+
+            <div class="integration-card__workflow">
+              <div>
+                <span>01</span>
+                <strong>Receive</strong>
+              </div>
+
+              <div>
+                <span>02</span>
+                <strong>Normalize</strong>
+              </div>
+
+              <div>
+                <span>03</span>
+                <strong>Interpret</strong>
+              </div>
+
+              <div>
+                <span>04</span>
+                <strong>Preserve</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="integration-card__content">
+            <p class="integration-card__category">
+              Production telemetry intelligence
+            </p>
+
+            <h4>
+              Convert Datadog monitor signals into operational understanding.
+            </h4>
+
+            <p class="integration-card__description">
+              Signal Audit normalizes Datadog monitor payloads, evaluates risk
+              and likely impact, stores the signal history, and delivers
+              decision-ready guidance into Slack.
+            </p>
+
+            <ul class="integration-card__features">
+              <li>Monitor alert ingestion</li>
+              <li>Datadog-specific interpretation</li>
+              <li>Recovery-state correlation</li>
+              <li>Delivery and failure tracking</li>
+            </ul>
+          </div>
+
+          <div class="integration-card__footer">
+            <a href="/integrations/datadog" data-cta="explore_datadog_integration">
+              Explore Datadog integration
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <small>Datadog → Signal Audit → Slack</small>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END AVAILABLE INTEGRATIONS -->
+
+
+  <!-- SHARED CAPABILITIES -->
+
+  <section
+    class="integrations-capabilities"
+    aria-labelledby="integrations-capabilities-title"
+  >
+    <div class="integrations-capabilities__inner">
+
+      <header class="integrations-capabilities__header">
+        <p class="integrations-capabilities__eyebrow">
+          Shared architecture
+        </p>
+
+        <h2 id="integrations-capabilities-title">
+          Every integration becomes part of the same operational record.
+        </h2>
+      </header>
+
+      <div class="integrations-capabilities__grid">
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            01
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            ↓
+          </div>
+
+          <h3>
+            Automated ingestion
+          </h3>
+
+          <p>
+            Production alerts enter Signal Audit automatically through
+            authenticated integration endpoints.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            02
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            A
+          </div>
+
+          <h3>
+            Vendor-aware analysis
+          </h3>
+
+          <p>
+            Each source is normalized and interpreted using context specific to
+            the originating observability platform.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            03
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            ◌
+          </div>
+
+          <h3>
+            Persistent history
+          </h3>
+
+          <p>
+            Firing, delivery, recovery, and resolution states remain connected
+            as one operational lifecycle.
+          </p>
+        </article>
+
+        <article class="integrations-capability">
+          <span class="integrations-capability__number">
+            04
+          </span>
+
+          <div class="integrations-capability__icon" aria-hidden="true">
+            →
+          </div>
+
+          <h3>
+            Workflow delivery
+          </h3>
+
+          <p>
+            Decision-ready guidance reaches Slack as a parent alert and focused
+            threaded analysis.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SHARED CAPABILITIES -->
+
+
+  <!-- EXTENSIBILITY -->
+
+  <section class="integrations-extensibility">
+    <div class="integrations-extensibility__inner">
+
+      <div class="integrations-extensibility__copy">
+        <p class="integrations-extensibility__eyebrow">
+          Built to extend
+        </p>
+
+        <h2>
+          Grafana and Datadog are the beginning, not the boundary.
+        </h2>
+
+        <p>
+          Signal Audit uses a repeatable integration architecture that separates
+          vendor-specific ingestion from the intelligence, history, and
+          delivery layers.
+        </p>
+
+        <p>
+          New production systems can connect to the same operational workflow
+          without rebuilding the product around each vendor.
+        </p>
+      </div>
+
+      <div class="integrations-extensibility__diagram">
+        <div class="integrations-extensibility__sources">
+          <span>Grafana</span>
+          <span>Datadog</span>
+          <span>Future source</span>
+          <span>Custom webhook</span>
+        </div>
+
+        <div class="integrations-extensibility__arrow" aria-hidden="true">
+          ↓
+        </div>
+
+        <div class="integrations-extensibility__layer">
+          <small>Shared intelligence layer</small>
+          <strong>Signal Audit</strong>
+        </div>
+
+        <div class="integrations-extensibility__arrow" aria-hidden="true">
+          ↓
+        </div>
+
+        <div class="integrations-extensibility__outputs">
+          <span>AI Analysis</span>
+          <span>Signal History</span>
+          <span>Slack Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END EXTENSIBILITY -->
+
+
+  <!-- FINAL CTA -->
+
+  <section class="integrations-cta">
+    <div class="integrations-cta__inner">
+
+      <p class="integrations-cta__eyebrow">
+        Connect production to operational intelligence
+      </p>
+
+      <h2>
+        Your monitoring stack already knows something changed. Signal Audit
+        helps your team understand what it means.
+      </h2>
+
+      <p>
+        Explore the available integrations or schedule a review of your current
+        observability and incident-response workflow.
+      </p>
+
+      <div class="integrations-cta__actions">
+        <a
+          class="integrations-button integrations-button--light"
+          data-cta="explore_grafana_integration"
+          href="/integrations/grafana"
+        >
+          Explore Grafana
+        </a>
+
+        <a
+          class="integrations-button integrations-button--outline-light"
+          data-cta="explore_datadog_integration"
+          href="/integrations/datadog"
+        >
+          Explore Datadog
+        </a>
+
+        <a
+          class="integrations-button integrations-button--outline-light"
+          href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="schedule_signal_review"
+        >
+          Schedule a Signal Review
+          <span class="integrations-sr-only">
+            (opens in a new tab)
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END FINAL CTA -->
+
+</main>
+
+<!-- END SIGNAL AUDIT INTEGRATIONS PAGE -->
+<style>
+/* =========================================================
+   SIGNAL AUDIT INTEGRATIONS PAGE
+========================================================= */
+
+.integrations-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #111111;
+}
+
+.integrations-page *,
+.integrations-page *::before,
+.integrations-page *::after {
+  box-sizing: border-box;
+}
+
+/* Shared buttons */
+
+.integrations-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.integrations-page a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 4px;
+}
+
+.integrations-extensibility a:focus-visible,
+.integrations-cta a:focus-visible {
+  outline-color: #78e7f5;
+}
+
+.integrations-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  font-family: var(--body-font-font-family);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.integrations-button:hover {
+  transform: translateY(-2px);
+}
+
+.integrations-button--primary {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+.integrations-button--primary:hover {
+  background: transparent;
+  color: #111111 !important;
+}
+
+.integrations-button--secondary {
+  background: transparent;
+  color: #111111 !important;
+}
+
+.integrations-button--secondary:hover {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.integrations-hero {
+  width: 100%;
+  padding: clamp(120px, 12vw, 190px) 40px clamp(88px, 9vw, 140px);
+  padding-top: 80px;
+  background:
+    radial-gradient(
+      circle at 75% 30%,
+      rgba(120, 231, 245, 0.1),
+      transparent 30%
+    ),
+    #f5f5f2;
+}
+
+.integrations-hero__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(560px, 1.1fr);
+  gap: clamp(60px, 8vw, 130px);
+  align-items: center;
+  width: min(100%, 1500px);
+  margin: 0 auto;
+}
+
+.integrations-hero__copy {
+  max-width: 760px;
+}
+
+.integrations-hero__eyebrow,
+.integrations-platform__eyebrow,
+.integrations-library__eyebrow,
+.integrations-capabilities__eyebrow,
+.integrations-extensibility__eyebrow,
+.integrations-cta__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 22px;
+  font-family: var(--heading-font-font-family);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.integrations-hero__eyebrow,
+.integrations-platform__eyebrow,
+.integrations-library__eyebrow,
+.integrations-capabilities__eyebrow,
+.integrations-extensibility__eyebrow {
+  color: rgba(17, 17, 17, 0.60);
+}
+
+.integrations-hero__eyebrow::before,
+.integrations-platform__eyebrow::before,
+.integrations-library__eyebrow::before,
+.integrations-capabilities__eyebrow::before,
+.integrations-extensibility__eyebrow::before {
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.integrations-hero h1 {
+  margin: 0;
+  color: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 0.91;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.integrations-hero__intro {
+  max-width: 680px;
+  margin: 30px 0 0;
+  color: rgba(17, 17, 17, 0.65);
+  font-family: var(--body-font-font-family);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.integrations-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+/* Hero architecture */
+
+.integrations-hero__architecture {
+  display: grid;
+  grid-template-columns:
+    minmax(160px, 0.85fr)
+    48px
+    minmax(220px, 1.1fr)
+    48px
+    minmax(150px, 0.8fr);
+  gap: 14px;
+  align-items: center;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 30px 80px rgba(17, 17, 17, 0.08);
+  transform: translateX(-80px);
+}
+
+.integrations-hero__sources {
+  display: grid;
+  gap: 12px;
+}
+
+.integrations-hero__source {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 11px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.integrations-hero__source-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 11px;
+  background: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.integrations-hero__source--grafana .integrations-hero__source-mark {
+  color: #ffad66;
+}
+
+.integrations-hero__source--datadog .integrations-hero__source-mark {
+  color: #bba8ff;
+}
+
+.integrations-hero__source strong,
+.integrations-hero__source small,
+.integrations-hero__source-status {
+  display: block;
+  font-family: var(--body-font-font-family);
+}
+
+.integrations-hero__source strong {
+  color: #111111;
+  font-size: 0.75rem;
+}
+
+.integrations-hero__source small {
+  margin-top: 4px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.6rem;
+}
+
+.integrations-hero__source-status {
+  grid-column: 2;
+  margin-top: 4px;
+  color: #15803d;
+  font-size: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.integrations-hero__connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.integrations-hero__connector span {
+  width: 100%;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.17);
+}
+
+.integrations-hero__connector strong {
+  margin-top: -10px;
+  padding: 0 6px;
+  background: #fdfdfc;
+  color: rgba(17, 17, 17, 0.52);
+}
+
+.integrations-hero__engine {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 23px;
+  border: 1px solid rgba(120, 231, 245, 0.28);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(120, 231, 245, 0.13),
+      transparent 40%
+    ),
+    #111418;
+  color: #ffffff;
+}
+
+.integrations-hero__engine-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.54);
+  font-family: var(--heading-font-font-family);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+}
+
+.integrations-hero__engine-status {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #78e7f5;
+  box-shadow: 0 0 13px rgba(120, 231, 245, 0.7);
+}
+
+.integrations-hero__engine-orb {
+  display: grid;
+  width: 74px;
+  height: 74px;
+  margin: 28px 0 18px;
+  place-items: center;
+  border: 1px solid rgba(120, 231, 245, 0.4);
+  border-radius: 50%;
+  background: rgba(120, 231, 245, 0.07);
+  color: #78e7f5;
+  font-family: var(--heading-font-font-family);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.integrations-hero__engine > strong {
+  font-family: var(--heading-font-font-family);
+  font-size: 1rem;
+}
+
+.integrations-hero__engine-stages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.integrations-hero__engine-stages span {
+  padding: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--heading-font-font-family);
+  font-size: 0.57rem;
+  text-align: center;
+}
+
+.integrations-hero__destination {
+  display: flex;
+  min-height: 140px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border: 1px solid rgba(97, 31, 105, 0.14);
+  border-radius: 17px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.integrations-hero__destination-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 14px;
+  place-items: center;
+  border-radius: 12px;
+  background: #f0ebf2;
+  color: #611f69;
+  font-family: var(--heading-font-font-family);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.integrations-hero__destination strong,
+.integrations-hero__destination small {
+  display: block;
+  font-family: var(--body-font-font-family);
+}
+
+.integrations-hero__destination strong {
+  color: #111111;
+  font-size: 0.8rem;
+}
+
+.integrations-hero__destination small {
+  margin-top: 6px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.59rem;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   PLATFORM STATEMENT
+========================================================= */
+
+.integrations-platform {
+  padding: clamp(88px, 9vw, 130px) 40px;
+  background: #ffffff;
+}
+
+.integrations-platform__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(320px, 0.7fr);
+  gap: clamp(50px, 8vw, 120px);
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.integrations-platform__heading h2 {
+  max-width: 900px;
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.integrations-platform__copy {
+  align-self: end;
+}
+
+.integrations-platform__copy p {
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.64);
+  font-family: var(--body-font-font-family);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.integrations-platform__copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   LIBRARY
+========================================================= */
+
+.integrations-library {
+  padding: clamp(88px, 9vw, 136px) 40px;
+  background: #f5f5f2;
+}
+
+.integrations-library__inner {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+}
+
+.integrations-library__header {
+  max-width: 900px;
+  margin-bottom: clamp(52px, 7vw, 82px);
+}
+
+.integrations-library__header h2 {
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.integrations-library__header > p:last-child {
+  max-width: 700px;
+  margin: 25px 0 0;
+  color: rgba(17, 17, 17, 0.62);
+  font-family: var(--body-font-font-family);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.integrations-library__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.integration-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(25px, 3vw, 36px);
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 27px;
+  background: #ffffff;
+  box-shadow: 0 22px 65px rgba(17, 17, 17, 0.045);
+}
+
+.integration-card--grafana {
+  border-top: 4px solid #ff8b3d;
+}
+
+.integration-card--datadog {
+  border-top: 4px solid #8b5cf6;
+}
+
+.integration-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.09);
+}
+
+.integration-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.integration-card__mark {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border-radius: 14px;
+  background: #111111;
+  font-family: var(--heading-font-font-family);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.integration-card--grafana .integration-card__mark {
+  color: #ffad66;
+}
+
+.integration-card--datadog .integration-card__mark {
+  color: #c3b1ff;
+}
+
+.integration-card__identity p {
+  margin: 0 0 5px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: var(--heading-font-font-family);
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.integration-card__identity h3 {
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.integration-card__availability {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  font-family: var(--heading-font-font-family);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.integration-card__visual {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 19px;
+  background: #f8f8f6;
+}
+
+.integration-card__visual-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: var(--body-font-font-family);
+  font-size: 0.65rem;
+}
+
+.integration-card__visual-header small {
+  margin-left: auto;
+  font-size: 0.53rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.integration-card__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 13px rgba(249, 115, 22, 0.45);
+}
+
+.integration-card--datadog .integration-card__status-dot {
+  background: #8b5cf6;
+  box-shadow: 0 0 13px rgba(139, 92, 246, 0.45);
+}
+
+.integration-card__signal {
+  margin-top: 20px;
+  padding: 19px;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.integration-card__signal small,
+.integration-card__signal strong,
+.integration-card__signal span {
+  display: block;
+  font-family: var(--body-font-font-family);
+}
+
+.integration-card__signal small {
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.integration-card__signal strong {
+  margin-top: 10px;
+  color: #111111;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.integration-card__signal span {
+  margin-top: 7px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.63rem;
+}
+
+.integration-card__workflow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.integration-card__workflow div {
+  padding: 11px 8px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.integration-card__workflow span,
+.integration-card__workflow strong {
+  display: block;
+  font-family: var(--body-font-font-family);
+}
+
+.integration-card__workflow span {
+  margin-bottom: 6px;
+  color: rgba(17, 17, 17, 0.60);
+  font-size: 0.51rem;
+}
+
+.integration-card__workflow strong {
+  color: rgba(17, 17, 17, 0.7);
+  font-size: 0.58rem;
+}
+
+.integration-card__content {
+  padding-top: 34px;
+}
+
+.integration-card__category {
+  margin: 0 0 13px;
+  color: rgba(17, 17, 17, 0.60);
+  font-family: var(--heading-font-font-family);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.integration-card__content h4 {
+  max-width: 580px;
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.integration-card__description {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: rgba(17, 17, 17, 0.61);
+  font-family: var(--body-font-font-family);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.integration-card__features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.integration-card__features li {
+  padding: 13px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  background: #fafafa;
+  color: rgba(17, 17, 17, 0.64);
+  font-family: var(--body-font-font-family);
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.integration-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.integration-card__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #111111;
+  font-family: var(--body-font-font-family);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.integration-card__footer a span {
+  transition: transform 180ms ease;
+}
+
+.integration-card__footer a:hover span {
+  transform: translateX(4px);
+}
+
+.integration-card__footer small {
+  color: rgba(17, 17, 17, 0.60);
+  font-family: var(--body-font-font-family);
+  font-size: 0.57rem;
+}
+
+/* =========================================================
+   CAPABILITIES
+========================================================= */
+
+.integrations-capabilities {
+  padding: clamp(88px, 9vw, 130px) 40px;
+  background: #ffffff;
+}
+
+.integrations-capabilities__inner {
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.integrations-capabilities__header {
+  max-width: 900px;
+  margin-bottom: 58px;
+}
+
+.integrations-capabilities__header h2 {
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.97;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.integrations-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.integrations-capability {
+  min-height: 350px;
+  padding: 25px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 20px;
+  background: #f8f8f6;
+}
+
+.integrations-capability__number {
+  color: rgba(17, 17, 17, 0.60);
+  font-family: var(--heading-font-font-family);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.integrations-capability__icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  margin: 55px 0 30px;
+  place-items: center;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 50%;
+  background: #ffffff;
+  font-family: var(--heading-font-font-family);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.integrations-capability h3 {
+  margin: 0;
+  font-family: var(--heading-font-font-family);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.integrations-capability p {
+  margin: 18px 0 0;
+  color: rgba(17, 17, 17, 0.58);
+  font-family: var(--body-font-font-family);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   EXTENSIBILITY
+========================================================= */
+
+.integrations-extensibility {
+  padding: clamp(88px, 9vw, 135px) 40px;
+  background: #111418;
+  color: #ffffff;
+}
+
+.integrations-extensibility__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(480px, 0.75fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+  width: min(100%, 1400px);
+  margin: 0 auto;
+}
+
+.integrations-extensibility__eyebrow {
+  color: rgba(255, 255, 255, 0.47);
+}
+
+.integrations-extensibility__copy h2 {
+  max-width: 800px;
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.integrations-extensibility__copy > p:not(.integrations-extensibility__eyebrow) {
+  max-width: 680px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.61);
+  var(--body-font-font-family);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.integrations-extensibility__diagram {
+  padding: 28px;
+  border: 1px solid rgba(120, 231, 245, 0.2);
+  border-radius: 25px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(120, 231, 245, 0.09),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.025);
+}
+
+.integrations-extensibility__sources,
+.integrations-extensibility__outputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.integrations-extensibility__sources span,
+.integrations-extensibility__outputs span {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.67);
+  font-family: var(--body-font-font-family);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.integrations-extensibility__arrow {
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  color: #78e7f5;
+}
+
+.integrations-extensibility__layer {
+  padding: 28px;
+  border: 1px solid rgba(120, 231, 245, 0.3);
+  border-radius: 17px;
+  background: rgba(120, 231, 245, 0.07);
+  text-align: center;
+}
+
+.integrations-extensibility__layer small,
+.integrations-extensibility__layer strong {
+  display: block;
+  font-family: var(--body-font-font-family);
+}
+
+.integrations-extensibility__layer small {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.integrations-extensibility__layer strong {
+  margin-top: 12px;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.integrations-cta {
+  padding: clamp(95px, 10vw, 155px) 40px;
+  background: #050505;
+  color: #ffffff;
+  text-align: center;
+}
+
+.integrations-cta__inner {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.integrations-cta__eyebrow {
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.46);
+}
+
+.integrations-cta h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--heading-font-font-family);
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.integrations-cta__inner > p:not(.integrations-cta__eyebrow) {
+  max-width: 720px;
+  margin: 28px auto 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-family: var(--body-font-font-family);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.integrations-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.integrations-button--light {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #111111 !important;
+}
+
+.integrations-button--light:hover {
+  border-color: #78e7f5;
+  background: #78e7f5;
+}
+
+.integrations-button--outline-light {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: transparent;
+  color: #ffffff !important;
+}
+
+.integrations-button--outline-light:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.integrations-capability h3,
+.integration-card__content h4 {
+  font-size: 1.25em;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1100px) {
+  .integrations-hero__inner,
+  .integrations-platform__inner,
+  .integrations-extensibility__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .integrations-hero__architecture {
+    width: min(100%, 820px);
+  }
+
+  .integrations-library__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .integrations-capabilities__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .integrations-extensibility__diagram {
+    width: min(100%, 760px);
+  }
+  .minimalism-footer {
+    margin-top: -120px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 767px) {
+  .integrations-hero,
+  .integrations-platform,
+  .integrations-library,
+  .integrations-capabilities,
+  .integrations-extensibility,
+  .integrations-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .integrations-hero {
+    padding-top: 45px;
+  }
+
+  .integrations-hero h1,
+  .integrations-library__header h2,
+  .integrations-extensibility__copy h2,
+  .integrations-cta h2 {
+    font-size: 2em;
+  }
+  .integrations-hero h1 { font-size: 2em; }
+
+  .integrations-hero__actions,
+  .integrations-cta__actions {
+    flex-direction: column;
+  }
+
+  .integrations-button {
+    width: 100%;
+  }
+
+  .integrations-hero__architecture {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    transform: translateX(0);
+  }
+
+  .integrations-hero__sources,
+  .integrations-hero__engine,
+  .integrations-hero__destination {
+    width: 100%;
+  }
+
+  .integrations-hero__connector {
+    min-height: 60px;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .integrations-hero__connector span {
+    width: 1px;
+    height: 52px;
+  }
+
+  .integrations-hero__connector strong {
+    margin: 0;
+    background: transparent;
+    transform: rotate(90deg);
+  }
+
+  .integrations-platform__heading h2,
+  .integrations-capabilities__header h2 {
+    font-size: 2em;
+  }
+
+  .integration-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .integration-card__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .integration-card__workflow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .integration-card__features {
+    grid-template-columns: 1fr;
+  }
+
+  .integration-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .integrations-capabilities__grid {
+    display: block;
+  }
+
+  .integrations-capability {
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 16px;
+  }
+
+  .integrations-capability:last-child {
+    margin-bottom: 0;
+  }
+
+  .integrations-capability__icon {
+    margin-top: 38px;
+  }
+
+  .integrations-extensibility__sources,
+  .integrations-extensibility__outputs {
+    grid-template-columns: 1fr;
+  }
+  .minimalism-footer {
+    margin-top: -120px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .integrations-button,
+  .integration-card__footer a span {
+    transition: none !important;
+  }
+
+  .integrations-button:hover {
+    transform: none !important;
+  }
+
+  .integration-card__footer a:hover span {
+    transform: none !important;
+  }
+}
+.minimalism-footer {
+  margin-top: -160px !important;
+}
+/* footer fix */ 
+
+body#collection-6a54552aadf95b1ab04cad7f main .page-section,
+body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper,
+body#collection-6a54552aadf95b1ab04cad7f main .content,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a54552aadf95b1ab04cad7f
+.fe-6a3e2a6ca481d87cdec73103 {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a54552aadf95b1ab04cad7f
+.fe-block-yui_3_17_2_1_1782458980627_462 {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+.minimalism-footer {
+  margin-top: -160px !important;
+}
+/* =========================================================
+   INTEGRATIONS PAGE — FULL-BLEED / FULL-WIDTH CORRECTION
+========================================================= */
+
+/* Prevent the browser itself from developing horizontal overflow */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Break the complete custom page out of the Squarespace content wrapper */
+body#collection-6a54552aadf95b1ab04cad7f .integrations-page {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: -50vw;
+  margin-right: 0;
+  padding: 0;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+/* Remove Squarespace spacing surrounding the custom page */
+body#collection-6a54552aadf95b1ab04cad7f main .page-section,
+body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper,
+body#collection-6a54552aadf95b1ab04cad7f main .content,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-layout,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-row,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-col-12,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block-content,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-code-container {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Keep Squarespace from clipping the viewport breakout */
+body#collection-6a54552aadf95b1ab04cad7f main .page-section,
+body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper,
+body#collection-6a54552aadf95b1ab04cad7f main .content,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-layout,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-row,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block,
+body#collection-6a54552aadf95b1ab04cad7f main .sqs-block-content {
+  overflow: visible !important;
+}
+
+/* Every major section owns the full viewport-width background */
+.integrations-hero,
+.integrations-platform,
+.integrations-library,
+.integrations-capabilities,
+.integrations-extensibility,
+.integrations-cta {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+/* Inner containers remain centered and constrained */
+.integrations-hero__inner,
+.integrations-platform__inner,
+.integrations-library__inner,
+.integrations-capabilities__inner,
+.integrations-extensibility__inner,
+.integrations-cta__inner {
+  width: min(100%, 1500px);
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Remove the old top padding applied to the Squarespace wrapper */
+body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Protect wide grids and diagrams from forcing page overflow */
+.integrations-page img,
+.integrations-page svg,
+.integrations-page video,
+.integrations-page iframe {
+  max-width: 100%;
+}
+
+.integrations-page *,
+.integrations-page *::before,
+.integrations-page *::after {
+  min-width: 0;
+}
+
+h1, h2 {
+  font-size: 2em !important;
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  body#collection-6a54552aadf95b1ab04cad7f .integrations-page {
+    left: 50%;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: -50vw;
+  }
+
+  .integrations-hero,
+  .integrations-platform,
+  .integrations-library,
+  .integrations-capabilities,
+  .integrations-extensibility,
+  .integrations-cta {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .integrations-hero__inner,
+  .integrations-platform__inner,
+  .integrations-library__inner,
+  .integrations-capabilities__inner,
+  .integrations-extensibility__inner,
+  .integrations-cta__inner {
+    width: 100%;
+    max-width: none;
+  }
+}
+body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper {
+  padding-top: 5vmax !important;
+}
+@media screen and (max-width: 767px) {
+  body#collection-6a54552aadf95b1ab04cad7f main .content-wrapper {
+      padding-top: 4vmax !important;
+  }
+}
+
+.integrations-hero__destination strong,
+.integrations-hero__destination small,
+.integrations-hero__engine > strong,
+.integrations-hero__engine-stages span {
+  font-family: var(--body-font-font-family) !important;
+}
+</style>

@@ -1,0 +1,1134 @@
+<!-- ======================================================
+     PRODUCT WORKFLOW 002
+======================================================= -->
+
+<main class="pw002-page">
+
+  <header class="pw002-hero">
+
+    <div class="pw002-container">
+
+      <p class="pw002-kicker">
+        Product Workflow 002 / Automated Signal Intake
+      </p>
+
+      <h1>
+        From Datadog Monitor Alert to Operational Decision in Slack
+      </h1>
+
+      <p class="pw002-subhead">
+        How Signal Audit receives a Datadog monitor event, normalizes its
+        telemetry context, interprets operational significance, preserves the
+        signal lifecycle, and delivers decision-ready guidance into Slack.
+      </p>
+
+      <div class="pw002-actions">
+
+        <a
+          class="pw002-button pw002-button--primary"
+          href="/integrations/datadog"
+        >
+          Explore Datadog Integration
+        </a>
+
+        <a
+          class="pw002-button pw002-button--secondary"
+          href="/integrations"
+        >
+          View all integrations
+        </a>
+
+      </div>
+
+      <div class="pw002-meta">
+
+        <div>
+          <strong>Signal Source</strong>
+          <span>Datadog monitor webhook</span>
+        </div>
+
+        <div>
+          <strong>Interpretation Layer</strong>
+          <span>Signal Audit</span>
+        </div>
+
+        <div>
+          <strong>Delivery Workflow</strong>
+          <span>Slack</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <section class="pw002-section">
+    <div class="pw002-container pw002-copy">
+
+      <p class="pw002-eyebrow">Overview</p>
+
+      <h2>
+        Detection creates awareness. Interpretation creates understanding.
+      </h2>
+
+      <p>
+        Datadog monitors notify teams when service behavior crosses a defined
+        threshold. They can identify elevated error rates, latency, failed
+        requests, dependency problems, or resource pressure.
+      </p>
+
+      <p>
+        Product Workflow 002 demonstrates how Signal Audit extends that
+        workflow. A Datadog monitor event enters Signal Audit automatically,
+        becomes a normalized production signal, is evaluated for operational
+        meaning, recorded through its lifecycle, and delivered into Slack with
+        clearer guidance for the responding team.
+      </p>
+
+    </div>
+  </section>
+
+  <section
+    class="pw002-flow"
+    aria-label="Datadog to Signal Audit to Slack product workflow"
+  >
+    <div class="pw002-container">
+
+      <div class="pw002-flow__lane">
+
+        <article class="pw002-flow__node">
+          <span>Detection</span>
+          <strong>Datadog Monitor</strong>
+
+          <ul>
+            <li>HTTP error-rate increase</li>
+            <li>Retry amplification</li>
+            <li>Latency movement</li>
+            <li>Service context</li>
+          </ul>
+        </article>
+
+        <div class="pw002-flow__arrow">→</div>
+
+        <article class="pw002-flow__node pw002-flow__node--dark">
+          <span>Interpretation</span>
+          <strong>Signal Audit</strong>
+
+          <ul>
+            <li>Validate connection</li>
+            <li>Normalize payload</li>
+            <li>Evaluate impact</li>
+            <li>Recommend action</li>
+          </ul>
+        </article>
+
+        <div class="pw002-flow__arrow">→</div>
+
+        <article class="pw002-flow__node">
+          <span>Operational Guidance</span>
+          <strong>Persistent degradation</strong>
+
+          <ul>
+            <li>Risk classification</li>
+            <li>What matters</li>
+            <li>What to ignore</li>
+            <li>Next action</li>
+          </ul>
+        </article>
+
+        <div class="pw002-flow__arrow">→</div>
+
+        <article class="pw002-flow__node">
+          <span>Delivery</span>
+          <strong>Decision-ready context in Slack</strong>
+
+          <ul>
+            <li>Parent alert</li>
+            <li>Threaded analysis</li>
+            <li>Delivery tracking</li>
+            <li>Recovery update</li>
+          </ul>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-section">
+    <div class="pw002-container pw002-copy">
+
+      <p class="pw002-eyebrow">The Observability Gap</p>
+
+      <h2>
+        A monitor alert does not answer the operational question.
+      </h2>
+
+      <p>
+        Datadog can show that error rates crossed a threshold. It can surface
+        affected services, tags, hosts, and surrounding telemetry.
+      </p>
+
+      <p>
+        The interpretation burden still falls on engineers. Someone must decide
+        whether the alert is isolated noise, a dependency failure, a developing
+        degradation pattern, or an incident requiring immediate action.
+      </p>
+
+    </div>
+  </section>
+
+  <aside class="pw002-callout">
+    <div class="pw002-container">
+      <p>
+        Datadog identifies the production condition. Signal Audit explains its
+        operational significance.
+      </p>
+    </div>
+  </aside>
+
+  <section class="pw002-section pw002-section--muted">
+    <div class="pw002-container">
+
+      <header class="pw002-section-header">
+        <p class="pw002-eyebrow">
+          The Automated Workflow
+        </p>
+
+        <h2>
+          A repeatable pipeline from detection to decision.
+        </h2>
+      </header>
+
+      <div class="pw002-steps">
+
+        <article class="pw002-step">
+          <span>01</span>
+          <h3>Receive</h3>
+          <p>
+            Datadog sends the monitor event through a secure, connection-specific
+            webhook.
+          </p>
+        </article>
+
+        <article class="pw002-step">
+          <span>02</span>
+          <h3>Validate</h3>
+          <p>
+            Signal Audit verifies authentication, connection identity, payload
+            structure, and integration type.
+          </p>
+        </article>
+
+        <article class="pw002-step">
+          <span>03</span>
+          <h3>Normalize</h3>
+          <p>
+            Datadog-specific fields become a consistent internal signal model.
+          </p>
+        </article>
+
+        <article class="pw002-step">
+          <span>04</span>
+          <h3>Analyze</h3>
+          <p>
+            AI evaluates urgency, likely impact, operational context, and the
+            recommended next action.
+          </p>
+        </article>
+
+        <article class="pw002-step">
+          <span>05</span>
+          <h3>Deliver</h3>
+          <p>
+            The alert and its interpretation are posted into Slack as a parent
+            message and threaded analysis.
+          </p>
+        </article>
+
+        <article class="pw002-step">
+          <span>06</span>
+          <h3>Recover</h3>
+          <p>
+            A Datadog recovery event updates the original signal lifecycle.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-analysis">
+    <div class="pw002-container pw002-analysis__inner">
+
+      <div class="pw002-analysis__copy">
+
+        <p class="pw002-eyebrow pw002-eyebrow--light">
+          Signal Audit Analysis
+        </p>
+
+        <h2>
+          The alert becomes an operational interpretation.
+        </h2>
+
+        <p>
+          Signal Audit analyzes the event using Datadog-specific context while
+          producing a consistent decision format for the responding team.
+        </p>
+
+      </div>
+
+      <div class="pw002-analysis__panel">
+
+        <div class="pw002-analysis__panel-header">
+          <span></span>
+          <strong>Signal Audit Complete</strong>
+          <small>Datadog</small>
+        </div>
+
+        <div>
+          <small>Classification</small>
+          <strong>Persistent Degradation</strong>
+        </div>
+
+        <div>
+          <small>What Matters</small>
+          <strong>
+            Error rate, retry volume, and downstream latency increased during
+            the same operational window.
+          </strong>
+        </div>
+
+        <div>
+          <small>What To Ignore</small>
+          <strong>
+            Short-lived host-level fluctuations that do not align with the
+            affected service behavior.
+          </strong>
+        </div>
+
+        <div class="pw002-analysis__action">
+          <small>Recommended Action</small>
+          <strong>
+            Review the recent deployment, retry behavior, timeout policy, and
+            downstream dependency health.
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-section">
+    <div class="pw002-container">
+
+      <header class="pw002-section-header">
+        <p class="pw002-eyebrow">
+          Slack Delivery
+        </p>
+
+        <h2>
+          Guidance reaches the team already responding.
+        </h2>
+      </header>
+
+      <div class="pw002-slack">
+
+        <div class="pw002-slack__header">
+          <span></span>
+          <strong>#signal-audit</strong>
+          <small>Production Intelligence</small>
+        </div>
+
+        <div class="pw002-slack__parent">
+          <strong>Datadog monitor alert</strong>
+
+          <p>
+            Elevated HTTP error rate detected in payments-api.
+          </p>
+        </div>
+
+        <div class="pw002-slack__thread">
+          <small>1 reply</small>
+
+          <strong>Signal Audit Complete</strong>
+
+          <p>
+            Persistent degradation detected. Review the latest deployment,
+            retry behavior, timeout configuration, and downstream health.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-history">
+    <div class="pw002-container">
+
+      <header class="pw002-section-header">
+        <p class="pw002-eyebrow">
+          Persistent Signal History
+        </p>
+
+        <h2>
+          The recovery remains connected to the original alert.
+        </h2>
+      </header>
+
+      <div class="pw002-history__track">
+
+        <article>
+          <span>01</span>
+          <strong>Received</strong>
+          <p>Datadog alert recorded.</p>
+        </article>
+
+        <div>→</div>
+
+        <article>
+          <span>02</span>
+          <strong>Analyzed</strong>
+          <p>Operational meaning established.</p>
+        </article>
+
+        <div>→</div>
+
+        <article>
+          <span>03</span>
+          <strong>Delivered</strong>
+          <p>Guidance posted into Slack.</p>
+        </article>
+
+        <div>→</div>
+
+        <article>
+          <span>04</span>
+          <strong>Resolved</strong>
+          <p>Recovery linked to the original signal.</p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-proof">
+    <div class="pw002-container">
+
+      <p class="pw002-eyebrow pw002-eyebrow--light">
+        What Product Workflow 002 Proves
+      </p>
+
+      <h2>
+        Signal Audit is not tied to one observability vendor.
+      </h2>
+
+      <p>
+        Product Workflow 001 demonstrated the architecture with Grafana.
+        Product Workflow 002 demonstrates that the same intelligence, history,
+        and delivery layers work with Datadog.
+      </p>
+
+      <div class="pw002-proof__comparison">
+
+        <div>
+          <small>Product Workflow 001</small>
+          <strong>Grafana → Signal Audit → Slack</strong>
+        </div>
+
+        <div>
+          <small>Product Workflow 002</small>
+          <strong>Datadog → Signal Audit → Slack</strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pw002-cta">
+    <div class="pw002-container">
+
+      <p class="pw002-eyebrow">
+        Datadog + Signal Audit
+      </p>
+
+      <h2>
+        Move from monitor alert to operational understanding.
+      </h2>
+
+      <div class="pw002-actions">
+        <a
+          class="pw002-button pw002-button--primary"
+          href="/integrations/datadog"
+        >
+          Explore Datadog Integration
+        </a>
+
+        <a
+          class="pw002-button pw002-button--secondary"
+          href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Schedule a Signal Review
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<style>
+/* =========================================================
+   PRODUCT WORKFLOW 002 — FULL WIDTH / FULL BLEED
+========================================================= */
+
+.pw002-page {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #111111;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.pw002-page *,
+.pw002-page *::before,
+.pw002-page *::after {
+  box-sizing: border-box;
+}
+
+.pw002-container {
+  width: min(100% - 80px, 1320px);
+  margin: 0 auto;
+}
+
+.pw002-eyebrow,
+.pw002-kicker {
+  margin: 0 0 22px;
+  color: rgba(17, 17, 17, 0.48);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.pw002-eyebrow--light {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.pw002-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.pw002-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pw002-button--primary {
+  background: #111111;
+  color: #ffffff !important;
+}
+
+.pw002-button--secondary {
+  background: transparent;
+  color: #111111 !important;
+}
+
+/* Hero */
+
+header.pw002-hero {
+  padding-top: 50px;
+}
+.pw002-hero {
+  width: 100%;
+  padding: clamp(125px, 12vw, 190px) 0 clamp(90px, 9vw, 140px);
+  background:
+    radial-gradient(
+      circle at 82% 25%,
+      rgba(139, 92, 246, 0.16),
+      transparent 30%
+    ),
+    #f5f5f2;
+}
+
+.pw002-hero h1 {
+  max-width: 1150px;
+  margin: 0;
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.91;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.pw002-subhead {
+  max-width: 820px;
+  margin: 30px 0 0;
+  color: rgba(17, 17, 17, 0.65);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.pw002-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 70px;
+}
+
+.pw002-meta div {
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.pw002-meta strong,
+.pw002-meta span {
+  display: block;
+}
+
+.pw002-meta strong {
+  margin-bottom: 8px;
+  font-size: 0.61rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pw002-meta span {
+  color: rgba(17, 17, 17, 0.63);
+}
+
+/* Standard sections */
+
+.pw002-section,
+.pw002-history,
+.pw002-cta {
+  width: 100%;
+  padding: clamp(88px, 9vw, 135px) 0;
+}
+
+.pw002-section--muted,
+.pw002-history {
+  background: #f5f5f2;
+}
+
+.pw002-copy {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pw002-copy h2,
+.pw002-section-header h2,
+.pw002-analysis h2,
+.pw002-proof h2,
+.pw002-cta h2 {
+  margin: 0;
+  font-size: 2.75em;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.pw002-analysis h2,
+.pw002-proof h2 {
+  color: #FFF;
+}
+
+.pw002-copy > p:not(.pw002-eyebrow),
+.pw002-section-header > p:not(.pw002-eyebrow) {
+  color: rgba(17, 17, 17, 0.63);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.pw002-section-header {
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+/* Flow */
+
+.pw002-flow {
+  width: 100%;
+  padding: clamp(80px, 8vw, 120px) 0;
+  background: #111418;
+}
+
+.pw002-flow__lane {
+  display: grid;
+  grid-template-columns:
+    1fr 44px
+    1fr 44px
+    1fr 44px
+    1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.pw002-flow__node {
+  min-height: 330px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #ffffff;
+}
+
+.pw002-flow__node--dark {
+  border-color: rgba(167, 139, 250, 0.35);
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(167, 139, 250, 0.16),
+      transparent 40%
+    ),
+    #050505;
+}
+
+.pw002-flow__node > span {
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pw002-flow__node > strong {
+  display: block;
+  margin: 65px 0 25px;
+  font-size: 1.65rem;
+  line-height: 1.05;
+}
+
+.pw002-flow__node ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pw002-flow__node li {
+  padding: 9px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.72rem;
+}
+
+.pw002-flow__arrow {
+  display: grid;
+  place-items: center;
+  color: #c4b5fd;
+}
+
+/* Callout */
+
+.pw002-callout {
+  width: 100%;
+  padding: 55px 0;
+  background: #050505;
+  color: #ffffff;
+}
+
+.pw002-callout p {
+  max-width: 1050px;
+  margin: 0;
+  font-size: clamp(1.8rem, 3.4vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+/* Steps */
+
+.pw002-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pw002-step {
+  min-height: 330px;
+  padding: 27px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.pw002-step > span {
+  color: rgba(17, 17, 17, 0.35);
+  font-size: 0.61rem;
+}
+
+.pw002-step h3 {
+  margin: 100px 0 18px;
+  font-size: 1.6rem;
+}
+
+.pw002-step p {
+  color: rgba(17, 17, 17, 0.58);
+  line-height: 1.65;
+}
+
+/* Analysis */
+
+.pw002-analysis {
+  width: 100%;
+  padding: clamp(90px, 9vw, 140px) 0;
+  background: #111418;
+  color: #ffffff;
+}
+
+.pw002-analysis__inner {
+  display: grid;
+  grid-template-columns: 0.9fr 0.75fr;
+  gap: clamp(60px, 9vw, 140px);
+  align-items: center;
+}
+
+.pw002-analysis__copy > p:not(.pw002-eyebrow) {
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+}
+
+.pw002-analysis__panel {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #ffffff;
+}
+
+.pw002-analysis__panel > div {
+  padding: 21px 22px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.pw002-analysis__panel-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #050505;
+}
+
+.pw002-analysis__panel-header span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.pw002-analysis__panel-header small {
+  margin-left: auto;
+}
+
+.pw002-analysis__panel small,
+.pw002-analysis__panel strong {
+  display: block;
+}
+
+.pw002-analysis__panel > div:not(.pw002-analysis__panel-header) small {
+  margin-bottom: 8px;
+  color: rgba(17, 17, 17, 0.42);
+  font-size: 0.54rem;
+  text-transform: uppercase;
+}
+
+.pw002-analysis__panel > div:not(.pw002-analysis__panel-header) strong {
+  color: rgba(17, 17, 17, 0.82);
+  line-height: 1.5;
+}
+
+.pw002-analysis__action {
+  background: #f5f5f2;
+}
+
+/* Slack */
+
+.pw002-slack {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 26px;
+  background: #111418;
+  color: #ffffff;
+}
+
+.pw002-slack__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pw002-slack__header span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.pw002-slack__header small {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.pw002-slack__parent,
+.pw002-slack__thread {
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.pw002-slack__thread {
+  margin-left: 55px;
+  border-left: 3px solid #36c5f0;
+}
+
+.pw002-slack p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* History */
+
+.pw002-history__track {
+  display: grid;
+  grid-template-columns:
+    1fr 34px
+    1fr 34px
+    1fr 34px
+    1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.pw002-history__track article {
+  min-height: 180px;
+  padding: 22px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.pw002-history__track article > span {
+  color: #8b5cf6;
+  font-size: 0.6rem;
+}
+
+.pw002-history__track strong {
+  display: block;
+  margin-top: 55px;
+}
+
+.pw002-history__track p {
+  color: rgba(17, 17, 17, 0.53);
+}
+
+.pw002-history__track > div {
+  color: #8b5cf6;
+  text-align: center;
+}
+
+/* Proof */
+
+.pw002-proof {
+  width: 100%;
+  padding: clamp(95px, 10vw, 150px) 0;
+  background: #050505;
+  color: #ffffff;
+}
+
+.pw002-proof > .pw002-container > p:not(.pw002-eyebrow) {
+  max-width: 800px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+}
+
+.pw002-proof__comparison {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.pw002-proof__comparison div {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.pw002-proof__comparison small,
+.pw002-proof__comparison strong {
+  display: block;
+}
+
+.pw002-proof__comparison small {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.pw002-proof__comparison strong {
+  margin-top: 16px;
+  font-size: 1.2rem;
+}
+
+/* CTA */
+
+.pw002-cta {
+  text-align: center;
+}
+
+.pw002-cta .pw002-eyebrow {
+  text-align: center;
+}
+
+.pw002-cta .pw002-actions {
+  justify-content: center;
+}
+/* footer fix */ 
+
+body#collection-6a548b0b4dd4fa138d8856a1 main .page-section,
+body#collection-6a548b0b4dd4fa138d8856a1 main .content-wrapper,
+body#collection-6a548b0b4dd4fa138d8856a1 main .content,
+body#collection-6a548b0b4dd4fa138d8856a1 main .sqs-block,
+body#collection-6a548b0b4dd4fa138d8856a1 main .sqs-block-content {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a548b0b4dd4fa138d8856a1
+.fe-6a3e2a6ca481d87cdec73103 {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body#collection-6a548b0b4dd4fa138d8856a1
+.fe-block-yui_3_17_2_1_1782458980627_462 {
+  display: block !important;
+  position: relative !important;
+  grid-area: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+.minimalism-footer {
+  margin-top: -160px !important;
+}
+/* =======
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .pw002-flow__lane {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pw002-flow__arrow {
+    display: none;
+  }
+
+  .pw002-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pw002-analysis__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .pw002-container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .pw002-hero {
+    padding-top: 105px;
+  }
+
+  .pw002-hero h1,
+  .pw002-copy h2,
+  .pw002-section-header h2,
+  .pw002-analysis h2,
+  .pw002-proof h2,
+  .pw002-cta h2 {
+    font-size: 2em;
+  }
+
+  .pw002-actions {
+    flex-direction: column;
+  }
+
+  .pw002-button {
+    width: 100%;
+  }
+
+  .pw002-meta,
+  .pw002-flow__lane,
+  .pw002-steps,
+  .pw002-proof__comparison {
+    display: block;
+  }
+
+  .pw002-meta div,
+  .pw002-flow__node,
+  .pw002-step,
+  .pw002-proof__comparison div {
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 18px;
+  }
+
+  .pw002-flow__node > strong,
+  .pw002-step h3 {
+    margin-top: 45px;
+  }
+
+  .pw002-slack__thread {
+    margin-left: 0;
+  }
+
+  .pw002-history__track {
+    grid-template-columns: 1fr;
+  }
+
+  .pw002-history__track > div {
+    transform: rotate(90deg);
+  }
+  body#collection-6a548b0b4dd4fa138d8856a1 main .content-wrapper {
+    padding-top: 4vmax !important;
+  }
+}
+body#collection-6a548b0b4dd4fa138d8856a1 main .content-wrapper {
+  padding-top: 5vmax !important;
+}
+</style>

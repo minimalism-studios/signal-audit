@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Audit Security & Architecture</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/security.css">
+  <meta name="description" content="Learn how Signal Audit receives authenticated operational telemetry, remains downstream of production systems, preserves system authority, and delivers operational intelligence without becoming another control plane.">
+  <link rel="canonical" href="https://signal-audit.com/security">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================================================
+     SIGNAL AUDIT — SECURITY & ARCHITECTURE
+     WCAG 2.2 AA-ORIENTED
+======================================================= -->
+
+<section
+  class="sa-security-page"
+  aria-labelledby="sa-security-title"
+>
+  <div class="sa-security-page__inner">
+
+    <!-- HERO -->
+
+    <header class="sa-security-hero">
+
+      <p class="sa-security-eyebrow">
+        Security &amp; Architecture
+      </p>
+
+      <h1 id="sa-security-title">
+        Operational intelligence without becoming another control plane.
+      </h1>
+
+      <p class="sa-security-hero__lede">
+        Signal Audit is designed to sit downstream of your production systems.
+        It receives operational telemetry through controlled integrations,
+        interprets what those signals mean, and delivers structured intelligence
+        into the workflows your team already uses.
+      </p>
+
+      <p class="sa-security-hero__statement">
+        Your production systems and observability platforms remain authoritative.
+      </p>
+
+    </header>
+
+
+    <!-- ARCHITECTURE -->
+
+    <section
+      class="sa-security-section"
+      aria-labelledby="sa-security-architecture-title"
+    >
+
+      <div class="sa-security-section__heading">
+
+        <p class="sa-security-eyebrow">
+          Architecture
+        </p>
+
+        <h2 id="sa-security-architecture-title">
+          Signal Audit sits downstream of the systems you already trust.
+        </h2>
+
+        <p>
+          Signal Audit consumes operational signals rather than replacing the
+          systems that generate, monitor, or control your production environment.
+        </p>
+
+      </div>
+
+      <ol class="sa-security-flow">
+
+        <li class="sa-security-flow__node">
+
+          <span class="sa-security-flow__number">
+            01
+          </span>
+
+          <p class="sa-security-flow__label">
+            Authoritative systems
+          </p>
+
+          <h3>
+            Production + Observability
+          </h3>
+
+          <p>
+            Your applications and monitoring platforms remain the source of
+            operational truth.
+          </p>
+
+        </li>
+
+        <li
+          class="
+            sa-security-flow__node
+            sa-security-flow__node--active
+          "
+        >
+
+          <span class="sa-security-flow__number">
+            02
+          </span>
+
+          <p class="sa-security-flow__label">
+            Interpretation layer
+          </p>
+
+          <h3>
+            Signal Audit
+          </h3>
+
+          <p>
+            Telemetry is received, normalized, interpreted, classified, and
+            converted into operational guidance.
+          </p>
+
+        </li>
+
+        <li class="sa-security-flow__node">
+
+          <span class="sa-security-flow__number">
+            03
+          </span>
+
+          <p class="sa-security-flow__label">
+            Delivery
+          </p>
+
+          <h3>
+            Your Workflow
+          </h3>
+
+          <p>
+            Structured operational intelligence is delivered to supported
+            destinations such as Slack.
+          </p>
+
+        </li>
+
+      </ol>
+
+    </section>
+
+
+    <!-- OPERATING PRINCIPLES -->
+
+    <section
+      class="sa-security-section"
+      aria-labelledby="sa-security-principles-title"
+    >
+
+      <div class="sa-security-section__heading">
+
+        <p class="sa-security-eyebrow">
+          Operating Principles
+        </p>
+
+        <h2 id="sa-security-principles-title">
+          Clear boundaries by design.
+        </h2>
+
+        <p>
+          Signal Audit is designed as an interpretation layer between
+          operational telemetry and the workflows where engineering teams
+          make decisions.
+        </p>
+
+      </div>
+
+      <div class="sa-security-principles">
+
+        <article class="sa-security-principle">
+
+          <span class="sa-security-principle__number">
+            01
+          </span>
+
+          <h3>
+            Authenticated ingestion
+          </h3>
+
+          <p>
+            Supported telemetry sources send signals through authenticated
+            integration endpoints rather than an unrestricted public intake.
+          </p>
+
+        </article>
+
+        <article class="sa-security-principle">
+
+          <span class="sa-security-principle__number">
+            02
+          </span>
+
+          <h3>
+            No infrastructure control plane
+          </h3>
+
+          <p>
+            Signal Audit interprets operational telemetry. It does not need
+            to become the system responsible for controlling your production
+            infrastructure.
+          </p>
+
+        </article>
+
+        <article class="sa-security-principle">
+
+          <span class="sa-security-principle__number">
+            03
+          </span>
+
+          <h3>
+            Existing systems remain authoritative
+          </h3>
+
+          <p>
+            Grafana, Datadog, OpenTelemetry sources, production applications,
+            and other originating systems remain authoritative for the data
+            and events they produce.
+          </p>
+
+        </article>
+
+        <article class="sa-security-principle">
+
+          <span class="sa-security-principle__number">
+            04
+          </span>
+
+          <h3>
+            Workflow delivery
+          </h3>
+
+          <p>
+            Signal Audit delivers interpretation into supported destinations
+            such as Slack instead of requiring teams to move operational
+            response into another monitoring console.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- SYSTEM BOUNDARIES -->
+
+    <section
+      class="sa-security-section"
+      aria-labelledby="sa-security-boundaries-title"
+    >
+
+      <div class="sa-security-section__heading">
+
+        <p class="sa-security-eyebrow">
+          System Boundaries
+        </p>
+
+        <h2 id="sa-security-boundaries-title">
+          What Signal Audit does—and what it does not need to do.
+        </h2>
+
+        <p>
+          The distinction matters because Signal Audit is designed to interpret
+          operational information without replacing the systems responsible
+          for running or monitoring your environment.
+        </p>
+
+      </div>
+
+      <div class="sa-security-boundaries">
+
+        <article class="sa-security-boundary">
+
+          <h3>
+            Signal Audit does
+          </h3>
+
+          <ul>
+            <li>
+              Receive supported operational telemetry.
+            </li>
+
+            <li>
+              Normalize incoming signal data.
+            </li>
+
+            <li>
+              Interpret operational significance with AI.
+            </li>
+
+            <li>
+              Preserve signal lifecycle context.
+            </li>
+
+            <li>
+              Generate structured operational guidance.
+            </li>
+
+            <li>
+              Deliver intelligence into supported workflows.
+            </li>
+          </ul>
+
+        </article>
+
+
+        <article
+          class="
+            sa-security-boundary
+            sa-security-boundary--dark
+          "
+        >
+
+          <h3>
+            Signal Audit does not need to
+          </h3>
+
+          <ul>
+            <li>
+              Replace your observability platform.
+            </li>
+
+            <li>
+              Become your production control plane.
+            </li>
+
+            <li>
+              Own the authoritative production state.
+            </li>
+
+            <li>
+              Replace your incident-response workflow.
+            </li>
+
+            <li>
+              Take control of the systems generating telemetry.
+            </li>
+
+            <li>
+              Become another monitoring destination.
+            </li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- DEPLOYMENT -->
+
+    <section
+      class="sa-security-section"
+      aria-labelledby="sa-security-deployment-title"
+    >
+
+      <div class="sa-security-section__heading">
+
+        <p class="sa-security-eyebrow">
+          Deployment Approach
+        </p>
+
+        <h2 id="sa-security-deployment-title">
+          Validate the integration before exposing production data.
+        </h2>
+
+        <p>
+          Signal Audit integrations can be validated in staging or sandbox
+          environments before production use. When appropriate, test data can
+          be masked or obfuscated so integration behavior can be verified while
+          keeping production environments isolated during implementation.
+        </p>
+
+      </div>
+
+      <ol class="sa-security-deployment-flow">
+
+        <li>
+
+          <span class="sa-security-deployment-flow__number">
+            01
+          </span>
+
+          <h3>
+            Sandbox / Staging
+          </h3>
+
+          <p>
+            Integration validation
+          </p>
+
+        </li>
+
+        <li>
+
+          <span class="sa-security-deployment-flow__number">
+            02
+          </span>
+
+          <h3>
+            Payload Validation
+          </h3>
+
+          <p>
+            Schema and authentication
+          </p>
+
+        </li>
+
+        <li>
+
+          <span class="sa-security-deployment-flow__number">
+            03
+          </span>
+
+          <h3>
+            Operational Validation
+          </h3>
+
+          <p>
+            Signal interpretation
+          </p>
+
+        </li>
+
+        <li>
+
+          <span class="sa-security-deployment-flow__number">
+            04
+          </span>
+
+          <h3>
+            Production
+          </h3>
+
+          <p>
+            After validation
+          </p>
+
+        </li>
+
+      </ol>
+
+    </section>
+
+
+    <!-- SHARED RESPONSIBILITY -->
+
+    <section
+      class="sa-security-section"
+      aria-labelledby="sa-security-responsibility-title"
+    >
+
+      <div class="sa-security-section__heading">
+
+        <p class="sa-security-eyebrow">
+          Shared Responsibility
+        </p>
+
+        <h2 id="sa-security-responsibility-title">
+          Customers remain in control of what they send.
+        </h2>
+
+        <p>
+          Signal Audit processes telemetry supplied through configured
+          integrations. Customers remain responsible for determining which
+          operational data is appropriate and authorized for transmission
+          from their environment.
+        </p>
+
+      </div>
+
+      <dl class="sa-security-responsibility">
+
+        <div>
+
+          <dt>
+            Customer
+          </dt>
+
+          <dd>
+            Controls the source environment and determines which telemetry
+            is supplied to Signal Audit.
+          </dd>
+
+        </div>
+
+        <div>
+
+          <dt>
+            Signal Audit
+          </dt>
+
+          <dd>
+            Receives, interprets, preserves, and delivers supported
+            operational signals.
+          </dd>
+
+        </div>
+
+      </dl>
+
+    </section>
+
+
+    <!-- REVIEW CTA -->
+
+    <section
+      class="sa-security-contact"
+      aria-labelledby="sa-security-contact-title"
+    >
+
+      <div>
+
+        <p class="sa-security-contact__eyebrow">
+          Security Review
+        </p>
+
+        <h2 id="sa-security-contact-title">
+          Evaluating Signal Audit for your environment?
+        </h2>
+
+        <p>
+          We can review integration architecture, telemetry boundaries,
+          deployment requirements, and environment-isolation options with
+          your technical team before implementation.
+        </p>
+
+      </div>
+
+      <a
+        class="sa-security-contact__cta"
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        data-cta="schedule_security_review"
+      >
+        Discuss Security &amp; Architecture
+        <span aria-hidden="true">
+          →
+        </span>
+      </a>
+
+    </section>
+
+  </div>
+</section>
+
+<!-- END SIGNAL AUDIT — SECURITY & ARCHITECTURE -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../assets/js/site-header.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Inside A Signal Audit | Signal Audit</title>
+  <meta name="description" content="Production systems are constantly speaking. Most teams only hear alerts. Inside A Signal Audit reveals how telemetry, observability, and operational signals become engineering decisions across complex distributed systems.">
+  <link rel="canonical" href="https://signal-audit.com/inside-a-signal-audit">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/inside-a-signal-audit.css">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- INSIDE A SIGNAL AUDIT -->
+
+<div class="isa-page">
+
+  <!-- HERO -->
+  <section class="isa-hero">
+    <div class="isa-grid-overlay" aria-hidden="true"></div>
+    <div class="isa-signal-line" aria-hidden="true"></div>
+    <div class="isa-signal-line" aria-hidden="true"></div>
+
+    <div class="isa-container">
+      <div class="isa-hero-content">
+
+        <div class="isa-label">
+          SIGNAL OVER NOISE
+        </div>
+
+        <h1 class="isa-hero-title">
+          Inside A<br>
+          Signal Audit
+        </h1>
+
+        <p class="isa-hero-subtitle">
+          Production systems are constantly speaking.<br>
+          Most teams only hear alerts.<br>
+          We interpret the signal underneath.
+        </p>
+
+        <div class="isa-buttons">
+          <a
+            href="#signal-breakdown"
+            class="isa-btn isa-btn-primary"
+            data-cta="view_signal_breakdown"
+          >
+            View Signal Breakdown
+          </a>
+
+          <a
+            href="/pricing"
+            class="isa-btn isa-btn-secondary"
+            data-cta="inside_signal_audit_view_pricing"
+          >
+            View Signal Audit Pricing →
+          </a>
+        </div>
+
+        <p class="isa-supporting">
+          A behind-the-scenes look at how noisy telemetry becomes operational clarity.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="isa-section">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        THE PROBLEM
+      </div>
+
+      <h2 class="isa-title">
+        Dashboards show symptoms.<br>
+        Signals reveal behavior.
+      </h2>
+
+      <div class="isa-grid">
+
+        <div class="isa-card">
+          <h3>
+            Traditional monitoring misses operational context
+          </h3>
+
+          <p>
+            Most observability stacks generate overwhelming volumes of telemetry,
+            alerts, and fragmented system data without interpreting what the
+            behavior actually means.
+          </p>
+
+          <p>
+            Systems rarely fail instantly. They degrade gradually through
+            hidden dependencies, retry storms, latency drift, and silent
+            operational instability.
+          </p>
+        </div>
+
+        <div class="isa-alert-stream" aria-hidden="true">
+          <div class="isa-alert-line"></div>
+          <div class="isa-alert-line"></div>
+          <div class="isa-alert-line"></div>
+          <div class="isa-alert-line"></div>
+          <div class="isa-alert-line"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SIGNAL CLASSIFICATION -->
+  <section class="isa-section" id="signal-breakdown">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        SIGNAL CLASSIFICATION
+      </div>
+
+      <h2 class="isa-title">
+        Every production system leaves patterns.
+      </h2>
+
+      <div class="isa-signals">
+
+        <div class="isa-signal-card">
+          <div class="isa-wave" aria-hidden="true"></div>
+          <h4>Noise</h4>
+          <p>
+            High-volume telemetry with low operational value.
+          </p>
+        </div>
+
+        <div class="isa-signal-card">
+          <div class="isa-wave" aria-hidden="true"></div>
+          <h4>Baseline</h4>
+          <p>
+            Expected steady-state system behavior across services.
+          </p>
+        </div>
+
+        <div class="isa-signal-card">
+          <div class="isa-wave" aria-hidden="true"></div>
+          <h4>Spiky Signals</h4>
+          <p>
+            Burst anomalies tied to deploys, traffic, or instability.
+          </p>
+        </div>
+
+        <div class="isa-signal-card">
+          <div class="isa-wave" aria-hidden="true"></div>
+          <h4>Persistent Degradation</h4>
+          <p>
+            Slow operational drift before visible incidents occur.
+          </p>
+        </div>
+
+        <div class="isa-signal-card">
+          <div class="isa-wave" aria-hidden="true"></div>
+          <h4>Critical Signals</h4>
+          <p>
+            Immediate operational threats requiring rapid intervention.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="isa-section">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        INSIDE THE AUDIT
+      </div>
+
+      <h2 class="isa-title">
+        What a Signal Audit actually does.
+      </h2>
+
+      <div class="isa-steps">
+
+        <div class="isa-step">
+          <div class="isa-step-number" aria-hidden="true">01</div>
+          <div>
+            <h3>Normalize architecture and dependencies</h3>
+            <p>
+              Map system relationships, critical paths, external dependencies,
+              and operational exposure points.
+            </p>
+          </div>
+        </div>
+
+        <div class="isa-step">
+          <div class="isa-step-number" aria-hidden="true">02</div>
+          <div>
+            <h3>Analyze telemetry patterns</h3>
+            <p>
+              Identify meaningful behavioral patterns hidden beneath raw metrics,
+              logs, traces, and alerts.
+            </p>
+          </div>
+        </div>
+
+        <div class="isa-step">
+          <div class="isa-step-number" aria-hidden="true">03</div>
+          <div>
+            <h3>Detect hidden degradation</h3>
+            <p>
+              Surface operational instability before it escalates into user-visible incidents.
+            </p>
+          </div>
+        </div>
+
+        <div class="isa-step">
+          <div class="isa-step-number" aria-hidden="true">04</div>
+          <div>
+            <h3>Translate findings into operational decisions</h3>
+            <p>
+              Convert telemetry into prioritized engineering action and operational clarity.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINDINGS -->
+  <section class="isa-section">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        EXAMPLE FINDINGS
+      </div>
+
+      <h2 class="isa-title">
+        Signals hidden beneath the surface.
+      </h2>
+
+      <div class="isa-findings">
+
+        <div class="isa-finding">
+          <h4>Deployment-related latency amplification</h4>
+          <p>
+            Service latency spikes correlated with deployment windows revealed
+            cold-start dependency behavior and retry amplification.
+          </p>
+        </div>
+
+        <div class="isa-finding">
+          <h4>Silent dependency degradation</h4>
+          <p>
+            External service instability was slowly increasing request duration
+            while remaining below alert thresholds.
+          </p>
+        </div>
+
+        <div class="isa-finding">
+          <h4>Alert fatigue conditions</h4>
+          <p>
+            High-volume alerts were masking critical operational signals and
+            reducing incident response effectiveness.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="isa-section isa-philosophy">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        PHILOSOPHY
+      </div>
+
+      <h2 class="isa-title">
+        Most teams already have the data.
+      </h2>
+
+      <p class="isa-subtitle">
+        Very few know what it’s actually saying.<br><br>
+
+        Observability is not the collection of telemetry.<br>
+        It is the interpretation of operational behavior.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+      <p class="founder-sales-cta__eyebrow">Have questions before you buy?</p>
+
+      <h2>Talk directly with the creator of Signal Audit.</h2>
+
+      <p>
+        Schedule a short call to discuss your observability challenges, current tooling, and whether Signal Audit is the right fit for your team before committing to a pilot.
+      </p>
+
+      <a
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        class="founder-sales-cta__button"
+        data-cta="schedule_signal_review"
+        target="_blank"
+        rel="noopener"
+      >
+        Schedule a Signal Review
+      </a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="isa-section isa-final">
+    <div class="isa-container">
+
+      <div class="isa-label">
+        SIGNAL OVER NOISE
+      </div>
+
+      <h2 class="isa-title">
+        Understand what matters across complex production systems.
+      </h2>
+
+      <div class="isa-audit-next-step">
+
+        <h3>What Happens During A Signal Audit?</h3>
+
+        <ul>
+          <li>Telemetry review</li>
+          <li>Pattern classification</li>
+          <li>Observability gap analysis</li>
+          <li>Risk identification</li>
+          <li>Action plan</li>
+        </ul>
+
+      </div>
+
+      <div class="isa-buttons" style="justify-content:center; margin-top:50px;">
+
+        <a href="/pricing" class="isa-btn isa-btn-primary" data-cta="inside_signal_audit_plans_pricing">
+          See Signal Audit Plans & Pricing →
+        </a>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/site-header.js"></script>
+
+</body>
+</html>

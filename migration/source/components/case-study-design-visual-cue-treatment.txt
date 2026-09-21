@@ -1,0 +1,147 @@
+/**** CASE STUDY VISUAL DESIGN ****/
+<section class="case-study-flow-landscape" aria-label="Signal Audit case study summary">
+
+  <div class="case-flow-lane">
+
+    <div class="case-flow-node">
+      <span>Telemetry</span>
+      <ul>
+        <li>Alerts</li>
+        <li>Logs</li>
+        <li>Metrics</li>
+        <li>Traces</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node case-flow-node-dark">
+      <span>Signal Audit</span>
+      <ul>
+        <li>Pattern</li>
+        <li>Correlation</li>
+        <li>Risk</li>
+        <li>Recommendation</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Finding</span>
+      <strong>Persistent retry amplification</strong>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Outcome</span>
+      <strong>Reduced investigation scope</strong>
+    </div>
+
+  </div>
+
+</section>
+
+/* CASE STUDY FLOW — LANDSCAPE */
+
+.case-study-flow-landscape {
+  width: 100%;
+  margin: 56px 0 72px;
+}
+
+.case-flow-lane {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.case-flow-node {
+  min-height: 180px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  background: #f8f8f6;
+  box-sizing: border-box;
+}
+
+.case-flow-node span {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.46);
+}
+
+.case-flow-node ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-flow-node li {
+  padding: 9px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.case-flow-node li:first-child {
+  border-top: 0;
+}
+
+.case-flow-node strong {
+  display: block;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  color: #111;
+}
+
+.case-flow-node-dark {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.case-flow-node-dark span {
+  color: rgba(255,255,255,0.56);
+}
+
+.case-flow-node-dark li {
+  color: #fff;
+  border-top-color: rgba(255,255,255,0.16);
+}
+
+.case-flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.42;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 900px) {
+  .case-flow-lane {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .case-flow-arrow {
+    transform: rotate(90deg);
+    min-height: 24px;
+  }
+
+  .case-flow-node {
+    min-height: auto;
+  }
+}

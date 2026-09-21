@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Connect Datadog monitors to Signal Audit for AI-powered analysis, persistent signal history, recovery tracking, and operational guidance in Slack.">
+  <link rel="canonical" href="https://signal-audit.com/integrations/datadog">
+  <title>Datadog Integration for Signal Audit | Operational Intelligence</title>
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/datadog.css">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================================================
+     SIGNAL AUDIT + DATADOG INTEGRATION
+======================================================= -->
+
+<main class="datadog-page">
+
+  <!-- HERO -->
+
+  <section
+    class="datadog-hero"
+    aria-labelledby="datadog-hero-title"
+  >
+    <div class="datadog-hero__inner">
+
+      <div class="datadog-hero__copy">
+
+        <p class="datadog-eyebrow">
+          Signal Audit Integration
+        </p>
+
+        <div class="datadog-hero__identity">
+          <span class="datadog-hero__mark" aria-hidden="true">
+            D
+          </span>
+
+          <span>Datadog</span>
+        </div>
+
+        <h1 id="datadog-hero-title">
+          Turn Datadog monitor signals into operational intelligence.
+        </h1>
+
+        <p class="datadog-hero__lede">
+          Signal Audit receives Datadog monitor alerts, normalizes their
+          telemetry context, analyzes operational significance with AI,
+          preserves the signal lifecycle, and delivers decision-ready
+          guidance into Slack.
+        </p>
+
+        <div class="datadog-actions">
+
+          <a
+            class="datadog-button datadog-button--primary"
+            data-cta="view_datadog_product_workflow"
+            href="/product-walkthrough/datadog-monitor-to-slack"
+          >
+            View Product Workflow 002
+          </a>
+
+          <a
+            class="datadog-button datadog-button--secondary"
+            data-cta="view_integrations"
+            href="/integrations"
+          >
+            View all integrations
+          </a>
+
+        </div>
+
+      </div>
+
+      <div
+        class="datadog-hero__workflow"
+        role="group"
+        aria-label="Datadog to Signal Audit to Slack workflow"
+      >
+
+        <div class="datadog-hero__workflow-header">
+          <div>
+            <span class="datadog-status-dot"></span>
+            <strong>Production workflow</strong>
+          </div>
+
+          <small>Automated</small>
+        </div>
+
+        <div class="datadog-hero__nodes">
+
+          <article class="datadog-node datadog-node--source">
+            <span class="datadog-node__label">
+              Signal source
+            </span>
+
+            <div class="datadog-node__identity">
+              <span>D</span>
+
+              <div>
+                <strong>Datadog Monitor</strong>
+                <small>Alert triggered</small>
+              </div>
+            </div>
+
+            <p>
+              Elevated HTTP error rate detected in payments-api.
+            </p>
+          </article>
+
+          <div class="datadog-node-arrow" aria-hidden="true">
+            ↓
+          </div>
+
+          <article class="datadog-node datadog-node--audit">
+            <span class="datadog-node__label">
+              Interpretation layer
+            </span>
+
+            <div class="datadog-node__identity">
+              <span>A</span>
+
+              <div>
+                <strong>Signal Audit</strong>
+                <small>Analyzing signal</small>
+              </div>
+            </div>
+
+            <div class="datadog-node__stages">
+              <span>Normalize</span>
+              <span>Analyze</span>
+              <span>Preserve</span>
+              <span>Deliver</span>
+            </div>
+          </article>
+
+          <div class="datadog-node-arrow" aria-hidden="true">
+            ↓
+          </div>
+
+          <article class="datadog-node datadog-node--slack">
+            <span class="datadog-node__label">
+              Workflow delivery
+            </span>
+
+            <div class="datadog-node__identity">
+              <span>S</span>
+
+              <div>
+                <strong>Slack</strong>
+                <small>Threaded analysis</small>
+              </div>
+            </div>
+
+            <p>
+              Persistent degradation identified with recommended next actions.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POSITIONING -->
+
+  <section class="datadog-positioning">
+    <div class="datadog-positioning__inner">
+
+      <div>
+        <p class="datadog-eyebrow">
+          Beyond monitor notification
+        </p>
+
+        <h2>
+          Datadog detects production change. Signal Audit explains what it means.
+        </h2>
+      </div>
+
+      <div class="datadog-positioning__copy">
+        <p>
+          Datadog monitors identify when system behavior crosses an expected
+          threshold. The alert provides evidence that something changed, but
+          teams still need to determine urgency, operational impact, likely
+          causes, and the next place to investigate.
+        </p>
+
+        <p>
+          Signal Audit adds an operational-intelligence layer between Datadog
+          detection and engineering response.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+
+  <section
+    class="datadog-workflow"
+    aria-labelledby="datadog-workflow-title"
+  >
+    <div class="datadog-workflow__inner">
+
+      <header class="datadog-section-header">
+        <p class="datadog-eyebrow">
+          How the integration works
+        </p>
+
+        <h2 id="datadog-workflow-title">
+          From monitor alert to resolved signal.
+        </h2>
+
+        <p>
+          Every Datadog event moves through the same repeatable operational
+          workflow.
+        </p>
+      </header>
+
+      <div class="datadog-workflow__grid">
+
+        <article class="datadog-workflow-card">
+          <div class="datadog-workflow-card__top">
+            <span>01</span>
+            <strong>Detect</strong>
+          </div>
+
+          <div class="datadog-workflow-card__signal">
+            <small>Datadog monitor</small>
+            <strong>HTTP error rate above threshold</strong>
+            <em>Alert</em>
+          </div>
+
+          <h3>
+            Datadog detects abnormal production behavior.
+          </h3>
+
+          <p>
+            A monitor identifies a meaningful production condition and sends
+            the event to the Signal Audit webhook.
+          </p>
+        </article>
+
+        <article class="datadog-workflow-card">
+          <div class="datadog-workflow-card__top">
+            <span>02</span>
+            <strong>Ingest</strong>
+          </div>
+
+          <div class="datadog-workflow-card__signal">
+            <small>Authenticated webhook</small>
+            <strong>Datadog payload received</strong>
+            <em>Accepted</em>
+          </div>
+
+          <h3>
+            Signal Audit validates and receives the monitor event.
+          </h3>
+
+          <p>
+            The connection, authentication token, payload structure, and
+            configured destination are validated before processing begins.
+          </p>
+        </article>
+
+        <article class="datadog-workflow-card">
+          <div class="datadog-workflow-card__top">
+            <span>03</span>
+            <strong>Normalize</strong>
+          </div>
+
+          <div class="datadog-workflow-card__mapping">
+            <div>
+              <small>Datadog field</small>
+              <strong>Monitor status</strong>
+            </div>
+
+            <span>→</span>
+
+            <div>
+              <small>Signal Audit field</small>
+              <strong>Signal state</strong>
+            </div>
+          </div>
+
+          <h3>
+            Vendor-specific telemetry becomes a consistent signal.
+          </h3>
+
+          <p>
+            Datadog monitor fields are translated into Signal Audit’s shared
+            internal model for analysis, history, and delivery.
+          </p>
+        </article>
+
+        <article class="datadog-workflow-card datadog-workflow-card--dark">
+          <div class="datadog-workflow-card__top">
+            <span>04</span>
+            <strong>Analyze</strong>
+          </div>
+
+          <div class="datadog-workflow-card__engine">
+            <span class="datadog-workflow-card__orb">
+              A
+            </span>
+
+            <small>AI analysis running</small>
+
+            <div>
+              <span>Classification</span>
+              <strong>Persistent degradation</strong>
+            </div>
+          </div>
+
+          <h3>
+            AI determines the signal’s operational meaning.
+          </h3>
+
+          <p>
+            Signal Audit evaluates risk, urgency, likely impact, service
+            context, dependencies, and recommended response.
+          </p>
+        </article>
+
+        <article class="datadog-workflow-card">
+          <div class="datadog-workflow-card__top">
+            <span>05</span>
+            <strong>Deliver</strong>
+          </div>
+
+          <div class="datadog-workflow-card__slack">
+            <div>
+              <span>SA</span>
+              <strong>Signal Audit</strong>
+            </div>
+
+            <p>
+              Persistent degradation detected in payments-api.
+            </p>
+
+            <small>1 threaded analysis</small>
+          </div>
+
+          <h3>
+            Operational guidance reaches Slack.
+          </h3>
+
+          <p>
+            The monitor alert becomes a parent message while the AI analysis
+            appears in a focused thread.
+          </p>
+        </article>
+
+        <article class="datadog-workflow-card">
+          <div class="datadog-workflow-card__top">
+            <span>06</span>
+            <strong>Recover</strong>
+          </div>
+
+          <div class="datadog-workflow-card__signal">
+            <small>Datadog monitor</small>
+            <strong>Service returned to normal</strong>
+            <em class="datadog-state-resolved">Recovered</em>
+          </div>
+
+          <h3>
+            Recovery updates the original signal lifecycle.
+          </h3>
+
+          <p>
+            Datadog recovery events are correlated with the firing signal
+            rather than stored as disconnected operational records.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUTPUT -->
+
+  <section class="datadog-output">
+    <div class="datadog-output__inner">
+
+      <div class="datadog-output__copy">
+        <p class="datadog-eyebrow datadog-eyebrow--light">
+          Decision-ready output
+        </p>
+
+        <h2>
+          A monitor alert becomes a clear operational interpretation.
+        </h2>
+
+        <p>
+          Signal Audit explains what matters, what can be ignored, likely
+          impact, and the next practical place to investigate.
+        </p>
+
+        <ul>
+          <li>Signal classification</li>
+          <li>Operational significance</li>
+          <li>Likely impact</li>
+          <li>Recommended action</li>
+          <li>Recovery correlation</li>
+          <li>Persistent history</li>
+        </ul>
+      </div>
+
+      <div class="datadog-output__panel">
+
+        <div class="datadog-output__panel-header">
+          <div>
+            <span class="datadog-status-dot"></span>
+            <strong>Signal Audit Complete</strong>
+          </div>
+
+          <small>Datadog</small>
+        </div>
+
+        <div class="datadog-output__row">
+          <small>Classification</small>
+          <strong>Persistent Degradation</strong>
+        </div>
+
+        <div class="datadog-output__row">
+          <small>What Matters</small>
+          <strong>
+            Error rate, retries, and downstream latency increased during the
+            same operational window.
+          </strong>
+        </div>
+
+        <div class="datadog-output__row">
+          <small>What To Ignore</small>
+          <strong>
+            Short-lived host-level fluctuations that do not align with the
+            affected service behavior.
+          </strong>
+        </div>
+
+        <div class="datadog-output__row datadog-output__row--action">
+          <small>Recommended Action</small>
+          <strong>
+            Review the recent deployment, retry behavior, timeout policy, and
+            downstream dependency health.
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+
+  <section class="datadog-history">
+    <div class="datadog-history__inner">
+
+      <header class="datadog-section-header">
+        <p class="datadog-eyebrow">
+          Persistent Signal History
+        </p>
+
+        <h2>
+          The signal remains visible after the monitor recovers.
+        </h2>
+
+        <p>
+          Signal Audit preserves the complete progression from alert through
+          analysis, delivery, and recovery.
+        </p>
+      </header>
+
+      <div class="datadog-history__timeline">
+
+        <article class="datadog-history__event">
+          <span class="datadog-history__dot"></span>
+
+          <div>
+            <small>09:14</small>
+            <strong>Monitor alert received</strong>
+            <p>Datadog alert recorded.</p>
+          </div>
+
+          <em>Received</em>
+        </article>
+
+        <div class="datadog-history__line"></div>
+
+        <article class="datadog-history__event">
+          <span class="datadog-history__dot"></span>
+
+          <div>
+            <small>09:14</small>
+            <strong>Signal analyzed</strong>
+            <p>Persistent degradation identified.</p>
+          </div>
+
+          <em>Analyzed</em>
+        </article>
+
+        <div class="datadog-history__line"></div>
+
+        <article class="datadog-history__event">
+          <span class="datadog-history__dot"></span>
+
+          <div>
+            <small>09:15</small>
+            <strong>Guidance delivered</strong>
+            <p>Slack parent message and threaded analysis created.</p>
+          </div>
+
+          <em>Delivered</em>
+        </article>
+
+        <div class="datadog-history__line"></div>
+
+        <article class="datadog-history__event datadog-history__event--resolved">
+          <span class="datadog-history__dot"></span>
+
+          <div>
+            <small>09:42</small>
+            <strong>Recovery detected</strong>
+            <p>Datadog recovery linked to the original signal.</p>
+          </div>
+
+          <em>Resolved</em>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+
+  <section class="datadog-capabilities">
+    <div class="datadog-capabilities__inner">
+
+      <header class="datadog-section-header">
+        <p class="datadog-eyebrow">
+          Integration capabilities
+        </p>
+
+        <h2>
+          Built for the complete Datadog monitor lifecycle.
+        </h2>
+      </header>
+
+      <div class="datadog-capabilities__grid">
+
+        <article>
+          <span>01</span>
+          <h3>Authenticated ingestion</h3>
+          <p>
+            Datadog monitor events enter through a dedicated bearer-token
+            protected webhook.
+          </p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Payload validation</h3>
+          <p>
+            Invalid payloads, unknown connections, and mismatched integration
+            types are rejected safely.
+          </p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Vendor normalization</h3>
+          <p>
+            Datadog fields become a consistent internal signal format.
+          </p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3>AI interpretation</h3>
+          <p>
+            Signal Audit evaluates operational risk, urgency, impact, and
+            next actions.
+          </p>
+        </article>
+
+        <article>
+          <span>05</span>
+          <h3>Recovery correlation</h3>
+          <p>
+            Recovery events update the original monitor lifecycle.
+          </p>
+        </article>
+
+        <article>
+          <span>06</span>
+          <h3>Delivery tracking</h3>
+          <p>
+            Delivered and failed workflow states remain part of the operational
+            record.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRODUCT WORKFLOW -->
+
+  <section class="datadog-proof">
+    <div class="datadog-proof__inner">
+
+      <div>
+        <p class="datadog-eyebrow datadog-eyebrow--light">
+          Product Workflow 002
+        </p>
+
+        <h2>
+          See the complete Datadog-to-Slack workflow.
+        </h2>
+
+        <p>
+          Follow a monitor alert from detection through normalization, AI
+          interpretation, Slack delivery, persistent history, and recovery.
+        </p>
+
+        <div class="datadog-actions">
+          <a
+            class="datadog-button datadog-button--light"
+            data-cta="view_datadog_product_workflow"
+            href="/product-walkthrough/datadog-monitor-to-slack"
+          >
+            View Product Workflow 002
+          </a>
+
+          <a
+            class="datadog-button datadog-button--outline-light"
+            data-cta="view_integrations"
+            href="/integrations"
+          >
+            View all integrations
+          </a>
+        </div>
+      </div>
+
+      <div class="datadog-proof__flow">
+
+        <div>
+          <small>Source</small>
+          <strong>Datadog</strong>
+        </div>
+
+        <span>→</span>
+
+        <div>
+          <small>Interpretation</small>
+          <strong>Signal Audit</strong>
+        </div>
+
+        <span>→</span>
+
+        <div>
+          <small>Delivery</small>
+          <strong>Slack</strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="datadog-cta">
+    <div class="datadog-cta__inner">
+
+      <p class="datadog-eyebrow">
+        Connect Datadog to Signal Audit
+      </p>
+
+      <h2>
+        Move from monitor notification to operational understanding.
+      </h2>
+
+      <p>
+        Review how Signal Audit can connect to your Datadog workflow and
+        deliver clearer production guidance to your team.
+      </p>
+
+      <a
+        class="datadog-button datadog-button--primary"
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta="schedule_signal_review"
+      >
+        Schedule a Signal Review
+        <span class="datadog-sr-only">
+          (opens in a new tab)
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+</body>
+</html>

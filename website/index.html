@@ -1,0 +1,2254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Signal Audit | Production Signal Analysis</title>
+  <meta name="description" content="Transform production telemetry into operational decisions. Signal Audit analyzes logs, metrics, traces, and alerts to identify what matters and recommend next actions.">
+  <link rel="canonical" href="https://signal-audit.com/">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+<!-- SIGNAL AUDIT PAGE -->
+<section class="signal-audit-page">
+  
+  <!-- HERO -->
+
+  <section
+    class="odi-hero"
+    aria-labelledby="odi-title"
+  >
+    <div class="odi-hero__inner">
+
+      <div class="odi-hero__content">
+
+        <p class="odi-hero__eyebrow">
+          Signal Audit
+        </p>
+
+        <h1
+          class="odi-hero__title"
+          id="odi-title"
+        >
+          Know What Matters.
+        </h1>
+
+        <p class="odi-hero__copy">
+          Signal Audit turns production telemetry into operational intelligence—showing engineering teams what matters, why it matters, and what to do next.
+        </p>
+
+        <div class="odi-hero__actions">
+
+          <a
+            class="odi-hero__button odi-hero__button--primary"
+            href="/signal-interpreter" data-cta="experience_signal_audit"
+            data-si-modal-open
+          >
+            Experience Signal Audit
+          </a>
+
+          <a
+            class="odi-hero__button odi-hero__button--youtube"
+            href="#signal-audit-demo" data-cta="watch_demo"
+          >
+            <svg
+              class="odi-hero__youtube-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"
+              ></path>
+            </svg>
+
+            <span>Watch the 90-Second Demo</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- SIGNAL INTERPRETER PREVIEW -->
+
+      <div class="odi-hero__visual">
+
+        <a
+          class="odi-hero__product-preview"
+          href="/signal-interpreter"
+          data-si-modal-open
+          aria-label="Experience Signal Audit"
+          data-cta="experience_signal_audit"
+        >
+          <img
+            class="odi-hero__product-image"
+            src="/assets/images/signal-interpreter-screenshot.png"
+            alt="Signal Interpreter analyzing production telemetry"
+          >
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END HERO -->
+
+  <!-- SIGNAL AUDIT DEMO -->
+
+  <section
+    class="sa-demo"
+    aria-labelledby="signal-audit-demo-title"
+  >
+    <div class="sa-demo__inner">
+
+      <header class="sa-demo__header">
+        <p class="sa-demo__eyebrow">
+          See Signal Audit in action
+        </p>
+
+        <h2
+          class="sa-demo__title"
+          id="signal-audit-demo-title"
+        >
+          Watch it work.
+        </h2>
+
+        <p class="sa-demo__lede">
+          See Signal Audit turn production telemetry into operational intelligence in 90 seconds.
+        </p>
+      </header>
+
+      <div id="signal-audit-demo" class="sa-demo__video">
+        <iframe
+          id="signal-audit-demo-player"
+          src="https://www.youtube-nocookie.com/embed/GMix56shEtk?rel=0&enablejsapi=1"
+          title="Signal Audit — 90-Second Demo"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="sa-demo__footer">
+        <p>
+          See what Signal Audit looks like inside a production workflow.
+        </p>
+
+        <a
+          class="sa-demo__cta"
+          href="https://minimalism.agency/vanguard/program?utm_medium=website&utm_content=signal_demo&utm_campaign=vanguard_august" target="_blank" rel="noopener noreferrer"
+          data-signal-demo-vanguard
+          data-cta="explore_vanguard_program"
+        >
+          Explore the Vanguard Program
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SIGNAL AUDIT DEMO -->
+
+  <!-- SIGNAL INTERPRETER — LANDSCAPE SHOWCASE -->
+
+  <section class="si-landscape">
+    <div class="si-landscape-inner">
+
+      <div class="si-landscape-header">
+        <p>Signal Interpreter</p>
+
+        <h2>
+          See What Matters.
+        </h2>
+
+        <span>
+          Turn a production signal into classification, context,
+          and a clear next step.
+        </span>
+      </div>
+
+      <div class="si-showcase">
+
+        <div class="si-input-panel">
+          <div class="si-panel-top">
+            <span>Production Signal</span>
+            <em>Input</em>
+          </div>
+
+          <div class="si-code-block">
+  <pre>service=payments-api
+  event=HTTP_500_SPIKE
+  window=09:14-09:32 PST
+  latency_p95=2800ms
+  retry_count=17
+  recent_change=deployment_2026.07.05-rc3</pre>
+          </div>
+
+          <div class="si-input-footer">
+            Raw telemetry. No interpretation.
+          </div>
+        </div>
+
+        <div class="si-transform-node">
+          <div class="si-orb">A</div>
+          <span>Signal Audit</span>
+        </div>
+
+        <div class="si-output-panel">
+          <div class="si-panel-top dark">
+            <span>Signal Interpreter</span>
+            <em>Output</em>
+          </div>
+
+          <div class="si-output-row">
+            <small>Classification</small>
+            <strong>Persistent Degradation</strong>
+          </div>
+
+          <div class="si-output-row">
+            <small>What Matters</small>
+            <strong>Latency, retries, and HTTP 500s moved together after deployment.</strong>
+          </div>
+
+          <div class="si-output-row">
+            <small>What To Ignore</small>
+            <strong>Isolated CPU spikes without correlation to the failure window.</strong>
+          </div>
+
+          <div class="si-output-row action">
+            <small>Recommended Next Step</small>
+            <strong>Review retry policy, timeout behavior, and downstream dependency health.</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="si-capability-row">
+        <article>
+          <span>01</span>
+          <h3>Classify the signal</h3>
+          <p>Understand whether the alert is noise, degradation, or operational risk.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Explain what matters</h3>
+          <p>Connect symptoms across telemetry instead of chasing isolated alerts.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Recommend next action</h3>
+          <p>Give teams a clear place to look and a practical next step.</p>
+        </article>
+      </div>
+
+      <div class="si-landscape-cta">
+        <a href="/signal-interpreter" class="si-btn" data-cta="try_signal_interpreter">
+          Try the Signal Interpreter →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END SIGNAL INTERPRETER LANDSCAPE -->
+
+  <!-- EXECUTIVE SUMMARY -->
+
+  <section
+    class="sa-executive-summary"
+    aria-labelledby="sa-executive-summary-title"
+  >
+    <div class="sa-executive-summary__inner">
+
+      <div class="sa-executive-summary__intro">
+
+        <p class="sa-executive-summary__eyebrow">
+          Executive Summary
+        </p>
+
+        <h2
+          id="sa-executive-summary-title"
+          class="sa-executive-summary__title"
+        >
+          Operational intelligence, at the level you need it.
+        </h2>
+
+        <p class="sa-executive-summary__lede">
+          Signal Audit turns production telemetry into operational intelligence—helping
+          engineering teams understand what matters, why it matters, and what to do next.
+        </p>
+
+        <p class="sa-executive-summary__copy">
+          Start with the platform. Bring us in for a focused operational engagement.
+          Or work with Minimalism continuously to assess, interpret, and improve how
+          your organization responds to production signals.
+        </p>
+
+        <div class="sa-executive-summary__actions">
+
+          <a
+            class="sa-executive-summary__button sa-executive-summary__button--primary"
+            href="/integrations" data-cta="view_integrations"
+          >
+            View Integrations
+          </a>
+
+          <a
+            class="sa-executive-summary__button sa-executive-summary__button--secondary"
+            href="#engineering-investment-calculator" data-cta="calculate_investment"
+          >
+            Calculate Your Investment
+          </a>
+
+        </div>
+
+      </div>
+
+      <div
+        class="sa-executive-summary__grid sa-executive-summary__grid--commercial"
+        id="pricing"
+        aria-label="Signal Audit engagement options"
+      >
+
+        <!-- PLATFORM -->
+
+        <article class="sa-executive-summary__card">
+
+          <div class="sa-executive-summary__card-header">
+            <span class="sa-executive-summary__number">
+              01
+            </span>
+
+            <span class="sa-executive-summary__label">
+              Signal Audit
+            </span>
+          </div>
+
+          <div class="sa-executive-summary__price">
+
+            <span>
+              Platform
+            </span>
+
+            <strong>
+              $1,000
+            </strong>
+
+            <em>
+              / month
+            </em>
+
+          </div>
+
+          <h3>
+            Use the platform.
+          </h3>
+
+          <p class="sa-executive-summary__card-copy">
+            Operational intelligence software for teams that want to operate
+            Signal Audit themselves.
+          </p>
+
+          <ul>
+            <li>Company / workspace license</li>
+            <li>Signal Interpreter</li>
+            <li>Persistent Signal History</li>
+            <li>Supported integrations</li>
+            <li>Slack delivery</li>
+            <li>AI operational analysis</li>
+          </ul>
+
+        </article>
+
+        <!-- GUIDED ENGAGEMENT -->
+
+        <article class="sa-executive-summary__card">
+
+          <div class="sa-executive-summary__card-header">
+
+            <span class="sa-executive-summary__number">
+              02
+            </span>
+
+            <span class="sa-executive-summary__label">
+              Guided Engagement
+            </span>
+
+          </div>
+
+          <div class="sa-executive-summary__price">
+
+            <span>
+              30-Day Engagement
+            </span>
+
+            <strong>
+              $5,000
+            </strong>
+
+            <em>
+              / 30 days
+            </em>
+
+          </div>
+
+          <h3>
+            Prove the operational value.
+          </h3>
+
+          <p class="sa-executive-summary__card-copy">
+            A focused engagement to integrate Signal Audit, assess your operational
+            environment, establish a baseline, and identify opportunities for improvement.
+          </p>
+
+          <ul>
+            <li>Discovery and deployment</li>
+            <li>Operational baseline analysis</li>
+            <li>Telemetry-quality assessment</li>
+            <li>Recurring-pattern analysis</li>
+            <li>Optimization recommendations</li>
+            <li>Executive and technical review</li>
+          </ul>
+
+        </article>
+
+        <!-- MANAGED OPERATIONAL INTELLIGENCE -->
+
+        <article
+          class="
+            sa-executive-summary__card
+            sa-executive-summary__card--commercial
+            sa-executive-summary__card--managed
+          "
+        >
+
+          <div class="sa-executive-summary__card-header">
+
+            <span class="sa-executive-summary__number">
+              03
+            </span>
+
+            <span class="sa-executive-summary__label">
+              Managed Operational Intelligence
+            </span>
+
+          </div>
+
+          <div class="sa-executive-summary__price">
+
+            <span>
+              Ongoing Partnership
+            </span>
+
+            <strong>
+              $7,500
+            </strong>
+
+            <em>
+              / month
+            </em>
+
+          </div>
+
+          <h3>
+            Operate with us.
+          </h3>
+
+          <p class="sa-executive-summary__card-copy">
+            Signal Audit combined with continuous operational assessment,
+            signal analysis, engineering guidance, and recurring findings.
+          </p>
+
+          <ul>
+            <li>Signal Audit platform access</li>
+            <li>Continuous operational assessment</li>
+            <li>Signal-pattern analysis</li>
+            <li>Engineering guidance</li>
+            <li>Optimization recommendations</li>
+            <li>Recurring executive findings</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+      <div class="sa-executive-summary__path">
+
+        <span>
+          Commercial model
+        </span>
+
+        <div class="sa-executive-summary__path-flow">
+
+          <strong>
+            Use it.
+          </strong>
+
+          <i aria-hidden="true">
+            →
+          </i>
+
+          <strong>
+            Prove it.
+          </strong>
+
+          <i aria-hidden="true">
+            →
+          </i>
+
+          <strong>
+            Operate with us.
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div class="sa-executive-summary__footer">
+
+        <div>
+
+          <span>
+            Platform position
+          </span>
+
+          <strong>
+            Not another monitoring destination. An intelligence layer across the
+            tools you already use.
+          </strong>
+
+        </div>
+
+        <div class="sa-executive-summary__status">
+
+          <span
+            class="sa-executive-summary__status-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Production-ready integrations
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END EXECUTIVE SUMMARY -->
+
+  <!-- OBSERVABILITY GAP — LANDSCAPE PIPELINE -->
+
+  <section class="og-landscape">
+    <div class="og-landscape-inner">
+
+      <div class="og-landscape-header">
+        <p>Observability Gap</p>
+        <h2>From noise to operational intelligence</h2>
+        <span>
+          Most observability tools collect data. Signal Audit interprets what it means,
+          separates noise from risk, and gives you clear next actions.
+        </span>
+      </div>
+
+      <div class="og-pipeline-wide">
+
+        <article class="og-wide-stage">
+          <div class="og-stage-meta">
+            <span>01</span>
+            <strong>Raw Telemetry</strong>
+          </div>
+
+          <div class="og-wide-card og-telemetry-card">
+            <div class="og-metric-row"><b>112</b><span>Alerts</span></div>
+            <div class="og-metric-row"><b>847</b><span>Log Events</span></div>
+            <div class="og-metric-row"><b>396</b><span>Metrics</span></div>
+            <div class="og-metric-row"><b>128</b><span>Traces</span></div>
+
+            <div class="og-card-note">High volume. Fragmented. No context.</div>
+          </div>
+
+          <p class="og-stage-caption">Collect everything</p>
+        </article>
+
+        <div class="og-flow-node">
+          <span>→</span>
+        </div>
+
+        <article class="og-wide-stage og-wide-stage-center">
+          <div class="og-stage-meta">
+            <span>02</span>
+            <strong>Signal Audit</strong>
+          </div>
+
+          <div class="og-wide-card og-core-card">
+            <div class="og-core-orb">A</div>
+            <h3>Interpreting signal...</h3>
+            <p>
+              Correlating deployment timing, latency movement, retry behavior,
+              dependency health, and historical baselines.
+            </p>
+            <div class="og-analyzing">
+              <i></i>
+              Analyzing patterns
+            </div>
+          </div>
+
+          <p class="og-stage-caption">Interpret what matters</p>
+        </article>
+
+        <div class="og-flow-node">
+          <span>→</span>
+        </div>
+
+        <article class="og-wide-stage">
+          <div class="og-stage-meta">
+            <span>03</span>
+            <strong>Operational Intelligence</strong>
+          </div>
+
+          <div class="og-wide-card og-output-card">
+            <div class="og-output-row">
+              <small>Classification</small>
+              <strong>Persistent Degradation</strong>
+            </div>
+
+            <div class="og-output-row">
+              <small>What Matters</small>
+              <strong>Retries and latency moved together after deployment.</strong>
+            </div>
+
+            <div class="og-output-row">
+              <small>Ignore</small>
+              <strong>Individual alerts without correlated behavior.</strong>
+            </div>
+
+            <div class="og-output-row og-output-action">
+              <small>Recommended Action</small>
+              <strong>Review retry policy and downstream timeout configuration.</strong>
+            </div>
+
+            <div class="og-card-note">Signal. Context. Clear next step.</div>
+          </div>
+
+          <p class="og-stage-caption">Act with confidence</p>
+        </article>
+
+      </div>
+
+      <div class="og-footer-line">
+        <span>Real-time analysis</span>
+        <span>Continuous learning</span>
+        <span>Built for production</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- END OBSERVABILITY GAP -->
+
+
+  <!-- WHY THIS MATTERS NOW — RISK TIMELINE -->
+
+  <section class="risk-timeline-section">
+    <div class="risk-timeline-inner">
+
+      <div class="risk-timeline-header">
+        <p>Why this matters now</p>
+        <h2>Operational risk rarely appears all at once.</h2>
+        <span>
+          By the time dashboards show there's a problem, the impact is already spreading.
+        </span>
+      </div>
+
+      <div class="risk-visual">
+        <div class="risk-chart">
+          <div class="risk-chart-label">System health over time</div>
+
+          <div class="risk-incident-marker">
+            <strong>09:14</strong>
+            <span>Incident starts</span>
+          </div>
+
+          <svg
+            viewBox="0 0 700 260"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <polyline class="line line-red" points="0,160 80,160 160,158 240,156 320,150 390,126 460,95 530,62 620,42 700,40" />
+            <polyline class="line line-orange" points="0,202 90,200 180,198 280,198 360,190 430,165 500,130 580,108 700,94" />
+            <polyline class="line line-blue" points="0,182 110,182 240,181 360,180 450,178 520,158 600,140 700,126" />
+            <polyline class="line line-teal" points="0,220 160,220 320,219 420,218 500,192 580,176 700,160" />
+          </svg>
+
+          <div class="risk-time-axis">
+            <span>08:45</span>
+            <span>09:00</span>
+            <span>09:15</span>
+            <span>09:30</span>
+            <span>09:45</span>
+          </div>
+        </div>
+
+        <div class="risk-alerts">
+          <div class="risk-alerts-label">What engineers see</div>
+
+          <div class="risk-alert-row red">
+            <span>09:21</span>
+            <strong>High Error Rate</strong>
+            <em>›</em>
+          </div>
+
+          <div class="risk-alert-row orange">
+            <span>09:24</span>
+            <strong>Latency Increase</strong>
+            <em>›</em>
+          </div>
+
+          <div class="risk-alert-row yellow">
+            <span>09:27</span>
+            <strong>DB Connections High</strong>
+            <em>›</em>
+          </div>
+
+          <div class="risk-alert-row purple">
+            <span>09:30</span>
+            <strong>Cache Hit Rate Drop</strong>
+            <em>›</em>
+          </div>
+
+          <div class="risk-alert-row teal">
+            <span>09:32</span>
+            <strong>Queue Backlog Growing</strong>
+            <em>›</em>
+          </div>
+        </div>
+      </div>
+
+      <p class="risk-bridge">
+        Signal Audit finds the <strong>pattern</strong> behind the noise — so you can act before it escalates.
+      </p>
+
+      <div class="risk-card-flow">
+        <article class="risk-flow-card red">
+          <span>01</span>
+          <h3>Alert</h3>
+          <p>An alert fires — something looks off.</p>
+        </article>
+
+        <article class="risk-flow-card orange">
+          <span>02</span>
+          <h3>Disconnected Signals</h3>
+          <p>Dashboards show symptoms, not cause.</p>
+        </article>
+
+        <article class="risk-flow-card yellow">
+          <span>03</span>
+          <h3>Hidden Pattern</h3>
+          <p>Signal Audit connects the dots across systems.</p>
+        </article>
+
+        <article class="risk-flow-card purple">
+          <span>04</span>
+          <h3>Root Cause Found</h3>
+          <p>The true source of the issue becomes visible.</p>
+        </article>
+
+        <article class="risk-flow-card teal">
+          <span>05</span>
+          <h3>Actionable Clarity</h3>
+          <p>You get clear answers, not more noise.</p>
+        </article>
+      </div>
+
+      <div class="risk-final-line">
+        Stop reacting. Start diagnosing.
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- END WHY THIS MATTERS -->
+
+
+  <!-- BEGIN INTEGRATIONS -->
+
+  <section class="home-integrations" aria-labelledby="home-integrations-title">
+    <div class="home-integrations__inner">
+
+      <div class="home-integrations__header">
+        <p class="home-integrations__eyebrow">Integrations</p>
+
+        <h2 id="home-integrations-title" class="home-integrations__title">
+          Connect the tools that already know your production environment.
+        </h2>
+
+        <p class="home-integrations__intro">
+          Signal Audit ingests production telemetry from observability platforms,
+          analyzes what matters with AI, preserves signal history, and delivers
+          operational intelligence directly to your team.
+        </p>
+      </div>
+
+      <div class="home-integrations__pipeline" aria-label="Signal Audit integration workflow">
+
+        <div class="home-integrations__sources">
+          <article class="home-integration-source home-integration-source--grafana">
+            <div class="home-integration-source__topline">
+              <span class="home-integration-source__status" aria-hidden="true"></span>
+              <span>Connected source</span>
+            </div>
+
+            <div class="home-integration-source__brand">
+              <span class="home-integration-source__mark" aria-hidden="true">G</span>
+
+              <div>
+                <h3>Grafana</h3>
+                <p>Production alert intelligence</p>
+              </div>
+            </div>
+
+            <ul class="home-integration-source__features">
+              <li>Alert lifecycle awareness</li>
+              <li>AI investigation context</li>
+              <li>Recovery detection</li>
+            </ul>
+
+            <a class="home-integration-source__link" href="/integrations/grafana" data-cta="explore_grafana_integration">
+              Explore Grafana integration
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="home-integration-source home-integration-source--datadog">
+            <div class="home-integration-source__topline">
+              <span class="home-integration-source__status" aria-hidden="true"></span>
+              <span>Connected source</span>
+            </div>
+
+            <div class="home-integration-source__brand">
+              <span class="home-integration-source__mark" aria-hidden="true">D</span>
+
+              <div>
+                <h3>Datadog</h3>
+                <p>Production telemetry intelligence</p>
+              </div>
+            </div>
+
+            <ul class="home-integration-source__features">
+              <li>Monitor alert ingestion</li>
+              <li>Vendor-aware AI analysis</li>
+              <li>Persistent signal history</li>
+            </ul>
+
+            <a class="home-integration-source__link" href="/integrations/datadog" data-cta="explore_datadog_integration">
+              Explore Datadog integration
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <div class="home-integrations__connector home-integrations__connector--inbound" aria-hidden="true">
+          <span class="home-integrations__connector-line"></span>
+          <span class="home-integrations__connector-label">Production signals</span>
+          <span class="home-integrations__connector-arrow">→</span>
+        </div>
+
+        <article class="home-integrations__engine">
+          <div class="home-integrations__engine-header">
+            <span class="home-integrations__engine-status" aria-hidden="true"></span>
+            <span>Operational intelligence engine</span>
+          </div>
+
+          <div class="home-integrations__engine-copy">
+            <p class="home-integrations__engine-kicker">Signal Audit</p>
+
+            <h3>Turn telemetry into operational understanding.</h3>
+
+            <p>
+              Every incoming signal is normalized, analyzed, connected to its
+              lifecycle, and preserved as operational context.
+            </p>
+          </div>
+
+          <div class="home-integrations__engine-stages">
+            <div class="home-integrations__stage">
+              <span class="home-integrations__stage-number">01</span>
+              <span>Ingest</span>
+            </div>
+
+            <div class="home-integrations__stage">
+              <span class="home-integrations__stage-number">02</span>
+              <span>Analyze</span>
+            </div>
+
+            <div class="home-integrations__stage">
+              <span class="home-integrations__stage-number">03</span>
+              <span>Preserve</span>
+            </div>
+
+            <div class="home-integrations__stage">
+              <span class="home-integrations__stage-number">04</span>
+              <span>Deliver</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="home-integrations__connector home-integrations__connector--outbound" aria-hidden="true">
+          <span class="home-integrations__connector-line"></span>
+          <span class="home-integrations__connector-label">Operational intelligence</span>
+          <span class="home-integrations__connector-arrow">→</span>
+        </div>
+
+        <article class="home-integrations__destination">
+          <div class="home-integrations__destination-topline">
+            <span class="home-integrations__destination-status" aria-hidden="true"></span>
+            <span>Delivery destination</span>
+          </div>
+
+          <div class="home-integrations__destination-brand">
+            <span class="home-integrations__destination-mark" aria-hidden="true">S</span>
+
+            <div>
+              <h3>Slack</h3>
+              <p>Intelligence delivered where teams already work</p>
+            </div>
+          </div>
+
+          <div class="home-integrations__slack-preview">
+            <div class="home-integrations__slack-meta">
+              <span class="home-integrations__slack-avatar">SA</span>
+
+              <div>
+                <strong>Signal Audit</strong>
+                <span>APP</span>
+              </div>
+            </div>
+
+            <p class="home-integrations__slack-alert">
+              Elevated latency detected in payments-api.
+            </p>
+
+            <div class="home-integrations__slack-analysis">
+              <span>AI analysis</span>
+              <p>
+                The signal represents persistent degradation rather than a
+                short-lived traffic spike.
+              </p>
+            </div>
+
+            <div class="home-integrations__slack-footer">
+              <span>1 threaded analysis</span>
+              <span>Signal history updated</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="home-integrations__footer">
+        <p>
+          Grafana and Datadog are the first production integrations in an
+          extensible Signal Audit architecture.
+        </p>
+
+        <a class="home-integrations__cta" href="/integrations" data-cta="view_integrations">
+          View all integrations
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END INTEGRATIONS --> 
+
+  <!-- PRODUCT PATHWAYS -->
+
+  <section class="product-pathways">
+    <div class="product-pathways__inner">
+
+      <div class="product-pathways__header">
+        <p>Choose your path</p>
+        <h2>Start with the Signal Audit experience that fits your team.</h2>
+        <span>
+          Whether you need a one-time audit, workflow integration, or an enterprise operational review,
+          each path is designed to turn telemetry into clearer decisions.
+        </span>
+      </div>
+
+      <div class="product-pathways__grid">
+
+        <article class="product-pathway-card">
+          <div class="product-pathway-card__top">
+            <span>01</span>
+            <p>One-Time Signal Audit</p>
+          </div>
+
+          <h3>Find the signal hiding inside your telemetry.</h3>
+
+          <p class="product-pathway-card__copy">
+            A focused review of production signals, alert patterns, and operational risk.
+          </p>
+
+          <ul>
+            <li>Signal classification</li>
+            <li>Risk interpretation</li>
+            <li>Clear next-action recommendations</li>
+          </ul>
+
+          <a href="/" data-cta="explore_signal_audit">View Signal Audit →</a>
+        </article>
+
+        <article class="product-pathway-card product-pathway-card--featured">
+          <div class="product-pathway-card__top">
+            <span>02</span>
+            <p>Signal Audit + Slack</p>
+          </div>
+
+          <h3>Bring operational intelligence into your workflow.</h3>
+
+          <p class="product-pathway-card__copy">
+            Signal Audit delivered inside Slack, where engineering teams already respond.
+          </p>
+
+          <ul>
+            <li>Slack-based signal intake</li>
+            <li>Threaded audit responses</li>
+            <li>Faster team alignment</li>
+          </ul>
+
+          <a href="/signal-audit-slack" data-cta="explore_slack_integration">Explore Slack Integration →</a>
+        </article>
+
+        <article class="product-pathway-card">
+          <div class="product-pathway-card__top">
+            <span>03</span>
+            <p>Enterprise Review</p>
+          </div>
+
+          <h3>Understand risk across teams, systems, and workflows.</h3>
+
+          <p class="product-pathway-card__copy">
+            A strategic review for larger teams with complex observability and incident response environments.
+          </p>
+
+          <ul>
+            <li>Operational review</li>
+            <li>Workflow analysis</li>
+            <li>Executive recommendations</li>
+          </ul>
+
+          <a href="/enterprise-operational-review" data-cta="schedule_enterprise_review">Schedule Enterprise Review →</a>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- END PRODUCT PATHWAYS -->
+
+
+  <!-- ======================================================
+     SIGNAL AUDIT — PLATFORM CAPABILITIES
+======================================================= -->
+
+  <section
+    class="sa-platform-capabilities"
+    aria-labelledby="sa-platform-capabilities-title"
+  >
+    <div class="sa-platform-capabilities__inner">
+
+      <header class="sa-platform-capabilities__header">
+        <div class="sa-platform-capabilities__heading">
+          <p class="sa-platform-capabilities__eyebrow">
+            The Signal Audit Platform
+          </p>
+
+          <h2 id="sa-platform-capabilities-title">
+            Operational intelligence from the telemetry you already have.
+          </h2>
+        </div>
+
+        <p class="sa-platform-capabilities__intro">
+          Signal Audit connects to production observability platforms, receives
+          alerts automatically, analyzes what matters with AI, preserves the
+          signal lifecycle, and delivers decision-ready guidance directly into
+          your team's workflow.
+        </p>
+      </header>
+
+      <div class="sa-platform-capabilities__grid">
+
+        <!-- AUTOMATED INGESTION -->
+
+        <article
+          class="sa-platform-capability sa-platform-capability--ingestion"
+        >
+          <div class="sa-platform-capability__topline">
+            <span class="sa-platform-capability__number">01</span>
+            <span class="sa-platform-capability__label">
+              Automated ingestion
+            </span>
+          </div>
+
+          <div
+            class="sa-platform-capability__visual sa-platform-capability__visual--sources"
+            aria-label="Grafana and Datadog connected to Signal Audit"
+          >
+            <div class="sa-platform-source sa-platform-source--grafana">
+              <span class="sa-platform-source__mark" aria-hidden="true">
+                G
+              </span>
+
+              <div>
+                <strong>Grafana</strong>
+                <small>Alert lifecycle</small>
+              </div>
+
+              <span class="sa-platform-source__status">
+                Connected
+              </span>
+            </div>
+
+            <div class="sa-platform-source sa-platform-source--datadog">
+              <span class="sa-platform-source__mark" aria-hidden="true">
+                D
+              </span>
+
+              <div>
+                <strong>Datadog</strong>
+                <small>Monitor telemetry</small>
+              </div>
+
+              <span class="sa-platform-source__status">
+                Connected
+              </span>
+            </div>
+
+            <div class="sa-platform-source__flow" aria-hidden="true">
+              <span></span>
+              <strong>↓</strong>
+              <span></span>
+            </div>
+
+            <div class="sa-platform-source sa-platform-source--audit">
+              <span class="sa-platform-source__mark" aria-hidden="true">
+                A
+              </span>
+
+              <div>
+                <strong>Signal Audit</strong>
+                <small>Authenticated webhook intake</small>
+              </div>
+
+              <span class="sa-platform-source__status">
+                Receiving
+              </span>
+            </div>
+          </div>
+
+          <div class="sa-platform-capability__copy">
+            <h3>Receive production signals automatically.</h3>
+
+            <p>
+              Grafana and Datadog send firing and recovery events directly into
+              Signal Audit through authenticated integration endpoints.
+            </p>
+          </div>
+
+          <ul class="sa-platform-capability__details">
+            <li>Vendor-aware normalization</li>
+            <li>Authenticated webhook ingestion</li>
+            <li>Firing and recovery handling</li>
+          </ul>
+        </article>
+
+        <!-- AI ANALYSIS -->
+
+        <article
+          class="sa-platform-capability sa-platform-capability--analysis"
+        >
+          <div class="sa-platform-capability__topline">
+            <span class="sa-platform-capability__number">02</span>
+            <span class="sa-platform-capability__label">
+              AI analysis
+            </span>
+          </div>
+
+          <div
+            class="sa-platform-capability__visual sa-platform-capability__visual--analysis"
+          >
+            <div class="sa-platform-analysis__header">
+              <span class="sa-platform-analysis__status"></span>
+              <span>Analyzing production signal</span>
+            </div>
+
+            <div class="sa-platform-analysis__signal">
+              <small>Incoming signal</small>
+
+              <strong>
+                payments-api latency above threshold
+              </strong>
+
+              <span>
+                Deployment correlation detected
+              </span>
+            </div>
+
+            <div class="sa-platform-analysis__stages">
+              <div>
+                <span>01</span>
+                <strong>Normalize</strong>
+              </div>
+
+              <div>
+                <span>02</span>
+                <strong>Interpret</strong>
+              </div>
+
+              <div>
+                <span>03</span>
+                <strong>Classify</strong>
+              </div>
+
+              <div>
+                <span>04</span>
+                <strong>Recommend</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="sa-platform-capability__copy">
+            <h3>Determine what the signal actually means.</h3>
+
+            <p>
+              Signal Audit evaluates service behavior, deployment timing,
+              dependency pressure, historical context, urgency, and likely
+              operational impact.
+            </p>
+          </div>
+
+          <ul class="sa-platform-capability__details">
+            <li>Vendor-specific audit prompts</li>
+            <li>Risk and significance classification</li>
+            <li>Recommended next actions</li>
+          </ul>
+        </article>
+
+        <!-- PERSISTENT HISTORY -->
+
+        <article
+          class="sa-platform-capability sa-platform-capability--history"
+        >
+          <div class="sa-platform-capability__topline">
+            <span class="sa-platform-capability__number">03</span>
+            <span class="sa-platform-capability__label">
+              Persistent signal history
+            </span>
+          </div>
+
+          <div
+            class="sa-platform-capability__visual sa-platform-capability__visual--history"
+            aria-label="Signal lifecycle from firing to resolved"
+          >
+            <div class="sa-platform-history__item">
+              <span class="sa-platform-history__dot"></span>
+
+              <div>
+                <small>09:14</small>
+                <strong>Signal received</strong>
+                <p>Grafana alert recorded</p>
+              </div>
+
+              <em>Received</em>
+            </div>
+
+            <div class="sa-platform-history__line"></div>
+
+            <div class="sa-platform-history__item">
+              <span class="sa-platform-history__dot"></span>
+
+              <div>
+                <small>09:14</small>
+                <strong>Analysis completed</strong>
+                <p>Persistent degradation identified</p>
+              </div>
+
+              <em>Analyzed</em>
+            </div>
+
+            <div class="sa-platform-history__line"></div>
+
+            <div class="sa-platform-history__item">
+              <span class="sa-platform-history__dot"></span>
+
+              <div>
+                <small>09:15</small>
+                <strong>Guidance delivered</strong>
+                <p>Slack thread created</p>
+              </div>
+
+              <em>Delivered</em>
+            </div>
+
+            <div class="sa-platform-history__line"></div>
+
+            <div class="sa-platform-history__item sa-platform-history__item--resolved">
+              <span class="sa-platform-history__dot"></span>
+
+              <div>
+                <small>09:42</small>
+                <strong>Signal recovered</strong>
+                <p>Resolution linked to original event</p>
+              </div>
+
+              <em>Resolved</em>
+            </div>
+          </div>
+
+          <div class="sa-platform-capability__copy">
+            <h3>Preserve the full operational lifecycle.</h3>
+
+            <p>
+              Every signal is recorded from initial detection through analysis,
+              delivery, and recovery so operational context is not lost when an
+              alert clears.
+            </p>
+          </div>
+
+          <ul class="sa-platform-capability__details">
+            <li>Firing and resolved state tracking</li>
+            <li>Original signal correlation</li>
+            <li>Persistent operational context</li>
+          </ul>
+        </article>
+
+        <!-- WORKFLOW DELIVERY -->
+
+        <article
+          class="sa-platform-capability sa-platform-capability--delivery"
+        >
+          <div class="sa-platform-capability__topline">
+            <span class="sa-platform-capability__number">04</span>
+            <span class="sa-platform-capability__label">
+              Workflow delivery
+            </span>
+          </div>
+
+          <div
+            class="sa-platform-capability__visual sa-platform-capability__visual--slack"
+          >
+            <div class="sa-platform-slack__header">
+              <span class="sa-platform-slack__dot"></span>
+              <span>#signal-audit</span>
+            </div>
+
+            <div class="sa-platform-slack__message">
+              <div class="sa-platform-slack__meta">
+                <span class="sa-platform-slack__avatar">
+                  SA
+                </span>
+
+                <div>
+                  <strong>Signal Audit</strong>
+                  <small>APP</small>
+                </div>
+              </div>
+
+              <p>
+                Elevated latency detected in
+                <strong>payments-api</strong>.
+              </p>
+
+              <span class="sa-platform-slack__source">
+                Source: Grafana
+              </span>
+            </div>
+
+            <div class="sa-platform-slack__thread">
+              <small>1 threaded analysis</small>
+
+              <strong>Persistent degradation</strong>
+
+              <p>
+                Latency and retries increased after deployment. Review downstream
+                health, retry behavior, and timeout configuration.
+              </p>
+            </div>
+
+            <div class="sa-platform-slack__footer">
+              <span>Delivered</span>
+              <span>Signal history updated</span>
+            </div>
+          </div>
+
+          <div class="sa-platform-capability__copy">
+            <h3>Deliver guidance where teams already respond.</h3>
+
+            <p>
+              Signal Audit posts the original alert as a Slack parent message and
+              adds its AI analysis as a threaded response for focused team
+              collaboration.
+            </p>
+          </div>
+
+          <ul class="sa-platform-capability__details">
+            <li>Slack parent-message delivery</li>
+            <li>Threaded AI interpretation</li>
+            <li>Delivery and failure tracking</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <div class="sa-platform-capabilities__architecture">
+        <div class="sa-platform-capabilities__architecture-header">
+          <p>One extensible operational-intelligence pipeline</p>
+
+          <span>
+            The observability vendor may change. The Signal Audit workflow remains
+            consistent.
+          </span>
+        </div>
+
+        <div
+          class="sa-platform-capabilities__architecture-flow"
+          aria-label="Observability platform to Signal Audit to operational intelligence to Slack"
+        >
+          <div>
+            <small>Signal source</small>
+            <strong>Grafana / Datadog</strong>
+          </div>
+
+          <span aria-hidden="true">→</span>
+
+          <div>
+            <small>Interpretation</small>
+            <strong>Signal Audit</strong>
+          </div>
+
+          <span aria-hidden="true">→</span>
+
+          <div>
+            <small>Output</small>
+            <strong>Operational Intelligence</strong>
+          </div>
+
+          <span aria-hidden="true">→</span>
+
+          <div>
+            <small>Delivery</small>
+            <strong>Slack</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY + ARCHITECTURE TRUST -->
+
+      <div
+        class="sa-platform-security"
+        aria-labelledby="sa-platform-security-title"
+      >
+        <div class="sa-platform-security__copy">
+
+          <p class="sa-platform-security__eyebrow">
+            Security & Architecture
+          </p>
+
+          <h3 id="sa-platform-security-title">
+            Designed to sit downstream of your production systems.
+          </h3>
+
+          <p class="sa-platform-security__description">
+            Signal Audit receives telemetry through authenticated integrations,
+            interprets operational signals, and delivers structured intelligence
+            into your existing workflow. Your observability platforms and
+            production systems remain authoritative.
+          </p>
+
+        </div>
+
+        <div
+          class="sa-platform-security__principles"
+          aria-label="Signal Audit architecture principles"
+        >
+          <div class="sa-platform-security__principle">
+            <span aria-hidden="true">01</span>
+            <strong>Authenticated ingestion</strong>
+          </div>
+
+          <div class="sa-platform-security__principle">
+            <span aria-hidden="true">02</span>
+            <strong>No infrastructure control plane</strong>
+          </div>
+
+          <div class="sa-platform-security__principle">
+            <span aria-hidden="true">03</span>
+            <strong>Existing systems remain authoritative</strong>
+          </div>
+        </div>
+
+        <a
+          class="sa-platform-security__link"
+          href="/security"
+          data-cta="explore_security_architecture"
+        >
+          Explore Security & Architecture
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- END SECURITY + ARCHITECTURE TRUST -->
+
+      <footer class="sa-platform-capabilities__footer">
+        <div>
+          <p class="sa-platform-capabilities__footer-label">
+            Signal Audit
+          </p>
+
+          <h3>
+            Not another monitoring destination. An intelligence layer across the
+            tools you already use.
+          </h3>
+        </div>
+
+        <a
+          class="sa-platform-capabilities__cta"
+          href="/integrations" data-cta="explore_integrations"
+        >
+          Explore integrations
+          <span aria-hidden="true">→</span>
+        </a>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- END SIGNAL AUDIT PLATFORM CAPABILITIES -->
+
+
+  <!-- AUDIT FINDINGS -->
+  
+  <section class="audit-section audit-findings">
+    <p class="eyebrow">Proof</p>
+
+    <h2>Real Signal Audit Findings</h2>
+
+    <div class="findings-grid">
+
+      <article class="finding-card">
+        <p class="finding-label">Case Study 001</p>
+        <h3>Splunk MLTK BIRCH Signal Audit</h3>
+
+        <ul>
+          <li>Production telemetry analyzed at scale</li>
+          <li>Five signal behavior categories identified</li>
+          <li>Noise separated from operational risk</li>
+          <li>Escalation model established</li>
+        </ul>
+
+        <a href="/case-studies/splunk-mltk-birch-signal-audit" class="finding-link" data-cta="read_case_study">
+          Read Case Study →
+        </a>
+      </article>
+
+      <article class="finding-card">
+        <p class="finding-label">Published Analysis</p>
+        <h3>AI Fails Silently: A Systems Perspective on AI Reliability</h3>
+
+        <ul>
+          <li>Signal interpretation over raw monitoring</li>
+          <li>Operational truth versus symptom chasing</li>
+          <li>Pattern recognition in complex systems</li>
+          <li>Production reliability insights</li>
+        </ul>
+
+        <a
+          href="https://uxmag.com/articles/ai-fails-silently-a-systems-perspective-on-ai-reliability"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="finding-link"
+          data-cta="read_ux_magazine_article"
+        >
+          Read Article
+          <span class="sr-only"> (opens in a new tab)</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- END AUDIT FINDINGS -->
+
+  <!-- ENGINEERING INVESTMENT -->
+
+  <section class="sa-investment" id="engineering-investment-calculator" aria-labelledby="sa-investment-title">
+    <div class="sa-investment__container">
+
+      <div class="sa-investment__content">
+        <p class="sa-investment__eyebrow">Engineering Investment</p>
+
+        <h2 id="sa-investment-title" class="sa-investment__title">
+          Your largest engineering investment isn’t your monitoring stack.
+        </h2>
+
+        <p class="sa-investment__lead">
+          It’s your engineering team.
+        </p>
+
+        <p class="sa-investment__body">
+          A software company with 50 engineers can invest more than
+          <strong>$10 million annually</strong> in engineering operations.
+          Signal Audit deploys for <strong>$5,000</strong>.
+        </p>
+
+        <p class="sa-investment__body">
+          Signal Audit doesn’t replace Grafana, Datadog, or your existing
+          observability platform. It helps your engineering team make better
+          operational decisions from the telemetry those platforms already produce.
+        </p>
+
+        <p class="sa-investment__statement">
+          The question isn’t whether Signal Audit is expensive. It’s whether
+          improving operational decision-making is worth a fraction of the
+          engineering investment you’ve already made.
+        </p>
+      </div>
+
+      <aside class="sa-investment__calculation" aria-label="Example engineering investment calculation">
+        <p class="sa-investment__calculation-label">
+          Example annual investment
+        </p>
+
+        <div class="sa-investment__metric">
+          <span class="sa-investment__metric-label">
+            50-person engineering organization
+          </span>
+          <strong class="sa-investment__metric-value">$10M+</strong>
+        </div>
+
+        <div class="sa-investment__divider" aria-hidden="true"></div>
+
+        <div class="sa-investment__metric">
+          <span class="sa-investment__metric-label">
+            Signal Audit Platform Deployment
+          </span>
+          <strong class="sa-investment__metric-value">$5,000</strong>
+        </div>
+
+        <div class="sa-investment__percentage">
+          <strong>Approximately 0.05%</strong>
+          <span>of annual engineering operating expense</span>
+        </div>
+
+        <a
+          class="sa-investment__button"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="evaluate_signal_audit"
+          href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        >
+          Evaluate Signal Audit
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- END ENGINEERING INVESTMENT -->
+
+  <!-- ENGINEERING INVESTMENT CALCULATOR -->
+
+  <section class="sa-roi-calculator" aria-labelledby="sa-roi-title">
+    <div class="sa-roi-calculator__inner">
+
+      <header class="sa-roi-calculator__header">
+        <p class="sa-roi-calculator__eyebrow">
+          Engineering Investment Calculator
+        </p>
+
+        <h2 id="sa-roi-title">
+          Calculate Signal Audit against your engineering investment.
+        </h2>
+
+        <p>
+          Use your organization’s numbers to estimate engineering operating
+          expense, incident-response cost, and the relative cost of deploying
+          Signal Audit.
+        </p>
+      </header>
+
+      <div class="sa-roi-calculator__layout">
+
+        <!-- INPUTS -->
+
+        <form class="sa-roi-calculator__form" id="saRoiForm">
+          <fieldset>
+            <legend>Engineering organization</legend>
+
+            <div class="sa-roi-calculator__field-grid">
+              <label class="sa-roi-calculator__field">
+                <span>Number of engineers</span>
+
+                <input
+                  id="saEngineerCount"
+                  type="number"
+                  inputmode="numeric"
+                  min="1"
+                  step="1"
+                  value="50"
+                >
+              </label>
+
+              <label class="sa-roi-calculator__field">
+                <span>Fully loaded annual cost per engineer</span>
+
+                <div class="sa-roi-calculator__input-prefix">
+                  <span aria-hidden="true">$</span>
+
+                  <input
+                    id="saEngineerCost"
+                    type="number"
+                    inputmode="decimal"
+                    min="1"
+                    step="1000"
+                    value="200000"
+                  >
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Signal Audit investment</legend>
+
+            <div class="sa-roi-calculator__field-grid">
+              <label class="sa-roi-calculator__field">
+                <span>Platform deployment</span>
+
+                <div class="sa-roi-calculator__input-prefix">
+                  <span aria-hidden="true">$</span>
+
+                  <input
+                    id="saDeploymentCost"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="500"
+                    value="5000"
+                  >
+                </div>
+              </label>
+
+              <label class="sa-roi-calculator__field">
+                <span>Additional annual platform cost</span>
+
+                <div class="sa-roi-calculator__input-prefix">
+                  <span aria-hidden="true">$</span>
+
+                  <input
+                    id="saAnnualPlatformCost"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="500"
+                    value="0"
+                  >
+                </div>
+
+                <small>
+                  Leave at $0 when evaluating deployment only.
+                </small>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Incident-response activity</legend>
+
+            <div class="sa-roi-calculator__field-grid sa-roi-calculator__field-grid--four">
+              <label class="sa-roi-calculator__field">
+                <span>Incidents per month</span>
+
+                <input
+                  id="saIncidentsPerMonth"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="1"
+                  value="8"
+                >
+              </label>
+
+              <label class="sa-roi-calculator__field">
+                <span>Engineers per incident</span>
+
+                <input
+                  id="saEngineersPerIncident"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="1"
+                  value="3"
+                >
+              </label>
+
+              <label class="sa-roi-calculator__field">
+                <span>Hours per incident</span>
+
+                <input
+                  id="saHoursPerIncident"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.5"
+                  value="2"
+                >
+              </label>
+
+              <label class="sa-roi-calculator__field">
+                <span>Estimated time reduction</span>
+
+                <div class="sa-roi-calculator__input-suffix">
+                  <input
+                    id="saTimeReduction"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    max="100"
+                    step="5"
+                    value="20"
+                  >
+
+                  <span aria-hidden="true">%</span>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          <p class="sa-roi-calculator__assumption">
+            Estimates use 2,080 working hours per engineer annually. Results are
+            directional and should be evaluated against your organization’s actual
+            operating data.
+          </p>
+        </form>
+
+        <!-- RESULTS -->
+
+        <aside
+          class="sa-roi-calculator__results"
+          aria-label="Engineering investment calculation"
+          aria-live="polite"
+        >
+          <div class="sa-roi-calculator__results-header">
+            <span>Your estimate</span>
+            <strong>Calculated in real time</strong>
+          </div>
+
+          <div class="sa-roi-calculator__primary-result">
+            <span>Annual engineering investment</span>
+            <strong id="saEngineeringOpex">$10,000,000</strong>
+          </div>
+
+          <div class="sa-roi-calculator__result-grid">
+            <div class="sa-roi-calculator__result">
+              <span>Signal Audit year one</span>
+              <strong id="saYearOneCost">$5,000</strong>
+            </div>
+
+            <div class="sa-roi-calculator__result">
+              <span>Percentage of engineering OPEX</span>
+              <strong id="saOpexPercentage">0.050%</strong>
+            </div>
+
+            <div class="sa-roi-calculator__result">
+              <span>Annual incident-response cost</span>
+              <strong id="saIncidentCost">$55,385</strong>
+            </div>
+
+            <div class="sa-roi-calculator__result">
+              <span>Potential annual cost recovered</span>
+              <strong id="saRecoveredCost">$11,077</strong>
+            </div>
+          </div>
+
+          <div class="sa-roi-calculator__roi">
+            <div>
+              <span>Estimated first-year ROI</span>
+              <strong id="saEstimatedRoi">122%</strong>
+            </div>
+
+            <p id="saRoiSummary">
+              Recovering approximately 20% of current incident-response time would
+              exceed the deployment investment.
+            </p>
+          </div>
+
+          <div class="sa-roi-calculator__break-even">
+            <span>Break-even threshold</span>
+
+            <strong id="saBreakEvenHours">26 engineering hours</strong>
+
+            <p>
+              The amount of engineering time that would need to be recovered to
+              equal the first-year Signal Audit investment.
+            </p>
+          </div>
+
+          <a
+            class="sa-roi-calculator__cta"
+            href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+            target="_blank" data-cta="review_calculation"
+            rel="noopener noreferrer"
+          >
+            Review Your Calculation
+          </a>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- END ENGINEERING INVESTMENT CALCULATOR -->
+
+  <!-- PRODUCT WALKTHROUGH PROOF -->
+
+  <section class="audit-proof audit-proof--walkthrough">
+
+    <div class="audit-proof__inner">
+
+      <div class="audit-proof__content">
+
+        <p
+          class="audit-proof__eyebrow preFlex"
+          style="transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); transition-duration: 0.8s;"
+        >
+          Product Walkthrough 001
+        </p>
+
+        <h2 class="animation-segment-parent-hidden">
+          From Grafana alert to operational decision in Slack.
+        </h2>
+
+        <p
+          class="audit-proof__lede preFlex"
+          style="transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); transition-duration: 0.8s;"
+        >
+          See how Signal Audit receives a production alert, interprets what
+          matters, records the signal lifecycle, and delivers decision-ready
+          guidance directly into Slack.
+        </p>
+
+        <div class="audit-proof__actions">
+
+          <a
+            href="/product-walkthrough/grafana-alert-to-slack"
+            class="audit-proof-button" data-cta="view_product_walkthrough"
+          >
+            View Product Walkthrough
+          </a>
+
+          <a
+            href="/signal-audit-slack"
+            class="audit-proof-button audit-proof-button--secondary" data-cta="explore_slack_integration"
+          >
+            Explore Slack Integration
+          </a>
+
+        </div>
+
+      </div>
+
+      <div
+        class="audit-proof__workflow"
+        aria-label="Grafana alert to Slack workflow"
+      >
+
+        <div class="audit-proof__workflow-header">
+
+          <div>
+            <span class="audit-proof__status"></span>
+            <strong>Production Signal</strong>
+          </div>
+
+          <small>Automated Workflow</small>
+
+        </div>
+
+        <div class="audit-proof__workflow-path">
+
+          <div class="audit-proof__workflow-node">
+            <small>Signal Source</small>
+            <strong>Grafana Alert</strong>
+            <span>Production degradation detected</span>
+          </div>
+
+          <div class="audit-proof__workflow-arrow" aria-hidden="true">
+            →
+          </div>
+
+          <div class="audit-proof__workflow-node audit-proof__workflow-node--active">
+            <small>Interpretation</small>
+            <strong>Signal Audit</strong>
+            <span>Impact, urgency, and recommended action</span>
+          </div>
+
+          <div class="audit-proof__workflow-arrow" aria-hidden="true">
+            →
+          </div>
+
+          <div class="audit-proof__workflow-node">
+            <small>Delivery</small>
+            <strong>Slack</strong>
+            <span>Decision-ready operational guidance</span>
+          </div>
+
+        </div>
+
+        <div class="audit-proof__lifecycle">
+
+          <div>
+            <span>Received</span>
+            <strong>Recorded</strong>
+          </div>
+
+          <div>
+            <span>Analyzed</span>
+            <strong>Complete</strong>
+          </div>
+
+          <div>
+            <span>Delivered</span>
+            <strong>Slack</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- END PRODUCT WALKTHROUGH PROOF -->
+
+  <!-- CONTACT THE FOUNDER -->
+
+  <section class="founder-note-cta">
+    <div class="founder-note-cta__inner">
+      <p class="founder-note-cta__eyebrow">Have questions before scheduling?</p>
+
+      <p>Every production environment is different.</p>
+
+      <p>
+        If you're unsure whether Signal Audit is the right fit, I'd be happy to discuss your current observability challenges and help determine whether Signal Audit would provide value for your team.
+      </p>
+
+      <p class="founder-note-cta__assurance">
+        No sales pressure. No obligation.
+      </p>
+
+      <div class="founder-note-cta__signature">
+        <span>—</span>
+        <strong>Kwansah Madani</strong>
+        <em>Founder, Minimalism</em>
+      </div>
+
+      <a
+        href="https://calendly.com/iam-minimalism/1-1-meeting-signal-audit"
+        target="_blank"
+        rel="noopener noreferrer" data-cta="schedule_conversation"
+        class="founder-note-cta__link"
+      >
+        Schedule a Conversation →
+      </a>
+    </div>
+  </section>
+
+
+  <!-- END CONTACT THE FOUNDER -->
+
+</section>
+
+<!-- SIGNAL INTERPRETER MODAL -->
+
+<div
+  class="si-modal"
+  id="signal-interpreter-modal"
+  aria-hidden="true"
+>
+  <div
+    class="si-modal__backdrop"
+    data-si-modal-close
+  ></div>
+
+  <div
+    class="si-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Signal Interpreter"
+  >
+    <button
+      class="si-modal__close"
+      type="button"
+      aria-label="Close Signal Interpreter"
+      data-si-modal-close
+    >
+      ×
+    </button>
+
+    <iframe
+      class="si-modal__frame"
+      src="/signal-interpreter?embed=1"
+      title="Signal Interpreter"
+    ></iframe>
+  </div>
+</div>
+
+<!-- END SIGNAL INTERPRETER MODAL -->
+
+
+
+
+
+  <footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/roi-calculator.js"></script>
+  <script src="/assets/js/demo.js"></script>
+  <script src="/assets/js/interpreter-modal.js"></script>
+  <script src="/assets/js/site-header.js"></script>
+</body>
+</html>
