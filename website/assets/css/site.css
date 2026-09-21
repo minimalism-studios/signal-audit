@@ -425,3 +425,8 @@ h4 {
 .site-header__nav > a {
   text-transform: uppercase;
 }
+
+/* SIGNAL AUDIT — FOOTER HEADING OVERRIDE */
+.site-footer__column h2 {
+  font-size: 12px !important;
+}
