@@ -82,6 +82,16 @@ app.use(
   express.static(path.join(websiteRoot, "assets"))
 );
 
+app.get("/sitemap.xml", (req, res) => {
+  res.type("application/xml");
+  res.sendFile(path.join(websiteRoot, "sitemap.xml"));
+});
+
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.sendFile(path.join(websiteRoot, "robots.txt"));
+});
+
 app.use((req, res) => {
   if (req.method !== "GET" && req.method !== "HEAD") {
     return res.sendStatus(405);
