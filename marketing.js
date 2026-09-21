@@ -41,6 +41,31 @@ app.use(
     referrerPolicy: {
       policy: "strict-origin-when-cross-origin",
     },
+    contentSecurityPolicy: {
+      directives: {
+        "frame-src": [
+          "'self'",
+          "https://www.youtube.com",
+          "https://www.youtube-nocookie.com",
+        ],
+        "script-src": [
+          "'self'",
+          "https://www.youtube.com",
+          "https://www.youtube-nocookie.com",
+        ],
+        "connect-src": [
+          "'self'",
+          "https://www.youtube.com",
+          "https://www.youtube-nocookie.com",
+        ],
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://i.ytimg.com",
+          "https://*.googleusercontent.com",
+        ],
+      },
+    },
   })
 );
 
