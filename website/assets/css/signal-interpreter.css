@@ -1731,3 +1731,8 @@ body.signal-interpreter-embed .site-header,
 body.signal-interpreter-embed .site-footer {
   display: none !important;
 }
+
+.signal-results-header h1 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
