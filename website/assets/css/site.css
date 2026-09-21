@@ -383,23 +383,26 @@ h1,
 h2 {
   font-family: var(--sa-font-heading);
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 5em !important;
+  font-weight: 700 !important;
 }
 
 h2 {
-  font-size: 4em;
+  font-size: 3em !important;
+  font-weight: 700 !important;
 }
 
 @media (max-width: 767px) {
   h1 {
-    font-size: 3em;
+    font-size: 3em !important;
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 2em !important;
   }
 }
 
