@@ -3086,3 +3086,19 @@ leadershipBriefEnter {
   background-color:
     rgba(255, 255, 255, 0.28);
 }
+
+/* Signal Audit brand mark */
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  display: block;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}

@@ -3588,26 +3588,12 @@ button.integration-card.is-active,
 }
 
 .application-brand__mark {
-  display: grid;
-  place-items: center;
-
+  display: block;
   flex: 0 0 36px;
-
   width: 36px;
   height: 36px;
-
-  color: var(--text);
-  background: var(--surface);
-
-  border:
-    1px solid
-    var(--border);
-  border-radius:
-    var(--radius-md);
-
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  object-fit: contain;
+  border-radius: var(--radius-md);
 }
 
 .application-brand__copy {
