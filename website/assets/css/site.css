@@ -187,8 +187,11 @@
   }
 
   .site-header__cta {
-    margin-top: 16px;
-    border-bottom: 1px solid #111111 !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 54px;
+    padding: 0 !important;
+    margin-top: 20px;
   }
 }
 
