@@ -10,3 +10,6 @@ backups/
 patch-*.sh
 
 runtime/
+
+# Customer handoff artifacts
+handoff/

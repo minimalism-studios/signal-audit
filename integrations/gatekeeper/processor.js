@@ -16,6 +16,12 @@ const {
   "../slack/formatter",
 );
 
+const {
+  createGatekeeperAcknowledgement,
+} = require(
+  "./acknowledgement",
+);
+
 function createGatekeeperProcessor({
   signalAuditService,
   signalHistory,
@@ -95,6 +101,8 @@ function createGatekeeperProcessor({
       existingSignal
       && existingSignal.state
         !== SIGNAL_STATES.FAILED
+      && existingSignal.state
+        !== SIGNAL_STATES.RECEIVED
     ) {
       return {
         historyId:
@@ -107,6 +115,12 @@ function createGatekeeperProcessor({
           existingSignal.analysis,
         duplicate:
           true,
+
+        acknowledgement:
+          createGatekeeperAcknowledgement({
+            historyRecord:
+              existingSignal,
+          }),
       };
     }
 
@@ -115,12 +129,28 @@ function createGatekeeperProcessor({
         signal,
         {
           existingHistoryRecord:
-            existingSignal?.state
-              === SIGNAL_STATES.FAILED
+            existingSignal
+            && (
+              existingSignal.state
+                === SIGNAL_STATES.FAILED
+              || existingSignal.state
+                === SIGNAL_STATES.RECEIVED
+            )
               ? existingSignal
               : null,
         },
       );
+
+    const acknowledgement =
+      createGatekeeperAcknowledgement({
+        historyRecord:
+          result.signal,
+      });
+
+    const resultWithAcknowledgement = {
+      ...result,
+      acknowledgement,
+    };
 
     const connection =
       connectionStore.getConnection(
@@ -134,7 +164,7 @@ function createGatekeeperProcessor({
       !slackOutput
       || slackOutput.enabled !== true
     ) {
-      return result;
+      return resultWithAcknowledgement;
     }
 
     if (
@@ -174,7 +204,7 @@ function createGatekeeperProcessor({
         );
 
       return {
-        ...result,
+        ...resultWithAcknowledgement,
         signal:
           updatedSignal,
       };
@@ -221,7 +251,7 @@ function createGatekeeperProcessor({
         );
 
       return {
-        ...result,
+        ...resultWithAcknowledgement,
         state:
           updatedSignal.state,
         signal:
@@ -257,7 +287,7 @@ function createGatekeeperProcessor({
         );
 
       return {
-        ...result,
+        ...resultWithAcknowledgement,
         state:
           updatedSignal.state,
         signal:
