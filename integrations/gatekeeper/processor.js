@@ -124,22 +124,74 @@ function createGatekeeperProcessor({
       };
     }
 
-    const result =
-      await processTelemetry(
-        signal,
-        {
-          existingHistoryRecord:
-            existingSignal
-            && (
-              existingSignal.state
-                === SIGNAL_STATES.FAILED
-              || existingSignal.state
-                === SIGNAL_STATES.RECEIVED
-            )
-              ? existingSignal
-              : null,
+    let result;
+
+    try {
+      result =
+        await processTelemetry(
+          signal,
+          {
+            existingHistoryRecord:
+              existingSignal
+              && (
+                existingSignal.state
+                  === SIGNAL_STATES.FAILED
+                || existingSignal.state
+                  === SIGNAL_STATES.RECEIVED
+              )
+                ? existingSignal
+                : null,
+          },
+        );
+    } catch (error) {
+      /*
+       * Ingestion and analysis are separate
+       * operational outcomes.
+       *
+       * createTelemetryProcessor persists the
+       * Gatekeeper signal before analysis and
+       * marks that durable record FAILED when
+       * analysis throws. Return the ingestion
+       * acknowledgement from that record while
+       * preserving explicit failure visibility.
+       */
+      const failedSignal =
+        signalHistory
+          .findByExternalReceipt({
+            connectionId:
+              signal.connectionId,
+            source:
+              "gatekeeper",
+            receiptId:
+              signal.receiptId,
+          });
+
+      if (!failedSignal) {
+        throw error;
+      }
+
+      return {
+        historyId:
+          failedSignal.id,
+        state:
+          failedSignal.state,
+        signal:
+          failedSignal,
+        auditResult:
+          failedSignal.analysis,
+        analysisFailed:
+          true,
+        processingError: {
+          message:
+            error.message,
         },
-      );
+        acknowledgement:
+          createGatekeeperAcknowledgement({
+            historyRecord:
+              failedSignal,
+          }),
+      };
+    }
 
     const acknowledgement =
       createGatekeeperAcknowledgement({
