@@ -52,11 +52,14 @@ app.use(
           "'self'",
           "https://www.youtube.com",
           "https://www.youtube-nocookie.com",
+          "https://www.googletagmanager.com",
         ],
         "connect-src": [
           "'self'",
           "https://www.youtube.com",
           "https://www.youtube-nocookie.com",
+          "https://www.google-analytics.com",
+          "https://*.google-analytics.com",
         ],
         "img-src": [
           "'self'",
