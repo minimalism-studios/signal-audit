@@ -207,6 +207,51 @@ function createSignalHistory({
     );
   }
 
+  function findByExternalEvent({
+    connectionId,
+    source,
+    eventId,
+  }) {
+    const normalizedConnectionId =
+      typeof connectionId === "string"
+        ? connectionId.trim()
+        : "";
+
+    const normalizedSource =
+      typeof source === "string"
+        ? source.trim().toLowerCase()
+        : "";
+
+    const normalizedEventId =
+      typeof eventId === "string"
+        ? eventId.trim()
+        : "";
+
+    if (
+      !normalizedConnectionId
+      || !normalizedSource
+      || !normalizedEventId
+    ) {
+      return null;
+    }
+
+    const records =
+      loadRecords();
+
+    return (
+      records.find(
+        (record) =>
+          record.connectionId
+            === normalizedConnectionId
+          && record.source?.toLowerCase()
+            === normalizedSource
+          && record.signal?.eventId
+            === normalizedEventId,
+      )
+      || null
+    );
+  }
+
   function resolveSignal(
     id,
     {
@@ -725,6 +770,7 @@ function createSignalHistory({
     saveSignal,
     getSignal,
     findByExternalReceipt,
+    findByExternalEvent,
     resolveSignal,
     updateSignal,
     listSignals,

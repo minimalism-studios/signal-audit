@@ -50,6 +50,7 @@ function normalizeGatekeeperSignal(
     firstDefined(
       payload.receiptId,
       payload.receipt_id,
+      payload.receipt?.receipt_id,
       payload.receipt?.id,
     ) || null;
 
@@ -232,6 +233,15 @@ function normalizeGatekeeperSignal(
      * authoritative. Signal Audit preserves them for
      * presentation, reconciliation, and acknowledgement.
      */
+    eventId:
+      payload.event_id || null,
+
+    eventType:
+      payload.event_type || null,
+
+    tenantId:
+      payload.tenant_id || null,
+
     benchmarkCaseId:
       payload.benchmark_case_id || null,
 
@@ -251,7 +261,10 @@ function normalizeGatekeeperSignal(
       payload.idempotency_key || null,
 
     correlationId:
-      payload.correlation_id || null,
+      firstDefined(
+        payload.correlation_id,
+        payload.trace?.correlation_id,
+      ) || null,
 
     requestId:
       payload.request_id || null,

@@ -172,9 +172,30 @@ app.use(
 );
 
 app.use(
-  express.json({
-    limit: "1mb",
-  }),
+  (req, res, next) => {
+    if (
+      req.originalUrl
+        ?.startsWith(
+          "/integrations/gatekeeper/webhook/",
+        )
+    ) {
+      /*
+       * Gatekeeper webhook bodies must remain
+       * unparsed until transport authentication
+       * has completed.
+       */
+      return next();
+    }
+
+    return express.json({
+      limit:
+        "1mb",
+    })(
+      req,
+      res,
+      next,
+    );
+  },
 );
 
 app.use(
@@ -547,6 +568,10 @@ const oasseServices =
     gatekeeperWebhookSecret:
       process.env
         .GATEKEEPER_WEBHOOK_SECRET,
+
+    gatekeeperWebhookSigningSecret:
+      process.env
+        .GATEKEEPER_WEBHOOK_SIGNING_SECRET,
 
     slackBotToken:
       process.env
@@ -1131,7 +1156,24 @@ app.post(
 
 app.post(
   "/integrations/gatekeeper/webhook/:connectionId",
+
+  express.raw({
+    type:
+      "application/json",
+    limit:
+      "1mb",
+  }),
+
   (req, res, next) => {
+    /*
+     * Gatekeeper transport authentication uses
+     * the exact HTTP request body bytes.
+     * Parsing occurs inside the webhook handler
+     * only after transport verification.
+     */
+    req.rawBody =
+      req.body;
+
     const {
       gatekeeperWebhookHandler:
         requestGatekeeperWebhookHandler,

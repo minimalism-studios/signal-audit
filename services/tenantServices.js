@@ -86,6 +86,7 @@ function createTenantServices({
   grafanaWebhookSecret,
   datadogWebhookSecret,
   gatekeeperWebhookSecret,
+  gatekeeperWebhookSigningSecret,
   slackBotToken,
 }) {
   if (!openai) {
@@ -264,7 +265,10 @@ function createTenantServices({
         processGatekeeperSignal,
       webhookSecret:
         gatekeeperWebhookSecret,
+      signingSecret:
+        gatekeeperWebhookSigningSecret,
       connectionStore,
+      signalHistory,
     });
 
   return Object.freeze({
