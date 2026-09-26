@@ -1732,7 +1732,52 @@ body.signal-interpreter-embed .site-footer {
   display: none !important;
 }
 
+/* SIGNAL INTERPRETER — DISPLAY TYPOGRAPHY */
+
+/* Results title: "AI ANALYSIS OF YOUR TELEMETRY" */
 .signal-results-header h1 {
-  font-size: 22px;
+  font-family: var(--sa-font-interpreter-heading) !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  line-height: 1.1;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+/* Input workflow headings: "PASTE YOUR LOGS", "ADD CONTEXT", "ANALYZE" */
+.signal-step h4 {
+  font-family: var(--sa-font-interpreter-heading) !important;
+  font-size: 13px;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+}
+
+/* Empty-state display heading */
+.signal-empty-state h3 {
+  font-family: var(--sa-font-interpreter-heading) !important;
+  font-size: 24px;
+  font-weight: 600 !important;
+  line-height: 1.15;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+/* Primary finding */
+.signal-primary-copy h3 {
+  font-family: var(--sa-font-interpreter-heading) !important;
+  font-size: 26px;
+  font-weight: 600 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em !important;
+}
+
+/* Analysis-card labels */
+.signal-insight-card h4,
+.signal-overview-card h4,
+.signal-raw-header h4 {
+  font-family: var(--sa-font-interpreter-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase;
 }
