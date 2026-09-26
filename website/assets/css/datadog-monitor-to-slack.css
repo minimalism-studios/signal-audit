@@ -10,7 +10,7 @@
   overflow-x: hidden;
   background: #ffffff;
   color: #111111;
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .pw002-page *,

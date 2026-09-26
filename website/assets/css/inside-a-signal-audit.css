@@ -51,7 +51,7 @@ body.tweak-transparent-header .header:not(.shrink):not(.transparent-header-theme
   clear: both;
   color: #f5f7fa;
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   overflow: hidden;
   position: relative;
   width: 100% !important;
@@ -872,7 +872,7 @@ section[data-section-id="6a160afdeacf3d51ef403392"]
   color: #050608;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-weight: 500;
   transition: all .2s ease;
 }

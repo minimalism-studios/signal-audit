@@ -228,7 +228,7 @@
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: arial, helvetica;
+  font-family: var(--sa-font-sans);
   font-weight: 500;
   transition: opacity .2s ease;
 }

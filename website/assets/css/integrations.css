@@ -49,7 +49,7 @@
   padding: 0 24px;
   border: 1px solid #111111;
   border-radius: 999px;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.76rem;
   font-weight: 700;
   line-height: 1;
@@ -158,7 +158,7 @@
   margin: 0;
   color: #111111;
   font-family: var(--heading-font-font-family);
-  font-size: 2em;
+  font-size: 4em !important;
   font-weight: 500;
   line-height: 0.91;
   letter-spacing: -0.07em;
@@ -169,7 +169,7 @@
   max-width: 680px;
   margin: 30px 0 0;
   color: rgba(17, 17, 17, 0.65);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   line-height: 1.65;
 }
@@ -242,7 +242,7 @@
 .integrations-hero__source small,
 .integrations-hero__source-status {
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .integrations-hero__source strong {
@@ -390,7 +390,7 @@
 .integrations-hero__destination strong,
 .integrations-hero__destination small {
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .integrations-hero__destination strong {
@@ -439,7 +439,7 @@
 .integrations-platform__copy p {
   margin: 0 0 22px;
   color: rgba(17, 17, 17, 0.64);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -478,7 +478,7 @@
   max-width: 700px;
   margin: 25px 0 0;
   color: rgba(17, 17, 17, 0.62);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -587,7 +587,7 @@
   align-items: center;
   gap: 8px;
   color: rgba(17, 17, 17, 0.60);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.65rem;
 }
 
@@ -623,7 +623,7 @@
 .integration-card__signal strong,
 .integration-card__signal span {
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .integration-card__signal small {
@@ -664,7 +664,7 @@
 .integration-card__workflow span,
 .integration-card__workflow strong {
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .integration-card__workflow span {
@@ -706,7 +706,7 @@
   max-width: 620px;
   margin: 20px 0 0;
   color: rgba(17, 17, 17, 0.61);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.94rem;
   line-height: 1.65;
 }
@@ -726,7 +726,7 @@
   border-radius: 10px;
   background: #fafafa;
   color: rgba(17, 17, 17, 0.64);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.68rem;
   line-height: 1.4;
 }
@@ -745,7 +745,7 @@
   align-items: center;
   gap: 12px;
   color: #111111;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.72rem;
   font-weight: 700;
   text-decoration: none;
@@ -761,7 +761,7 @@
 
 .integration-card__footer small {
   color: rgba(17, 17, 17, 0.60);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.57rem;
 }
 
@@ -839,7 +839,7 @@
 .integrations-capability p {
   margin: 18px 0 0;
   color: rgba(17, 17, 17, 0.58);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.85rem;
   line-height: 1.6;
 }
@@ -882,7 +882,7 @@
   max-width: 680px;
   margin: 25px 0 0;
   color: rgba(255, 255, 255, 0.61);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -914,7 +914,7 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.035);
   color: rgba(255, 255, 255, 0.67);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.68rem;
   text-align: center;
 }
@@ -937,7 +937,7 @@
 .integrations-extensibility__layer small,
 .integrations-extensibility__layer strong {
   display: block;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 .integrations-extensibility__layer small {
@@ -987,7 +987,7 @@
   max-width: 720px;
   margin: 28px auto 0;
   color: rgba(255, 255, 255, 0.64);
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -1078,7 +1078,7 @@
   .integrations-extensibility__copy h2,
   .integrations-cta h2 {
   }
-  .integrations-hero h1 { font-size: 2em; }
+  .integrations-hero h1 { font-size: 2em !important; }
 
   .integrations-hero__actions,
   .integrations-cta__actions {

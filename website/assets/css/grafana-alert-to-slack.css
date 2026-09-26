@@ -135,7 +135,7 @@
 .case-study-kicker {
   padding-top: 92px;
   margin-bottom: 24px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.72rem;
   line-height: 1.2;
   font-weight: 700;
@@ -197,7 +197,7 @@
   border-radius: 999px;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.06);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.74rem;
   line-height: 1;
   font-weight: 700;
@@ -241,7 +241,7 @@
   padding: 26px;
   box-sizing: border-box;
   background: rgba(13, 13, 13, 0.92);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.85rem;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.76);
@@ -400,7 +400,7 @@
 .case-flow-node span {
   display: block;
   margin-bottom: 21px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.61rem;
   line-height: 1;
   font-weight: 700;
@@ -418,7 +418,7 @@
 .case-flow-node li {
   padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.09);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.78rem;
   line-height: 1.35;
   font-weight: 700;
@@ -466,7 +466,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 1.25rem;
   color: var(--case-accent);
 }
@@ -557,7 +557,7 @@
   content: "Key Finding";
   display: block;
   margin-bottom: 25px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.61rem;
   line-height: 1;
   font-weight: 700;
@@ -597,7 +597,7 @@
 }
 
 .case-study-step > span {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 2rem;
   line-height: 1;
   letter-spacing: -0.06em;
@@ -679,7 +679,7 @@
   border: 1px solid var(--case-ink);
   border-radius: 999px;
   background: var(--case-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.68rem;
   line-height: 1;
   font-weight: 700;
@@ -710,7 +710,7 @@
 
 .founder-sales-cta__eyebrow {
   margin: 0 0 17px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.67rem;
   line-height: 1;
   font-weight: 700;
@@ -743,7 +743,7 @@
   padding: 0 25px;
   border-radius: 999px;
   background: var(--case-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.72rem;
   line-height: 1;
   font-weight: 700;
@@ -803,7 +803,7 @@
 .case-study-cta-kicker,
 .case-study-bottom-cta .case-study-cta-kicker {
   margin: 0 0 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.65rem;
   line-height: 1;
   font-weight: 700;
@@ -846,7 +846,7 @@
   border: 1px solid #ffffff;
   border-radius: 999px;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.72rem;
   line-height: 1;
   font-weight: 700;
@@ -885,7 +885,7 @@
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.72rem;
   line-height: 1;
   font-weight: 700;
@@ -914,7 +914,7 @@
 
 .case-study-page figcaption {
   margin-top: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.7rem;
   line-height: 1.5;
   color: var(--case-muted);
@@ -966,7 +966,7 @@
 
 .case-study-page th {
   background: var(--case-surface);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.68rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -1081,7 +1081,7 @@
 .grafana-signal-demo__grid small {
   display: block;
   margin-bottom: 7px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--sa-font-sans);
   font-size: 0.61rem;
   font-weight: 700;
   letter-spacing: 0.12em;

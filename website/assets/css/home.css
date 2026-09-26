@@ -2071,7 +2071,7 @@ article#sections .page-section:first-child .content-wrapper {
 
 .mini-recommendation strong{
   font-weight:500;
-  font-family: arial, "IBM Plex Sans", Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
   font-weight:600;
   font-size:18px;
   line-height:1.45;

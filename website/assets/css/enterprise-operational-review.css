@@ -28,7 +28,7 @@
   overflow: hidden;
   background: #050505;
   color: #050505;
-  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--sa-font-sans);
 }
 
 /* HERO */

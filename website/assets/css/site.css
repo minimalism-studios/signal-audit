@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@600&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@600&family=Google+Sans+Flex:opsz,wdth,wght@6..144,25..150,1..1000&display=swap');
 
 :root {
-  --sa-font-sans: "Manrope", Arial, Helvetica, sans-serif;
+  --sa-font-sans: "Google Sans Flex", Arial, Helvetica, sans-serif;
   --sa-font-heading: "Special Gothic Expanded One", Arial, Helvetica, sans-serif;
   --sa-font-mono: "IBM Plex Mono", "Courier New", monospace;
   --heading-font-font-family: var(--sa-font-heading);
@@ -422,7 +422,8 @@ html {
 }
 
 h3,
-h4 {
+h4,
+p {
   font-family: var(--sa-font-sans) !important;
 }
 
