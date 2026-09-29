@@ -10,6 +10,21 @@ function clean(value) {
   return String(value).trim();
 }
 
+function getPolicyId(policy) {
+  if (
+    policy
+    && typeof policy === "object"
+    && !Array.isArray(policy)
+  ) {
+    return clean(
+      policy.policy_id
+      || policy.policyId,
+    );
+  }
+
+  return clean(policy);
+}
+
 function formatSlackAuditMessage({
   signal,
   auditResult,
@@ -61,9 +76,14 @@ function formatSlackAuditMessage({
     `*Decision:* ${clean(signal.decision) || clean(signal.status) || "Unknown"}`,
   ];
 
-  if (clean(signal.policy)) {
+  const policyId =
+    getPolicyId(
+      signal.policy,
+    );
+
+  if (policyId) {
     lines.push(
-      `*Policy:* ${clean(signal.policy)}`,
+      `*Policy:* ${policyId}`,
     );
   }
 
