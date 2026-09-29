@@ -289,15 +289,6 @@ function createGatekeeperWebhookHandler({
     );
   }
 
-  if (
-    typeof webhookSecret !== "string"
-    || !webhookSecret.trim()
-  ) {
-    throw new Error(
-      "Gatekeeper webhook secret is required.",
-    );
-  }
-
   return async function gatekeeperWebhookHandler(
     req,
     res,
@@ -544,12 +535,28 @@ function createGatekeeperWebhookHandler({
       req.body =
         payload;
     } else {
+      if (
+        typeof webhookSecret
+          !== "string"
+        || !webhookSecret.trim()
+      ) {
+        console.error(
+          "Gatekeeper Bearer webhook secret is not configured.",
+        );
+
+        return res.status(503).json({
+          accepted:
+            false,
+          error:
+            "Bearer webhook transport is unavailable.",
+        });
+      }
+
       const authorization =
         req.get("authorization");
 
       if (
-        webhookSecret
-        && authorization
+        authorization
           !== `Bearer ${webhookSecret}`
       ) {
         return res.status(401).json({
