@@ -68,7 +68,10 @@
     if (!cta) return;
 
     const ctaName = cta.getAttribute('data-cta') || '';
-    const ctaText = getCleanText(cta);
+    const ctaText =
+      getCleanText(cta) ||
+      cta.getAttribute('aria-label') ||
+      '';
     const href = cta.getAttribute('href') || '';
 
     /*
