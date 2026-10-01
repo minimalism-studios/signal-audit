@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8D3780245"></script>
+  <script src="/assets/js/ga4.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Talk with Signal Audit about production alert noise, observability workflows, Grafana or Datadog integrations, and operational intelligence."
+  >
+
+  <link rel="canonical" href="https://signal-audit.com/contact">
+
+  <title>Contact Signal Audit | Start a Conversation</title>
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/contact.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+</head>
+
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo-dark.png"
+        alt=""
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="contact-page">
+
+  <section class="contact-hero" aria-labelledby="contact-title">
+    <div class="contact-hero__inner">
+
+      <p class="contact-eyebrow">Start a Conversation</p>
+
+      <h1 id="contact-title">
+        Tell us what you're seeing in production.
+      </h1>
+
+      <p class="contact-hero__lede">
+        Whether you're dealing with alert noise, unclear production signals,
+        observability workflow gaps, or evaluating Signal Audit for your
+        environment, give us a little context and we'll take it from there.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-section__inner">
+
+      <div class="contact-context">
+
+        <p class="contact-eyebrow">Signal Over Noise</p>
+
+        <h2>
+          Start with the operational problem.
+        </h2>
+
+        <p>
+          You don't need to prepare a formal brief. Tell us what's happening,
+          where your signals come from, and what your team is trying to
+          understand or improve.
+        </p>
+
+        <ul class="contact-context__items">
+          <li>
+            <strong>Observability integrations</strong>
+            <span>Grafana, Datadog, and production telemetry workflows.</span>
+          </li>
+
+          <li>
+            <strong>Alert noise and investigation</strong>
+            <span>Signals that consume engineering time without creating clarity.</span>
+          </li>
+
+          <li>
+            <strong>Operational intelligence</strong>
+            <span>Turning telemetry into context, risk, and recommended next actions.</span>
+          </li>
+
+          <li>
+            <strong>Enterprise review</strong>
+            <span>Broader observability, incident response, and operational workflow analysis.</span>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="contact-form-wrap">
+
+        <form
+          class="contact-form"
+          id="contactForm"
+          novalidate
+        >
+
+          <div class="contact-form__field">
+            <label for="contact-name">Name</label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              maxlength="120"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-email">Work email</label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-company">
+              Company
+              <span class="contact-form__optional">(optional)</span>
+            </label>
+            <input
+              id="contact-company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+              maxlength="160"
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-interest">
+              What would you like to discuss?
+              <span class="contact-form__optional">(optional)</span>
+            </label>
+
+            <select id="contact-interest" name="interest">
+              <option value="">Select an area</option>
+              <option value="grafana">Grafana integration</option>
+              <option value="datadog">Datadog integration</option>
+              <option value="alert-noise">Alert noise / investigation</option>
+              <option value="enterprise-review">Enterprise operational review</option>
+              <option value="signal-audit">Signal Audit</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-message">
+              What are you working through?
+            </label>
+
+            <textarea
+              id="contact-message"
+              name="message"
+              maxlength="4000"
+              required
+            ></textarea>
+          </div>
+
+          <input
+            type="hidden"
+            id="contact-source"
+            name="source"
+            value="/contact"
+          >
+
+          <div
+            class="contact-form__honeypot"
+            aria-hidden="true"
+          >
+            <label for="contact-website">
+              Website
+            </label>
+            <input
+              id="contact-website"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </div>
+
+          <button
+            class="contact-form__submit"
+            type="submit"
+            data-cta="contact_submit"
+          >
+            Start a Conversation
+          </button>
+
+          <p
+            class="contact-form__status"
+            id="contactFormStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/security">Security &amp; Architecture</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/site-header.js"></script>
+<script src="/assets/js/ga4-cta-click-tracking.js"></script>
+
+<script>
+  (function () {
+    const form =
+      document.getElementById("contactForm");
+
+    const submitButton =
+      form.querySelector(
+        ".contact-form__submit"
+      );
+
+    const status =
+      document.getElementById(
+        "contactFormStatus"
+      );
+
+    const sourceField =
+      document.getElementById(
+        "contact-source"
+      );
+
+    const sourceParameter =
+      new URLSearchParams(
+        window.location.search
+      ).get("source");
+
+    if (sourceParameter) {
+      sourceField.value =
+        sourceParameter;
+    }
+
+    form.addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
+
+        status.textContent = "";
+        status.className =
+          "contact-form__status";
+
+        if (!form.reportValidity()) {
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent =
+          "Sending...";
+
+        const formData =
+          new FormData(form);
+
+        const payload =
+          Object.fromEntries(
+            formData.entries()
+          );
+
+        try {
+          const response =
+            await fetch(
+              "/api/contact",
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json",
+                },
+
+                body:
+                  JSON.stringify(
+                    payload
+                  ),
+              }
+            );
+
+          const result =
+            await response
+              .json()
+              .catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(
+              result?.error?.message
+              || "We couldn't send your message right now."
+            );
+          }
+
+          form.reset();
+
+          sourceField.value =
+            sourceParameter
+            || "/contact";
+
+          status.textContent =
+            "Thanks. Your message has been sent. We'll be in touch.";
+
+          status.className =
+            "contact-form__status contact-form__status--success";
+
+          submitButton.textContent =
+            "Message Sent";
+        } catch (error) {
+          status.textContent =
+            error.message
+            || "We couldn't send your message right now. Please try again.";
+
+          status.className =
+            "contact-form__status contact-form__status--error";
+
+          submitButton.disabled = false;
+          submitButton.textContent =
+            "Start a Conversation";
+        }
+      }
+    );
+  })();
+</script>
+
+</body>
+</html>

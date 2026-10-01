@@ -4,6 +4,10 @@ const express = require("express");
 const helmet = require("helmet");
 const path = require("path");
 
+const {
+  createContactRouter,
+} = require("./routes/contact");
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -26,6 +30,7 @@ const pages = new Map([
   ["/integrations/datadog", "pages/integrations/datadog.html"],
   ["/product-walkthrough/datadog-monitor-to-slack", "pages/product-walkthrough/datadog-monitor-to-slack.html"],
   ["/security", "pages/security.html"],
+  ["/contact", "pages/contact/index.html"],
 ]);
 
 const redirects = new Map([
@@ -83,6 +88,28 @@ app.use((req, res, next) => {
 app.use(
   "/assets",
   express.static(path.join(websiteRoot, "assets"))
+);
+
+app.use(
+  express.json({
+    limit: "64kb",
+  })
+);
+
+const contactRouter =
+  createContactRouter({
+    isMarketingHost: () => true,
+
+    resendApiKey:
+      process.env.RESEND_API_KEY,
+
+    contactEmailTo:
+      process.env.CONTACT_EMAIL_TO,
+  });
+
+app.use(
+  "/api/contact",
+  contactRouter,
 );
 
 app.get("/sitemap.xml", (req, res) => {
