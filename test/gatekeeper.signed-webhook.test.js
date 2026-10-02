@@ -544,3 +544,478 @@ test(
     }
   },
 );
+
+
+test(
+  "accepts and preserves OASSE Gatekeeper v1.1 semantic envelope",
+  async () => {
+    const tempDirectory =
+      fs.mkdtempSync(
+        path.join(
+          os.tmpdir(),
+          "signal-audit-gatekeeper-v1-1-",
+        ),
+      );
+
+    try {
+      const signingSecret =
+        "test-oasse-signing-secret";
+
+      const connectionStore = {
+        getConnection(
+          connectionId,
+        ) {
+          assert.equal(
+            connectionId,
+            "oasse-gatekeeper",
+          );
+
+          return {
+            connectionId,
+            source:
+              "gatekeeper",
+
+            metadata: {
+              environment:
+                "staging",
+              webhookAuth:
+                "oasse-hmac-v1",
+            },
+
+            outputs: {},
+          };
+        },
+      };
+
+      const signalHistory =
+        createSignalHistory({
+          filePath:
+            path.join(
+              tempDirectory,
+              "signal-history.json",
+            ),
+        });
+
+      let processingAttempts = 0;
+
+      async function processSignal(
+        signal,
+      ) {
+        processingAttempts += 1;
+
+        const record =
+          signalHistory.saveSignal(
+            signal,
+          );
+
+        return {
+          historyId:
+            record.id,
+          state:
+            record.state,
+          signal:
+            record,
+        };
+      }
+
+      const handler =
+        createGatekeeperWebhookHandler({
+          processSignal,
+          signingSecret,
+          connectionStore,
+          signalHistory,
+        });
+
+      const payload =
+        createPayload({
+          eventId:
+            "gkwh-5123456789abcdef01234567",
+        });
+
+      payload.schema_version =
+        "oasse.signal_audit.webhook.v1.1";
+
+      payload.decision =
+        "HOLD";
+
+      payload.internal_outcome =
+        "ABSTAIN";
+
+      payload.semantics = {
+        authoritative_summary:
+          "Gatekeeper held the proposed action because sufficient authority or evidence was not available.",
+        execution_permitted:
+          false,
+        enforcement_effect:
+          "HOLD",
+        reason_code:
+          "ABSTAIN",
+        resolution_requirement:
+          "SUFFICIENT_AUTHORITY_OR_EVIDENCE",
+        owner:
+          "OASSE",
+        owner_team:
+          "Gatekeeper",
+      };
+
+      const request =
+        createRequest({
+          payload,
+          signingSecret,
+        });
+
+      const response =
+        createResponse();
+
+      await handler(
+        request,
+        response,
+      );
+
+      assert.equal(
+        response.statusCode,
+        202,
+      );
+
+      assert.equal(
+        response.body.accepted,
+        true,
+      );
+
+      assert.equal(
+        response.body.duplicate,
+        false,
+      );
+
+      assert.equal(
+        processingAttempts,
+        1,
+      );
+
+      const persisted =
+        signalHistory
+          .findByExternalEvent({
+            connectionId:
+              "oasse-gatekeeper",
+            source:
+              "gatekeeper",
+            eventId:
+              payload.event_id,
+          });
+
+      assert.ok(
+        persisted,
+      );
+
+      assert.equal(
+        persisted.signal.schemaVersion,
+        "oasse.signal_audit.webhook.v1.1",
+      );
+
+      assert.deepEqual(
+        persisted.signal.semantics,
+        payload.semantics,
+      );
+
+      assert.equal(
+        persisted.signal.authoritativeSummary,
+        payload.semantics
+          .authoritative_summary,
+      );
+
+      assert.equal(
+        persisted.signal.executionPermitted,
+        false,
+      );
+
+      assert.equal(
+        persisted.signal.enforcementEffect,
+        "HOLD",
+      );
+
+      assert.equal(
+        persisted.signal.reasonCode,
+        "ABSTAIN",
+      );
+
+      assert.equal(
+        persisted.signal.resolutionRequirement,
+        "SUFFICIENT_AUTHORITY_OR_EVIDENCE",
+      );
+
+      assert.equal(
+        persisted.signal.authoritativeOwner,
+        "OASSE",
+      );
+
+      assert.equal(
+        persisted.signal.authoritativeOwnerTeam,
+        "Gatekeeper",
+      );
+
+      /*
+       * Authoritative ownership must not overwrite
+       * Signal Audit's existing team interpretation.
+       */
+      assert.notEqual(
+        persisted.signal.team,
+        payload.semantics.owner_team,
+      );
+    } finally {
+      fs.rmSync(
+        tempDirectory,
+        {
+          recursive:
+            true,
+          force:
+            true,
+        },
+      );
+    }
+  },
+);
+
+test(
+  "rejects OASSE Gatekeeper v1.1 without semantic envelope",
+  async () => {
+    const tempDirectory =
+      fs.mkdtempSync(
+        path.join(
+          os.tmpdir(),
+          "signal-audit-gatekeeper-v1-1-invalid-",
+        ),
+      );
+
+    try {
+      const signingSecret =
+        "test-oasse-signing-secret";
+
+      const connectionStore = {
+        getConnection(
+          connectionId,
+        ) {
+          assert.equal(
+            connectionId,
+            "oasse-gatekeeper",
+          );
+
+          return {
+            connectionId,
+            source:
+              "gatekeeper",
+
+            metadata: {
+              environment:
+                "staging",
+              webhookAuth:
+                "oasse-hmac-v1",
+            },
+
+            outputs: {},
+          };
+        },
+      };
+
+      const signalHistory =
+        createSignalHistory({
+          filePath:
+            path.join(
+              tempDirectory,
+              "signal-history.json",
+            ),
+        });
+
+      let processingAttempts = 0;
+
+      const handler =
+        createGatekeeperWebhookHandler({
+          signingSecret,
+          connectionStore,
+          signalHistory,
+          processSignal:
+            async () => {
+              processingAttempts += 1;
+            },
+        });
+
+      const payload =
+        createPayload({
+          eventId:
+            "gkwh-6123456789abcdef01234567",
+        });
+
+      payload.schema_version =
+        "oasse.signal_audit.webhook.v1.1";
+
+      const request =
+        createRequest({
+          payload,
+          signingSecret,
+        });
+
+      const response =
+        createResponse();
+
+      await handler(
+        request,
+        response,
+      );
+
+      assert.equal(
+        response.statusCode,
+        400,
+      );
+
+      assert.equal(
+        processingAttempts,
+        0,
+      );
+
+      assert.equal(
+        signalHistory
+          .listAllSignals()
+          .length,
+        0,
+      );
+    } finally {
+      fs.rmSync(
+        tempDirectory,
+        {
+          recursive:
+            true,
+          force:
+            true,
+        },
+      );
+    }
+  },
+);
+
+test(
+  "rejects invalid OASSE Gatekeeper v1.1 semantic values",
+  async () => {
+    const tempDirectory =
+      fs.mkdtempSync(
+        path.join(
+          os.tmpdir(),
+          "signal-audit-gatekeeper-v1-1-values-",
+        ),
+      );
+
+    try {
+      const signingSecret =
+        "test-oasse-signing-secret";
+
+      const connectionStore = {
+        getConnection(
+          connectionId,
+        ) {
+          assert.equal(
+            connectionId,
+            "oasse-gatekeeper",
+          );
+
+          return {
+            connectionId,
+            source:
+              "gatekeeper",
+
+            metadata: {
+              environment:
+                "staging",
+              webhookAuth:
+                "oasse-hmac-v1",
+            },
+
+            outputs: {},
+          };
+        },
+      };
+
+      const signalHistory =
+        createSignalHistory({
+          filePath:
+            path.join(
+              tempDirectory,
+              "signal-history.json",
+            ),
+        });
+
+      let processingAttempts = 0;
+
+      const handler =
+        createGatekeeperWebhookHandler({
+          signingSecret,
+          connectionStore,
+          signalHistory,
+          processSignal:
+            async () => {
+              processingAttempts += 1;
+            },
+        });
+
+      const payload =
+        createPayload({
+          eventId:
+            "gkwh-7123456789abcdef01234567",
+        });
+
+      payload.schema_version =
+        "oasse.signal_audit.webhook.v1.1";
+
+      payload.semantics = {
+        authoritative_summary:
+          "Invalid semantic test.",
+        execution_permitted:
+          "false",
+        enforcement_effect:
+          "UNKNOWN",
+        reason_code:
+          "ABSTAIN",
+        resolution_requirement:
+          "SUFFICIENT_AUTHORITY_OR_EVIDENCE",
+      };
+
+      const request =
+        createRequest({
+          payload,
+          signingSecret,
+        });
+
+      const response =
+        createResponse();
+
+      await handler(
+        request,
+        response,
+      );
+
+      assert.equal(
+        response.statusCode,
+        400,
+      );
+
+      assert.equal(
+        processingAttempts,
+        0,
+      );
+
+      assert.equal(
+        signalHistory
+          .listAllSignals()
+          .length,
+        0,
+      );
+    } finally {
+      fs.rmSync(
+        tempDirectory,
+        {
+          recursive:
+            true,
+          force:
+            true,
+        },
+      );
+    }
+  },
+);

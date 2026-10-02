@@ -304,6 +304,50 @@ function normalizeGatekeeperSignal(
     schemaVersion:
       payload.schema_version || null,
 
+    /*
+     * OASSE Gatekeeper v1.1 semantic envelope.
+     *
+     * These values are authoritative Gatekeeper semantics.
+     * Signal Audit may interpret operational and business
+     * consequence around them, but must not rewrite them.
+     */
+    semantics:
+      payload.semantics
+      && typeof payload.semantics === "object"
+      && !Array.isArray(payload.semantics)
+        ? payload.semantics
+        : null,
+
+    authoritativeSummary:
+      payload.semantics?.authoritative_summary
+      || null,
+
+    executionPermitted:
+      typeof payload.semantics?.execution_permitted
+        === "boolean"
+        ? payload.semantics.execution_permitted
+        : null,
+
+    enforcementEffect:
+      payload.semantics?.enforcement_effect
+      || null,
+
+    reasonCode:
+      payload.semantics?.reason_code
+      || null,
+
+    resolutionRequirement:
+      payload.semantics?.resolution_requirement
+      || null,
+
+    authoritativeOwner:
+      payload.semantics?.owner
+      || null,
+
+    authoritativeOwnerTeam:
+      payload.semantics?.owner_team
+      || null,
+
     attributes:
       payload.attributes
       && typeof payload.attributes === "object"

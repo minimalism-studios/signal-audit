@@ -87,6 +87,79 @@ function formatSlackAuditMessage({
     );
   }
 
+  /*
+   * Gatekeeper v1.1 authoritative semantics.
+   *
+   * Keep Gatekeeper authority visibly separate
+   * from Signal Audit's operational interpretation.
+   */
+  const hasAuthoritativeSemantics =
+    clean(signal.authoritativeSummary)
+    || typeof signal.executionPermitted === "boolean"
+    || clean(signal.enforcementEffect)
+    || clean(signal.reasonCode)
+    || clean(signal.resolutionRequirement)
+    || clean(signal.authoritativeOwner)
+    || clean(signal.authoritativeOwnerTeam);
+
+  if (hasAuthoritativeSemantics) {
+    lines.push(
+      "",
+      "*Gatekeeper Authority*",
+    );
+
+    if (clean(signal.authoritativeSummary)) {
+      lines.push(
+        `*Summary:* ${clean(signal.authoritativeSummary)}`,
+      );
+    }
+
+    if (
+      typeof signal.executionPermitted
+        === "boolean"
+    ) {
+      lines.push(
+        `*Execution permitted:* ${
+          signal.executionPermitted
+            ? "Yes"
+            : "No"
+        }`,
+      );
+    }
+
+    if (clean(signal.enforcementEffect)) {
+      lines.push(
+        `*Enforcement effect:* ${clean(signal.enforcementEffect)}`,
+      );
+    }
+
+    if (clean(signal.reasonCode)) {
+      lines.push(
+        `*Reason:* ${clean(signal.reasonCode)}`,
+      );
+    }
+
+    if (clean(signal.resolutionRequirement)) {
+      lines.push(
+        `*Resolution requirement:* ${clean(signal.resolutionRequirement)}`,
+      );
+    }
+
+    const authoritativeOwner =
+      [
+        clean(signal.authoritativeOwner),
+        clean(signal.authoritativeOwnerTeam),
+      ]
+        .filter(Boolean)
+        .join(" / ");
+
+    if (authoritativeOwner) {
+      lines.push(
+        `*Authority owner:* ${authoritativeOwner}`,
+      );
+    }
+  }
+
   if (clean(finding.businessImpact)) {
     lines.push(
       `*Impact:* ${clean(finding.businessImpact)}`,

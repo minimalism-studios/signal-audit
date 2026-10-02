@@ -116,6 +116,22 @@ function validateOasseTimestamp(
 const OASSE_SCHEMA_VERSION =
   "oasse.signal_audit.webhook.v1";
 
+const OASSE_SCHEMA_VERSION_V1_1 =
+  "oasse.signal_audit.webhook.v1.1";
+
+const OASSE_SCHEMA_VERSIONS =
+  new Set([
+    OASSE_SCHEMA_VERSION,
+    OASSE_SCHEMA_VERSION_V1_1,
+  ]);
+
+const OASSE_ENFORCEMENT_EFFECTS =
+  new Set([
+    "PERMIT",
+    "HOLD",
+    "DENY",
+  ]);
+
 const OASSE_EVENT_TYPE =
   "gatekeeper.decision.finalized";
 
@@ -159,10 +175,79 @@ function validateOassePayload(
   }
 
   if (
-    payload.schema_version
-    !== OASSE_SCHEMA_VERSION
+    !OASSE_SCHEMA_VERSIONS.has(
+      payload.schema_version,
+    )
   ) {
     return "Invalid schema_version.";
+  }
+
+  if (
+    payload.schema_version
+    === OASSE_SCHEMA_VERSION_V1_1
+  ) {
+    if (
+      !isPlainObject(
+        payload.semantics,
+      )
+    ) {
+      return "Invalid semantics.";
+    }
+
+    const requiredSemanticStrings = [
+      "authoritative_summary",
+      "enforcement_effect",
+      "reason_code",
+      "resolution_requirement",
+    ];
+
+    for (
+      const field
+      of requiredSemanticStrings
+    ) {
+      if (
+        !isNonEmptyString(
+          payload.semantics[field],
+        )
+      ) {
+        return `Invalid semantics.${field}.`;
+      }
+    }
+
+    if (
+      typeof payload.semantics
+        .execution_permitted
+      !== "boolean"
+    ) {
+      return "Invalid semantics.execution_permitted.";
+    }
+
+    if (
+      !OASSE_ENFORCEMENT_EFFECTS.has(
+        payload.semantics
+          .enforcement_effect,
+      )
+    ) {
+      return "Invalid semantics.enforcement_effect.";
+    }
+
+    for (
+      const field
+      of [
+        "owner",
+        "owner_team",
+      ]
+    ) {
+      if (
+        payload.semantics[field]
+          !== undefined
+        && !isNonEmptyString(
+          payload.semantics[field],
+        )
+      ) {
+        return `Invalid semantics.${field}.`;
+      }
+    }
   }
 
   if (

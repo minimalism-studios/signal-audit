@@ -1,6 +1,60 @@
 function buildGatekeeperFindingPrompt(
   signal,
 ) {
+  const hasAuthoritativeSemantics =
+    signal
+    && signal.schemaVersion
+      === "oasse.signal_audit.webhook.v1.1"
+    && signal.semantics
+    && typeof signal.semantics === "object";
+
+  const semanticBoundary =
+    hasAuthoritativeSemantics
+      ? `
+Gatekeeper Semantic Authority:
+
+The supplied Gatekeeper semantic envelope is authoritative.
+
+Treat authoritativeSummary, executionPermitted, enforcementEffect,
+reasonCode, resolutionRequirement, authoritativeOwner, and
+authoritativeOwnerTeam as governance facts supplied by Gatekeeper.
+
+Do not contradict, weaken, strengthen, reinterpret, or replace those
+facts.
+
+In particular:
+
+- executionPermitted states whether Gatekeeper permits execution.
+- enforcementEffect states Gatekeeper's authoritative enforcement effect.
+- reasonCode explains the native Gatekeeper reason for that effect.
+- resolutionRequirement states the authoritative condition for resolution.
+- authoritativeSummary states Gatekeeper's authoritative description of
+  the governance result.
+- authoritativeOwner and authoritativeOwnerTeam identify ownership only
+  when Gatekeeper explicitly supplied them.
+
+A HOLD is an enforced non-authorization state when executionPermitted is
+false. Do not describe HOLD as a lack of enforcement or as permission to
+execute.
+
+ABSTAIN is a reason for the Gatekeeper result. Do not describe ABSTAIN as
+Gatekeeper abstaining from enforcement when enforcementEffect is HOLD.
+
+ALLOW means execution is permitted under the evaluated Gatekeeper
+governance state. Do not expand ALLOW into a universal compliance,
+security, or policy certification.
+
+BLOCK or DENY has governance impact because execution was denied. Do not
+require an outage or service failure before recognizing that governance
+impact.
+
+Signal Audit owns the operational interpretation around these facts:
+severity, correlation, investigation, remediation prioritization, and
+stakeholder presentation. It does not own or rewrite Gatekeeper's
+authoritative governance meaning.
+`
+      : "";
+
   return `
 You are Signal Audit, an operational intelligence system.
 
@@ -11,6 +65,8 @@ Analyze the following Gatekeeper governance decision as operational telemetry.
 
 Gatekeeper is authoritative for the governance decision and its receipt.
 Do not override, reinterpret, reverse, or second-guess Gatekeeper's decision.
+
+${semanticBoundary}
 
 Your job is to determine the operational significance of the event for
 engineering and operations teams.
