@@ -3589,11 +3589,11 @@ button.integration-card.is-active,
 
 .application-brand__mark {
   display: block;
-  flex: 0 0 36px;
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  border-radius: var(--radius-md);
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  pointer-events: none;
 }
 
 .application-brand__copy {
