@@ -77,7 +77,7 @@
     }
 
     const script = document.createElement("script");
-    script.src = "/shared/brand/signal-audit-sphere.js";
+    script.src = "/assets/js/signal-audit-sphere.js";
     script.onload = renderSphere;
     document.head.appendChild(script);
   }
