@@ -28,16 +28,9 @@ function buildAnalyticsPrompt({
   return `
 You are the Operational Analytics Intelligence workflow for Signal Audit.
 
-Your job is to analyze structured operational evidence and produce an executive-ready assessment of patterns, concentrations, recurrence, and operational change.
+Your job is to analyze structured operational evidence and produce only the interpretive portions of an executive-ready assessment of patterns, concentrations, recurrence, and operational change.
 
-This is not an Operational Performance Report.
-
-Operational Reporting answers:
-
-- what happened during the selected period
-- what exposure existed
-- what work was completed
-- what risk carried forward
+Signal Audit calculates canonical metrics, trends, patterns, correlations, and confidence deterministically. Do not reproduce those canonical structures in your response.
 
 Operational Analytics answers:
 
@@ -89,46 +82,23 @@ Do not include:
 - HTML
 - citations
 
-Preserve all canonical values exactly.
-
 JSON SCHEMA
 
 {
   "metadata": {
-    "analysisPeriod": {
-      "start": "ISO-8601 timestamp",
-      "end": "ISO-8601 timestamp",
-      "days": 7
-    },
-    "signalsAnalyzed": 0,
-    "services": 0,
-    "environments": 0,
-    "evidenceConfidence": "high | medium | low",
     "confidenceReason": "string"
   },
 
   "summary": {
     "headline": "string",
     "overview": "string",
-    "operationalPattern": "improving | stable | worsening | indeterminate",
     "primaryConcentration": "string or null",
     "materialInsight": "string or null"
   },
 
   "trendAnalysis": {
-    "direction": "improving | stable | worsening | indeterminate",
-    "summary": "string",
-    "signalVolumeChange": 0,
-    "materialSignalChange": 0,
-    "openExposureChange": 0
+    "summary": "string"
   },
-
-  "servicePatterns": [],
-  "environmentPatterns": [],
-  "severityPatterns": [],
-  "categoryPatterns": [],
-  "recurringPatterns": [],
-  "correlations": [],
 
   "concentrationRisks": [
     {
@@ -151,38 +121,11 @@ JSON SCHEMA
     "assessment": "string",
     "primaryRisk": "string or null",
     "nextAnalyticalPriority": "string",
-    "confidence": "high | medium | low",
     "confidenceReason": "string"
   }
 }
 
-CANONICAL FIELD RULES
-
-Copy these directly from the supplied evidence:
-
-- metadata.analysisPeriod
-- metadata.signalsAnalyzed
-- metadata.services
-- metadata.environments
-- trendAnalysis.direction
-- trendAnalysis.signalVolumeChange
-- trendAnalysis.materialSignalChange
-- trendAnalysis.openExposureChange
-- servicePatterns
-- environmentPatterns
-- severityPatterns
-- categoryPatterns
-- recurringPatterns
-- correlations
-
-Do not alter, summarize, reorder, or recalculate those canonical fields.
-
 ANALYTICAL RULES
-
-summary.operationalPattern
-
-- Use the supplied trend direction.
-- Use indeterminate when comparative evidence is insufficient.
 
 summary.primaryConcentration
 
@@ -193,6 +136,11 @@ summary.materialInsight
 
 - State the most consequential supported analytical observation.
 - Use null when the evidence is too sparse.
+
+trendAnalysis.summary
+
+- Explain the supplied canonical trend direction and changes.
+- Do not recalculate or contradict the canonical trend evidence.
 
 concentrationRisks
 
@@ -217,38 +165,21 @@ conclusion.nextAnalyticalPriority
 
 CONFIDENCE
 
-The canonical confidence level is supplied as:
+The canonical confidence level is supplied in:
 
 confidenceSignals.evidenceStrength
 
-Copy this value exactly into:
+Use the supplied confidence evidence to explain confidence in:
 
-- metadata.evidenceConfidence
-- conclusion.confidence
+- metadata.confidenceReason
+- conclusion.confidenceReason
 
-Do not independently increase or decrease it.
-
-Use high when:
-
-- the period contains broad signal coverage
-- multiple services or environments are represented
-- recurring or comparative evidence is consistent
-
-Use medium when:
-
-- useful patterns exist but coverage is limited
-
-Use low when:
-
-- evidence is sparse
-- only isolated signals exist
-- comparative conclusions are weak
+Do not independently increase or decrease the supplied confidence level.
 
 EMPTY-EVIDENCE BEHAVIOR
 
 When evidence is empty or insufficient:
 
-- use indeterminate for direction
 - use null for unsupported concentrations and risks
 - return empty analytical arrays where appropriate
 - do not describe missing telemetry as healthy operations
@@ -257,10 +188,10 @@ When evidence is empty or insufficient:
 SOURCE EVIDENCE
 
 ${JSON.stringify(
-  evidence,
-  null,
-  2,
-)}
+    evidence,
+    null,
+    2,
+  )}
 `.trim();
 }
 

@@ -320,21 +320,45 @@ function createOperationalAnalyticsIntelligence({
     let result =
       await createCompletion();
 
-    let content =
-      getResponseContent(result);
-
     let analytics;
 
     try {
-      analytics =
+      const content =
+        getResponseContent(result);
+
+      const interpretation =
         parseAnalyticsResult(
           content,
         );
+
+      analytics =
+        assembleOperationalAnalytics({
+          interpretation,
+          analysisPeriod,
+          canonicalMetrics,
+          trendEvidence,
+          servicePatterns,
+          environmentPatterns,
+          severityPatterns,
+          categoryPatterns,
+          recurringPatterns,
+          correlations,
+
+          evidenceConfidence:
+            evidence.confidenceSignals
+              .evidenceStrength,
+        });
 
       validateOperationalAnalytics(
         analytics,
       );
     } catch (error) {
+      if (isTruncatedCompletion(result)) {
+        throw new Error(
+          "Operational Analytics response exceeded the configured output token limit.",
+        );
+      }
+
       console.warn(
         "Operational Analytics validation failed. Retrying once.",
         error.message,
@@ -345,12 +369,12 @@ The previous Operational Analytics response failed validation:
 
 ${error.message}
 
-Regenerate the complete response as valid JSON.
+Regenerate the complete interpretive response as valid JSON.
 
 Requirements:
 
-- Use the exact JSON schema from the original prompt.
-- Preserve every canonical field exactly.
+- Use the exact interpretive JSON schema from the original prompt.
+- Do not reproduce canonical metrics, patterns, correlations, trend values, or confidence levels.
 - Do not invent signals, findings, services, environments, trends, causes, correlations, actions, or outcomes.
 - Use only supplied finding identifiers.
 - Return JSON only.
@@ -361,28 +385,44 @@ Requirements:
           retryInstruction,
         );
 
-      content =
+      if (isTruncatedCompletion(result)) {
+        throw new Error(
+          "Operational Analytics response exceeded the configured output token limit.",
+        );
+      }
+
+      const content =
         getResponseContent(
           result,
         );
 
-      analytics =
+      const interpretation =
         parseAnalyticsResult(
           content,
         );
+
+      analytics =
+        assembleOperationalAnalytics({
+          interpretation,
+          analysisPeriod,
+          canonicalMetrics,
+          trendEvidence,
+          servicePatterns,
+          environmentPatterns,
+          severityPatterns,
+          categoryPatterns,
+          recurringPatterns,
+          correlations,
+
+          evidenceConfidence:
+            evidence.confidenceSignals
+              .evidenceStrength,
+        });
 
       validateOperationalAnalytics(
         analytics,
       );
     }
-
-    analytics.metadata.evidenceConfidence =
-      evidence.confidenceSignals
-        .evidenceStrength;
-
-    analytics.conclusion.confidence =
-      evidence.confidenceSignals
-        .evidenceStrength;
 
     validateCanonicalFields({
       analytics,
@@ -1472,6 +1512,140 @@ function resolveFindingService(
       finding
         .affectedServices?.[0],
     )
+  );
+}
+
+function assembleOperationalAnalytics({
+  interpretation,
+  analysisPeriod,
+  canonicalMetrics,
+  trendEvidence,
+  servicePatterns,
+  environmentPatterns,
+  severityPatterns,
+  categoryPatterns,
+  recurringPatterns,
+  correlations,
+  evidenceConfidence,
+}) {
+  const normalizedEvidenceConfidence =
+    normalizeAnalyticsConfidence(
+      evidenceConfidence,
+    );
+
+  return {
+    metadata: {
+      analysisPeriod,
+      signalsAnalyzed:
+        canonicalMetrics
+          .signalsAnalyzed,
+      services:
+        canonicalMetrics.services,
+      environments:
+        canonicalMetrics
+          .environments,
+      evidenceConfidence:
+        normalizedEvidenceConfidence,
+      confidenceReason:
+        interpretation
+          ?.metadata
+          ?.confidenceReason,
+    },
+
+    summary: {
+      headline:
+        interpretation
+          ?.summary
+          ?.headline,
+      overview:
+        interpretation
+          ?.summary
+          ?.overview,
+      operationalPattern:
+        trendEvidence.direction,
+      primaryConcentration:
+        interpretation
+          ?.summary
+          ?.primaryConcentration,
+      materialInsight:
+        interpretation
+          ?.summary
+          ?.materialInsight,
+    },
+
+    trendAnalysis: {
+      direction:
+        trendEvidence.direction,
+      summary:
+        interpretation
+          ?.trendAnalysis
+          ?.summary,
+      signalVolumeChange:
+        trendEvidence
+          .signalVolumeChange,
+      materialSignalChange:
+        trendEvidence
+          .materialSignalChange,
+      openExposureChange:
+        trendEvidence
+          .openExposureChange,
+    },
+
+    servicePatterns,
+    environmentPatterns,
+    severityPatterns,
+    categoryPatterns,
+    recurringPatterns,
+    correlations,
+
+    concentrationRisks:
+      interpretation
+        ?.concentrationRisks,
+
+    leadershipInsights:
+      interpretation
+        ?.leadershipInsights,
+
+    conclusion: {
+      assessment:
+        interpretation
+          ?.conclusion
+          ?.assessment,
+      primaryRisk:
+        interpretation
+          ?.conclusion
+          ?.primaryRisk,
+      nextAnalyticalPriority:
+        interpretation
+          ?.conclusion
+          ?.nextAnalyticalPriority,
+      confidence:
+        normalizedEvidenceConfidence,
+      confidenceReason:
+        interpretation
+          ?.conclusion
+          ?.confidenceReason,
+    },
+  };
+}
+
+function normalizeAnalyticsConfidence(
+  evidenceConfidence,
+) {
+  if (evidenceConfidence === "moderate") {
+    return "medium";
+  }
+
+  return evidenceConfidence;
+}
+
+function isTruncatedCompletion(
+  result,
+) {
+  return (
+    result?.choices?.[0]
+      ?.finish_reason
+    === "length"
   );
 }
 

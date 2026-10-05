@@ -146,7 +146,15 @@ function renderLoadingState() {
     "";
 }
 
-function renderErrorState(message) {
+function renderErrorState(
+  message,
+  retry,
+) {
+  const workspaceTitle =
+    workspaceDefinitions[
+      state.activeWorkspace
+    ]?.title
+    ?? "Dashboard";
 
   leadershipBriefWorkspace.hidden = false;
   secondaryWorkspace.hidden = true;
@@ -157,11 +165,11 @@ function renderErrorState(message) {
       role="alert"
     >
       <p class="eyebrow">
-        Leadership Brief unavailable
+        ${escapeHtml(workspaceTitle)} unavailable
       </p>
 
       <h2>
-        Unable to load the brief
+        Unable to load ${escapeHtml(workspaceTitle)}
       </h2>
 
       <p>
@@ -182,7 +190,7 @@ function renderErrorState(message) {
     .querySelector("#retry-button")
     ?.addEventListener(
       "click",
-      loadLeadershipBrief,
+      retry,
     );
 }
 
@@ -244,6 +252,7 @@ async function loadLeadershipBrief() {
 
     renderErrorState(
       state.error,
+      loadLeadershipBrief,
     );
   } finally {
     state.isLoading = false;
@@ -313,6 +322,7 @@ async function loadOperationalReport() {
 
     renderErrorState(
       state.error,
+      loadOperationalReport,
     );
   } finally {
     state.isLoading = false;
@@ -381,6 +391,7 @@ async function loadOperationalAnalytics() {
 
     renderErrorState(
       state.error,
+      loadOperationalAnalytics,
     );
   } finally {
     state.isLoading = false;
@@ -449,6 +460,7 @@ async function loadOperationalForecast() {
 
     renderErrorState(
       state.error,
+      loadOperationalForecast,
     );
   } finally {
     state.isLoading = false;
