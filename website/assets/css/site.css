@@ -52,10 +52,12 @@
 
 .site-header__logo {
   display: block;
-  width: 100px;
-    height: 100px;
+  width: 75px;
+  height: 75px;
   object-fit: contain;
 }
+
+
 
 .site-header__nav {
   display: flex;
@@ -123,8 +125,8 @@
   }
 
   .site-header__logo {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
   }
 
   .site-header__menu-toggle {
