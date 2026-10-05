@@ -52,8 +52,8 @@
 
 .site-header__logo {
   display: block;
-  width: 54px;
-  height: 54px;
+  width: 100px;
+    height: 100px;
   object-fit: contain;
 }
 
@@ -123,8 +123,8 @@
   }
 
   .site-header__logo {
-    width: 48px;
-    height: 48px;
+    width: 100px;
+    height: 100px;
   }
 
   .site-header__menu-toggle {
@@ -205,7 +205,7 @@
 /* Brand wordmark */
 
 .site-header__brand {
-  gap: 12px;
+  gap: 4px;
   color: #111111;
   text-decoration: none;
 }
@@ -221,7 +221,7 @@
 
 @media (max-width: 860px) {
   .site-header__brand {
-    gap: 10px;
+    gap: 4px;
   }
 
   .site-header__brand-name {

@@ -41,4 +41,46 @@
       setMenu(false);
     }
   });
+
+  function initializeBrandSphere() {
+    const canvas = document.querySelector(
+      "[data-signal-audit-brand-sphere]"
+    );
+
+    if (!canvas) {
+      return;
+    }
+
+    function renderSphere() {
+      if (typeof window.SignalAuditSphere !== "function") {
+        return;
+      }
+
+      window.SignalAuditSphere({
+        canvas,
+        lineColor: "170, 170, 170",
+        nodeColor: "11, 13, 16",
+        nodeRadiusMax: 1.30,
+        nodeCount: 52,
+        rotationDuration:
+          window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches
+            ? 0
+            : 60000,
+      });
+    }
+
+    if (typeof window.SignalAuditSphere === "function") {
+      renderSphere();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "/shared/brand/signal-audit-sphere.js";
+    script.onload = renderSphere;
+    document.head.appendChild(script);
+  }
+
+  initializeBrandSphere();
 })();
