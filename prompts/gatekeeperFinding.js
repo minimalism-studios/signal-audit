@@ -41,8 +41,12 @@ ABSTAIN is a reason for the Gatekeeper result. Do not describe ABSTAIN as
 Gatekeeper abstaining from enforcement when enforcementEffect is HOLD.
 
 ALLOW means execution is permitted under the evaluated Gatekeeper
-governance state. Do not expand ALLOW into a universal compliance,
-security, or policy certification.
+governance state. Describe ALLOW as authorization under that evaluated
+governance state only. Do not characterize ALLOW as compliance or
+compliance with policy, and do not claim that the action is compliant,
+policy-compliant, free of policy violations, universally compliant,
+secure, or otherwise certified beyond the authoritative Gatekeeper
+semantics.
 
 BLOCK or DENY has governance impact because execution was denied. Do not
 require an outage or service failure before recognizing that governance

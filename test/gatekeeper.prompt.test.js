@@ -102,3 +102,65 @@ test(
     );
   },
 );
+
+test(
+  "Gatekeeper v1.1 ALLOW prompt does not broaden authorization into compliance",
+  () => {
+    const signal = {
+      source: "gatekeeper",
+      schemaVersion:
+        "oasse.signal_audit.webhook.v1.1",
+      decision: "allow",
+      internalOutcome: "ALLOW",
+      semantics: {
+        authoritative_summary:
+          "The proposed action passed the current OASSE governance path.",
+        execution_permitted: true,
+        enforcement_effect: "PERMIT",
+        reason_code: "ALLOW",
+        resolution_requirement: "NONE",
+      },
+      authoritativeSummary:
+        "The proposed action passed the current OASSE governance path.",
+      executionPermitted: true,
+      enforcementEffect: "PERMIT",
+      reasonCode: "ALLOW",
+      resolutionRequirement: "NONE",
+      authoritativeOwner: null,
+      authoritativeOwnerTeam: null,
+    };
+
+    const prompt =
+      buildGatekeeperFindingPrompt(signal);
+
+    assert.match(
+      prompt,
+      /Describe ALLOW as authorization under that evaluated\s+governance state only\./,
+    );
+
+    assert.match(
+      prompt,
+      /Do not characterize ALLOW as compliance or\s+compliance with policy/,
+    );
+
+    assert.match(
+      prompt,
+      /free of policy violations/,
+    );
+
+    assert.match(
+      prompt,
+      /"executionPermitted": true/,
+    );
+
+    assert.match(
+      prompt,
+      /"enforcementEffect": "PERMIT"/,
+    );
+
+    assert.match(
+      prompt,
+      /"reasonCode": "ALLOW"/,
+    );
+  },
+);
