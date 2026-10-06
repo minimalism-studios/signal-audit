@@ -171,6 +171,38 @@ app.use(
   }),
 );
 
+// Application hosts are product surfaces, not public search content.
+// Keep signal-audit.com indexable while explicitly preventing
+// app and tenant application surfaces from search-engine indexing.
+app.use(
+  (req, res, next) => {
+    if (!isMarketingHost(req)) {
+      res.set(
+        "X-Robots-Tag",
+        "noindex, nofollow",
+      );
+    }
+
+    return next();
+  },
+);
+
+app.get(
+  "/robots.txt",
+  (req, res, next) => {
+    if (isMarketingHost(req)) {
+      return next();
+    }
+
+    res
+      .type("text/plain")
+      .send(
+        "User-agent: *\n"
+        + "Disallow: /\n",
+      );
+  },
+);
+
 app.use(
   (req, res, next) => {
     if (
