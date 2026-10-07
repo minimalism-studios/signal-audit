@@ -52,9 +52,11 @@
 
 .site-header__logo {
   display: block;
-  width: 75px;
-  height: 75px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
+  border-radius: 50%;
+  border: dotted 5px #666;
 }
 
 
@@ -125,8 +127,8 @@
   }
 
   .site-header__logo {
-    width: 75px;
-    height: 75px;
+    width: 55px;
+    height: 55px;
   }
 
   .site-header__menu-toggle {
@@ -219,6 +221,9 @@
   line-height: 1;
   letter-spacing: -0.02em;
   white-space: nowrap;
+  font: 800 1.05em var(--sa-font-heading) !important;
+  margin-left: 5px;
+  text-transform: uppercase !important;
 }
 
 @media (max-width: 860px) {
@@ -227,7 +232,7 @@
   }
 
   .site-header__brand-name {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
