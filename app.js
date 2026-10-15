@@ -164,39 +164,6 @@ app.set(
   1,
 );
 
-// OASSE Vanguard Pilot — automatic access expiration.
-// October 21, 2026, 12:00 AM Pacific (07:00 UTC).
-// Does not delete data or modify other tenants.
-
-const OASSE_PILOT_EXPIRES_AT =
-  Date.parse("2026-10-21T07:00:00Z");
-
-app.use((req, res, next) => {
-  const tenantId =
-    resolveTenantIdFromHostname(req.hostname);
-
-  if (
-    tenantId !== "oasse" ||
-    Date.now() < OASSE_PILOT_EXPIRES_AT
-  ) {
-    return next();
-  }
-
-  // Keep the health endpoint available for monitoring.
-  if (req.path === "/health") {
-    return next();
-  }
-
-  res.set("Cache-Control", "no-store");
-
-  return res.status(403).json({
-    error: "pilot_expired",
-    message:
-      "The Signal Audit Vanguard Pilot has concluded. " +
-      "Access requires a new written agreement.",
-  });
-});
-
 app.use(
   helmet({
     contentSecurityPolicy:
@@ -317,6 +284,116 @@ app.use(
     },
   }),
 );
+
+// OASSE Vanguard Pilot — automatic expiration.
+// October 21, 2026, midnight Pacific (07:00 UTC).
+// Preserves Minimalism administrator access and pilot records.
+const OASSE_PILOT_EXPIRES_AT =
+  Date.parse("2026-10-21T07:00:00Z");
+
+const OASSE_OWNER_USERNAME =
+  "iam@minimalism.agency";
+
+function enforceOassePilotExpiration() {
+  if (Date.now() < OASSE_PILOT_EXPIRES_AT) {
+    return;
+  }
+
+  const users =
+    oasseServices.userStore.listUsers();
+
+  const owner = users.find(
+    (user) =>
+      user.username?.toLowerCase() === OASSE_OWNER_USERNAME
+      && user.role === "administrator"
+      && user.active === true,
+  );
+
+  if (!owner) {
+    throw new Error(
+      "OASSE pilot expiration: active Minimalism administrator not found.",
+    );
+  }
+
+  for (const user of users) {
+    if (!user.active || user.id === owner.id) {
+      continue;
+    }
+
+    oasseServices.userStore.deactivateUser({
+      userId: user.id,
+      actorUserId: owner.id,
+    });
+  }
+}
+
+app.use((req, res, next) => {
+  if (
+    resolveTenantIdFromHostname(req.hostname) !== "oasse"
+    || Date.now() < OASSE_PILOT_EXPIRES_AT
+  ) {
+    return next();
+  }
+
+  res.set("Cache-Control", "no-store");
+
+  if (req.path === "/health") {
+    return next();
+  }
+
+  // Block every integration webhook, including Gatekeeper.
+  if (req.path.startsWith("/integrations/")) {
+    return res.status(403).json({
+      error: "pilot_expired",
+      message: "The OASSE Vanguard Pilot has concluded.",
+    });
+  }
+
+  try {
+    enforceOassePilotExpiration();
+  } catch (error) {
+    console.error(
+      "OASSE pilot expiration enforcement failed:",
+      error,
+    );
+
+    return res.status(503).json({
+      error: "pilot_expiration_enforcement_failed",
+    });
+  }
+
+  // Keep authentication and login resources available
+  // so the Minimalism administrator can sign in.
+  if (
+    req.path === "/login"
+    || req.path.startsWith("/login-assets/")
+    || req.path.startsWith("/shared/")
+    || req.path === "/auth/login"
+    || req.path === "/auth/google"
+    || req.path === "/auth/google/config"
+    || req.path === "/auth/logout"
+  ) {
+    return next();
+  }
+
+  const currentUser =
+    oasseAuthenticationService.getCurrentUser(req);
+
+  if (
+    currentUser?.username?.toLowerCase() ===
+      OASSE_OWNER_USERNAME
+    && currentUser.role === "administrator"
+  ) {
+    return next();
+  }
+
+  return res.status(403).json({
+    error: "pilot_expired",
+    message:
+      "The OASSE Vanguard Pilot has concluded. " +
+      "Access requires a new written agreement.",
+  });
+});
 
 app.use(
   "/signal-interpreter",
@@ -1501,9 +1578,53 @@ app.use(
   },
 );
 
+// Enforce OASSE expiration at startup and at the cutoff.
+// Request-time enforcement remains the fallback.
+function scheduleOassePilotExpiration() {
+  const retryDelayMs = 60 * 1000;
+
+  function enforceWithRetry() {
+    try {
+      enforceOassePilotExpiration();
+      logger.info("oasse_pilot_expiration_enforced");
+    } catch (error) {
+      logger.error(
+        "oasse_pilot_expiration_failed",
+        {
+          message: error.message,
+          retryInMs: retryDelayMs,
+        },
+      );
+
+      setTimeout(enforceWithRetry, retryDelayMs);
+    }
+  }
+
+  const remainingMs =
+    OASSE_PILOT_EXPIRES_AT - Date.now();
+
+  if (remainingMs <= 0) {
+    enforceWithRetry();
+    return;
+  }
+
+  setTimeout(enforceWithRetry, remainingMs);
+}
+
 app.listen(
   PORT,
   () => {
+    try {
+      scheduleOassePilotExpiration();
+    } catch (error) {
+      logger.error(
+        "oasse_pilot_expiration_startup_failed",
+        {
+          message: error.message,
+        },
+      );
+    }
+
     logger.info(
       "service_started",
       {
