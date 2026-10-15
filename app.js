@@ -164,6 +164,39 @@ app.set(
   1,
 );
 
+// OASSE Vanguard Pilot — automatic access expiration.
+// October 21, 2026, 12:00 AM Pacific (07:00 UTC).
+// Does not delete data or modify other tenants.
+
+const OASSE_PILOT_EXPIRES_AT =
+  Date.parse("2026-10-21T07:00:00Z");
+
+app.use((req, res, next) => {
+  const tenantId =
+    resolveTenantIdFromHostname(req.hostname);
+
+  if (
+    tenantId !== "oasse" ||
+    Date.now() < OASSE_PILOT_EXPIRES_AT
+  ) {
+    return next();
+  }
+
+  // Keep the health endpoint available for monitoring.
+  if (req.path === "/health") {
+    return next();
+  }
+
+  res.set("Cache-Control", "no-store");
+
+  return res.status(403).json({
+    error: "pilot_expired",
+    message:
+      "The Signal Audit Vanguard Pilot has concluded. " +
+      "Access requires a new written agreement.",
+  });
+});
+
 app.use(
   helmet({
     contentSecurityPolicy:
