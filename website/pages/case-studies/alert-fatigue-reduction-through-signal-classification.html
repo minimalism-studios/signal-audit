@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8D3780245"></script>
+  <script src="/assets/js/ga4.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alert Fatigue Reduction Through Signal Classification | Signal Audit</title>
+  <meta name="description" content="How classifying production signals helped separate operational noise from meaningful alerts, improving engineering focus and response clarity.">
+  <link rel="canonical" href="https://signal-audit.com/case-studies/alert-fatigue-reduction-through-signal-classification">
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/alert-fatigue-reduction-through-signal-classification.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="case-study-page">
+
+  <div class="case-study-kicker">Case Study 003 / Alert Prioritization</div>
+
+  <h1>Alert Fatigue Reduction Through Signal Classification</h1>
+
+  <p class="case-study-subhead">
+    How classifying production signals helped separate operational noise from meaningful alerts, improving engineering focus and response clarity.
+  </p>
+
+  <div class="case-study-inline-cta">
+    <a href="/signal-interpreter" class="case-study-cta-button" data-cta="try_signal_interpreter">
+      Try Signal Interpreter
+    </a>
+  </div>
+
+  <div class="case-study-meta">
+    <div>
+      <strong>System Type</strong>
+      Enterprise production systems
+    </div>
+    <div>
+      <strong>Problem</strong>
+      Alert fatigue
+    </div>
+    <div>
+      <strong>Method</strong>
+      Signal classification
+    </div>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Overview</h2>
+    <p>
+      This case study focuses on reducing alert fatigue by classifying production signals according to operational meaning. Instead of treating every alert as equal, signals were grouped by severity, behavior, and response urgency.
+    </p>
+    <p>
+      The goal was to help engineering teams understand which alerts required immediate action, which needed monitoring, and which represented normal system noise.
+    </p>
+  </section>
+
+  <section class="case-study-flow-landscape" aria-label="Signal Audit case study summary">
+
+  <div class="case-flow-lane">
+
+    <div class="case-flow-node">
+      <span>Telemetry</span>
+      <ul>
+        <li>Alerts</li>
+        <li>Logs</li>
+        <li>Metrics</li>
+        <li>Traces</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node case-flow-node-dark">
+      <span>Signal Audit</span>
+      <ul>
+        <li>Pattern</li>
+        <li>Correlation</li>
+        <li>Risk</li>
+        <li>Recommendation</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Finding</span>
+      <strong>Persistent retry amplification</strong>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Outcome</span>
+      <strong>Reduced investigation scope</strong>
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="case-study-section">
+    <h2>The Problem</h2>
+    <p>
+      Production systems often generate more alerts than teams can reasonably interpret. When too many alerts fire without clear meaning, engineers begin to distrust the alerting system.
+    </p>
+    <p>
+      That creates operational risk. Critical signals can be missed because they appear alongside routine noise, expected behavior, or low-priority events.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      The issue was not a lack of alerts. The issue was a lack of interpretation.
+    </p>
+  </div>
+
+  <section class="case-study-section">
+    <h2>The Approach</h2>
+    <p>
+      Production signals were classified into operational categories based on urgency, persistence, and potential customer impact. This made it easier to separate high-value signals from lower-priority noise.
+    </p>
+    <p>
+      The classification model created a clearer escalation path so teams could focus attention where it mattered most.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Signal Categories</h2>
+    <p>
+      The alerting model organized signals into categories that reflected operational meaning instead of raw alert volume.
+    </p>
+
+    <div class="case-study-steps">
+      <div class="case-study-step">
+        <span>00</span>
+        <div>
+          <h3>Immediate signal</h3>
+          <p>Critical production behavior requiring immediate engineering attention.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>15</span>
+        <div>
+          <h3>Near-term signal</h3>
+          <p>Meaningful degradation that should be reviewed quickly before it grows into a larger issue.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>30</span>
+        <div>
+          <h3>Persistent pattern</h3>
+          <p>Signals that may not require immediate action but indicate behavior worth monitoring and validating.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>45</span>
+        <div>
+          <h3>Lower-priority noise</h3>
+          <p>Events that should be tracked but should not distract teams from more important operational risks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-study-mid-cta">
+    <p>
+      Want to see how a Signal Audit is structured from start to finish?
+    </p>
+
+    <a href="/inside-a-signal-audit" data-cta="view_full_audit">
+      Read Inside A Signal Audit →
+    </a>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Why Classification Worked</h2>
+    <p>
+      Classification helped turn alert volume into operational context. Instead of asking whether an alert fired, teams could ask what the alert meant and what level of response it deserved.
+    </p>
+    <p>
+      This made the alerting workflow more useful, more trusted, and more aligned with engineering decision-making.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Operational Workflow</h2>
+
+    <div class="case-study-steps">
+      <div class="case-study-step">
+        <span>01</span>
+        <div>
+          <h3>Collect signals</h3>
+          <p>Review alerts, telemetry, incidents, and production events across services.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+        <div>
+          <h3>Classify behavior</h3>
+          <p>Group signals by severity, persistence, frequency, and operational meaning.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+        <div>
+          <h3>Prioritize response</h3>
+          <p>Clarify which signals require immediate attention and which can be monitored over time.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+        <div>
+          <h3>Reduce noise</h3>
+          <p>Decrease distraction from low-value alerts so engineers can focus on meaningful production risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>How This Connects to Signal Audit</h2>
+    <p>
+      Signal Audit applies the same principle to modern observability environments: alerts are only valuable when teams understand what they mean and what action they should take next.
+    </p>
+    <p>
+      By reviewing telemetry, alerts, incidents, and operational patterns, Signal Audit helps engineering teams separate noise from meaningful system signals.
+    </p>
+  </section>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+
+      <p class="founder-sales-cta__eyebrow">
+        Seeing similar patterns in your environment?
+      </p>
+
+      <h2>
+        Talk directly with the creator of Signal Audit.
+      </h2>
+
+      <p>
+        Contact Signal Audit to discuss the operational patterns, observability gaps, and production risks hiding inside your telemetry before they become customer-facing incidents.
+      </p>
+
+      <a
+        href="/contact?source=/case-studies/alert-fatigue-reduction-through-signal-classification"
+        class="founder-sales-cta__button"
+        data-cta="schedule_signal_review"
+      >
+        Contact Signal Audit
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta">
+
+    <p class="case-study-cta-kicker">
+      Ready to reduce alert noise?
+    </p>
+
+    <h2>
+      Turn alert volume into operational clarity.
+    </h2>
+
+    <p>
+      Signal Audit helps teams classify production signals, reduce alert fatigue, and focus engineering attention on what matters most.
+    </p>
+
+    <a href="/contact?source=/case-studies/alert-fatigue-reduction-through-signal-classification" class="case-study-button" data-cta="book_signal_audit">
+      Contact Signal Audit
+    </a>
+
+  </section>
+
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+  <script src="/assets/js/ga4-cta-click-tracking.js"></script>
+</body>
+</html>

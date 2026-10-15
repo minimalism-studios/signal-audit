@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8D3780245"></script>
+  <script src="/assets/js/ga4.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OCP Migration Dark Mode Testing | Signal Audit</title>
+  <meta name="description" content="How dark mode testing helped validate production readiness, surface migration risk, and reduce uncertainty before moving critical systems to OpenShift.">
+  <link rel="canonical" href="https://signal-audit.com/case-studies/ocp-migration-dark-mode-testing">
+
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/ocp-migration-dark-mode-testing.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="case-study-page">
+
+  <div class="case-study-kicker">Case Study 002 / Migration Risk Detection</div>
+
+  <h1>OCP Migration Dark Mode Testing</h1>
+
+  <p class="case-study-subhead">
+    How dark mode testing helped validate production readiness, surface migration risk, and reduce uncertainty before moving critical systems to OpenShift.
+  </p>
+
+  <div class="case-study-inline-cta">
+    <a href="/signal-interpreter" class="case-study-cta-button" data-cta="try_signal_interpreter">
+      Try Signal Interpreter
+    </a>
+  </div>
+
+  <div class="case-study-meta">
+    <div>
+      <strong>System Type</strong>
+      Enterprise production systems
+    </div>
+    <div>
+      <strong>Migration</strong>
+      PCF to OpenShift
+    </div>
+    <div>
+      <strong>Method</strong>
+      Dark mode validation
+    </div>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Overview</h2>
+    <p>
+      This case study focuses on production migration readiness during a move from PCF to OpenShift. The work centered on understanding how systems behaved before cutover, while traffic patterns, platform behavior, and operational signals could still be safely evaluated.
+    </p>
+    <p>
+      The goal was not simply to move workloads. The goal was to reduce migration risk by identifying signals that could reveal instability, throttling, latency, or operational gaps before customers were affected.
+    </p>
+  </section>
+
+  <section class="case-study-flow-landscape" aria-label="Signal Audit case study summary">
+
+  <div class="case-flow-lane">
+
+    <div class="case-flow-node">
+      <span>Telemetry</span>
+      <ul>
+        <li>Alerts</li>
+        <li>Logs</li>
+        <li>Metrics</li>
+        <li>Traces</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node case-flow-node-dark">
+      <span>Signal Audit</span>
+      <ul>
+        <li>Pattern</li>
+        <li>Correlation</li>
+        <li>Risk</li>
+        <li>Recommendation</li>
+      </ul>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Finding</span>
+      <strong>Persistent retry amplification</strong>
+    </div>
+
+    <div class="case-flow-arrow">→</div>
+
+    <div class="case-flow-node">
+      <span>Outcome</span>
+      <strong>Reduced investigation scope</strong>
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="case-study-section">
+    <h2>The Problem</h2>
+    <p>
+      Large-scale platform migrations carry hidden risk. A system can appear ready from a deployment perspective while still exposing performance, reliability, or observability issues under real operational conditions.
+    </p>
+    <p>
+      Without a structured way to interpret signals during migration testing, teams can mistake silence for readiness or treat isolated noise as meaningful risk.
+    </p>
+  </section>
+
+  <div class="case-study-callout">
+    <p>
+      The risk was not the migration itself. The risk was moving forward without understanding what the system was already trying to reveal.
+    </p>
+  </div>
+
+  <section class="case-study-section">
+    <h2>The Approach</h2>
+    <p>
+      A dark mode testing process was used to observe system behavior before full production cutover. This allowed telemetry, service behavior, traffic patterns, and operational signals to be evaluated while reducing customer-facing risk.
+    </p>
+    <p>
+      The focus was on comparing expected behavior against emerging signals, identifying gaps in monitoring, and watching for degradation patterns that could indicate migration readiness concerns.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>What Was Monitored</h2>
+    <p>
+      The testing process focused on operational behavior that could affect production stability.
+    </p>
+
+    <div class="case-study-steps">
+      <div class="case-study-step">
+        <span>01</span>
+        <div>
+          <h3>Latency patterns</h3>
+          <p>Response behavior was reviewed to identify whether the new platform introduced slower or less predictable service performance.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+        <div>
+          <h3>Throttling signals</h3>
+          <p>System behavior was monitored for throttling conditions that could indicate capacity, configuration, or platform constraints.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+        <div>
+          <h3>Error behavior</h3>
+          <p>Failure patterns were reviewed to separate expected migration noise from signals that suggested real operational risk.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+        <div>
+          <h3>Observability coverage</h3>
+          <p>Monitoring gaps were identified so teams could understand where production blind spots might exist after migration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="case-study-mid-cta">
+    <p>
+      Want to see how a Signal Audit is structured from start to finish?
+    </p>
+
+    <a href="/inside-a-signal-audit" data-cta="view_full_audit">
+      Read Inside A Signal Audit →
+    </a>
+  </div>
+
+  <section class="case-study-section">
+    <h2>Why Dark Mode Testing Worked</h2>
+    <p>
+      Dark mode testing created a safer way to study system behavior before full exposure. Instead of waiting for customers or incidents to reveal problems, teams could observe production-like signals in advance.
+    </p>
+    <p>
+      This made it possible to distinguish between normal migration noise, platform behavior that needed tuning, and risk patterns that required engineering attention.
+    </p>
+  </section>
+
+  <section class="case-study-section">
+    <h2>Operational Workflow</h2>
+
+    <div class="case-study-steps">
+      <div class="case-study-step">
+        <span>01</span>
+        <div>
+          <h3>Mirror behavior</h3>
+          <p>System behavior was evaluated in a migration context before full customer-facing cutover.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>02</span>
+        <div>
+          <h3>Compare signals</h3>
+          <p>Telemetry and operational patterns were compared against expected baseline behavior.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>03</span>
+        <div>
+          <h3>Identify risk</h3>
+          <p>Latency, throttling, and observability gaps were reviewed to determine where migration risk existed.</p>
+        </div>
+      </div>
+
+      <div class="case-study-step">
+        <span>04</span>
+        <div>
+          <h3>Improve readiness</h3>
+          <p>Findings helped clarify whether the system was ready, where attention was needed, and what teams should validate before moving forward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study-section">
+    <h2>How This Connects to Signal Audit</h2>
+    <p>
+      Signal Audit applies the same principle to modern production systems: observe system behavior, identify meaningful signals, and clarify what needs engineering attention before risk becomes customer impact.
+    </p>
+    <p>
+      In migration contexts, Signal Audit helps teams understand whether their systems are stable, where observability gaps exist, and which signals suggest hidden operational risk.
+    </p>
+  </section>
+
+  <section class="founder-sales-cta">
+    <div class="founder-sales-cta__inner">
+
+      <p class="founder-sales-cta__eyebrow">
+        Seeing similar patterns in your environment?
+      </p>
+
+      <h2>
+        Talk directly with the creator of Signal Audit.
+      </h2>
+
+      <p>
+        Contact Signal Audit to discuss the operational patterns, observability gaps, and production risks hiding inside your telemetry before they become customer-facing incidents.
+      </p>
+
+      <a
+        href="/contact?source=/case-studies/ocp-migration-dark-mode-testing"
+        class="founder-sales-cta__button"
+        data-cta="schedule_signal_review"
+      >
+        Contact Signal Audit
+      </a>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta">
+
+    <p class="case-study-cta-kicker">
+      Ready to audit your own systems?
+    </p>
+
+    <h2>
+      Find migration risk before customers do.
+    </h2>
+
+    <p>
+      Signal Audit helps engineering teams review telemetry, incidents, alerts, and operational patterns so they can separate migration noise from meaningful production risk.
+    </p>
+
+    <a href="/contact?source=/case-studies/ocp-migration-dark-mode-testing" class="case-study-button" data-cta="book_signal_audit">
+      Contact Signal Audit
+    </a>
+
+  </section>
+
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="../../assets/js/site-header.js"></script>
+  <script src="/assets/js/ga4-cta-click-tracking.js"></script>
+</body>
+</html>
