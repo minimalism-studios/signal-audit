@@ -980,3 +980,24 @@ section[data-section-id="6a160afdeacf3d51ef403392"]
     font-size: 20px;
   }
 }
+
+/* Case Studies library link */
+.isa-case-studies__all {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.isa-case-studies__all a {
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #83b9ff;
+  color: #f5f7fa;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.isa-case-studies__all a:hover {
+  color: #83b9ff;
+}

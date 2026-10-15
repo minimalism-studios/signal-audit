@@ -19,6 +19,7 @@ const pages = new Map([
   ["/signal-interpreter", "pages/signal-interpreter.html"],
   ["/audit-submitted", "pages/audit-submitted.html"],
   ["/inside-a-signal-audit", "pages/inside-a-signal-audit.html"],
+  ["/case-studies", "pages/case-studies.html"],
   ["/pricing", "pages/pricing.html"],
   ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
   ["/case-studies/production-throttling-detection-during-ocp-migration", "pages/case-studies/production-throttling-detection-during-ocp-migration.html"],

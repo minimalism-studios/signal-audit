@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8D3780245"></script>
+  <script src="/assets/js/ga4.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Engineering Case Studies | Signal Audit</title>
+  <meta name="description" content="Explore six engineering case studies covering production observability, signal classification, platform migration, incident response, and AI reliability.">
+  <link rel="canonical" href="https://signal-audit.com/case-studies">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/case-studies.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="cs-page">
+  <section class="cs-hero">
+    <div class="cs-container">
+      <p class="cs-eyebrow">SIGNAL AUDIT / ENGINEERING CASE STUDIES</p>
+      <h1>Real systems.<br>Real complexity.<br><span>Clearer decisions.</span></h1>
+      <p class="cs-hero__description">
+        Engineering investigations into production behavior,
+        operational risk, observability, and the signals
+        that help teams understand what matters.
+      </p>
+      <div class="cs-hero__bottom">
+        <span>06 ENGINEERING STUDIES</span>
+        <a href="#studies">Explore the studies <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-library" id="studies" aria-label="Engineering case studies">
+    <div class="cs-container">
+      
+    <article class="cs-study" id="study-01">
+      <div class="cs-study__meta">
+        <span>01 / 06</span>
+        <span>SIGNAL CLASSIFICATION / MACHINE LEARNING</span>
+      </div>
+
+      <h2>Splunk MLTK BIRCH Signal Audit</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> Production microservices generated substantial telemetry, logs, and alerts, leaving engineers responsible for manually interpreting system behavior and determining which signals required attention.</p><p class="cs-field"><strong>Solution.</strong> Develop a machine-learning approach that classifies operational behavior rather than treating every anomaly as equally important.</p><p class="cs-field"><strong>Implementation.</strong> A cluster-based model was built using Splunk MLTK and the BIRCH algorithm. Telemetry patterns were grouped into five categories: Noise, Baseline, Spiky Signals, Persistent Degradation, and Critical Signals.</p><p class="cs-field"><strong>Findings.</strong> Behavioral clustering provided a way to distinguish routine activity from emerging degradation and clarify engineering escalation priorities. This approach became the technical foundation for Signal Audit.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/splunk-mltk-birch-signal-audit"
+        data-cta="case_study_01"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    <article class="cs-study" id="study-02">
+      <div class="cs-study__meta">
+        <span>02 / 06</span>
+        <span>PLATFORM MIGRATION / PRODUCTION READINESS</span>
+      </div>
+
+      <h2>OCP Migration Dark Mode Testing</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> Migrating production workloads from PCF to OpenShift introduced potential performance, reliability, and observability risks that might not be apparent from deployment readiness alone.</p><p class="cs-field"><strong>Solution.</strong> Use dark mode testing to examine system behavior before full production cutover.</p><p class="cs-field"><strong>Implementation.</strong> Evaluate production-like traffic patterns, latency, throttling, error behavior, and observability coverage against expected system behavior.</p><p class="cs-field"><strong>Findings.</strong> Dark mode testing provided an opportunity to identify migration risks and monitoring gaps before exposing customers to the new platform.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/ocp-migration-dark-mode-testing"
+        data-cta="case_study_02"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    <article class="cs-study" id="study-03">
+      <div class="cs-study__meta">
+        <span>03 / 06</span>
+        <span>OBSERVABILITY / ALERT PRIORITIZATION</span>
+      </div>
+
+      <h2>Alert Fatigue Reduction Through Signal Classification</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> High alert volumes made it difficult for engineers to distinguish urgent production problems from routine operational noise.</p><p class="cs-field"><strong>Solution.</strong> Classify alerts according to their operational significance, persistence, urgency, and potential customer impact.</p><p class="cs-field"><strong>Implementation.</strong> Organize production signals into immediate, near-term, persistent, and lower-priority categories to support more appropriate escalation decisions.</p><p class="cs-field"><strong>Findings.</strong> Classification created a clearer framework for prioritizing engineering attention and reducing distraction from low-value alerts.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/alert-fatigue-reduction-through-signal-classification"
+        data-cta="case_study_03"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    <article class="cs-study" id="study-04">
+      <div class="cs-study__meta">
+        <span>04 / 06</span>
+        <span>PRODUCTION RELIABILITY / HIDDEN DEGRADATION</span>
+      </div>
+
+      <h2>Production Throttling Detection During OCP Migration</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> During an OpenShift migration, subtle throttling, latency changes, and retry behavior could be mistaken for temporary migration noise despite indicating emerging production risk.</p><p class="cs-field"><strong>Solution.</strong> Interpret production telemetry in context to distinguish expected migration behavior from meaningful degradation.</p><p class="cs-field"><strong>Implementation.</strong> Review throttling events, latency patterns, retries, and platform constraints to identify where engineering investigation was warranted.</p><p class="cs-field"><strong>Findings.</strong> The analysis highlighted how production pressure can emerge before a visible outage and helped focus investigation on potentially consequential system behavior.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/production-throttling-detection-during-ocp-migration"
+        data-cta="case_study_04"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    <article class="cs-study" id="study-05">
+      <div class="cs-study__meta">
+        <span>05 / 06</span>
+        <span>INCIDENT RESPONSE / OPERATIONAL OWNERSHIP</span>
+      </div>
+
+      <h2>Incident Response and Operational Ownership</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> During production incidents, numerous alerts, dashboards, and competing explanations made it difficult to identify responsible teams and determine the next action.</p><p class="cs-field"><strong>Solution.</strong> Interpret operational signals through an ownership and escalation framework.</p><p class="cs-field"><strong>Implementation.</strong> Review service behavior, alert context, escalation paths, and incident history to distinguish meaningful indicators from noise and identify likely areas of responsibility.</p><p class="cs-field"><strong>Findings.</strong> Connecting signals to operational ownership provided a clearer basis for investigation, escalation, and engineering decisions.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/incident-response-and-operational-ownership"
+        data-cta="case_study_05"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    <article class="cs-study" id="study-06">
+      <div class="cs-study__meta">
+        <span>06 / 06</span>
+        <span>AI RELIABILITY / SYSTEMS THINKING</span>
+      </div>
+
+      <h2>AI Fails Silently: A Systems Perspective</h2>
+
+      <div class="cs-study__content">
+        <p class="cs-field"><strong>Challenge.</strong> AI systems can continue producing responses while delivering incomplete, misleading, or unsupported information, making failures difficult to detect through traditional availability monitoring.</p><p class="cs-field"><strong>Solution.</strong> Evaluate AI reliability through operational context, supporting evidence, and verification rather than trusting model output alone.</p><p class="cs-field"><strong>Implementation.</strong> Examine missing context, false confidence, operational mismatches, and verification gaps to determine when recommendations require additional evidence or human review.</p><p class="cs-field"><strong>Findings.</strong> AI reliability requires attention to the quality and grounding of outputs, not merely whether the underlying service remains operational.</p>
+      </div>
+
+      <a
+        class="cs-study__link"
+        href="/case-studies/ai-fails-silently-a-systems-perspective"
+        data-cta="case_study_06"
+      >Read Full Case Study <span aria-hidden="true">→</span></a>
+    </article>
+    
+    </div>
+  </section>
+
+  <section class="cs-closing">
+    <div class="cs-container">
+      <p class="cs-eyebrow">SIGNAL OVER NOISE</p>
+      <h2>What is your telemetry trying to tell you?</h2>
+      <p>
+        Explore how Signal Audit can help your engineering team
+        interpret operational signals and identify emerging risk.
+      </p>
+      <a
+        class="cs-closing__button"
+        href="/contact?source=/case-studies"
+        data-cta="case_studies_contact"
+      >Start a Conversation <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/js/site-header.js"></script>
+<script src="/assets/js/ga4-cta-click-tracking.js"></script>
+</body>
+</html>
