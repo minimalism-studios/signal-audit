@@ -22,7 +22,7 @@
 
 .cs-hero {
   position: relative;
-  padding: 150px 0 75px;
+  padding: 150px 0 25px;
   background:
     radial-gradient(ellipse at 82% 12%, rgba(51, 116, 207, .13), transparent 48%),
     #050608;
