@@ -11066,3 +11066,64 @@ body.si-modal-open #header {
     transition: none;
   }
 }
+
+/* Engineering in Practice — Case Studies */
+.home-case-studies {
+  background: #050608;
+  padding: clamp(72px, 8vw, 120px) 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.home-case-studies__inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.home-case-studies__eyebrow {
+  margin: 0 0 20px;
+  color: #83b9ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-case-studies h2 {
+  margin: 0 0 24px;
+  color: #f5f7fa;
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.home-case-studies__description {
+  max-width: 660px;
+  margin: 0 0 32px;
+  color: #aab3c2;
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.7;
+}
+
+.home-case-studies__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #83b9ff;
+  color: #f5f7fa;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home-case-studies__link:hover {
+  color: #83b9ff;
+}
+
+@media (max-width: 640px) {
+  .home-case-studies {
+    padding: 72px 20px;
+  }
+}
