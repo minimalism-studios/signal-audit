@@ -1,0 +1,102 @@
+
+/*
+ * OASSE × Signal Audit — Vanguard Pilot
+ * Case Study 007
+ *
+ * Uses the shared Signal Audit case study stylesheet.
+ * Draft for mutual approval; not yet approved for publication.
+ */
+
+.case-study-page--007 {
+  --case-accent: #83b9ff;
+  --case-accent-soft: rgba(131, 185, 255, 0.13);
+}
+
+.case-study-page--007 > h1 {
+  max-width: 1200px;
+}
+
+.case-study-page--007 .oasse-flow {
+  grid-template-columns:
+    minmax(0, 1fr) auto minmax(0, 1fr)
+    auto minmax(0, 1fr);
+}
+
+.case-study-page--007 .oasse-flow .case-flow-node {
+  min-height: 300px;
+}
+
+.oasse-validation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 45px;
+}
+
+.oasse-validation-card {
+  min-width: 0;
+  padding: 36px;
+  border: 1px solid var(--case-border);
+  border-radius: 22px;
+  background: var(--case-surface);
+}
+
+.oasse-validation-card > span {
+  display: block;
+  margin-bottom: 30px;
+  font-family: var(--sa-font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--case-muted);
+}
+
+.oasse-validation-card > strong {
+  display: block;
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  color: var(--case-ink);
+}
+
+.oasse-validation-card h3 {
+  margin: 0 0 15px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--case-ink);
+}
+
+.oasse-validation-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--case-copy);
+}
+
+@media (max-width: 1100px) {
+  .case-study-page--007 .oasse-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-page--007 .oasse-flow .case-flow-node {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .oasse-validation-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .oasse-validation-card {
+    padding: 26px;
+  }
+
+  .case-study-page--007 > h1 {
+    text-align: left;
+  }
+}
