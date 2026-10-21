@@ -27,6 +27,7 @@ const pages = new Map([
   ["/case-studies/incident-response-and-operational-ownership", "pages/case-studies/incident-response-and-operational-ownership.html"],
   ["/case-studies/alert-fatigue-reduction-through-signal-classification", "pages/case-studies/alert-fatigue-reduction-through-signal-classification.html"],
   ["/case-studies/ai-fails-silently-a-systems-perspective", "pages/case-studies/ai-fails-silently-a-systems-perspective.html"],
+    ["/case-studies/oasse-vanguard-pilot", "pages/case-studies/oasse-vanguard-pilot.html"],
   ["/faq", "pages/faq.html"],
   ["/signal-audit-slack", "pages/signal-audit-slack.html"],
   ["/enterprise-operational-review", "pages/enterprise-operational-review.html"],
