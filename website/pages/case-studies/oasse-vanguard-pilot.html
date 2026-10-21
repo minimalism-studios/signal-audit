@@ -97,6 +97,8 @@
     </div>
   </div>
 
+  <div class="oasse-challenge-layout">
+    <div class="oasse-challenge-content">
   <section class="case-study-section">
     <h2>The Business Challenge</h2>
 
@@ -120,6 +122,29 @@
       responsibilities without compromising decision integrity.
     </p>
   </section>
+    </div>
+  <div class="oasse-partner-logos" aria-label="Vanguard Pilot collaborators">
+    <div class="oasse-partner-logo">
+      <img
+        src="/assets/images/gatekeeper-logo-with-name-orange-stacked.png"
+        alt="Gatekeeper by Oak &amp; Sparrow Systems Enterprise"
+        width="698"
+        height="518"
+        loading="lazy"
+      >
+    </div>
+    <div class="oasse-partner-logo">
+      <img
+        src="/assets/images/signal-audit-marketing-logo-with-title.png"
+        alt="Signal Audit by Minimalism"
+        width="3596"
+        height="4059"
+        loading="lazy"
+      >
+    </div>
+  </div>
+
+  </div>
 
   <section class="case-study-flow-landscape"
            aria-label="Gatekeeper and Signal Audit responsibility boundary">
@@ -201,7 +226,7 @@
 
     <p>
       When Joshua Johosky subsequently resolved the investigation, the
-      underlying state changed and the executive view updated in real time.
+      underlying state changed and the executive view updated.
       Gatekeeper remained the source of decision authority; Signal Audit
       made the consequences accessible to a different audience.
     </p>
@@ -219,7 +244,8 @@
 
     <p>
       The team treated transport acceptance, semantic correctness, and
-      executive comprehension as separate proof obligations. A successful
+      executive comprehension as separate proof obligations. Ten preliminary
+      receiver tests were separate from the 1,000-case corpus. A successful
       HTTP response alone was not considered proof of downstream
       interpretation or presentation.
     </p>
@@ -231,8 +257,9 @@
         <strong>1,000 / 1,000</strong>
         <h3>Receipt Recovery</h3>
         <p>
-          All 1,000 receipts were retrieved after an API restart. Native
-          outcomes were preserved, idempotency was checked, and a tested
+          The retained handoff corpus contained 1,000 unique cases. All 1,000
+          receipts were recovered after an API restart. Native outcomes
+          were preserved, idempotency was checked, and a tested
           cross-tenant receipt read returned NOT_FOUND.
         </p>
       </article>
@@ -242,9 +269,10 @@
         <strong>20 cases</strong>
         <h3>Signed Webhook</h3>
         <p>
-          Five cases each from native ALLOW, BLOCK, REVIEW, and ABSTAIN
-          were checked for identity, signed delivery, sanitization,
-          replay deduplication, and clean outbox behavior.
+          A separate checkpoint used 20 frozen cases, five each from native
+          ALLOW, BLOCK, REVIEW, and ABSTAIN, against a local mock receiver.
+          It checked signed delivery, identity, sanitization, replay
+          deduplication, and outbox state.
         </p>
       </article>
 
@@ -264,9 +292,11 @@
         <strong>4 live cases</strong>
         <h3>Semantic v1.1 Panel</h3>
         <p>
-          Fresh ALLOW, REVIEW, ABSTAIN, and BLOCK cases were reviewed.
-          The final partner review reported no discrepancies in decision,
-          native outcome, resolution requirement, or identifiers.
+          A separate four-case live semantic v1.1 panel covered ALLOW,
+          REVIEW, ABSTAIN, and BLOCK.
+          The final Signal Audit review reported no discrepancy in the
+          authoritative decision, native outcome, resolution
+          requirement or identifiers.
         </p>
       </article>
 
@@ -341,7 +371,9 @@
     <p>
       The integration used the FAM pilot adapter. This case study
       does not claim migration of that path to the later Gatekeeper
-      V2 runtime.
+      V2 runtime. The tested semantic BLOCK correction passed live-panel
+      and repository validation on its tested commit. These results
+      do not establish a main-branch merge or production cutover.
     </p>
 
     <p>
