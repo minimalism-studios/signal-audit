@@ -1,0 +1,17 @@
+/* PARTNER & REFERRAL BRIEF — SIGNAL AUDIT */
+/* Shared layout and typography: case-studies.css */
+
+.partner-page__quote {
+  padding-left: 28px;
+  border-left: 2px solid #83b9ff;
+  color: #f5f7fa;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .partner-page__quote {
+    padding-left: 18px;
+  }
+}
