@@ -1347,6 +1347,7 @@ const marketingPages =
     ["/audit-submitted", "pages/audit-submitted.html"],
     ["/inside-a-signal-audit", "pages/inside-a-signal-audit.html"],
     ["/pricing", "pages/pricing.html"],
+    ["/case-studies", "pages/case-studies.html"],
     ["/partners", "pages/partners.html"],
     ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
     ["/case-studies/production-throttling-detection-during-ocp-migration", "pages/case-studies/production-throttling-detection-during-ocp-migration.html"],
