@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8D3780245"></script>
+  <script src="/assets/js/ga4.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>From Signals to Decisions | Signal Audit</title>
+  <meta name="description" content="Explore how evidence provenance, contextual reasoning, uncertainty, and human judgment make AI-assisted operational interpretations more trustworthy.">
+  <link rel="canonical" href="https://signal-audit.com/whitepapers/from-signals-to-decisions">
+
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/whitepaper-article.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "From Signals to Decisions",
+  "alternativeHeadline": "Designing trustworthy AI-assisted operational intelligence through evidence, context, and human judgment.",
+  "description": "Explore how evidence provenance, contextual reasoning, uncertainty, and human judgment make AI-assisted operational interpretations more trustworthy.",
+  "url": "https://signal-audit.com/whitepapers/from-signals-to-decisions",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Minimalism LLC",
+    "url": "https://minimalism.agency"
+  },
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "name": "Signal Audit Research Library",
+    "url": "https://signal-audit.com/whitepapers"
+  },
+  "datePublished": "2026-10-22"
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<main class="wp-page">
+  <section class="wp-hero">
+    <div class="wp-container">
+      <p class="wp-eyebrow">SIGNAL AUDIT RESEARCH / WHITEPAPER 003</p>
+
+      <h1>From Signals to Decisions</h1>
+
+      <p class="wp-subtitle">Designing trustworthy AI-assisted operational intelligence through evidence, context, and human judgment.</p>
+
+      <div class="wp-meta">
+        <span>Signal Audit Research</span>
+        <span>Published by Minimalism LLC</span>
+        <span>October 22, 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wp-container wp-layout">
+    <nav class="wp-toc" aria-label="Whitepaper contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#executive-summary">00 — Executive Summary</a></li>
+    <li><a href="#interpretation-gap">01 — The Interpretation-to-Decision Gap</a></li>
+    <li><a href="#evidence">02 — Evidence Before Explanation</a></li>
+    <li><a href="#context">03 — Context, Correlation, and Causality</a></li>
+    <li><a href="#uncertainty">04 — Uncertainty and Confidence</a></li>
+    <li><a href="#human-judgment">05 — Human Judgment and Decision Authority</a></li>
+    <li><a href="#evaluation">06 — Evaluating Interpretation Quality</a></li>
+    <li><a href="#decision-framework">07 — An Operational Decision Framework</a></li>
+    <li><a href="#conclusion">08 — Conclusion</a></li>
+    <li><a href="#references">09 — References</a></li>
+  </ol>
+</nav>
+
+    <article class="wp-article">
+<section class="wp-section" id="executive-summary">
+  <span class="wp-section-number">00 / RESEARCH</span>
+  <h2>Executive Summary</h2>
+
+  <p>
+    Modern operational environments generate extensive telemetry:
+    metrics, logs, traces, alerts, and events. These records reveal
+    aspects of system behavior, but they do not automatically establish
+    what an operator should conclude or do. The introduction of
+    AI-assisted interpretation creates an opportunity to connect
+    technical evidence with human decisions. It also creates a new
+    reliability problem: an explanation can sound convincing without
+    being adequately supported.
+  </p>
+
+  <div class="wp-thesis">
+    <p>
+      An operational interpretation is not a decision. It is an
+      evidence-grounded explanation intended to help a responsible
+      person make a better decision.
+    </p>
+  </div>
+
+  <p>
+    This paper proposes a framework for evaluating the trustworthiness
+    of AI-assisted operational interpretations. It considers the
+    provenance of evidence, contextual relevance, uncertainty,
+    decision authority, and measurable interpretation quality.
+    These requirements complement established reliability practices
+    and the emphasis on trustworthy AI risk management in the
+    NIST AI Risk Management Framework
+    <a href="#ref-1" aria-label="Reference 1">[1]</a>.
+  </p>
+
+  <p>
+    The central argument is that usefulness alone is insufficient.
+    An interpretation must also be traceable, appropriately qualified,
+    and safe to challenge. A recommendation that saves time but
+    misrepresents evidence may make an operational response worse.
+    Conversely, a concise explanation that identifies what is known,
+    what remains uncertain, and what to investigate next can improve
+    judgment without claiming authority it does not possess.
+  </p>
+
+  <p>
+    The framework presented here is a research proposal. It is not
+    a claim that every described evaluation, correlation, or
+    decision-support capability is currently implemented in
+    Signal Audit.
+  </p>
+</section>
+
+<section class="wp-section" id="interpretation-gap">
+  <span class="wp-section-number">01 / RESEARCH</span>
+  <h2>The Interpretation-to-Decision Gap</h2>
+
+  <h3>Observation Does Not Determine Action</h3>
+  <p>
+    Consider a production service whose request latency exceeds
+    an alert threshold. The alert establishes that a monitored
+    condition occurred. It does not, by itself, establish the
+    underlying cause, customer impact, or appropriate response.
+    The same symptom may accompany resource contention,
+    dependency degradation, increased traffic, or a deployment
+    regression.
+  </p>
+  <p>
+    An AI-generated explanation can reduce the effort required to
+    organize available evidence. But the explanation is a new
+    analytical artifact, not an additional observation of the
+    system. Its claims must therefore be evaluated separately
+    from the telemetry that prompted it.
+  </p>
+
+  <h3>Three Distinct Responsibilities</h3>
+  <p>
+    Operational decision-making benefits from separating three
+    activities. Monitoring establishes observable conditions.
+    Interpretation describes their potential significance.
+    Decision-making determines what action, if any, should follow.
+    Combining these activities without explicit boundaries can
+    turn an uncertain interpretation into an unjustified action.
+  </p>
+
+  <h3>Decision Relevance</h3>
+  <p>
+    A technically accurate summary may still be operationally
+    unhelpful. Repeating that latency exceeded a threshold adds
+    little if the alert already states that fact. A useful
+    interpretation identifies the relevant context, the likely
+    scope of impact, evidence that supports or contradicts
+    candidate explanations, and the next question worth answering.
+  </p>
+  <p>
+    Google's SRE guidance emphasizes actionable monitoring and
+    alerting tied to service reliability objectives
+    <a href="#ref-4" aria-label="Reference 4">[4]</a>.
+    AI-assisted interpretation should be assessed against the
+    same practical concern: whether information helps operators
+    recognize and respond to meaningful conditions.
+  </p>
+</section>
+
+<section class="wp-section" id="evidence">
+  <span class="wp-section-number">02 / RESEARCH</span>
+  <h2>Evidence Before Explanation</h2>
+
+  <h3>Provenance as a Design Requirement</h3>
+  <p>
+    Every material claim in an operational interpretation should
+    be attributable to identifiable evidence. Relevant attributes
+    include source system, event identifier, timestamp, environment,
+    service, observed measurement, threshold, and available
+    correlation identifiers. The exact fields depend on the
+    monitoring integration and the event type.
+  </p>
+  <p>
+    Provenance makes a finding reviewable. An operator should be
+    able to distinguish a value received from a monitoring system
+    from a conclusion generated by an interpretation model.
+    Where source evidence is unavailable, the interpretation
+    should disclose that limitation rather than fabricate a
+    supporting record.
+  </p>
+
+  <h3>Evidence Completeness</h3>
+  <p>
+    An alert payload may contain a metric value and threshold
+    without including deployment history, request traces,
+    dependency health, or customer-impact measurements.
+    Such an event may support a statement that a threshold was
+    exceeded, but not a definitive explanation of why.
+  </p>
+  <p>
+    The appropriate response to incomplete evidence is narrower
+    interpretation, not greater rhetorical confidence. A finding
+    may identify a plausible investigative direction while
+    explicitly withholding a root-cause conclusion.
+  </p>
+
+  <h3>Source Facts and Generated Claims</h3>
+  <p>
+    A useful evidence record separates observed facts,
+    derived calculations, hypotheses, and recommendations.
+    For example, a recorded latency value is a source fact;
+    a change in latency across two measured windows is a
+    derived observation; a suspected database bottleneck is
+    a hypothesis unless additional evidence supports it.
+  </p>
+  <p>
+    This separation also helps prevent the repeated presentation
+    of generated explanations as if they were independent
+    measurements. A prior model summary is not a substitute
+    for the original telemetry.
+  </p>
+</section>
+
+<section class="wp-section" id="context">
+  <span class="wp-section-number">03 / RESEARCH</span>
+  <h2>Context, Correlation, and Causality</h2>
+
+  <h3>Context Changes Meaning</h3>
+  <p>
+    An elevated error rate may have different implications
+    depending on the affected service, environment, duration,
+    traffic volume, and user impact. A short-lived spike in
+    staging is not equivalent to sustained errors in a
+    customer-facing production dependency.
+  </p>
+  <p>
+    Context should therefore be relevant to the operational
+    question rather than collected indiscriminately. Excessive
+    unrelated data can obscure the evidence needed for a
+    timely decision and increase privacy or access risks.
+  </p>
+
+  <h3>Correlation Across Systems</h3>
+  <p>
+    Distributed telemetry can connect related activity through
+    identifiers and propagated execution context. OpenTelemetry
+    describes mechanisms for carrying context across service
+    boundaries and correlating signals
+    <a href="#ref-3" aria-label="Reference 3">[3]</a>.
+    Such mechanisms provide a foundation for reconstructing
+    related behavior when instrumentation is available.
+  </p>
+  <p>
+    A common trace identifier can establish that records belong
+    to a related execution path. It does not automatically
+    establish that one observed condition caused another.
+    Likewise, a latency increase following a deployment is
+    a temporal association until corroborating evidence
+    supports a causal explanation.
+  </p>
+
+  <h3>Testing Competing Explanations</h3>
+  <p>
+    Trustworthy interpretation should consider more than one
+    plausible explanation when the evidence permits ambiguity.
+    A useful finding might report that dependency latency,
+    saturation, and deployment timing remain competing
+    hypotheses, then identify which additional measurement
+    would help distinguish them.
+  </p>
+  <p>
+    This approach favors falsifiable investigative questions
+    over prematurely definitive root-cause statements.
+  </p>
+</section>
+
+<section class="wp-section" id="uncertainty">
+  <span class="wp-section-number">04 / RESEARCH</span>
+  <h2>Uncertainty and Confidence</h2>
+
+  <h3>Confidence Is Not Fluency</h3>
+  <p>
+    Language models can express uncertain conclusions in
+    polished, authoritative prose. The apparent confidence
+    of the wording is not evidence of analytical accuracy.
+    Operational systems must therefore distinguish stylistic
+    certainty from measured reliability.
+  </p>
+  <p>
+    The NIST Generative AI Profile provides a broader
+    risk-management context for assessing generative AI
+    capabilities and limitations
+    <a href="#ref-2" aria-label="Reference 2">[2]</a>.
+    Applying that perspective to operational interpretation
+    means treating unsupported claims and missing context
+    as evaluation concerns.
+  </p>
+
+  <h3>Three Sources of Uncertainty</h3>
+  <p>
+    Evidence uncertainty arises when relevant records are
+    missing, delayed, sampled, or inconsistent. Analytical
+    uncertainty arises when multiple explanations fit the
+    available evidence. Decision uncertainty arises when
+    operational priorities, risk tolerance, or consequences
+    remain unresolved.
+  </p>
+  <p>
+    These conditions should not be collapsed into a single
+    unexplained confidence percentage. If numerical confidence
+    is used, its meaning and calibration should be established
+    through evaluation against representative cases.
+  </p>
+
+  <h3>When to Abstain</h3>
+  <p>
+    An interpretation system should be permitted to state
+    that the evidence is insufficient. Abstention may be
+    more reliable than generating a detailed but speculative
+    explanation. Appropriate outputs include a factual
+    summary, explicit limitations, and a request for the
+    next relevant evidence source.
+  </p>
+  <p>
+    Abstention from causal interpretation does not require
+    silence about the underlying alert. Operators can still
+    receive the observed condition and any established
+    urgency while the explanation remains unresolved.
+  </p>
+</section>
+
+<section class="wp-section" id="human-judgment">
+  <span class="wp-section-number">05 / RESEARCH</span>
+  <h2>Human Judgment and Decision Authority</h2>
+
+  <h3>Interpretation as Decision Support</h3>
+  <p>
+    AI-assisted interpretation can organize evidence and
+    propose investigative steps, but responsibility for
+    consequential operational actions must remain clearly
+    assigned. Restarting services, changing access policies,
+    suppressing alerts, or modifying production configuration
+    may require authorization beyond the scope of an
+    interpretation system.
+  </p>
+
+  <h3>Reviewability and Contestability</h3>
+  <p>
+    Operators should be able to inspect the basis of a
+    finding, challenge its assumptions, and reject its
+    recommendation. A useful interface presents supporting
+    evidence and uncertainty in a way that does not force
+    the reviewer to accept the model's framing.
+  </p>
+  <p>
+    Human oversight is meaningful only when reviewers have
+    sufficient context and practical authority to disagree.
+    A nominal approval step does not compensate for missing
+    evidence or an opaque recommendation.
+  </p>
+
+  <h3>Escalation and Action Boundaries</h3>
+  <p>
+    The system should distinguish low-risk investigative
+    suggestions from actions that alter production state.
+    Recommendations should identify the intended owner,
+    prerequisites, and potential consequences where
+    appropriate. Any future automation would require
+    separately defined permissions, controls, and testing.
+  </p>
+  <p>
+    These are proposed safeguards for trustworthy
+    decision support, not claims that Signal Audit
+    autonomously executes remediation.
+  </p>
+</section>
+
+<section class="wp-section" id="evaluation">
+  <span class="wp-section-number">06 / RESEARCH</span>
+  <h2>Evaluating Interpretation Quality</h2>
+
+  <h3>Evaluation Must Be Evidence-Based</h3>
+  <p>
+    A useful evaluation program compares generated findings
+    with source records and expert-reviewed expectations.
+    It should include ordinary alerts, incomplete payloads,
+    contradictory signals, misleading correlations, and
+    cases in which the correct behavior is to abstain.
+  </p>
+
+  <h3>A Proposed Evaluation Rubric</h3>
+  <p>
+    Six dimensions provide a practical starting point:
+    factual accuracy, evidence traceability, contextual
+    relevance, uncertainty handling, decision usefulness,
+    and respect for action boundaries.
+  </p>
+
+  <p>
+    Factual accuracy asks whether source values and
+    conditions are represented correctly. Traceability
+    asks whether material claims can be verified.
+    Contextual relevance asks whether the explanation
+    addresses the operational situation. Uncertainty
+    handling assesses unsupported certainty and
+    appropriate abstention.
+  </p>
+  <p>
+    Decision usefulness examines whether the output
+    helps an operator identify a reasonable next step.
+    Action-boundary compliance tests whether the
+    interpretation preserves human and system authority.
+    A serious failure in accuracy or authority should
+    not be offset merely by a high score for clarity.
+  </p>
+
+  <h3>Representative Test Cases</h3>
+  <p>
+    An evaluation set should include repeated alerts,
+    deployment-associated changes, partial evidence,
+    irrelevant metadata, inconsistent timestamps,
+    and superficially persuasive but unsupported
+    root-cause hypotheses. Cases should reflect the
+    event types and environments actually supported
+    by the product.
+  </p>
+
+  <h3>Measuring Improvement</h3>
+  <p>
+    Potential measures include unsupported-claim rate,
+    evidence-link completeness, expert agreement,
+    appropriate-abstention rate, reviewer correction
+    frequency, and time required to identify a useful
+    investigative next step.
+  </p>
+  <p>
+    These metrics require defined test sets, reviewer
+    guidance, and baselines. This paper reports no
+    experimental results or validated performance
+    improvements for Signal Audit.
+  </p>
+</section>
+
+<section class="wp-section" id="decision-framework">
+  <span class="wp-section-number">07 / RESEARCH</span>
+  <h2>An Operational Decision Framework</h2>
+
+  <p>
+    The proposed workflow connects evidence to judgment
+    through six distinguishable stages. It is a reference
+    framework for system design and evaluation rather
+    than a description of a fully deployed agent.
+  </p>
+
+  <h3>1. Receive and Preserve</h3>
+  <p>
+    Accept a supported operational event, validate its
+    structure, and preserve relevant source attributes.
+    Missing required fields should be recorded rather
+    than silently invented.
+  </p>
+
+  <h3>2. Establish the Observed Condition</h3>
+  <p>
+    Identify what the evidence directly establishes:
+    affected service, environment, measurement, threshold,
+    timing, and event status. Keep this factual account
+    separate from any explanation of cause.
+  </p>
+
+  <h3>3. Add Relevant Context</h3>
+  <p>
+    Incorporate authorized supporting evidence when
+    available. Record which context was used and
+    distinguish unavailable evidence from evidence
+    that contradicts a hypothesis.
+  </p>
+
+  <h3>4. Interpret with Explicit Limits</h3>
+  <p>
+    Generate a concise interpretation that identifies
+    observed facts, plausible explanations, uncertainty,
+    and unanswered questions. Abstain from unsupported
+    root-cause claims.
+  </p>
+
+  <h3>5. Present Decision Options</h3>
+  <p>
+    Offer proportionate investigative next steps with
+    supporting rationale. Do not represent proposed
+    actions as approved, executed, or guaranteed
+    to resolve the condition.
+  </p>
+
+  <h3>6. Review and Learn</h3>
+  <p>
+    Allow authorized operators to review, correct,
+    and evaluate the finding. Capture feedback in
+    a controlled process that can inform subsequent
+    testing and improvements without altering the
+    historical source evidence.
+  </p>
+
+  <div class="wp-thesis">
+    <p>
+      Trustworthy operational intelligence connects
+      evidence to explanation, explanation to judgment,
+      and judgment to accountable action.
+    </p>
+  </div>
+
+  <h3>Illustrative Example</h3>
+  <p>
+    Suppose an alert reports sustained production API
+    latency above a configured threshold. The system
+    preserves the reported metric and time window.
+    It notes that no dependency trace or deployment
+    history is present in the supplied evidence.
+    Instead of asserting a database failure, it
+    recommends examining dependency latency and
+    recent changes. The operator decides which
+    investigation to pursue.
+  </p>
+  <p>
+    The example demonstrates a design principle:
+    a bounded, verifiable interpretation can be more
+    operationally valuable than an elaborate but
+    unsupported diagnosis.
+  </p>
+</section>
+
+<section class="wp-section" id="conclusion">
+  <span class="wp-section-number">08 / RESEARCH</span>
+  <h2>Conclusion</h2>
+
+  <p>
+    The transition from operational signals to decisions
+    is not accomplished simply by generating explanations.
+    It requires a disciplined relationship between
+    recorded evidence, contextual analysis, uncertainty,
+    and accountable human judgment.
+  </p>
+  <p>
+    AI-assisted interpretation can help reduce the
+    cognitive effort of organizing operational evidence.
+    Its value, however, must be demonstrated through
+    traceability, factual accuracy, appropriate
+    restraint, and measurable usefulness.
+  </p>
+  <p>
+    A reliable system should make it easier to verify
+    what happened, identify what remains unknown,
+    and determine the next appropriate investigation.
+    It should not convert missing evidence into
+    confident conclusions or replace established
+    operational authority.
+  </p>
+
+  <div class="wp-thesis">
+    <p>
+      The goal is not to make AI sound certain.
+      The goal is to make operational decisions
+      better informed.
+    </p>
+  </div>
+</section>
+
+<section class="wp-section wp-references" id="references">
+  <span class="wp-section-number">09 / RESEARCH</span>
+  <h2>References</h2>
+
+  <p>
+    These public resources inform the discussion of
+    AI risk management, distributed telemetry,
+    and operational reliability. They do not
+    endorse Signal Audit or independently validate
+    the proposed framework.
+  </p>
+
+  <ol>
+    <li id="ref-1">
+      National Institute of Standards and Technology.
+      <a href="https://doi.org/10.6028/NIST.AI.100-1"
+         target="_blank" rel="noopener noreferrer">
+        Artificial Intelligence Risk Management Framework
+        (AI RMF 1.0)
+      </a>. 2023.
+    </li>
+    <li id="ref-2">
+      National Institute of Standards and Technology.
+      <a href="https://doi.org/10.6028/NIST.AI.600-1"
+         target="_blank" rel="noopener noreferrer">
+        Artificial Intelligence Risk Management Framework:
+        Generative Artificial Intelligence Profile
+      </a>. 2024.
+    </li>
+    <li id="ref-3">
+      OpenTelemetry.
+      <a href="https://opentelemetry.io/docs/concepts/context-propagation/"
+         target="_blank" rel="noopener noreferrer">
+        Context Propagation
+      </a>. Project documentation.
+    </li>
+    <li id="ref-4">
+      Google.
+      <a href="https://sre.google/workbook/alerting-on-slos/"
+         target="_blank" rel="noopener noreferrer">
+        Site Reliability Engineering Workbook:
+        Alerting on SLOs
+      </a>.
+    </li>
+  </ol>
+</section>
+
+      <a class="wp-back" href="/whitepapers">
+        ← All Whitepapers
+      </a>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/whitepapers">Research &amp; Whitepapers</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/partners">Partner &amp; Referral Brief</a></li>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+
+<script src="/assets/js/site-header.js"></script>
+<script src="/assets/js/ga4-cta-click-tracking.js"></script>
+</body>
+</html>
