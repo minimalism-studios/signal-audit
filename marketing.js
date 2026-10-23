@@ -22,6 +22,7 @@ const pages = new Map([
   ["/case-studies", "pages/case-studies.html"],
   ["/whitepapers", "pages/whitepapers.html"],
   ["/whitepapers/from-observability-to-operational-intelligence", "pages/whitepapers/from-observability-to-operational-intelligence.html"],
+  ["/whitepapers/from-authority-to-actionable-intelligence", "pages/whitepapers/from-authority-to-actionable-intelligence.html"],
   ["/pricing", "pages/pricing.html"],
   ["/partners", "pages/partners.html"],
   ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
