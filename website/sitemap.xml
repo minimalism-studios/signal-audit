@@ -13,6 +13,12 @@
     <loc>https://signal-audit.com/case-studies</loc>
   </url>
   <url>
+    <loc>https://signal-audit.com/whitepapers</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/whitepapers/from-observability-to-operational-intelligence</loc>
+  </url>
+  <url>
     <loc>https://signal-audit.com/why-signal-audits-work</loc>
   </url>
   <url>
@@ -48,12 +54,24 @@
   <url>
     <loc>https://signal-audit.com/security</loc>
   </url>
-  <url><loc>https://signal-audit.com/case-studies/production-throttling-detection-during-ocp-migration</loc></url>
-  <url><loc>https://signal-audit.com/case-studies/ocp-migration-dark-mode-testing</loc></url>
-  <url><loc>https://signal-audit.com/case-studies/incident-response-and-operational-ownership</loc></url>
-  <url><loc>https://signal-audit.com/case-studies/alert-fatigue-reduction-through-signal-classification</loc></url>
-  <url><loc>https://signal-audit.com/case-studies/ai-fails-silently-a-systems-perspective</loc></url>
-  <url><loc>https://signal-audit.com/case-studies/oasse-vanguard-pilot</loc></url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/production-throttling-detection-during-ocp-migration</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/ocp-migration-dark-mode-testing</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/incident-response-and-operational-ownership</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/alert-fatigue-reduction-through-signal-classification</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/ai-fails-silently-a-systems-perspective</loc>
+  </url>
+  <url>
+    <loc>https://signal-audit.com/case-studies/oasse-vanguard-pilot</loc>
+  </url>
   <url>
     <loc>https://signal-audit.com/partners</loc>
   </url>

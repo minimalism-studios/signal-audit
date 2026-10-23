@@ -1348,6 +1348,8 @@ const marketingPages =
     ["/inside-a-signal-audit", "pages/inside-a-signal-audit.html"],
     ["/pricing", "pages/pricing.html"],
     ["/case-studies", "pages/case-studies.html"],
+    ["/whitepapers", "pages/whitepapers.html"],
+    ["/whitepapers/from-observability-to-operational-intelligence", "pages/whitepapers/from-observability-to-operational-intelligence.html"],
     ["/partners", "pages/partners.html"],
     ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
     ["/case-studies/production-throttling-detection-during-ocp-migration", "pages/case-studies/production-throttling-detection-during-ocp-migration.html"],
