@@ -372,6 +372,7 @@ app.use((req, res, next) => {
     || req.path === "/auth/google"
     || req.path === "/auth/google/config"
     || req.path === "/auth/logout"
+    || req.path === "/auth/session"
   ) {
     return next();
   }
