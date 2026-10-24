@@ -95,6 +95,10 @@ const {
 } = require("./integrations/datadog/processor");
 
 const {
+  createSlackDeliveryService,
+} = require("./integrations/slack/delivery");
+
+const {
   createGrafanaWebhookHandler,
 } = require("./integrations/grafana/webhook");
 
@@ -655,16 +659,28 @@ app.use(
   ),
 );
 
+const slackDeliveryService =
+  typeof process.env.SLACK_BOT_TOKEN === "string"
+  && process.env.SLACK_BOT_TOKEN.trim()
+    ? createSlackDeliveryService({
+        botToken: process.env.SLACK_BOT_TOKEN,
+      })
+    : null;
+
 const processGrafanaSignal =
   createGrafanaProcessor({
     signalAuditService,
     signalHistory,
+    connectionStore,
+    slackDeliveryService,
   });
 
 const processDatadogSignal =
   createDatadogProcessor({
     signalAuditService,
     signalHistory,
+    connectionStore,
+    slackDeliveryService,
   });
 
 const grafanaWebhookHandler =

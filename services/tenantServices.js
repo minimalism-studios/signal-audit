@@ -212,18 +212,6 @@ function createTenantServices({
       signalHistory,
     });
 
-  const processGrafanaSignal =
-    createGrafanaProcessor({
-      signalAuditService,
-      signalHistory,
-    });
-
-  const processDatadogSignal =
-    createDatadogProcessor({
-      signalAuditService,
-      signalHistory,
-    });
-
   const slackDeliveryService =
     typeof slackBotToken === "string"
     && slackBotToken.trim()
@@ -232,6 +220,22 @@ function createTenantServices({
             slackBotToken,
         })
       : null;
+
+  const processGrafanaSignal =
+    createGrafanaProcessor({
+      signalAuditService,
+      signalHistory,
+      connectionStore,
+      slackDeliveryService,
+    });
+
+  const processDatadogSignal =
+    createDatadogProcessor({
+      signalAuditService,
+      signalHistory,
+      connectionStore,
+      slackDeliveryService,
+    });
 
   const processGatekeeperSignal =
     createGatekeeperProcessor({

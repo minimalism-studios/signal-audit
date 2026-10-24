@@ -7,6 +7,8 @@ const {
 function createGrafanaProcessor({
   signalAuditService,
   signalHistory,
+  connectionStore = null,
+  slackDeliveryService = null,
 }) {
   if (!signalAuditService) {
     throw new Error(
@@ -29,6 +31,8 @@ function createGrafanaProcessor({
       "grafana",
 
     signalHistory,
+    connectionStore,
+    slackDeliveryService,
 
     analyzeSignal:
       signalAuditService
