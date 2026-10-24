@@ -36,11 +36,12 @@ function createSignalAuditService({ openai }) {
     prompt,
     maxTokens,
     maxCharacters = 2700,
+    messages,
   }) {
     const result = await openai.chat.completions.create({
       model: "gpt-4.1-mini",
       max_tokens: maxTokens,
-      messages: [
+      messages: messages || [
         {
           role: "user",
           content: prompt,
@@ -88,13 +89,44 @@ function createSignalAuditService({ openai }) {
       );
     }
 
+    const prompt = buildPrompt(signal);
+
     const response = await runAudit({
-      prompt: buildPrompt(signal),
+      prompt,
       maxTokens: 1800,
       maxCharacters: null,
     });
 
-    return parseAuditResult(response);
+    try {
+      return parseAuditResult(response);
+    } catch (validationError) {
+      const correctedResponse = await runAudit({
+        maxTokens: 1800,
+        maxCharacters: null,
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+          {
+            role: "assistant",
+            content: response,
+          },
+          {
+            role: "user",
+            content: [
+              "Your previous JSON response failed schema validation.",
+              `Validation error: ${validationError.message}`,
+              "Correct the JSON to satisfy the original schema.",
+              "Preserve evidence and do not invent information.",
+              "Return only the complete corrected JSON object.",
+            ].join("\n"),
+          },
+        ],
+      });
+
+      return parseAuditResult(correctedResponse);
+    }
   }
 
   async function runManualAudit(input) {
