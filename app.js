@@ -99,6 +99,14 @@ const {
 } = require("./integrations/slack/delivery");
 
 const {
+  createSlackWorkspaceAuthorizer,
+} = require("./integrations/slack/authorization");
+
+const {
+  createWorkspaceRegistry,
+} = require("./integrations/slack/workspaceRegistry");
+
+const {
   createGrafanaWebhookHandler,
 } = require("./integrations/grafana/webhook");
 
@@ -112,6 +120,7 @@ const {
 
 const {
   resolveTenantIdFromHostname,
+  requireTenantId,
 } = require("./services/tenantContext");
 
 
@@ -659,11 +668,40 @@ app.use(
   ),
 );
 
+const slackAuthorizationEnabled =
+  process.env.SLACK_WORKSPACE_AUTHORIZATION_ENABLED === "true";
+
+const slackWorkspaceRegistry =
+  slackAuthorizationEnabled
+    ? createWorkspaceRegistry({
+        filePath: path.join(
+          process.env.RAILWAY_VOLUME_MOUNT_PATH || __dirname,
+          "config",
+          "slack-workspace-ownership.json",
+        ),
+        validateTenantId: requireTenantId,
+      })
+    : null;
+
+const slackWorkspaceAuthorizer =
+  slackAuthorizationEnabled
+  && typeof process.env.SLACK_BOT_TOKEN === "string"
+  && process.env.SLACK_BOT_TOKEN.trim()
+    ? createSlackWorkspaceAuthorizer({
+        tenantId: "minimalism",
+        botToken: process.env.SLACK_BOT_TOKEN,
+        workspaceRegistry: slackWorkspaceRegistry,
+      })
+    : null;
+
 const slackDeliveryService =
   typeof process.env.SLACK_BOT_TOKEN === "string"
   && process.env.SLACK_BOT_TOKEN.trim()
     ? createSlackDeliveryService({
         botToken: process.env.SLACK_BOT_TOKEN,
+        requireAuthorization: slackAuthorizationEnabled,
+        authorizeDelivery:
+          slackWorkspaceAuthorizer?.authorizeDelivery || null,
       })
     : null;
 

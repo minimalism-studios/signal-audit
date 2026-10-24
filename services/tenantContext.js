@@ -135,4 +135,5 @@ module.exports = {
   normalizeHostname,
   resolveTenantIdFromHostname,
   getTenantRuntimePaths,
+  requireTenantId,
 };

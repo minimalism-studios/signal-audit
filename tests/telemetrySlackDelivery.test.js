@@ -134,14 +134,14 @@ for (const [source, createProcessor, auditMethod] of [
 
   test(`${source}: Slack failure preserves analysis`, async () => {
     const context = setup({
-      deliveryError: new Error("Slack unavailable"),
+      deliveryError: new Error("Slack unavailable: xoxb-sensitive-token"),
     });
 
     const result = await context.processSignal(context.signal);
 
     assert.equal(result.state, SIGNAL_STATES.ANALYZED);
     assert.equal(result.signal.delivery.status, "failed");
-    assert.match(result.signal.delivery.error, /Slack unavailable/);
+    assert.equal(result.signal.delivery.error, "Slack delivery failed.");
     assert.deepEqual(result.signal.analysis, findingResult);
   });
 
@@ -193,7 +193,7 @@ for (const [source, createProcessor, auditMethod] of [
     assert.equal(result.signal.delivery.status, "failed");
     assert.match(
       result.signal.delivery.error,
-      /Connection lookup failed: Connection store unavailable/,
+      /Connection lookup failed\./,
     );
   });
 
@@ -245,7 +245,7 @@ for (const [source, createProcessor, auditMethod] of [
     assert.equal(result.signal.delivery.status, "failed");
     assert.match(
       result.signal.delivery.error,
-      /Slack delivery service is unavailable/,
+      /Slack delivery failed\./,
     );
     assert.deepEqual(result.signal.analysis, findingResult);
     assert.equal(context.posts.length, 0);

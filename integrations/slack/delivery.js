@@ -1,6 +1,8 @@
 function createSlackDeliveryService({
   botToken,
   fetchImpl = fetch,
+  requireAuthorization = false,
+  authorizeDelivery = null,
 }) {
   if (
     typeof botToken !== "string"
@@ -39,6 +41,32 @@ function createSlackDeliveryService({
       throw new Error(
         "Slack message text is required.",
       );
+    }
+
+    if (requireAuthorization) {
+      if (typeof authorizeDelivery !== "function") {
+        throw new Error(
+          "Slack delivery authorization is not configured.",
+        );
+      }
+
+      let authorized = false;
+
+      try {
+        authorized = await authorizeDelivery({
+          channelId,
+        });
+      } catch {
+        throw new Error(
+          "Slack delivery authorization denied.",
+        );
+      }
+
+      if (authorized !== true) {
+        throw new Error(
+          "Slack delivery authorization denied.",
+        );
+      }
     }
 
     const response =

@@ -155,7 +155,7 @@ function createTelemetryProcessor({
             status: "failed",
             destination: "slack",
             attemptedAt: new Date().toISOString(),
-            error: `Connection lookup failed: ${error.message}`,
+            error: "Connection lookup failed.",
           },
         },
       );
@@ -215,7 +215,7 @@ function createTelemetryProcessor({
             destination: "slack",
             channelId: slackOutput.channelId,
             attemptedAt,
-            error: error.message,
+            error: "Slack delivery failed.",
           },
         },
       );
