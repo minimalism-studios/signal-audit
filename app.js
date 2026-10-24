@@ -732,9 +732,8 @@ const oasseServices =
       process.env
         .GATEKEEPER_WEBHOOK_SIGNING_SECRET,
 
-    slackBotToken:
-      process.env
-        .SLACK_BOT_TOKEN,
+    // The expired OASSE pilot must not use Minimalism's Slack credential.
+    slackBotToken: null,
   });
 
 const oasseAuthenticationService =

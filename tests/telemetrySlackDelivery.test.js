@@ -197,6 +197,60 @@ for (const [source, createProcessor, auditMethod] of [
     );
   });
 
+  test(`${source}: missing Slack service fails closed`, async () => {
+    const context = setup();
+
+    const processSignal = createProcessor({
+      signalAuditService: {
+        [auditMethod]: async () => findingResult,
+      },
+      signalHistory: {
+        saveSignal(signal) {
+          const record = {
+            ...signal,
+            id: "missing-slack-service-1",
+            state: SIGNAL_STATES.RECEIVED,
+          };
+          context.records.set(record.id, record);
+          return record;
+        },
+
+        updateSignal(id, patch) {
+          const updated = {
+            ...context.records.get(id),
+            ...patch,
+          };
+          context.records.set(id, updated);
+          return updated;
+        },
+      },
+      connectionStore: {
+        getConnection() {
+          return {
+            outputs: {
+              slack: {
+                enabled: true,
+                channelId: SANDBOX_CHANNEL,
+              },
+            },
+          };
+        },
+      },
+      slackDeliveryService: null,
+    });
+
+    const result = await processSignal(context.signal);
+
+    assert.equal(result.state, SIGNAL_STATES.ANALYZED);
+    assert.equal(result.signal.delivery.status, "failed");
+    assert.match(
+      result.signal.delivery.error,
+      /Slack delivery service is unavailable/,
+    );
+    assert.deepEqual(result.signal.analysis, findingResult);
+    assert.equal(context.posts.length, 0);
+  });
+
   test(`${source}: disabled Slack output`, async () => {
     const context = setup({ enabled: false });
     const result = await context.processSignal(context.signal);
