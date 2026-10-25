@@ -4248,6 +4248,13 @@ function renderSecondaryWorkspace(
         "
       >
 
+        <section
+          id="slack-connection-section"
+          class="slack-connection-section"
+          aria-label="Slack connection"
+          hidden
+        ></section>
+
         <div
           class="
             integrations-layout
@@ -4294,6 +4301,7 @@ function renderSecondaryWorkspace(
     renderIntegrationsWorkspace();
 
     loadIntegrations();
+    loadSlackConnection();
 
     return;
   }
@@ -6209,6 +6217,87 @@ function renderDashboard() {
       }
     });
   });
+}
+
+async function loadSlackConnection() {
+  const container = document.querySelector(
+    "#slack-connection-section",
+  );
+
+  if (!container) {
+    return;
+  }
+
+  const canManage = window.SignalAuditPermissions
+    .hasPermission("integrations:manage");
+
+  container.hidden = true;
+  container.replaceChildren();
+
+  if (!canManage) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      "/api/integrations/slack/installation",
+      {
+        credentials: "same-origin",
+        cache: "no-store",
+      },
+    );
+
+    if (response.status === 404) {
+      return;
+    }
+
+    if (!response.ok) {
+      throw new Error("Slack connection status unavailable.");
+    }
+
+    const payload = await response.json();
+    const installations = Array.isArray(payload.installations)
+      ? payload.installations
+      : [];
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Slack Connection";
+
+    const description = document.createElement("p");
+
+    if (installations.length > 0) {
+      const workspaceIds = installations
+        .map((installation) => installation.workspaceId)
+        .filter((id) => typeof id === "string");
+
+      description.textContent = workspaceIds.length
+        ? `Connected workspace: ${workspaceIds.join(", ")}`
+        : "Slack workspace connected.";
+    } else {
+      description.textContent = "No Slack workspace connected.";
+    }
+
+    container.append(heading, description);
+
+    const connect = document.createElement("a");
+    connect.href = "/api/integrations/slack/oauth/start";
+    connect.className = "primary-button";
+    connect.textContent = installations.length > 0
+      ? "Reconnect Slack"
+      : "Connect Slack";
+    container.append(connect);
+
+    container.hidden = false;
+  } catch {
+    const heading = document.createElement("h2");
+    heading.textContent = "Slack Connection";
+
+    const message = document.createElement("p");
+    message.textContent = "Slack connection status is unavailable.";
+
+    container.append(heading, message);
+    container.hidden = false;
+  }
 }
 
 async function loadIntegrations() {

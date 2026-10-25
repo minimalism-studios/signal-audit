@@ -16986,3 +16986,48 @@ li + li {
 h2#investigation-resolution-title {
   margin-top: 15px;
 }
+/* Slack OAuth connection — Integrations workspace */
+
+.slack-connection-section:not([hidden]) {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.slack-connection-section h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.slack-connection-section p {
+  flex: 1 1 220px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.slack-connection-section .primary-button {
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 760px) {
+  .slack-connection-section:not([hidden]) {
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+}
+
+/* Stack Slack connection above the existing integration panes. */
+
+.integrations-workspace.secondary-workspace--split:has(
+  > .slack-connection-section
+) {
+  flex-direction: column;
+  gap: 12px;
+}

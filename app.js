@@ -107,6 +107,22 @@ const {
 } = require("./integrations/slack/workspaceRegistry");
 
 const {
+  createInstallationStore,
+} = require("./integrations/slack/installationStore");
+
+const {
+  createOAuthStateRegistry,
+} = require("./integrations/slack/oauthStateRegistry");
+
+const {
+  createSlackOAuthController,
+} = require("./integrations/slack/oauthController");
+
+const {
+  createSlackOAuthRouter,
+} = require("./integrations/slack/oauthRouter");
+
+const {
   createGrafanaWebhookHandler,
 } = require("./integrations/grafana/webhook");
 
@@ -121,6 +137,7 @@ const {
 const {
   resolveTenantIdFromHostname,
   requireTenantId,
+  getTenantRuntimePaths,
 } = require("./services/tenantContext");
 
 
@@ -671,8 +688,11 @@ app.use(
 const slackAuthorizationEnabled =
   process.env.SLACK_WORKSPACE_AUTHORIZATION_ENABLED === "true";
 
+const slackOAuthEnabled =
+  process.env.SLACK_OAUTH_ENABLED === "true";
+
 const slackWorkspaceRegistry =
-  slackAuthorizationEnabled
+  (slackAuthorizationEnabled || slackOAuthEnabled)
     ? createWorkspaceRegistry({
         filePath: path.join(
           process.env.RAILWAY_VOLUME_MOUNT_PATH || __dirname,
@@ -887,6 +907,111 @@ function getRequestAuthentication(req) {
     authentication,
     authorization,
   };
+}
+
+// Slack OAuth is opt-in and remains separate from legacy delivery authorization.
+if (slackOAuthEnabled) {
+  const requiredVariables = [
+    "SLACK_CLIENT_ID",
+    "SLACK_CLIENT_SECRET",
+    "SLACK_OAUTH_REDIRECT_URI",
+    "SLACK_OAUTH_ENCRYPTION_KEY",
+    "SLACK_OAUTH_SCOPES",
+  ];
+
+  const missingVariables = requiredVariables.filter(
+    (name) => !process.env[name]?.trim(),
+  );
+
+  if (missingVariables.length > 0) {
+    throw new Error(
+      `Slack OAuth configuration is incomplete: ${missingVariables.join(", ")}`,
+    );
+  }
+
+  if (!slackWorkspaceRegistry) {
+    throw new Error("Slack OAuth workspace registry is unavailable.");
+  }
+
+  const encryptionKey = Buffer.from(
+    process.env.SLACK_OAUTH_ENCRYPTION_KEY,
+    "base64",
+  );
+
+  if (
+    encryptionKey.length !== 32 ||
+    encryptionKey.toString("base64") !==
+      process.env.SLACK_OAUTH_ENCRYPTION_KEY
+  ) {
+    throw new Error(
+      "SLACK_OAUTH_ENCRYPTION_KEY must be canonical Base64 encoding of 32 bytes.",
+    );
+  }
+
+  const slackOAuthPaths = getTenantRuntimePaths("minimalism");
+  const slackOAuthRoot = path.join(
+    slackOAuthPaths.root,
+    "integrations",
+    "slack",
+  );
+
+  const installationDirectory = path.join(
+    slackOAuthRoot,
+    "installations",
+  );
+
+  const stateDirectory = path.join(
+    slackOAuthRoot,
+    "oauth-state",
+  );
+
+  for (const directory of [
+    slackOAuthRoot,
+    installationDirectory,
+    stateDirectory,
+  ]) {
+    fs.mkdirSync(directory, {
+      recursive: true,
+      mode: 0o700,
+    });
+  }
+
+  const installationStore = createInstallationStore({
+    directory: installationDirectory,
+    encryptionKey,
+    workspaceRegistry: slackWorkspaceRegistry,
+    validateTenantId: requireTenantId,
+  });
+
+  const stateRegistry = createOAuthStateRegistry({
+    directory: stateDirectory,
+    encryptionKey,
+  });
+
+  const scopes = process.env.SLACK_OAUTH_SCOPES
+    .split(",")
+    .map((scope) => scope.trim())
+    .filter(Boolean);
+
+  const controller = createSlackOAuthController({
+    clientId: process.env.SLACK_CLIENT_ID,
+    clientSecret: process.env.SLACK_CLIENT_SECRET,
+    redirectUri: process.env.SLACK_OAUTH_REDIRECT_URI,
+    scopes,
+    stateRegistry,
+    workspaceRegistry: slackWorkspaceRegistry,
+    installationStore,
+  });
+
+  app.use(
+    "/api/integrations/slack",
+    createSlackOAuthRouter({
+      controller,
+      installationStore,
+      getRequestAuthentication,
+      requireRequestTenantId,
+    }),
+  );
 }
 
 app.get(
