@@ -123,6 +123,18 @@ const {
 } = require("./integrations/slack/oauthRouter");
 
 const {
+  createEventInbox,
+} = require("./integrations/slack/eventInbox");
+
+const {
+  createSlackEventsHandler,
+} = require("./integrations/slack/eventsHandler");
+
+const {
+  createSlackEventsRouter,
+} = require("./integrations/slack/eventsRouter");
+
+const {
   createGrafanaWebhookHandler,
 } = require("./integrations/grafana/webhook");
 
@@ -240,6 +252,7 @@ app.use(
         ?.startsWith(
           "/integrations/gatekeeper/webhook/",
         )
+      || req.path === "/api/integrations/slack/events"
     ) {
       /*
        * Gatekeeper webhook bodies must remain
@@ -1002,6 +1015,26 @@ if (slackOAuthEnabled) {
     workspaceRegistry: slackWorkspaceRegistry,
     installationStore,
   });
+
+  if (process.env.SLACK_SIGNING_SECRET?.trim()) {
+    const eventInbox = createEventInbox({
+      directory: path.join(slackOAuthRoot, "events"),
+    });
+
+    const eventsHandler = createSlackEventsHandler({
+      workspaceRegistry: slackWorkspaceRegistry,
+      installationStore,
+      eventInbox,
+    });
+
+    app.use(
+      "/api/integrations/slack/events",
+      createSlackEventsRouter({
+        signingSecret: process.env.SLACK_SIGNING_SECRET,
+        eventsHandler,
+      }),
+    );
+  }
 
   app.use(
     "/api/integrations/slack",
