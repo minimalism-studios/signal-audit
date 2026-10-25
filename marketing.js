@@ -71,6 +71,7 @@ app.use(
           "https://www.youtube-nocookie.com",
           "https://www.googletagmanager.com",
           "https://elfsightcdn.com",
+          "https://universe-static.elfsightcdn.com",
         ],
         "connect-src": [
           "'self'",
