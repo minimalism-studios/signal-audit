@@ -78,6 +78,7 @@ app.use(
           "https://www.youtube-nocookie.com",
           "https://www.google-analytics.com",
           "https://*.google-analytics.com",
+          "https://core.service.elfsight.com",
         ],
         "img-src": [
           "'self'",
