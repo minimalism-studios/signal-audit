@@ -80,6 +80,8 @@ app.use(
           "https://www.google-analytics.com",
           "https://*.google-analytics.com",
           "https://core.service.elfsight.com",
+          "https://widget-data.service.elfsight.com",
+          "https://universe-static.elfsightcdn.com",
         ],
         "img-src": [
           "'self'",
