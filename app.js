@@ -1008,7 +1008,10 @@ if (slackOAuthEnabled) {
     createSlackOAuthRouter({
       controller,
       installationStore,
-      getRequestAuthentication,
+      getRequestAuthentication: (req) => ({
+        ...getRequestAuthentication(req),
+        authorization: authorizationService,
+      }),
       requireRequestTenantId,
     }),
   );

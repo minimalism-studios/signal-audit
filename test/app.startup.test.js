@@ -7,6 +7,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const net = require("node:net");
+const bcrypt = require("bcryptjs");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -54,7 +55,76 @@ function createEnvironment(runtimeRoot, port, overrides = {}) {
     ...overrides,
   };
 }
+test("authenticated Minimalism administrator can read Slack installation status", async () => {
+  const username = "oauth-regression-admin";
+  const password = "isolated-oauth-regression-password";
+  const passwordHash = await bcrypt.hash(password, 10);
 
+  await withIsolatedApp(
+    {
+      ...validOAuthConfig,
+      AUTH_USERNAME: username,
+      AUTH_PASSWORD_HASH: passwordHash,
+    },
+    async ({ child, port }) => {
+      await waitForHealth(child, port);
+
+      const baseUrl = `http://127.0.0.1:${port}`;
+      const headers = {
+        Host: "app.signal-audit.com",
+      };
+
+      const unauthenticatedResponse = await fetch(
+        `${baseUrl}/api/integrations/slack/installation`,
+        { headers },
+      );
+
+      assert.equal(unauthenticatedResponse.status, 401);
+
+      const loginResponse = await fetch(
+        `${baseUrl}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            ...headers,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        },
+      );
+
+      assert.equal(loginResponse.status, 200);
+
+      const cookie = loginResponse.headers
+        .get("set-cookie")
+        ?.split(";")[0];
+
+      assert.ok(cookie, "Authenticated session cookie is required.");
+
+      const installationResponse = await fetch(
+        `${baseUrl}/api/integrations/slack/installation`,
+        {
+          headers: {
+            ...headers,
+            Cookie: cookie,
+          },
+        },
+      );
+
+      assert.equal(installationResponse.status, 200);
+
+      const result = await installationResponse.json();
+
+      assert.deepEqual(result, {
+        count: 0,
+        installations: [],
+      });
+    },
+  );
+});
 function launchApp(runtimeRoot, port, overrides = {}) {
   const child = spawn(
     process.execPath,
