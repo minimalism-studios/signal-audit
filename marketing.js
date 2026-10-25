@@ -70,6 +70,7 @@ app.use(
           "https://www.youtube.com",
           "https://www.youtube-nocookie.com",
           "https://www.googletagmanager.com",
+          "https://elfsightcdn.com",
         ],
         "connect-src": [
           "'self'",
