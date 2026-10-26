@@ -662,6 +662,36 @@ function createSignalHistory({
     }).signals;
   }
 
+  function findBySlackDelivery({ channelId, timestamp } = {}) {
+    if (
+      typeof channelId !== "string"
+      || !channelId.trim()
+      || typeof timestamp !== "string"
+      || !timestamp.trim()
+    ) {
+      throw new TypeError(
+        "Slack channelId and timestamp are required.",
+      );
+    }
+
+    const matches = loadRecords().filter((record) => (
+      record.delivery?.status === "delivered"
+      && record.delivery?.destination === "slack"
+      && record.delivery?.channelId === channelId
+      && record.delivery?.timestamp === timestamp
+    ));
+
+    if (matches.length === 0) {
+      return { status: "not_found", signal: null };
+    }
+
+    if (matches.length !== 1) {
+      return { status: "ambiguous", signal: null };
+    }
+
+    return { status: "found", signal: matches[0] };
+  }
+
   function listAllSignals() {
     return loadRecords()
       .slice()
@@ -775,6 +805,7 @@ function createSignalHistory({
     updateSignal,
     listSignals,
     listAllSignals,
+    findBySlackDelivery,
     searchSignals,
     purgeConnection,
     getAvailableFilters,
