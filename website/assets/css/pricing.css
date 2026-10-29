@@ -1078,12 +1078,11 @@
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 72px;
-  margin-top: 8px;
+  margin: 8px 0 50px;
   padding: 58px;
   border-radius: 16px;
   background: #111;
   color: #fff;
-  margin: 120px 0 50px;
 }
 
 .sa-managed__eyebrow {
