@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Who We Are | Signal Audit</title>
+  <meta name="description" content="Meet Kwansah Madani, founder of Minimalism LLC and Signal Audit, and discover the experience and thinking behind operational intelligence.">
+  <link rel="canonical" href="https://signal-audit.com/who-we-are">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/who-we-are.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/who-we-are">Who We Are</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" class="founder-page">
+  <section class="founder-section" aria-labelledby="founder-building">
+    <div class="founder-wrap founder-split">
+      <div><p class="founder-eyebrow">Who We Are</p><h2 id="founder-building">Built on experience.<br>Driven by perspective.</h2><p>Minimalism LLC was founded around a simple principle: Signal Over Noise.</p><p>Signal Audit puts that principle to work. It receives operational signals, evaluates their significance, and helps teams understand where to look next.</p><p>Our ambition is not to create another place to watch alerts. It is to make the information organizations already have more useful for the decisions they need to make.</p></div>
+      <figure><img src="/assets/images/founder-pitch.png" alt="Kwansah Madani speaking into a microphone at a founder pitch event" loading="lazy"><figcaption>Building and sharing the vision for Signal Audit.</figcaption></figure>
+    </div>
+  </section>
+  <section class="founder-hero" aria-labelledby="founder-title">
+    <div class="founder-wrap founder-hero-grid">
+      <div class="founder-hero-copy">
+        <!--<p class="founder-eyebrow">Who We Are</p>
+        <h1 id="founder-title">Built on experience.<br>Driven by perspective.</h1>-->
+        <p class="founder-lede">Signal Audit is built on a belief that operational data should lead to understanding, not just more noise.</p>
+        <p>We turn signals from complex production environments into clearer evidence, priorities, and next steps.</p>
+      </div>
+      <figure class="founder-portrait"><img src="/assets/images/founder-portrait.jpg" alt="Kwansah Madani at a Tri-Valley Life Sciences event" width="1488" height="992"><figcaption>Kwansah Madani · Founder, Minimalism LLC &amp; Signal Audit</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="founder-section" aria-labelledby="founder-person">
+    <div class="founder-wrap founder-copy">
+      <p class="founder-eyebrow">Meet the founder</p>
+      <h2 id="founder-person">A career spent making complex systems understandable.</h2>
+      <p>Kwansah Madani brings nearly two decades of experience across front-end engineering, product optimization, site reliability, and observability. His work has included enterprise environments at Wells Fargo, Williams-Sonoma, and MTV.</p>
+      <p>Across those settings, one pattern kept appearing: teams could collect extraordinary amounts of telemetry and still struggle to decide what deserved attention. The challenge was not simply seeing more. It was knowing what mattered.</p>
+    </div>
+  </section>
+  <section class="founder-section founder-section-alt" aria-labelledby="founder-thinking">
+    <div class="founder-wrap founder-split">
+      <div><p class="founder-eyebrow">The perspective</p><h2 id="founder-thinking">Observability is a starting point. Judgment is the work.</h2><p>Dashboards, alerts, and AI-generated summaries can all be useful. But operational intelligence requires evidence, context, accountability, and a clear path to action.</p><p>Signal Audit is designed to help teams interpret what their systems are telling them—without pretending that software should replace the people responsible for those systems.</p></div>
+      <figure><img src="/assets/images/founder-speaking.png" alt="Kwansah Madani speaking onstage at a technology event" loading="lazy"><figcaption>Sharing ideas with the technology community.</figcaption></figure>
+    </div>
+  </section>
+  <section class="founder-section" aria-labelledby="founder-building">
+    <div class="founder-wrap founder-split">
+      <figure><img src="/assets/images/founder-pitch.png" alt="Kwansah Madani speaking into a microphone at a founder pitch event" loading="lazy"><figcaption>Building and sharing the vision for Signal Audit.</figcaption></figure>
+      <div><p class="founder-eyebrow">Why we built it</p><h2 id="founder-building">From production experience to a product with a point of view.</h2><p>Minimalism LLC was founded around a simple principle: Signal Over Noise.</p><p>Signal Audit puts that principle to work. It receives operational signals, evaluates their significance, and helps teams understand where to look next.</p><p>Our ambition is not to create another place to watch alerts. It is to make the information organizations already have more useful for the decisions they need to make.</p></div>
+    </div>
+  </section>
+  <section class="founder-closing" aria-labelledby="founder-close"><div class="founder-wrap"><p class="founder-eyebrow">Our philosophy</p><h2 id="founder-close">Signal Over Noise.<br>Know What Matters.</h2><p>Explore the thinking, the evidence, and the company behind Signal Audit.</p><div class="founder-actions"><a href="/case-studies">Case Studies</a><a href="/whitepapers">Research &amp; Whitepapers</a><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism LLC</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/whitepapers">Research &amp; Whitepapers</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li><a href="/partners">Partner &amp; Referral Brief</a></li>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+<script src="/assets/js/site-header.js"></script>
+</body>
+</html>

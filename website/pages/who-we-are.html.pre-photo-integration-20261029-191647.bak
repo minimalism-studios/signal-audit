@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Who We Are | Signal Audit</title>
+  <meta name="description" content="Meet Kwansah Madani, founder of Minimalism LLC and Signal Audit, and discover the experience and thinking behind operational intelligence.">
+  <link rel="canonical" href="https://signal-audit.com/who-we-are">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/who-we-are.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-light-mode.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="/assets/images/favicon-dark-mode.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Signal Audit home">
+      <img
+        class="site-header__logo"
+        src="/assets/images/signal-audit-logo.png"
+        alt=""
+        width="512"
+        height="512"
+        aria-hidden="true"
+      >
+      <span class="site-header__brand-name">Signal Audit</span>
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      data-nav-toggle
+    >
+      <span class="sr-only">Open navigation</span>
+      <span class="site-header__menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      class="site-header__nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+      data-site-nav
+    >
+      <a href="/why-signal-audits-work">Product</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/inside-a-signal-audit">Resources</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/who-we-are">Who We Are</a>
+      <a href="/security">Security</a>
+
+      <a
+        class="site-header__cta"
+        href="/signal-interpreter"
+        data-cta="header_experience_signal_audit"
+        data-si-modal-open
+      >
+        Experience Signal Audit
+      </a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" class="founder-page">
+
+  <section class="founder-section founder-intro" aria-labelledby="founder-title">
+    <div class="founder-wrap founder-split">
+      <div>
+        <p class="founder-eyebrow">Who We Are</p>
+        <h1 id="founder-title">Built on experience.<br>Driven by perspective.</h1>
+        <p>Minimalism LLC was founded around a simple principle: Signal Over Noise.</p>
+        <p>Signal Audit puts that principle to work. It receives operational signals, evaluates their significance, and helps teams understand where to look next.</p>
+        <p>Our ambition is not to create another place to watch alerts. It is to make the information organizations already have more useful for the decisions they need to make.</p>
+      </div>
+      <figure class="founder-photo founder-primary">
+        <img src="/assets/images/founder-pitch.png" alt="Kwansah Madani presenting at Innovate Bay" width="419" height="523" fetchpriority="high">
+        <figcaption>Kwansah Madani · Founder, Minimalism LLC and creator of Signal Audit</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="founder-signature" aria-labelledby="founder-signature-title">
+    <div class="founder-wrap founder-copy">
+      <p class="founder-eyebrow">Meet the Founder</p>
+      <h2 id="founder-signature-title">Give me a complicated production system, and i'll make it more reliable.</h2>
+      <p>Kwansah Madani's path to building Signal Audit runs through basketball courts, recording studios, classrooms, startups, enterprise engineering, and community organizations. Each chapter brought a different understanding of complexity—and what it takes to make something work.</p>
+    </div>
+  </section>
+
+  <section class="founder-section founder-chapter" id="the-person" aria-labelledby="chapter-person">
+    <div class="founder-wrap founder-chapter-grid">
+      <div class="founder-number" aria-hidden="true">01</div>
+      <div class="founder-chapter-body">
+        <p class="founder-eyebrow">The experiences that shaped the perspective</p>
+        <h2 id="chapter-person">The Person</h2>
+        <p>Before engineering production systems, Kwansah learned to read other kinds of systems: the movement of a basketball game, the structure of a musical composition, and the relationship between an idea and the people experiencing it.</p>
+        <p>A New Jersey Third Team All-State basketball selection, he earned an invited walk-on opportunity with the University of Michigan men's varsity basketball program. Working with the scout team, he studied opponents' systems and helped prepare Michigan's starting lineups for Big Ten and national competition. The commitment required more than 20 hours a week of training, film study, and practice alongside his academic work.</p>
+        <p>At Michigan, he studied Political Science. He later earned a Master of Fine Arts from the Academy of Art University in San Francisco and studied web design at the Chubb Institute. Those disciplines offered different ways to examine how systems operate, how people interpret information, and how ideas become experiences.</p>
+        <p>Music has remained another constant. As a rapper, producer, DJ, and promoter, Kwansah has worked where sound, culture, creativity, entrepreneurship, and technology intersect. Far from being separate from his technical career, those experiences helped shape the creative instincts and range he brings to building products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section founder-section-alt founder-chapter" id="the-builder" aria-labelledby="chapter-builder">
+    <div class="founder-wrap founder-chapter-grid">
+      <div class="founder-number" aria-hidden="true">02</div>
+      <div class="founder-chapter-body">
+        <p class="founder-eyebrow">From ideas to working systems</p>
+        <h2 id="chapter-builder">The Builder</h2>
+        <p>Kwansah's work has crossed independent creative businesses, early-stage startups, and established enterprises. His experience includes Keas, Inc., Symphony Enterprises, DJ Touré of Hieroglyphics, 101% Music, MTV, Williams-Sonoma, and ADP.</p>
+        <p>At Keas, he saw an opportunity to use the product's APIs to create a more immediate, interactive experience than its existing procedural interface. His demonstration prompted a conversation with the CEO about why the experience should work differently—and helped influence the product's direction.</p>
+        <p>That instinct has followed him throughout his career: don't accept a workflow simply because it's already in place. Understand what people are trying to accomplish, challenge unnecessary complexity, and build toward a better outcome.</p>
+        <p>From digital experiences at MTV and product experimentation at Williams-Sonoma to technology supporting independent artists and organizations, the common thread has been turning possibilities into experiences people can actually use.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section founder-chapter" id="the-leader" aria-labelledby="chapter-leader">
+    <div class="founder-wrap founder-chapter-grid">
+      <div class="founder-number" aria-hidden="true">03</div>
+      <div class="founder-chapter-body">
+        <p class="founder-eyebrow">Building organizations, not just technology</p>
+        <h2 id="chapter-leader">The Leader</h2>
+        <p>Not every complicated system is made of software. Some are made of people, competing priorities, limited resources, and a mission worth protecting.</p>
+        <p>Kwansah served on the Board of Directors of Berkeley's Ashkenaz Music &amp; Dance Community Center, including as Vice President. There, he contributed to the stewardship of a cultural institution rooted in music, cultural exchange, and community connection.</p>
+        <p>At Wells Fargo, he chaired the Northern California chapter of the Black &amp; African American Connection, leading a nine-member volunteer board and helping expand membership from approximately 100 to 200 while strengthening programming, partnerships, and organizational operations.</p>
+        <p>His community involvement has also included serving as Vice Chairman of Valley View Elementary School's Student Site Council and teaching Social Media Marketing at San Francisco State University.</p>
+        <p>These experiences reinforced a principle that would later become central to Signal Audit: information is useful only when people can understand it, establish shared priorities, and act with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section founder-section-alt founder-chapter" id="the-engineer-and-thinker" aria-labelledby="chapter-engineer">
+    <div class="founder-wrap founder-chapter-grid">
+      <div class="founder-number" aria-hidden="true">04</div>
+      <div class="founder-chapter-body">
+        <p class="founder-eyebrow">Understanding complexity at enterprise scale</p>
+        <h2 id="chapter-engineer">The Engineer &amp; Thinker</h2>
+        <div class="founder-editorial-split">
+          <div>
+            <p>Across more than two decades in technology, Kwansah's work evolved from front-end development and product optimization to enterprise reliability, observability, and operational intelligence.</p>
+            <p>At Wells Fargo, his work included production observability, machine-learning approaches to anomaly detection, and infrastructure initiatives spanning multiple applications and engineering teams. One OpenShift migration involved approximately 40 applications across 20 teams.</p>
+            <p>At that scale, the distinction between collecting data and understanding it becomes impossible to ignore. Monitoring can show that something happened without explaining why it matters or what should happen next.</p>
+            <p>Kwansah has also contributed to the broader conversation through public speaking and published thought leadership, including his UX Magazine article, <em>AI Fails Silently: A Systems Perspective on AI Reliability</em>.</p>
+            <p>His thinking connects the reliability of technical systems with the quality of decisions those systems support. A platform can appear operational while its usefulness or outcomes quietly deteriorate. Detecting activity isn't the same as understanding behavior.</p>
+            <p>That distinction became the technical and intellectual foundation for the next chapter.</p>
+          </div>
+          <figure class="founder-photo founder-speaking">
+            <img src="/assets/images/founder-speaking.png" alt="Kwansah Madani speaking onstage at AfroTech" loading="lazy">
+            <figcaption>Sharing perspectives on technology and its future at AfroTech.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section founder-chapter" id="the-founder" aria-labelledby="chapter-founder">
+    <div class="founder-wrap founder-chapter-grid">
+      <div class="founder-number" aria-hidden="true">05</div>
+      <div class="founder-chapter-body">
+        <p class="founder-eyebrow">Where the experiences converge</p>
+        <h2 id="chapter-founder">The Founder</h2>
+        <p>Signal Audit didn't begin with a desire to create another dashboard. It emerged from years of seeing the same problem from different angles: organizations can have an abundance of information and still lack the understanding needed to make a good decision.</p>
+        <p>In basketball, recognizing a pattern matters only if the team can respond. In music, every element competes for attention until someone shapes it into a coherent whole. In community leadership, information has to become shared purpose. And in production engineering, telemetry matters when it helps people recognize risk, understand evidence, and decide where to look next.</p>
+        <p>Kwansah founded Minimalism LLC around a principle connecting those experiences: <strong>Signal Over Noise.</strong></p>
+        <p>He created Signal Audit to put that philosophy into practice—interpreting operational signals from existing systems and presenting structured findings, supporting evidence, and possible next steps without displacing human expertise.</p>
+        <p>Early work with partners, including the OASSE Vanguard pilot, has helped test how this approach applies beyond conventional monitoring, into governed workflows and operational decision-making. The product continues to evolve through practical use, evaluation, and collaboration.</p>
+        <p>For Kwansah, founding Minimalism isn't a departure from the chapters that came before it. It's where they meet: the athlete, artist, builder, community leader, engineer, and thinker applying a lifetime of perspective to a problem he believes is worth solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-closing" aria-labelledby="founder-close">
+    <div class="founder-wrap">
+      <p class="founder-eyebrow">Our Philosophy</p>
+      <h2 id="founder-close">Signal Over Noise.<br>Know What Matters.</h2>
+      <p>Explore the ideas, evidence, and work behind Signal Audit.</p>
+      <div class="founder-actions">
+        <a href="/case-studies">Case Studies</a>
+        <a href="/whitepapers">Research &amp; Whitepapers</a>
+        <a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism LLC</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__brand-link">
+        <span class="site-footer__brand-name">Signal Audit</span>
+      </a>
+      <p>Signal Over Noise.</p>
+    </div>
+
+    <div class="site-footer__links">
+
+      <div class="site-footer__column">
+        <h2>Product</h2>
+        <ul>
+          <li><a href="/signal-interpreter">Signal Interpreter</a></li>
+          <li><a href="/why-signal-audits-work">How It Works</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/signal-audit-slack">Slack Integration</a></li>
+          <li><a href="/enterprise-operational-review">Enterprise Review</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Integrations</h2>
+        <ul>
+          <li><a href="/integrations">All Integrations</a></li>
+          <li><a href="/integrations/grafana">Grafana</a></li>
+          <li><a href="/integrations/datadog">Datadog</a></li>
+          <li><a href="/product-walkthrough/grafana-alert-to-slack">Grafana Walkthrough</a></li>
+          <li><a href="/product-walkthrough/datadog-monitor-to-slack">Datadog Walkthrough</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/inside-a-signal-audit">Inside a Signal Audit</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/whitepapers">Research &amp; Whitepapers</a></li>
+          <li><a href="/case-studies/splunk-mltk-birch-signal-audit">Splunk MLTK / BIRCH</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="https://minimalism.agency/signal-notes" target="_blank" rel="noopener noreferrer">Signal Notes</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__column">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li><a href="/partners">Partner &amp; Referral Brief</a></li>
+          <li>
+            <a
+              href="/security"
+              data-cta="footer_security_architecture"
+            >Security &amp; Architecture</a>
+          </li>
+          <li><a href="https://minimalism.agency/" target="_blank" rel="noopener noreferrer">Minimalism</a></li>
+          <li><a href="https://minimalism.agency/about" target="_blank" rel="noopener noreferrer">About Minimalism</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/minimalism-signal/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Minimalism LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+<script src="/assets/js/site-header.js"></script>
+</body>
+</html>
