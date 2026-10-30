@@ -25,6 +25,7 @@ const pages = new Map([
   ["/whitepapers/from-authority-to-actionable-intelligence", "pages/whitepapers/from-authority-to-actionable-intelligence.html"],
   ["/whitepapers/from-signals-to-decisions", "pages/whitepapers/from-signals-to-decisions.html"],
   ["/pricing", "pages/pricing.html"],
+  ["/who-we-are", "pages/who-we-are.html"],
   ["/partners", "pages/partners.html"],
   ["/case-studies/splunk-mltk-birch-signal-audit", "pages/case-studies/splunk-mltk-birch-algorithm.html"],
   ["/case-studies/production-throttling-detection-during-ocp-migration", "pages/case-studies/production-throttling-detection-during-ocp-migration.html"],

@@ -1,0 +1,168 @@
+/* Who We Are — founder-led editorial narrative */
+.founder-page{color:#161616;background:#fff}
+.founder-wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+.founder-page p{line-height:1.75}
+.founder-eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;margin:0 0 16px}
+.founder-section{padding:clamp(64px,8vw,60px) 0}
+.founder-section-alt{background:#f3f3f0}
+.founder-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(30px,6vw,88px);align-items:center}
+.founder-intro h1{font-size:clamp(34px,4.1vw,58px);line-height:1.12;letter-spacing:-.04em;margin:0 0 28px}
+.founder-intro p:not(.founder-eyebrow){font-size:clamp(17px,1.5vw,19px)}
+.founder-photo{margin:0}
+.founder-photo img{display:block;width:100%;height:auto;object-fit:cover;border-radius:10px}
+.founder-primary{max-width:440px;justify-self:end}
+.founder-primary img{aspect-ratio:419/523}
+.founder-page figcaption{font-size:12px;line-height:1.5;color:#646464;margin-top:12px}
+.founder-signature{background:#141414;color:#fff;padding:clamp(64px,8vw,110px) 0}
+.founder-copy{max-width:850px}
+.founder-signature h2{font-size:clamp(32px,4.3vw,60px);line-height:1.13;letter-spacing:-.035em;margin:0 0 28px}
+.founder-signature p:not(.founder-eyebrow){font-size:clamp(18px,1.7vw,21px);color:#dedede}
+.founder-chapter-grid{display:grid;grid-template-columns:100px minmax(0,1fr);gap:clamp(20px,4vw,60px);align-items:start}
+.founder-number{font-size:clamp(48px,6.5vw,90px);font-weight:650;letter-spacing:-.07em;line-height:1;color:#999;font-variant-numeric:tabular-nums}
+.founder-chapter-body{max-width:950px;min-width:0}
+.founder-chapter h2{font-size:clamp(34px,4.5vw,62px);letter-spacing:-.04em;line-height:1.1;margin:0 0 30px}
+.founder-chapter-body>p:not(.founder-eyebrow),.founder-editorial-split p{font-size:clamp(17px,1.5vw,19px);max-width:760px}
+.founder-editorial-split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(230px,.8fr);gap:clamp(24px,4vw,55px);align-items:start}
+.founder-speaking{max-width:360px;justify-self:end}
+.founder-closing{background:#111;color:#fff;padding:96px 0}
+.founder-closing h2{font-size:clamp(36px,4.8vw,66px);letter-spacing:-.04em;line-height:1.12;margin:12px 0 26px}
+.founder-closing p{max-width:650px}
+.founder-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.founder-actions a{display:inline-block;padding:13px 20px;border:1px solid #aaa;border-radius:6px;color:#fff;text-decoration:none}
+.founder-actions a:hover,.founder-actions a:focus-visible{background:#fff;color:#111}
+.founder-page a:focus-visible{outline:3px solid #8f7aff;outline-offset:4px}
+@media(max-width:800px){.founder-wrap{width:min(100% - 32px,1160px)}.founder-split,.founder-editorial-split{grid-template-columns:1fr}.founder-primary,.founder-speaking{justify-self:start;width:min(100%,440px)}.founder-chapter-grid{grid-template-columns:1fr;gap:16px}.founder-number{font-size:54px}.founder-section{padding:64px 0}.founder-closing{padding:70px 0}}
+@media(max-width:480px){.founder-intro h1{font-size:36px}.founder-signature h2{font-size:34px}.founder-chapter h2{font-size:40px}.founder-actions a{width:100%;text-align:center}}
+
+
+/* Founder chapter photography */
+.founder-chapter-photo {
+  margin: 40px 0 0;
+  width: 100%;
+}
+
+.founder-chapter-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+#the-builder .founder-chapter-photo {
+  max-width: 380px;
+}
+
+#the-leader .founder-chapter-photo {
+  max-width: 680px;
+}
+
+#the-founder .founder-chapter-photo {
+  max-width: 850px;
+}
+
+@media (max-width: 800px) {
+  .founder-chapter-photo {
+    margin-top: 28px;
+  }
+}
+
+/* Alternating editorial chapter layouts */
+.founder-story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: start;
+}
+
+.founder-story-copy {
+  min-width: 0;
+}
+
+.founder-story-copy p {
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.75;
+}
+
+.founder-story-grid .founder-chapter-photo {
+  margin: 4px 0 0;
+  max-width: none !important;
+}
+
+.founder-photo-left {
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+}
+
+.founder-photo-left .founder-chapter-photo {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.founder-photo-left .founder-story-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+@media (max-width: 800px) {
+  .founder-story-grid,
+  .founder-photo-left {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-photo-left .founder-chapter-photo,
+  .founder-photo-left .founder-story-copy {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .founder-story-grid .founder-chapter-photo {
+    margin-top: 24px;
+  }
+}
+
+/* The Person — right-aligned biography portrait */
+#the-person .founder-story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+
+#the-person .founder-story-copy {
+  min-width: 0;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#the-person .founder-chapter-photo {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+  justify-self: end;
+}
+
+#the-person .founder-chapter-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  #the-person .founder-story-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #the-person .founder-story-copy,
+  #the-person .founder-chapter-photo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  #the-person .founder-chapter-photo {
+    max-width: 420px;
+    justify-self: start;
+  }
+}

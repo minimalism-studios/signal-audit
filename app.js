@@ -1562,6 +1562,7 @@ const marketingPages =
     ["/audit-submitted", "pages/audit-submitted.html"],
     ["/inside-a-signal-audit", "pages/inside-a-signal-audit.html"],
     ["/pricing", "pages/pricing.html"],
+    ["/who-we-are", "pages/who-we-are.html"],
     ["/case-studies", "pages/case-studies.html"],
     ["/whitepapers", "pages/whitepapers.html"],
     ["/whitepapers/from-observability-to-operational-intelligence", "pages/whitepapers/from-observability-to-operational-intelligence.html"],

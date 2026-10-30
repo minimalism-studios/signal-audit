@@ -1567,7 +1567,7 @@
     width: calc(100vw - 24px) !important;
 
     margin: 0 auto !important;
-    padding: 72px 0 84px !important;
+    padding: 15px 0 84px !important;
 
     border-top: 0;
   }
@@ -1594,7 +1594,8 @@
   /* PLATFORM */
 
   .sa-pricing-platform {
-    padding-bottom: 78px;
+    margin-top: 50px;
+    padding-bottom: 0;
   }
 
   .sa-pricing-section-heading {
