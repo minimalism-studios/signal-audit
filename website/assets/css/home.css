@@ -8,11 +8,12 @@ article#sections .page-section:first-child .content-wrapper {
   padding: 96px 24px 96px;
 }
 
-.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment):nth-of-type(even) {
+.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment, .sa-ecosystem):nth-of-type(even) {
   background: #ffffff !important;
 }
 
-.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment):nth-of-type(odd) {
+.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment, .sa-ecosystem,
+  .sa-demo):nth-of-type(odd) {
   background: #F5F5F5 !important;
 }
 
@@ -9986,7 +9987,8 @@ article#sections .page-section:first-child {
   .home-integrations,
   .sa-platform-capabilities,
   .sa-investment,
-  .sa-executive-summary
+  .sa-executive-summary,
+  .sa-ecosystem
 ):nth-of-type(even) {
   background: #ffffff !important;
 }
@@ -9999,7 +10001,9 @@ article#sections .page-section:first-child {
   .home-integrations,
   .sa-platform-capabilities,
   .sa-investment,
-  .sa-executive-summary
+  .sa-executive-summary,
+  .sa-ecosystem,
+  .sa-demo
 ):nth-of-type(odd) {
   background: #f5f5f5 !important;
 }
@@ -11126,4 +11130,332 @@ body.si-modal-open #header {
   .home-case-studies {
     padding: 72px 20px;
   }
+}
+
+
+/* Startup Ecosystem Ticker */
+.sa-ecosystem {
+  background: #050608;
+  padding: 32px 0 38px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.sa-ecosystem__heading {
+  margin: 0 0 24px;
+  color: #aab3c2;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-align: center;
+}
+
+.sa-ecosystem__viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.sa-ecosystem__track {
+  display: flex;
+  width: max-content;
+  animation: sa-ecosystem-scroll 22s linear infinite;
+}
+
+.sa-ecosystem__group {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-shrink: 0;
+  padding-right: 48px;
+  white-space: nowrap;
+}
+
+.sa-ecosystem__group > span {
+  color: #d5d9e0;
+  font-size: 23px;
+  font-weight: 650;
+  letter-spacing: -1px;
+  opacity: .75;
+}
+
+.sa-ecosystem__stripe {
+  font-weight: 800 !important;
+  letter-spacing: -1.3px !important;
+}
+
+.sa-ecosystem__google {
+  font-weight: 500 !important;
+}
+
+.sa-ecosystem__group small {
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: -.3px;
+}
+
+@keyframes sa-ecosystem-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .sa-ecosystem__group {
+    gap: 32px;
+    padding-right: 32px;
+  }
+  .sa-ecosystem__group > span {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-ecosystem__track {
+    animation: none;
+  }
+  .sa-ecosystem__viewport {
+    overflow-x: auto;
+  }
+}
+
+
+/* Startup Ecosystem — visual refinement */
+.sa-ecosystem {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at 82% 12%,
+      rgba(51, 116, 207, .18),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 12% 85%,
+      rgba(39, 83, 156, .10),
+      transparent 52%
+    ),
+    #050608;
+  padding: clamp(64px, 7vw, 100px) 0;
+}
+
+.sa-ecosystem__heading {
+  max-width: 1120px;
+  margin: 0 auto 42px;
+  padding: 0 24px;
+  color: #83b9ff;
+  font-size: clamp(30px, 4.5vw, 56px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+
+.sa-ecosystem__group > span {
+  color: #e5eaf2;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.045em;
+  opacity: .85;
+}
+
+.sa-ecosystem__group small {
+  font-size: .55em;
+  letter-spacing: -0.02em;
+}
+
+.sa-ecosystem__group {
+  gap: 72px;
+  padding-right: 72px;
+}
+
+@media (max-width: 640px) {
+  .sa-ecosystem {
+    padding: 64px 0;
+  }
+
+  .sa-ecosystem__heading {
+    margin-bottom: 32px;
+  }
+
+  .sa-ecosystem__group {
+    gap: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Startup Ecosystem — compact dark refinement */
+.sa-ecosystem {
+  background:
+    radial-gradient(
+      ellipse at 82% 12%,
+      rgba(51, 116, 207, .13),
+      transparent 48%
+    ),
+    #050608;
+  padding: 36px 0 42px;
+}
+
+.sa-ecosystem__heading {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  color: #83b9ff;
+  font: 700 1em var(--sa-font-heading) !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sa-ecosystem__heading {
+  text-align: center;
+}
+
+.sa-ecosystem__group > span {
+  color: #e5eaf2;
+  font-size: 25px;
+  opacity: .8;
+}
+
+.sa-ecosystem__group small {
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .sa-ecosystem {
+    padding: 30px 0 36px;
+  }
+
+  .sa-ecosystem__heading {
+    font-size: 11px;
+    margin-bottom: 22px;
+  }
+
+  .sa-ecosystem__group > span {
+    font-size: 21px;
+  }
+}
+
+/* Keep the startup ecosystem ticker dark */
+.signal-audit-page > section.sa-ecosystem {
+  background:
+    radial-gradient(
+      ellipse at 82% 12%,
+      rgba(51, 116, 207, 0.13),
+      transparent 48%
+    ),
+    #050608 !important;
+}
+
+/* Startup ecosystem — seamless continuous ticker */
+.sa-ecosystem__track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: sa-ecosystem-scroll 30s linear infinite;
+}
+
+.sa-ecosystem__group {
+  display: flex;
+  flex: 0 0 auto;
+  width: max-content;
+  box-sizing: border-box;
+}
+
+@keyframes sa-ecosystem-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* UX Magazine — ecosystem ticker */
+.sa-ecosystem__ux {
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.sa-ecosystem__ux small {
+  font-weight: 400;
+}
+
+
+
+/* OASSE — ecosystem marquee */
+.sa-ecosystem__oasse {
+  font-weight: 650 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Signal Audit demo — dark treatment */
+.signal-audit-page > section.sa-demo {
+  background: #000111 !important;
+  color: #f5f7fa;
+}
+
+.sa-demo__eyebrow {
+  color: #83b9ff !important;
+}
+
+.sa-demo__title {
+  color: #f5f7fa !important;
+}
+
+.sa-demo__lede,
+.sa-demo__footer p {
+  color: #b8c0cc !important;
+}
+
+.sa-demo__cta {
+  color: #83b9ff !important;
+}
+
+.sa-demo__cta:hover {
+  color: #ffffff !important;
+}
+
+/* Ecosystem — subtle transition into demo */
+.signal-audit-page > section.sa-ecosystem {
+  background: linear-gradient(
+    180deg,
+    #050608 0%,
+    #03040b 45%,
+    #000111 100%
+  ) !important;
+
+  border-bottom: 0;
+}
+
+/* Demo — tighter transition from ecosystem marquee */
+.signal-audit-page > section.sa-ecosystem {
+  padding-top: 48px;
+}
+
+.signal-audit-page > section.sa-demo { padding-top: 20px; }
+
+@media (max-width: 640px) {
+  .signal-audit-page > section.sa-demo {
+    padding-top: 32px;
+  }
+}
+.sa-ecosystem__subtitle {
+  color: #fff;
+  text-align: center;
+  margin: 10px auto 20px;
+  width: 100%;
+  display: block;
+  font-size: 1.15em;
 }
