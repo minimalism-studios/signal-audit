@@ -173,3 +173,85 @@ test("rejects invalid pending-event limits", (t) => {
   assert.throws(() => inbox.listPending({ limit: 0 }));
   assert.throws(() => inbox.listPending({ limit: 1001 }));
 });
+
+test("only one worker can claim a pending event", (t) => {
+  const { directory, inbox } = createFixture(t);
+
+  receive(inbox);
+
+  const workerA = createEventInbox({ directory });
+  const workerB = createEventInbox({ directory });
+
+  const first = workerA.claim({
+    workspaceId: "T123",
+    eventId: "Ev123",
+  });
+
+  const second = workerB.claim({
+    workspaceId: "T123",
+    eventId: "Ev123",
+  });
+
+  assert.equal(first.claimed, true);
+  assert.equal(first.record.status, "PROCESSING");
+  assert.equal(second.claimed, false);
+  assert.equal(workerA.listPending().length, 0);
+  assert.equal(workerB.listPending().length, 0);
+});
+
+test("records successful Slack response delivery durably", (t) => {
+  const { directory, inbox } = createFixture(t);
+
+  receive(inbox);
+
+  const identity = {
+    workspaceId: "T123",
+    eventId: "Ev123",
+  };
+
+  const claim = inbox.claim(identity);
+  assert.equal(claim.claimed, true);
+
+  const completed = inbox.complete({
+    ...identity,
+    responseChannelId: "C123",
+    responseTs: "1720000002.000003",
+  });
+
+  assert.equal(completed.status, "COMPLETED");
+  assert.equal(completed.responseChannelId, "C123");
+  assert.equal(completed.responseTs, "1720000002.000003");
+
+  const reopened = createEventInbox({ directory });
+
+  assert.deepEqual(reopened.listPending(), []);
+  assert.equal(reopened.claim(identity).claimed, false);
+});
+
+test("deduplicates Slack events after claiming and completion", (t) => {
+  const { inbox } = createFixture(t);
+
+  const original = receive(inbox);
+  assert.equal(original.duplicate, false);
+
+  const identity = {
+    workspaceId: "T123",
+    eventId: "Ev123",
+  };
+
+  assert.equal(inbox.claim(identity).claimed, true);
+
+  const processingRetry = receive(inbox);
+  assert.equal(processingRetry.duplicate, true);
+
+  inbox.complete({
+    ...identity,
+    responseChannelId: "C123",
+    responseTs: "1720000002.000003",
+  });
+
+  const completedRetry = receive(inbox);
+  assert.equal(completedRetry.duplicate, true);
+
+  assert.deepEqual(inbox.listPending(), []);
+});

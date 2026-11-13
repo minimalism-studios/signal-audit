@@ -24,6 +24,7 @@ function createSlackDeliveryService({
   async function postMessage({
     channelId,
     text,
+    threadTs,
   }) {
     if (
       typeof channelId !== "string"
@@ -41,6 +42,16 @@ function createSlackDeliveryService({
       throw new Error(
         "Slack message text is required.",
       );
+    }
+
+    if (
+      threadTs != null
+      && (
+        typeof threadTs !== "string"
+        || !/^\d+\.\d{6}$/.test(threadTs)
+      )
+    ) {
+      throw new Error("Invalid Slack thread timestamp.");
     }
 
     if (requireAuthorization) {
@@ -88,6 +99,7 @@ function createSlackDeliveryService({
               channel:
                 channelId,
               text,
+              ...(threadTs != null ? { thread_ts: threadTs } : {}),
             }),
         },
       );

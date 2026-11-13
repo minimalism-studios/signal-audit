@@ -152,3 +152,47 @@ test("passes thread timestamps into the inbox", () => {
     "1720000000.000000",
   );
 });
+
+test("stores channel messages inside existing threads", () => {
+  const { handler, received } = fixture();
+
+  const result = handler.handleEvent(payload({
+    channel_type: "channel",
+    channel: "C123",
+    ts: "1720000001.000002",
+    thread_ts: "1720000000.000001",
+  }));
+
+  assert.equal(result.accepted, true);
+  assert.equal(result.stored, true);
+  assert.equal(received.length, 1);
+  assert.equal(received[0].event.channel, "C123");
+  assert.equal(
+    received[0].event.threadTs,
+    "1720000000.000001",
+  );
+});
+
+test("ignores channel messages without a valid parent thread", () => {
+  const invalidThreads = [
+    {},
+    { thread_ts: "" },
+    { thread_ts: "invalid" },
+    { thread_ts: "1720000000" },
+    { thread_ts: "1720000000.000001", ts: "1720000000.000001" },
+  ];
+
+  for (const overrides of invalidThreads) {
+    const { handler, received } = fixture();
+
+    const result = handler.handleEvent(payload({
+      channel_type: "channel",
+      channel: "C123",
+      ...overrides,
+    }));
+
+    assert.equal(result.accepted, true);
+    assert.equal(result.ignored, true);
+    assert.equal(received.length, 0);
+  }
+});

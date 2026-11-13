@@ -65,7 +65,15 @@ function createSlackEventsHandler({
     }
 
     if (
-      event.channel_type !== "im"
+      !(
+        event.channel_type === "im"
+        || (
+          event.channel_type === "channel"
+          && typeof event.thread_ts === "string"
+          && /^\d+\.\d{6}$/.test(event.thread_ts)
+          && event.thread_ts !== event.ts
+        )
+      )
       || typeof event.channel !== "string"
       || !event.channel
       || typeof event.user !== "string"

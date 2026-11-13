@@ -135,6 +135,34 @@ const {
 } = require("./integrations/slack/eventsRouter");
 
 const {
+  createSlackChannelVerifier,
+} = require("./integrations/slack/channelVerifier");
+
+const {
+  createSlackThreadCorrelation,
+} = require("./integrations/slack/threadCorrelation");
+
+const {
+  createInvestigativeIntelligence,
+} = require("./services/intelligence/investigative");
+
+const {
+  createSlackAgentDelivery,
+} = require("./integrations/slack/agentDelivery");
+
+const {
+  createSlackEventProcessor,
+} = require("./integrations/slack/eventProcessor");
+
+const {
+  createSlackEventConsumer,
+} = require("./integrations/slack/eventConsumer");
+
+const {
+  createSlackEventScheduler,
+} = require("./integrations/slack/eventScheduler");
+
+const {
   createGrafanaWebhookHandler,
 } = require("./integrations/grafana/webhook");
 
@@ -1045,6 +1073,51 @@ if (slackOAuthEnabled) {
       eventInbox,
     });
 
+    const agentChannelVerifier = createSlackChannelVerifier({
+      installationStore,
+    });
+
+    const agentThreadCorrelation = createSlackThreadCorrelation({
+      workspaceRegistry: slackWorkspaceRegistry,
+      installationStore,
+      signalHistory,
+      channelVerifier: agentChannelVerifier,
+    });
+
+    const agentInvestigativeIntelligence = createInvestigativeIntelligence({
+      openai,
+      threadCorrelation: agentThreadCorrelation,
+    });
+
+    const agentSlackDelivery = createSlackAgentDelivery({
+      installationStore,
+      workspaceRegistry: slackWorkspaceRegistry,
+      channelVerifier: agentChannelVerifier,
+    });
+
+    const agentEventProcessor = createSlackEventProcessor({
+      eventInbox,
+      investigativeIntelligence: agentInvestigativeIntelligence,
+      slackDelivery: agentSlackDelivery,
+    });
+
+    const agentEventConsumer = createSlackEventConsumer({
+      eventInbox,
+      eventProcessor: agentEventProcessor,
+    });
+
+    const agentEventScheduler = createSlackEventScheduler({
+      eventConsumer: agentEventConsumer,
+      logger,
+    });
+
+    if (process.env.SLACK_AGENT_ENABLED === "true") {
+      app.once("slack-agent-startup", () => {
+        agentEventScheduler.start();
+        logger.info("slack_agent_scheduler_started");
+      });
+    }
+
     app.use(
       "/api/integrations/slack/events",
       createSlackEventsRouter({
@@ -1870,5 +1943,7 @@ app.listen(
         port: PORT,
       },
     );
+
+    app.emit("slack-agent-startup");
   },
 );

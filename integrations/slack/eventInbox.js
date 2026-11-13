@@ -84,7 +84,7 @@ function createEventInbox({ directory }) {
           existing.workspaceId !== workspaceId
           || existing.eventId !== eventId
           || existing.tenantId !== tenantId
-          || existing.status !== "RECEIVED"
+          || !["RECEIVED", "PROCESSING", "COMPLETED"].includes(existing.status)
           || !existing.event
           || typeof existing.event !== "object"
         ) {
@@ -108,6 +108,194 @@ function createEventInbox({ directory }) {
         }
       }
     }
+  }
+
+  function claim({ workspaceId, eventId } = {}) {
+    const destination = eventPath({ workspaceId, eventId });
+    const marker = `${destination}.claim`;
+
+    let markerFd;
+    try {
+      markerFd = fs.openSync(marker, "wx", 0o600);
+    } catch (error) {
+      if (error.code === "EEXIST") {
+        return { claimed: false, record: null };
+      }
+      throw error;
+    }
+
+    try {
+      const record = JSON.parse(fs.readFileSync(destination, "utf8"));
+
+      if (
+        record.workspaceId !== workspaceId
+        || record.eventId !== eventId
+        || record.status !== "RECEIVED"
+      ) {
+        throw new Error("Invalid pending Slack event record.");
+      }
+
+      const processing = {
+        ...record,
+        status: "PROCESSING",
+        claimedAt: new Date().toISOString(),
+      };
+
+      const temporary = path.join(
+        directory,
+        `.${crypto.randomUUID()}.tmp`,
+      );
+
+      try {
+        fs.writeFileSync(temporary, JSON.stringify(processing), {
+          encoding: "utf8",
+          mode: 0o600,
+          flag: "wx",
+          flush: true,
+        });
+        fs.renameSync(temporary, destination);
+        syncDirectory();
+      } finally {
+        try {
+          fs.unlinkSync(temporary);
+        } catch (error) {
+          if (error.code !== "ENOENT") {
+            throw error;
+          }
+        }
+      }
+
+      return { claimed: true, record: processing };
+    } finally {
+      fs.closeSync(markerFd);
+    }
+  }
+
+  function complete({
+    workspaceId,
+    eventId,
+    responseChannelId,
+    responseTs,
+  } = {}) {
+    const destination = eventPath({ workspaceId, eventId });
+    const marker = `${destination}.claim`;
+
+    if (
+      typeof responseChannelId !== "string"
+      || !/^[A-Z0-9]+$/.test(responseChannelId)
+      || typeof responseTs !== "string"
+      || !/^\d+\.\d{6}$/.test(responseTs)
+    ) {
+      throw new Error("Invalid Slack response identifiers.");
+    }
+
+    if (!fs.existsSync(marker)) {
+      throw new Error("Slack event has not been claimed.");
+    }
+
+    const record = JSON.parse(fs.readFileSync(destination, "utf8"));
+
+    if (
+      record.workspaceId !== workspaceId
+      || record.eventId !== eventId
+      || record.status !== "PROCESSING"
+    ) {
+      throw new Error("Invalid Slack event completion transition.");
+    }
+
+    const completed = {
+      ...record,
+      status: "COMPLETED",
+      responseChannelId,
+      responseTs,
+      completedAt: new Date().toISOString(),
+    };
+
+    const temporary = path.join(
+      directory,
+      `.${crypto.randomUUID()}.tmp`,
+    );
+
+    try {
+      fs.writeFileSync(temporary, JSON.stringify(completed), {
+        encoding: "utf8",
+        mode: 0o600,
+        flag: "wx",
+        flush: true,
+      });
+
+      fs.renameSync(temporary, destination);
+      syncDirectory();
+    } finally {
+      try {
+        fs.unlinkSync(temporary);
+      } catch (error) {
+        if (error.code !== "ENOENT") {
+          console.error("Slack completion cleanup failed:", error.message);
+        }
+      }
+    }
+
+    return completed;
+  }
+
+  function close({ workspaceId, eventId, reason } = {}) {
+    const destination = eventPath({ workspaceId, eventId });
+    const marker = `${destination}.claim`;
+
+    if (
+      typeof reason !== "string"
+      || !/^[a-z_]{1,64}$/.test(reason)
+    ) {
+      throw new Error("Invalid Slack event closure reason.");
+    }
+
+    if (!fs.existsSync(marker)) {
+      throw new Error("Slack event has not been claimed.");
+    }
+
+    const record = JSON.parse(fs.readFileSync(destination, "utf8"));
+
+    if (
+      record.workspaceId !== workspaceId
+      || record.eventId !== eventId
+      || record.status !== "PROCESSING"
+    ) {
+      throw new Error("Invalid Slack event closure transition.");
+    }
+
+    const closed = {
+      ...record,
+      status: "CLOSED",
+      closeReason: reason,
+      closedAt: new Date().toISOString(),
+    };
+
+    const temporary = path.join(
+      directory,
+      `.${crypto.randomUUID()}.tmp`,
+    );
+
+    try {
+      fs.writeFileSync(temporary, JSON.stringify(closed), {
+        encoding: "utf8",
+        mode: 0o600,
+        flag: "wx",
+        flush: true,
+      });
+      fs.renameSync(temporary, destination);
+      syncDirectory();
+    } finally {
+      try {
+        fs.unlinkSync(temporary);
+      } catch (error) {
+        if (error.code !== "ENOENT") {
+          console.error("Slack closure cleanup failed:", error.message);
+        }
+      }
+    }
+
+    return closed;
   }
 
   function listPending({ limit = 100 } = {}) {
@@ -149,7 +337,7 @@ function createEventInbox({ directory }) {
         || !record.event
         || typeof record.event !== "object"
         || Array.isArray(record.event)
-        || !["RECEIVED", "PROCESSING", "COMPLETED"].includes(record.status)
+        || !["RECEIVED", "PROCESSING", "COMPLETED", "CLOSED"].includes(record.status)
         || eventPath(record) !== path.join(directory, filename)
       ) {
         throw new Error("Invalid stored Slack event record.");
@@ -167,7 +355,7 @@ function createEventInbox({ directory }) {
     return pending;
   }
 
-  return Object.freeze({ receive, listPending });
+  return Object.freeze({ receive, listPending, claim, complete, close });
 }
 
 module.exports = { createEventInbox };

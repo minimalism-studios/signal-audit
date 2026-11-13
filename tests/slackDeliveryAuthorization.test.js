@@ -168,3 +168,63 @@ test("authorization callback errors prevent Slack delivery", async () => {
 
   assert.equal(requests, 0);
 });
+
+test("legacy Slack delivery omits thread_ts", async () => {
+  let payload;
+
+  const service = createSlackDeliveryService({
+    botToken: TOKEN,
+    fetchImpl: async (_url, options) => {
+      payload = JSON.parse(options.body);
+      return {
+        ok: true,
+        json: async () => ({
+          ok: true,
+          channel: "C_ALLOWED",
+          ts: "123.456",
+        }),
+      };
+    },
+  });
+
+  await service.postMessage({
+    channelId: "C_ALLOWED",
+    text: "Existing telemetry alert",
+  });
+
+  assert.deepEqual(payload, {
+    channel: "C_ALLOWED",
+    text: "Existing telemetry alert",
+  });
+});
+
+test("threaded Slack delivery includes originating thread_ts", async () => {
+  let payload;
+
+  const service = createSlackDeliveryService({
+    botToken: TOKEN,
+    fetchImpl: async (_url, options) => {
+      payload = JSON.parse(options.body);
+      return {
+        ok: true,
+        json: async () => ({
+          ok: true,
+          channel: "C_ALLOWED",
+          ts: "1720000001.000002",
+        }),
+      };
+    },
+  });
+
+  await service.postMessage({
+    channelId: "C_ALLOWED",
+    text: "Investigative response",
+    threadTs: "1720000000.000001",
+  });
+
+  assert.deepEqual(payload, {
+    channel: "C_ALLOWED",
+    text: "Investigative response",
+    thread_ts: "1720000000.000001",
+  });
+});
