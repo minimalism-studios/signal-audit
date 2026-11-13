@@ -48,7 +48,7 @@ test("normalizes trailing slashes for browser entry requests", () => {
   assert.ok(middleware.includes('req.path.split("/")'));
   assert.match(middleware, /normalizedPath === "\/signal-interpreter"/);
   assert.match(middleware, /normalizedPath === "\/executive-dashboard"/);
-  assert.match(middleware, /res\.redirect\(302, "\/login"\)/);
+  assert.match(middleware, /res\.redirect\(302, `\/login\$\{next\}`\)/);
 
   const normalize = (path) => path.replace(/\/+$/, "") || "/";
 

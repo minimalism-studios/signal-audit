@@ -84,7 +84,10 @@ function createSlackEventProcessor({
         tenantId: record.tenantId,
         channelId: event.channel,
         threadTs: event.threadTs,
-        text: investigation.response.answer,
+        text: [
+          investigation.response.answer,
+          investigation.response.referral,
+        ].filter((value) => typeof value === "string" && value.trim()).join("\n\n"),
       });
     } catch {
       eventInbox.close({

@@ -12234,6 +12234,16 @@ async function initializeApplication() {
   );
 
   await loadSignals();
+
+  // An authenticated, tenant-scoped API lookup resolves the requested record.
+  // Never substitute a different signal when the requested record is missing.
+  const linkedSignalId = new URLSearchParams(
+    window.location.search,
+  ).get("signalId");
+  if (linkedSignalId) {
+    renderWorkspace("live-signals");
+    await loadSignalDetail(linkedSignalId);
+  }
 }
 
 async function bootstrapApplication() {
@@ -12320,6 +12330,26 @@ async function bootstrapApplication() {
       return;
     }
 
+    // Google Identity Services returns to the default workspace after login.
+    // Restore the validated per-tab deep link, then let the authenticated
+    // signal API enforce tenant and record permissions.
+    const pendingNext = sessionStorage.getItem("signalAuditLoginNext");
+    sessionStorage.removeItem("signalAuditLoginNext");
+    if (pendingNext) {
+      try {
+        const target = new URL(pendingNext, window.location.origin);
+        if (target.origin === window.location.origin
+            && target.pathname === "/signal-interpreter"
+            && target.hash === "#/live-signals"
+            && target.searchParams.get("signalId")
+            && target.searchParams.get("signalId").length <= 256
+            && [...target.searchParams.keys()].every(key => key === "signalId")
+            && !/[\x00-\x1f\x7f]/.test(target.searchParams.get("signalId"))) {
+          window.location.replace(target.pathname + target.search + target.hash);
+          return;
+        }
+      } catch { /* Invalid destination is ignored. */ }
+    }
     await initializeApplication();
   } catch (error) {
     console.error(

@@ -207,10 +207,30 @@ async function initializeGoogleSignIn() {
   }
 }
 
-const params =
-  new URLSearchParams(
-    window.location.search,
-  );
+// Preserve only an internal signal deep link across both password and Google login.
+// Session storage is per browser tab and never grants authorization.
+const params = new URLSearchParams(window.location.search);
+const requestedNext = params.get("next");
+function validSignalDestination(value) {
+  if (typeof value !== "string" || value.length > 800) return null;
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin
+        || url.pathname !== "/signal-interpreter"
+        || url.hash !== "#/live-signals"
+        || !url.searchParams.get("signalId")
+        || url.searchParams.get("signalId").length > 256
+        || /[\x00-\x1f\x7f]/.test(url.searchParams.get("signalId"))
+        || [...url.searchParams.keys()].some(key => key !== "signalId")) return null;
+    return url.pathname + url.search + url.hash;
+  } catch { return null; }
+}
+const safeNext = validSignalDestination(requestedNext);
+if (safeNext) {
+  sessionStorage.setItem("signalAuditLoginNext", safeNext);
+} else if (requestedNext !== null) {
+  sessionStorage.removeItem("signalAuditLoginNext");
+}
 
 if (
   params.get(
@@ -306,10 +326,13 @@ form.addEventListener(
           ? "/executive-dashboard?login=success"
           : "/signal-interpreter?login=success";
 
-      window.location
-        .replace(
-          destination,
-        );
+      const next = validSignalDestination(
+        sessionStorage.getItem("signalAuditLoginNext"),
+      );
+      sessionStorage.removeItem("signalAuditLoginNext");
+      window.location.replace(
+        payload?.user?.role === "executive" ? destination : (next || destination),
+      );
     } catch (requestError) {
       console.error(
         "Unable to log in.",

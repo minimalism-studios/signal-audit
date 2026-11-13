@@ -4,6 +4,8 @@ const {
   parseInvestigativeResponse,
 } = require("./responseParser");
 
+const { buildSignalReferral } = require("./referral");
+
 const DEFAULT_MODEL = "gpt-4.1-mini";
 const MAX_OUTPUT_TOKENS = 1200;
 
@@ -252,6 +254,10 @@ function createInvestigativeIntelligence({
         response: Object.freeze({
           ...response,
           answer: verifiedAnswer,
+          referral: buildSignalReferral({
+            signalId: evidence.signalId,
+            question,
+          }),
           inferences: Object.freeze([]),
           missingEvidence: Object.freeze([
             "The available evidence does not establish a root cause.",

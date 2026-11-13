@@ -89,3 +89,19 @@ test("answers a Slack question in its originating thread", async () => {
     responseTs: "1720000003.000003",
   });
 });
+
+
+test("includes a contextual referral alongside the substantive answer", async () => {
+  let deliveredText;
+  const processor = createSlackEventProcessor({
+    eventInbox: {
+      claim: () => ({claimed:true, record:{workspaceId:"T1", tenantId:"minimalism", eventId:"E1", event:{type:"message", channel:"C1", text:"Show full evidence", ts:"1720000002.000002", threadTs:"1720000001.000001"}}}),
+      close: () => { throw new Error("Unexpected close"); },
+      complete: () => ({responseTs:"1720000003.000003"}),
+    },
+    investigativeIntelligence: {answerQuestion: async () => ({status:"answered", response:{answer:"Root cause unknown.", referral:"See the authorized signal in the Standalone App."}})},
+    slackDelivery: {postMessage: async ({text}) => {deliveredText=text; return {channelId:"C1", timestamp:"1720000003.000003"};}},
+  });
+  assert.equal((await processor.processEvent({workspaceId:"T1", eventId:"E1"})).status, "completed");
+  assert.equal(deliveredText, "Root cause unknown.\n\nSee the authorized signal in the Standalone App.");
+});

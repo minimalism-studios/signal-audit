@@ -474,7 +474,15 @@ app.use((req, res, next) => {
     )
     && req.accepts("html")
   ) {
-    return res.redirect(302, "/login");
+    const signalId = typeof req.query?.signalId === "string"
+      ? req.query.signalId : null;
+    const next = signalId && signalId.length <= 256
+      && !/[\x00-\x1f\x7f]/.test(signalId)
+      ? `?${new URLSearchParams({
+          next: `/signal-interpreter?${new URLSearchParams({signalId})}#/live-signals`,
+        })}`
+      : "";
+    return res.redirect(302, `/login${next}`);
   }
 
   return res.status(403).json({

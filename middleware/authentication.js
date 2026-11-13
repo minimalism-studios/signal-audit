@@ -27,7 +27,19 @@ function createAuthenticationMiddleware({
       ]) === "html";
 
     if (acceptsHtml) {
-      res.redirect("/login");
+      const normalizedPath = "/" + (req.originalUrl || req.path).split("?")[0].split("/").filter(Boolean).join("/");
+      const signalId = typeof req.query?.signalId === "string"
+        ? req.query.signalId : null;
+      if (normalizedPath === "/signal-interpreter"
+          && signalId && signalId.length <= 256
+          && !/[\x00-\x1f\x7f]/.test(signalId)) {
+        const next = new URLSearchParams({
+          next: `/signal-interpreter?${new URLSearchParams({signalId})}#/live-signals`,
+        });
+        res.redirect(`/login?${next}`);
+      } else {
+        res.redirect("/login");
+      }
       return;
     }
 
