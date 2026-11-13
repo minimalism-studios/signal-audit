@@ -560,3 +560,54 @@ test("fails closed when thread correlation throws", async () => {
   });
   assert.equal(openaiCalled, false);
 });
+
+test("answers both alert evidence and next investigation step", async () => {
+  const service = createInvestigativeIntelligence({
+    openai: {
+      chat: {
+        completions: {
+          create: async () => ({
+            choices: [{
+              message: {
+                content: JSON.stringify({
+                  answer: "Latency exceeded the configured threshold.",
+                  observations: [{
+                    text: "Latency exceeded the configured threshold.",
+                    evidenceQuote: "Latency exceeded the configured threshold.",
+                    supportingSignalIds: ["signal-123"],
+                  }],
+                  inferences: [],
+                  missingEvidence: [],
+                  confidence: "low",
+                }),
+              },
+            }],
+          }),
+        },
+      },
+    },
+    threadCorrelation: {
+      resolveThread: async () => ({
+        status: "found",
+        evidence: {
+          ...validEvidence,
+          source: "Datadog",
+          service: "payments-api",
+          analysisSummary: "Latency exceeded the configured threshold.",
+        },
+      }),
+    },
+  });
+
+  const result = await service.answerQuestion({
+    ...request,
+    question: "What caused this alert, and what should we investigate first?",
+  });
+
+  assert.equal(result.status, "answered");
+  assert.match(result.response.answer, /Latency exceeded the configured threshold/);
+  assert.match(result.response.answer, /inspect request-duration traces/);
+  assert.match(result.response.answer, /payments-api/);
+  assert.match(result.response.answer, /does not establish a root cause/);
+  assert.doesNotMatch(result.response.answer, /database restart/i);
+});

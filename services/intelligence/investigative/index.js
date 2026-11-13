@@ -37,6 +37,32 @@ function isValidEvidence(evidence) {
 }
 
 
+function buildInvestigationGuidance(evidence) {
+  const context = [
+    evidence.source,
+    evidence.service,
+    evidence.analysisSummary,
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  const service = evidence.service
+    ? ` for ${evidence.service}`
+    : "";
+
+  if (/latency|duration|response time|slow request/.test(context)) {
+    return `Next, inspect request-duration traces${service} around the alert window, compare them with the configured threshold, and check whether the latency was sustained or isolated.`;
+  }
+
+  if (/error rate|http 5|failed request|exception/.test(context)) {
+    return `Next, inspect error logs and failed requests${service} around the alert window, identify affected endpoints, and compare failures with recent changes.`;
+  }
+
+  if (/cpu|memory|resource|saturation/.test(context)) {
+    return `Next, inspect resource-utilization trends${service} around the alert window and correlate any saturation with application behavior.`;
+  }
+
+  return `Next, review the originating signal${service}, correlate its timestamp with relevant telemetry, and verify whether the reported condition persists.`;
+}
+
 function createInvestigativeIntelligence({
   openai,
   threadCorrelation,
@@ -203,11 +229,23 @@ function createInvestigativeIntelligence({
         });
       }
 
-      const verifiedAnswer = response.observations.length
-        ? response.observations
-          .map((observation) => observation.text)
-          .join(" ")
-        : "The authorized evidence does not establish an answer.";
+      const verifiedObservations = response.observations
+        .map((observation) => observation.text)
+        .join(" ");
+
+      const asksForInvestigation = /\b(investigat\w*|check\w*|look into|next steps?|what should|where should|how (?:do|should) (?:we|i) start)/i
+        .test(question);
+
+      const verifiedAnswer = [
+        verifiedObservations
+          || "The authorized evidence does not establish an answer.",
+        ...(asksForInvestigation
+          ? [buildInvestigationGuidance(evidence)]
+          : []),
+        ...(asksForInvestigation
+          ? ["The available evidence does not establish a root cause."]
+          : []),
+      ].join(" ");
 
       return Object.freeze({
         status: "answered",
