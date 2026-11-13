@@ -43,3 +43,26 @@ test("blocks expired integration webhooks", () => {
 test("preserves expired-user rejection", () => {
   assert.match(middleware, /error: "pilot_expired"/);
 });
+
+test("redirects unauthenticated browser entry requests to login", () => {
+  assert.match(
+    middleware,
+    /!currentUser[\s\S]*req\.method === "GET"/,
+  );
+  assert.match(
+    middleware,
+    /req\.path === "\/signal-interpreter"/,
+  );
+  assert.match(
+    middleware,
+    /req\.path === "\/executive-dashboard"/,
+  );
+  assert.match(
+    middleware,
+    /req\.accepts\("html"\)/,
+  );
+  assert.match(
+    middleware,
+    /res\.redirect\(302, "\/login"\)/,
+  );
+});

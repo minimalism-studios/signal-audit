@@ -431,6 +431,20 @@ app.use((req, res, next) => {
     return next();
   }
 
+  // Allow an unauthenticated browser to reach the login page.
+  // The expired pilot remains restricted to the Minimalism administrator.
+  if (
+    !currentUser
+    && req.method === "GET"
+    && (
+      req.path === "/signal-interpreter"
+      || req.path === "/executive-dashboard"
+    )
+    && req.accepts("html")
+  ) {
+    return res.redirect(302, "/login");
+  }
+
   return res.status(403).json({
     error: "pilot_expired",
     message:
