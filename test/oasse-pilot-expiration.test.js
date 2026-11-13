@@ -45,7 +45,7 @@ test("preserves expired-user rejection", () => {
 });
 
 test("normalizes trailing slashes for browser entry requests", () => {
-  assert.match(middleware, /req\.path\.replace/);
+  assert.ok(middleware.includes('req.path.split("/")'));
   assert.match(middleware, /normalizedPath === "\/signal-interpreter"/);
   assert.match(middleware, /normalizedPath === "\/executive-dashboard"/);
   assert.match(middleware, /res\.redirect\(302, "\/login"\)/);

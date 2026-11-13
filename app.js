@@ -435,7 +435,7 @@ app.use((req, res, next) => {
   // Accept entry-point URLs with or without trailing forward slashes.
   // The expired pilot remains restricted to the Minimalism administrator.
   const normalizedPath =
-    req.path.replace(/\\/+$/, "") || "/";
+    "/" + req.path.split("/").filter(Boolean).join("/");
 
   if (
     !currentUser
