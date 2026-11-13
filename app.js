@@ -431,14 +431,18 @@ app.use((req, res, next) => {
     return next();
   }
 
-  // Allow an unauthenticated browser to reach the login page.
+  // Allow unauthenticated browser navigation to the login page.
+  // Accept entry-point URLs with or without trailing forward slashes.
   // The expired pilot remains restricted to the Minimalism administrator.
+  const normalizedPath =
+    req.path.replace(/\\/+$/, "") || "/";
+
   if (
     !currentUser
     && req.method === "GET"
     && (
-      req.path === "/signal-interpreter"
-      || req.path === "/executive-dashboard"
+      normalizedPath === "/signal-interpreter"
+      || normalizedPath === "/executive-dashboard"
     )
     && req.accepts("html")
   ) {

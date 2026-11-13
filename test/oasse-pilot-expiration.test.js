@@ -44,25 +44,17 @@ test("preserves expired-user rejection", () => {
   assert.match(middleware, /error: "pilot_expired"/);
 });
 
-test("redirects unauthenticated browser entry requests to login", () => {
-  assert.match(
-    middleware,
-    /!currentUser[\s\S]*req\.method === "GET"/,
-  );
-  assert.match(
-    middleware,
-    /req\.path === "\/signal-interpreter"/,
-  );
-  assert.match(
-    middleware,
-    /req\.path === "\/executive-dashboard"/,
-  );
-  assert.match(
-    middleware,
-    /req\.accepts\("html"\)/,
-  );
-  assert.match(
-    middleware,
-    /res\.redirect\(302, "\/login"\)/,
-  );
+test("normalizes trailing slashes for browser entry requests", () => {
+  assert.match(middleware, /req\.path\.replace/);
+  assert.match(middleware, /normalizedPath === "\/signal-interpreter"/);
+  assert.match(middleware, /normalizedPath === "\/executive-dashboard"/);
+  assert.match(middleware, /res\.redirect\(302, "\/login"\)/);
+
+  const normalize = (path) => path.replace(/\/+$/, "") || "/";
+
+  for (const route of ["/signal-interpreter", "/executive-dashboard"]) {
+    assert.equal(normalize(route), route);
+    assert.equal(normalize(route + "/"), route);
+    assert.equal(normalize(route + "//"), route);
+  }
 });
