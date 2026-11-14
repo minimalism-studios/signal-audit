@@ -7,7 +7,7 @@ test("links directly to the correlated signal for detailed questions", () => {
   const result = buildSignalReferral({signalId:"gh59-parity-123", question:"What evidence and confidence support this?"});
   assert.match(result, /https:\/\/app\.signal-audit\.com\/signal-interpreter\?signalId=gh59-parity-123/);
   assert.match(result, /#\/live-signals/);
-  assert.match(result, /authorization/);
+  assert.doesNotMatch(result, /Access requires authorization/);
 });
 test("does not add repetitive referrals for simple questions", () => {
   assert.equal(buildSignalReferral({signalId:"signal-1", question:"What service?"}), null);

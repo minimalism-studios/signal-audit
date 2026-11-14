@@ -12,7 +12,7 @@ function buildSignalReferral({ signalId, question } = {}) {
   const url = new URL("/signal-interpreter", APP_ORIGIN);
   url.searchParams.set("signalId", signalId);
   url.hash = "/live-signals";
-  return `For the full available signal findings and supporting details, open <${url.toString()}|Signal Audit Standalone App>. Access requires authorization; additional evidence or a verified root cause is not guaranteed.`;
+  return `For the full available signal findings and supporting details, open <${url.toString()}|Signal Audit Standalone App>.`;
 }
 
 module.exports = { buildSignalReferral };
