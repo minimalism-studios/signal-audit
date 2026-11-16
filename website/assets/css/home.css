@@ -8,7 +8,7 @@ article#sections .page-section:first-child .content-wrapper {
   padding: 96px 24px 96px;
 }
 
-.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment, .sa-ecosystem):nth-of-type(even) {
+.signal-audit-page > section:not(.sa-apple-hero, .sa-executive-summary, .audit-proof, .og-landscape, .risk-timeline-section,.home-integrations, .sa-investment, .sa-ecosystem, .sa-demo):nth-of-type(even) {
   background: #ffffff !important;
 }
 
@@ -11445,7 +11445,7 @@ body.si-modal-open #header {
   padding-top: 48px;
 }
 
-.signal-audit-page > section.sa-demo { padding-top: 20px; }
+.signal-audit-page > section.sa-demo { padding-top: 120px; }
 
 @media (max-width: 640px) {
   .signal-audit-page > section.sa-demo {
