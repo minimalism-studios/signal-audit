@@ -9988,7 +9988,8 @@ article#sections .page-section:first-child {
   .sa-platform-capabilities,
   .sa-investment,
   .sa-executive-summary,
-  .sa-ecosystem
+  .sa-ecosystem,
+  .sa-demo
 ):nth-of-type(even) {
   background: #ffffff !important;
 }
