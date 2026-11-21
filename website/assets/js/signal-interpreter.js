@@ -513,3 +513,37 @@ function copyResult() {
 }
 
 window.addEventListener("scroll", updateScrollCue);
+
+
+// CSP-compatible Signal Interpreter event bindings.
+function initializeSignalInterpreterEvents() {
+  document.querySelectorAll("[data-signal-example]").forEach((button) => {
+    button.addEventListener("click", () => {
+      fillExample(button.dataset.signalExample);
+    });
+  });
+
+  const bindings = {
+    "interpret-btn": runInterpretation,
+    "new-analysis-btn": resetSignalInterpreter,
+    "copy-btn": copyResult,
+    "scroll-cue": scrollCueDown,
+  };
+
+  Object.entries(bindings).forEach(([id, handler]) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.addEventListener("click", handler);
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeSignalInterpreterEvents,
+    { once: true }
+  );
+} else {
+  initializeSignalInterpreterEvents();
+}

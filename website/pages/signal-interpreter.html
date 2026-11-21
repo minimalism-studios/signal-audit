@@ -111,13 +111,13 @@
       >Supports logs, metrics, traces, and alerts.</p>
 
       <div class="signal-examples" id="examples">
-        <button type="button" onclick="fillExample('Latency spikes after deploy')">
+        <button type="button" data-signal-example="Latency spikes after deploy">
           Latency spikes after deploy
         </button>
-        <button type="button" onclick="fillExample('Users reporting issues but dashboards look fine')">
+        <button type="button" data-signal-example="Users reporting issues but dashboards look fine">
           Dashboards look fine
         </button>
-        <button type="button" onclick="fillExample('Error rate up, no infra changes')">
+        <button type="button" data-signal-example="Error rate up, no infra changes">
           Error rate up
         </button>
       </div>
@@ -151,7 +151,7 @@
         </div>
       </div>
 
-      <button id="interpret-btn" type="button" onclick="runInterpretation()">
+      <button id="interpret-btn" type="button" >
         ✦ Interpret Signal
       </button>
 
@@ -168,7 +168,7 @@
           <h1>AI analysis of your telemetry</h1>
         </div>
 
-        <button id="new-analysis-btn" type="button" onclick="resetSignalInterpreter()">
+        <button id="new-analysis-btn" type="button" >
           ↻ New Analysis
         </button>
       </div>
@@ -298,7 +298,7 @@
             <h4>Interpreter Output</h4>
 
             <div id="result-meta">
-              <button type="button" id="copy-btn" onclick="copyResult()">Copy result</button>
+              <button type="button" id="copy-btn" >Copy result</button>
             </div>
           </div>
 
@@ -356,7 +356,7 @@
 
 </div>
 
-<button id="scroll-cue" onclick="scrollCueDown()" aria-label="Continue reading">
+<button id="scroll-cue"  aria-label="Continue reading">
   ↓
 </button>
 
